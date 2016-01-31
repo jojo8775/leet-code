@@ -233,10 +233,9 @@ public class ProblemSet1
 		for (int i = index; i < candidates.length; i++)
 		{
 			combination.add(candidates[i]);
-			findCombinations(candidates, target, sum + candidates[i], i, combination, combinationList,
-					listIndex + 1);
+			findCombinations(candidates, target, sum + candidates[i], i, combination, combinationList, listIndex + 1);
 			combination.remove(listIndex);
-			
+
 			if ((i < candidates.length - 1) && sum + candidates[i + 1] > target)
 			{
 				break;
@@ -245,55 +244,116 @@ public class ProblemSet1
 
 		return combinationList;
 	}
-	
-	public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        Set<List<Integer>> result = findCombination(sortCandidates(candidates), target, 0, 0, new ArrayList<Integer>(), new HashSet<List<Integer>>(), 0);
-        return new ArrayList<List<Integer>>(result);
-    }
-    
-    private int[] sortCandidates(int[] candidates){
-        for(int i=0; i<candidates.length; i++){
-            for(int j=i; j>0; j--){
-                if(candidates[j] > candidates[j-1]){
-                    break;
-                }
-                swap(candidates, j, j-1);
-            }
-        }
-        
-        return candidates;
-    }
-    
-    private void swap(int[] arr, int index1, int index2){
-        int temp = arr[index1];
-        arr[index1] = arr[index2];
-        arr[index2] = temp;
-    }
-    
-    private Set<List<Integer>> findCombination(int[] candidates, int target, int sum, int index, List<Integer> combination, Set<List<Integer>> combinationList, int listIndex){
-        
-        if(sum > target){
-            return combinationList;
-        }
-        
-        if(sum == target){
-            combinationList.add(new ArrayList<Integer>(combination));
-        }
-        
-        for(int i=index; i<candidates.length; i++){
-            if(sum + candidates[i] > target){
-                break;
-            }
-            
-            combination.add(candidates[i]);
-            findCombination(candidates, target, sum + candidates[i], i + 1, combination,  combinationList, listIndex + 1);
-            combination.remove(listIndex);
-            
-            if(i < (candidates.length - 1) && (sum + candidates[i+1]) > target){
-                break;
-            }
-        }
-        
-        return combinationList;
-    }
+
+	public List<List<Integer>> combinationSum2(int[] candidates, int target)
+	{
+		Set<List<Integer>> result = findCombination(sortCandidates(candidates), target, 0, 0, new ArrayList<Integer>(),
+				new HashSet<List<Integer>>(), 0);
+		return new ArrayList<List<Integer>>(result);
+	}
+
+	private int[] sortCandidates(int[] candidates)
+	{
+		for (int i = 0; i < candidates.length; i++)
+		{
+			for (int j = i; j > 0; j--)
+			{
+				if (candidates[j] > candidates[j - 1])
+				{
+					break;
+				}
+				swap(candidates, j, j - 1);
+			}
+		}
+
+		return candidates;
+	}
+
+	private void swap(int[] arr, int index1, int index2)
+	{
+		int temp = arr[index1];
+		arr[index1] = arr[index2];
+		arr[index2] = temp;
+	}
+
+	private Set<List<Integer>> findCombination(int[] candidates, int target, int sum, int index,
+			List<Integer> combination, Set<List<Integer>> combinationList, int listIndex)
+	{
+
+		if (sum > target)
+		{
+			return combinationList;
+		}
+
+		if (sum == target)
+		{
+			combinationList.add(new ArrayList<Integer>(combination));
+		}
+
+		for (int i = index; i < candidates.length; i++)
+		{
+			if (sum + candidates[i] > target)
+			{
+				break;
+			}
+
+			combination.add(candidates[i]);
+			findCombination(candidates, target, sum + candidates[i], i + 1, combination, combinationList,
+					listIndex + 1);
+			combination.remove(listIndex);
+
+			if (i < (candidates.length - 1) && (sum + candidates[i + 1]) > target)
+			{
+				break;
+			}
+		}
+
+		return combinationList;
+	}
+
+	/**
+	 * Rotate an array of n elements to the right by k steps.
+	 * 
+	 * For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated
+	 * to [5,6,7,1,2,3,4].
+	 * 
+	 * Note: Try to come up as many solutions as you can, there are at least 3
+	 * different ways to solve this problem.
+	 * 
+	 * [show hint]
+	 * 
+	 * Related problem: Reverse Words in a String II
+	 * 
+	 * @param nums
+	 * @param k
+	 */
+	public void rotate(int[] nums, int k)
+	{
+		if (nums.length <= 1)
+		{
+			return;
+		}
+
+		k %= nums.length;
+
+		int currentCount = 0, count = 0, startIndex = 0;
+		int prevValue = nums[currentCount];
+
+		while (count++ < nums.length)
+		{
+
+			if (currentCount >= nums.length && (currentCount % nums.length) == startIndex)
+			{
+				currentCount = ++startIndex;
+				prevValue = nums[currentCount];
+			}
+
+			int nextIndex = (currentCount + k) % nums.length;
+			int nextValue = nums[nextIndex];
+			nums[nextIndex] = prevValue;
+			prevValue = nextValue;
+
+			currentCount += k;
+		}
+	}
 }
