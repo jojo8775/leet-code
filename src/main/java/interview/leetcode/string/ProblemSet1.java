@@ -507,8 +507,6 @@ public class ProblemSet1
 	 * maximum profit.
 	 * 
 	 * Subscribe to see which companies asked this question
-	 * 
-	 * Show Tags Show Similar Problems
 	 */
 	public int maxProfit(int[] prices)
 	{
@@ -528,4 +526,6 @@ public class ProblemSet1
 
 		return sell;
 	}
+	
+	
 }
