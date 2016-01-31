@@ -18,6 +18,10 @@ public class M
 
 		// prob.findCombination();
 
-
+		ListNode head= new ListNode(1);
+		ListNode currentNode =head;
+		currentNode.next= new ListNode(2);
+		
+		prob.rotateRight(head, 2);
 	}
 }

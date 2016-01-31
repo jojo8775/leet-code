@@ -1,6 +1,7 @@
 package interview.leetcode.string;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -355,5 +356,145 @@ public class ProblemSet1
 
 			currentCount += k;
 		}
+	}
+
+	/**
+	 * Given a list, rotate the list to the right by k places, where k is
+	 * non-negative.
+	 * 
+	 * For example: Given 1->2->3->4->5->NULL and k = 2, return
+	 * 4->5->1->2->3->NULL.
+	 */
+	public ListNode rotateRight(ListNode head, int k)
+	{
+		int size = 0;
+
+		ListNode currentNode = head;
+		while (currentNode != null)
+		{
+			currentNode = currentNode.next;
+			size++;
+		}
+
+		k = k % size;
+		if (k == 0 || k == size)
+		{
+			return head;
+		}
+
+		ListNode prevNode = head;
+		ListNode tempNode = head;
+		currentNode = head;
+		int diffCount = 0;
+
+		while (currentNode != null)
+		{
+			prevNode = currentNode;
+			currentNode = currentNode.next;
+
+			if (diffCount == (k + 1))
+			{
+				tempNode = tempNode.next;
+			}
+			else
+			{
+				diffCount++;
+			}
+		}
+
+		prevNode.next = head;
+		head = tempNode.next;
+		tempNode.next = null;
+
+		return head;
+	}
+
+	/**
+	 * Given a sorted array, remove the duplicates in place such that each
+	 * element appear only once and return the new length.
+	 * 
+	 * Do not allocate extra space for another array, you must do this in place
+	 * with constant memory.
+	 * 
+	 * For example, Given input array nums = [1,1,2],
+	 * 
+	 * Your function should return length = 2, with the first two elements of
+	 * nums being 1 and 2 respectively. It doesn't matter what you leave beyond
+	 * the new length.
+	 * 
+	 * 
+	 */
+	public int removeDuplicates(int[] nums)
+	{
+		if (nums.length < 2)
+		{
+			return nums.length;
+		}
+
+		int finalLength = 0, count = 1;
+
+		while (count < nums.length)
+		{
+			if (nums[finalLength] != nums[count])
+			{
+				nums[++finalLength] = nums[count];
+			}
+
+			count++;
+		}
+
+		return ++finalLength;
+	}
+
+	/**
+	 * Given an index k, return the kth row of the Pascal's triangle.
+	 * 
+	 * For example, given k = 3, Return [1,3,3,1].
+	 * 
+	 * Note: Could you optimize your algorithm to use only O(k) extra space?
+	 */
+	public List<Integer> getRow(int rowIndex)
+	{
+		Integer[] arr = new Integer[rowIndex + 1];
+		arr[0] = 1;
+
+		for (Integer i = 1; i < arr.length; i++)
+		{
+			Long prevValue = (long) arr[i - 1];
+
+			Long l = prevValue * (arr.length - i);
+			arr[i] = (int) (l / i);
+		}
+
+		return Arrays.asList(arr);
+	}
+
+	/**
+	 * Find the contiguous subarray within an array (containing at least one
+	 * number) which has the largest sum.
+	 * 
+	 * For example, given the array [−2,1,−3,4,−1,2,1,−5,4], the contiguous
+	 * subarray [4,−1,2,1] has the largest sum = 6.
+	 */
+	public int maxSubArray(int[] nums)
+	{
+		int currentMax = 0;
+		int maxSoFar = Integer.MIN_VALUE;
+		for (int i = 0; i < nums.length; i++)
+		{
+			currentMax += nums[i];
+
+			if (maxSoFar < currentMax)
+			{
+				maxSoFar = currentMax;
+			}
+
+			if (currentMax < 0)
+			{
+				currentMax = 0;
+			}
+		}
+
+		return maxSoFar;
 	}
 }
