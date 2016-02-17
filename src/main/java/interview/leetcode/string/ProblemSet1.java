@@ -526,6 +526,184 @@ public class ProblemSet1
 
 		return sell;
 	}
-	
-	
+
+	/**
+	 * 
+	 * Design an algorithm to find the maximum profit. You may complete as many
+	 * transactions as you like (ie, buy one and sell one share of the stock
+	 * multiple times). However, you may not engage in multiple transactions at
+	 * the same time (ie, you must sell the stock before you buy again).
+	 */
+	public int maxProfit_1(int[] prices)
+	{
+		int profit = 0;
+		int sell = 0;
+		int buy = Integer.MAX_VALUE;
+		int temp = 0;
+
+		for (int i = 0; i < prices.length; i++)
+		{
+			buy = Math.min(buy, prices[i]);
+			sell = Math.max(sell, prices[i] - buy);
+
+			if (sell > prices[i] - buy)
+			{
+				profit += sell;
+				sell = 0;
+				buy = prices[i];
+			}
+		}
+
+		return profit + sell;
+	}
+
+	public int maxProfit_1_enhanced(int[] prices)
+	{
+		int buy = prices[0];
+		int sell = 0;
+
+		for (int i = 1; i < prices.length; i++)
+		{
+			buy = Math.min(buy, prices[i]);
+
+			if (prices[i - 1] > buy && (i == prices.length - 1 || prices[i] > prices[i + 1]))
+			{
+				sell += prices[i] - buy;
+				buy = Integer.MAX_VALUE;
+			}
+		}
+
+		return sell;
+	}
+
+	/**
+	 * Say you have an array for which the ith element is the price of a given
+	 * stock on day i.
+	 * 
+	 * Design an algorithm to find the maximum profit. You may complete at most
+	 * k transactions.
+	 * 
+	 * Note: You may not engage in multiple transactions at the same time (ie,
+	 * you must sell the stock before you buy again).
+	 * 
+	 * Credits: Special thanks to @Freezen for adding this problem and creating
+	 * all test cases.
+	 * 
+	 * Subscribe to see which companies asked this question
+	 */
+	public int maxProfit(int k, int[] prices)
+	{
+		if (prices.length < 2 || k == 0)
+		{
+			return 0;
+		}
+
+		if (k >= prices.length / 2)
+		{
+			int maxProfit = 0;
+			for (int i = 1; i < prices.length; i++)
+			{
+				if (prices[i] > prices[i - 1])
+				{
+					maxProfit += prices[i] - prices[i - 1];
+				}
+			}
+
+			return maxProfit;
+		}
+
+		int[][] arrDP = new int[k + 1][prices.length];
+		int fund;
+
+		for (int i = 1; i <= k; i++)
+		{
+			fund = -prices[0];
+			for (int j = 1; j < prices.length; j++)
+			{
+				arrDP[i][j] = Math.max(arrDP[i][j - 1], prices[j] + fund);
+				fund = Math.max(fund, arrDP[i - 1][j] - prices[j]);
+			}
+		}
+
+		return arrDP[k][prices.length - 1];
+	}
+
+	/**
+	 * Say you have an array for which the ith element is the price of a given
+	 * stock on day i.
+	 * 
+	 * Design an algorithm to find the maximum profit. You may complete at most
+	 * two transactions.
+	 */
+	public int maxProfit_2T(int[] prices)
+	{
+		if (prices.length == 0)
+		{
+			return 0;
+		}
+
+		int transactions = 2;
+		int[][] profitDP = new int[transactions + 1][prices.length];
+
+		int fund = 0;
+
+		for (int i = 1; i <= transactions; i++)
+		{
+			fund = -prices[0];
+			for (int j = 1; j < prices.length; j++)
+			{
+				profitDP[i][j] = Math.max(profitDP[i][j - 1], prices[j] + fund);
+				fund = Math.max(fund, profitDP[i - 1][j] - prices[j]);
+			}
+		}
+
+		return Math.max(profitDP[transactions][prices.length - 1], profitDP[transactions - 1][prices.length - 1]);
+	}
+
+	/**
+	 * Implement atoi to convert a string to an integer.
+	 * 
+	 * Hint: Carefully consider all possible input cases. If you want a
+	 * challenge, please do not see below and ask yourself what are the possible
+	 * input cases.
+	 * 
+	 * Notes: It is intended for this problem to be specified vaguely (ie, no
+	 * given input specs). You are responsible to gather all the input
+	 * requirements up front.
+	 */
+	public int myAtoI(String str){
+		if(str == null || str.isEmpty()){
+			return 0;
+		}
+		
+		str = str.trim();
+		
+		char sign = '+';
+		int count = 0;
+		if(str.charAt(0) == '-'){
+			sign = '-';
+			count++;
+		}
+		
+		double result = 0;
+		
+		while(count < str.length()){
+			result += (str.charAt(count) - '0') * Math.pow(10, str.length() - 1 - count);
+			count ++;
+		}
+		
+		if(sign == '-'){
+			result *= -1;
+		}
+		
+		if(result > Integer.MAX_VALUE){
+			return Integer.MAX_VALUE;
+		}
+		
+		if(result < Integer.MIN_VALUE){
+			return Integer.MIN_VALUE;
+		}
+		
+		return (int) result;
+	}
 }
