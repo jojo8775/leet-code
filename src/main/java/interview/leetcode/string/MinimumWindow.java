@@ -109,6 +109,11 @@ public class MinimumWindow
 					if(minLength > (end - beg)){
 						result = s.substring(beg,end+1);
 						minLength = end - beg;
+						
+						//optimal resultt found
+						if(result.length() == t.length()){
+							return result;
+						}
 					}
 				}
 				

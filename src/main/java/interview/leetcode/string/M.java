@@ -24,7 +24,12 @@ public class M
 		//
 		// prob.rotateRight(head, 2);
 		
-		int[] arr = {2,1,4};
-		prob.maxProfit_2T(arr);
+//		int[] arr = {2,1,4};
+//		prob.maxProfit_2T(arr);
+		
+		int d1 = 2;
+		int d2 = 3;
+		
+		System.out.println((double)(d1 + d2)/2);
 	}
 }
