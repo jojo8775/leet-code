@@ -1,7 +1,5 @@
 package interview.leetcode.tushar.dynamicprograming;
 
-import java.util.List;
-
 public class CuttingRodProblem
 {
 	public static void main(String[] args)
