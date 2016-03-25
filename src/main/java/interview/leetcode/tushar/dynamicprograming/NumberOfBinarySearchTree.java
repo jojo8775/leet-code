@@ -1,6 +1,6 @@
 package interview.leetcode.tushar.dynamicprograming;
 
-public class NumberOfBirarySearchTree
+public class NumberOfBinarySearchTree
 {
 	public static void main(String[] args){
 		System.out.println(findNumberOfTrees(4));
