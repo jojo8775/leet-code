@@ -23,7 +23,7 @@ public class RootToLeafSum
 		nodeStack.add(node);
 		sum -= node.val;
 
-		Set<TreeNode> nodeSet = new HashSet();
+		Set<TreeNode> nodeSet = new HashSet<TreeNode>();
 		nodeSet.add(node);
 
 		boolean pathFound = false;
