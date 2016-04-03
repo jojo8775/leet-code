@@ -50,24 +50,21 @@ public class TreeUtil
 		List<TreeNode> nodes = new ArrayList<TreeNode>();
 		nodes.add(node);
 
-		List<TreeNode> tempNodes = null;
 		while (!nodes.isEmpty())
 		{
-			tempNodes = new ArrayList<TreeNode>();
+			List<TreeNode> tempNodes = new ArrayList<TreeNode>();
 			for (TreeNode n : nodes)
 			{
-				if (n == null)
+				System.out.print(n == null ? "null" : (n.val)  + ", ");
+
+				if (n != null)
 				{
-					System.out.print("null");
-				}
-				else
-				{
-					System.out.print(n.val + ", ");
 					tempNodes.add(n.leftChild);
 					tempNodes.add(n.rightChild);
 				}
 			}
 			System.out.println();
+
 			nodes = tempNodes;
 		}
 	}
