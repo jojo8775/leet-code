@@ -31,7 +31,7 @@ public class MaxRechtriangleInHistoram
 					}
 				}
 				
-				stack.push(arr[i]);
+				stack.push(i);
 			}
 		}
 		
