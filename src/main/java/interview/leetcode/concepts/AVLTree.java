@@ -3,8 +3,6 @@ package interview.leetcode.concepts;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.management.RuntimeErrorException;
-
 public class AVLTree
 {
 	public static void main(String[] args)
