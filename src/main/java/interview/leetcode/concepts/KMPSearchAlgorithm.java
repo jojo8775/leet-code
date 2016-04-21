@@ -11,7 +11,9 @@ public class KMPSearchAlgorithm
 {
 	public static void main(String[] args)
 	{
-		System.out.println(doesPatternExist("abxabcabcaby", "abcaby"));
+//		System.out.println(doesPatternExist("abxabcabcaby", "abcaby"));
+		
+		indexPattern("acacabacacabacacac");
 	}
 
 	private static boolean doesPatternExist(String text, String pattern)
