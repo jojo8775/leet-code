@@ -5,45 +5,40 @@ import java.util.Stack;
 public class MaxRechtriangleInHistoram
 {
 	public static void main(String[] args){
-		int[] arr = {1,2,2,3, 0, 4, 4};
+//		int[] arr = {1,2,2,3, 0, 4, 4};
+		int[] arr = { 90, 58, 69, 70, 82, 100, 13, 57, 47, 18 };
 		System.out.println(findMaxArea(arr));
 	}
 	
 	private static int findMaxArea(int[] arr){
 		
 		Stack<Integer> stack = new Stack<Integer>();
-		int maxArea = arr[0], currentArea = 0;
-		int maxBegIndex = 0, maxEndIndex = 0;
 		
-		for(int i=0 ; i < arr.length; i++){
-			if(stack.isEmpty() || arr[stack.peek()] <= arr[i]){
-				stack.push(i);
+		int idx = 0, topIdx = 0, maxArea = arr[0];
+		while(idx < arr.length){
+			if(stack.isEmpty() || arr[stack.peek()] <= arr[idx]){
+				stack.push(idx++);
 			}
 			else{
-				while(!stack.isEmpty() && arr[stack.peek()] > arr[i]){
-					int storedIndex = stack.pop();
-					currentArea = arr[storedIndex] * (i - storedIndex);
-					
-					if(maxArea < currentArea){
-						maxArea = currentArea;
-						maxBegIndex = storedIndex;
-						maxEndIndex = i;
-					}
-				}
+				topIdx = stack.pop();
 				
-				stack.push(i);
+				if(stack.isEmpty()){
+					maxArea = Math.max(maxArea, arr[topIdx] * idx);
+				}
+				else{
+					maxArea = Math.max(maxArea, arr[topIdx] * (idx - stack.peek() - 1));
+				}
 			}
 		}
 		
-		int refIndex = arr.length;
-		
 		while(!stack.isEmpty()){
-			int storedIndex = stack.pop();
-			currentArea = arr[storedIndex] * (refIndex - storedIndex);
-			if(currentArea > maxArea){
-				maxArea = currentArea;
-				maxBegIndex = storedIndex;
-				maxEndIndex = refIndex;
+			topIdx = stack.pop();
+			
+			if(stack.isEmpty()){
+				maxArea = Math.max(maxArea, arr[topIdx] * idx);
+			}
+			else{
+				maxArea = Math.max(maxArea, arr[topIdx] * (idx - stack.peek() - 1));
 			}
 		}
 		
