@@ -39,7 +39,7 @@ public class ZigZagConversion {
             
             while(idx < s.length() && aIdx > 0){
                 arr[aIdx--].append(s.charAt(idx++));
-            }
+            } 
         }
         
         StringBuilder sb = new StringBuilder();
