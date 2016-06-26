@@ -23,31 +23,28 @@ public class ZigZagConversion {
             return s;
         }
         
-        List<List<Character>> ll = new ArrayList<List<Character>>();
+        StringBuilder[] arr = new StringBuilder[numRows];
         
-        //initialized the lists
+        //initializing the string builders
         for(int i=0; i<numRows; i++){
-            ll.add(new ArrayList<Character>());
+            arr[i] = new StringBuilder();
         }
         
         int idx = 0;
         while(idx < s.length()){
-            int lIdx = 0;
-            while(idx < s.length() && lIdx<numRows){
-                ll.get(lIdx++).add(s.charAt(idx++));
+            int aIdx = 0;
+            while(idx < s.length() && aIdx < numRows-1){
+                arr[aIdx++].append(s.charAt(idx++));
             }
-            lIdx--;
-            lIdx--;
-            while(idx < s.length() && lIdx>0){
-                ll.get(lIdx--).add(s.charAt(idx++));
+            
+            while(idx < s.length() && aIdx > 0){
+                arr[aIdx--].append(s.charAt(idx++));
             }
         }
         
         StringBuilder sb = new StringBuilder();
-        for(List<Character> l : ll){
-            for(Character c : l){
-                sb.append(c);
-            }
+        for(int i=0; i<numRows; i++){
+            sb.append(arr[i].toString());
         }
         
         return sb.toString();
