@@ -41,7 +41,17 @@ public class SlidingWindow
 	}
 	
 	public static void main(String[] args){
-		int[] nums = {1,-1};
-		int[] r = new SlidingWindow().maxSlidingWindow(nums, 1);
+//		int[] nums = {1,-1};
+		int[] nums = { 648, 614, 490, 138, 657, 544, 745, 582, 738, 229, 775, 665, 876, 448, 4, 81, 807, 578, 712, 951,
+				867, 328, 308, 440, 542, 178, 637, 446, 882, 760, 354, 523, 935, 277, 158, 698, 536, 165, 892, 327, 574,
+				516, 36, 705, 900, 482, 558, 937, 207, 368 };
+		int[] r = new SlidingWindow().maxSlidingWindow(nums, 9);
+		print(r);
+	}
+	
+	private static void print(int[] a){
+		for(int i : a){
+			System.out.print(i + ", ");
+		}
 	}
 }
