@@ -76,7 +76,7 @@ public class CopyListWithRandomPointer
 		node = node.next;
 		head.random = node;
 		
-		new CopyList().findSol(head);
+		new CopyListWithRandomPointer().findSol(head);
 	}
 	
 	private static RandomListNode createNode(int label, RandomListNode randomNode){
