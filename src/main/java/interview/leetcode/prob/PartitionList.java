@@ -9,7 +9,7 @@ package interview.leetcode.prob;
  * 
  * For example, Given 1->4->3->2->5->2 and x = 3, return 1->2->2->4->3->5.
  * 
- * @author jojo
+ * @author j61ojo
  *
  */
 public class PartitionList {
