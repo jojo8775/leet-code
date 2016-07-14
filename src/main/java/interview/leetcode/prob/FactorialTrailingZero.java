@@ -10,11 +10,11 @@ package interview.leetcode.prob;
  */
 public class FactorialTrailingZero {
 	public int trailingZeroes(int n) {
-		int result = 0;
-		for (int i = 5; n / i >= 1; i = i * 5) {
+		long result = 0;
+		for (long i = 5; n / i >= 1; i = i * 5) {
 			result = result + (n / i);
 		}
 
-		return result;
+		return (int) result;
 	}
 }
