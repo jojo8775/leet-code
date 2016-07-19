@@ -53,26 +53,27 @@ public class Triangle {
     
     public int minimumTotal2 (List<List<Integer>> triangle) {
         int size = triangle.size();
-        int[] grid = new int[size];
-        grid[0] = triangle.get(0).get(0);
+        int[] dp = new int[size];
+        dp[0] = triangle.get(0).get(0);
         
         for(int i=1; i<size; i++){
         	List<Integer> list = triangle.get(i);
-        	int previous = grid[0];
-        	grid[0] += list.get(0);
+        	int previous = dp[0];
+        	dp[0] += list.get(0);
         	
+        	//calculating minimum path sum for ith level
         	for(int j=1; j<i; j++){
-        		int temp = grid[j];
-        		grid[j] = list.get(j) + Math.min(previous, grid[j]);
+        		int temp = dp[j];
+        		dp[j] = list.get(j) + Math.min(previous, dp[j]);
         		previous = temp;
         	}
         	
-        	grid[i] = previous + list.get(i);
+        	dp[i] = previous + list.get(i);
         }
         
-        int result = grid[0];
+        int result = dp[0];
         for(int i=1; i<size; i++){
-            result = Math.min(result, grid[i]);
+            result = Math.min(result, dp[i]);
         }
         
         return result;
@@ -83,7 +84,7 @@ public class Triangle {
 		nodes.add(Arrays.asList(-1));
 		nodes.add(Arrays.asList(2,3));
 		nodes.add(Arrays.asList(1,-1,-3));
-//		nodes.add(Arrays.asList(4,1,8,3));
+		nodes.add(Arrays.asList(4,1,8,3));
 		
 //		System.out.println(new Triangle().minimumTotal(nodes));
 		System.out.println(new Triangle().minimumTotal2(nodes));
