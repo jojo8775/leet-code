@@ -22,6 +22,9 @@ Note: Given n will be between 1 and 9 inclusive.
  *
  */
 public class PermutationSequence {
+	/**
+	 * Reference https://discuss.leetcode.com/topic/17348/explain-like-i-m-five-java-solution-in-o-n
+	 */
     public String getPermutation(int n, int k) {
         int[] factorial = new int[n+1];
         
