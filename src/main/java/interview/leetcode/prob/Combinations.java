@@ -38,7 +38,7 @@ public class Combinations {
             
             result.add(list);
             return;
-        }
+        }	
         
         for(int i=count; i<=n; i++){
             arr[idx] = i;
