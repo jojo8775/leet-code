@@ -52,10 +52,17 @@ public class MaxProductOfWordLength {
 		
 		int maxLength = 0;
 		for(int i=0; i<arr.length - 1; i++){
+		    //there cannot be any better result
+		    if(words[i].length() * words[i].length() <= maxLength){
+		        break;
+		    }
+		    
 			for(int j = i+1; j < arr.length; j++){
 			    //if two words are completely different then this condition will satisfy
 				if((arr[i] & arr[j]) == 0){
 					maxLength = Math.max(words[i].length() * words[j].length(), maxLength);
+					//since the input array is sorted once a result is found a better result in that iteration cannot be achieved
+					break;
 				}
 			}
 		}
