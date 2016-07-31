@@ -42,7 +42,7 @@ public class JumpGame {
                     bal = curBal;
                 }
             }
-        }
+        }            
         
         return false;
     }
