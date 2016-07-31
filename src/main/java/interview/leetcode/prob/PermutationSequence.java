@@ -57,4 +57,8 @@ public class PermutationSequence {
         
         return sb.toString();
     }
+    
+    public static void main(String[] args){
+    	System.out.println(new PermutationSequence().getPermutation(4, 23));
+    }
 }
