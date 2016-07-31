@@ -43,4 +43,16 @@ public class PermutationsII {
             tempList.remove(tempList.size() - 1);
         }
     }
+    
+    public static void main(String[] args){
+    	int[] nums = {1,1,1,2};
+    	List<List<Integer>> result = new PermutationsII().permuteUnique(nums);
+    	
+    	for(List<Integer> ll : result){
+    		for(int i : ll){
+    			System.out.print(i + ", ");
+    		}
+    		System.out.println();
+    	}
+    }
 }
