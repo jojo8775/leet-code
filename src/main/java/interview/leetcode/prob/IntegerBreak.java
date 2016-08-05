@@ -17,13 +17,13 @@ You may check the breaking results of n ranging from 7 to 10 to discover the reg
  */
 public class IntegerBreak {
 	public int integerBreak(int n) {
-		// this can be sloved by dynamic programing memorization
+		// this can be solved by dynamic programming memorization
 		int[] dp = new int[n + 1];
 
 		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j < i + 1; j++) {
 				if (i + j <= n) {
-					// using the memrization of the dynamic programming
+					// using the memorization of the dynamic programming
 					dp[i + j] = Math.max(Math.max(dp[i], i) * Math.max(dp[j], j), dp[i + j]);
 				}
 			}
