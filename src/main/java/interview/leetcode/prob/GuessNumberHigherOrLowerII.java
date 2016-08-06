@@ -34,22 +34,23 @@ As a follow-up, how would you modify your code to solve the problem of minimizin
  *
  */
 public class GuessNumberHigherOrLowerII {
+		
     public int getMoneyAmount(int n) {
 		int dp[][] = new int[n+1][n+1];
 		
-		for(int len = 1; len < n; len++){
-		    for(int i=1; i+len <= n; i++){
-                int j = i + len;
-                
-                int avgLoss = Integer.MAX_VALUE, maxLoss = 0;
-                for(int k=i; k<j; k++){
-                    maxLoss = k + Math.max(dp[i][k-1], dp[k+1][j]);
-                    avgLoss = Math.min(avgLoss, maxLoss);
-                }
-                dp[i][j] = avgLoss;
-                
-                System.out.println("i = " + i + "  j = " + j);
-                print(dp);
+		//if input = i to n then result is minimum of all (1 to k-1) + k + (k+1 to n)
+		//we are taking a bottom up approach
+		for(int len=1;len<n; len++){
+		    for(int i=1; i+len<=n; i++){
+		        dp[i][i+len] = Integer.MAX_VALUE;
+		        for(int j=i; j<=i+len; j++){
+		            
+		            int leftHalf = dp[i][j-1]; // represents i to k-1
+		            int rightHalf = (j==n) ? 0 : dp[j+1][i+len]; // represents k+1 to n
+		            
+		            int curCost = j + Math.max(leftHalf, rightHalf); // j represents 'k' 
+		            dp[i][i+len] = Math.min(dp[i][i+len], curCost);
+		        }
 		    }
 		}
 		
@@ -68,6 +69,6 @@ public class GuessNumberHigherOrLowerII {
     }
 
 	public static void main(String[] args) {
-		System.out.println(new GuessNumberHigherOrLowerII().getMoneyAmount(5));
+		System.out.println(new GuessNumberHigherOrLowerII().getMoneyAmount(4));
 	}
 }
