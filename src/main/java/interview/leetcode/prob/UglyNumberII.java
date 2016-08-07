@@ -45,6 +45,24 @@ public class UglyNumberII
 
 		return arr[--idx];
 	}
+	
+	public int find_2(int n){
+		int [] primes = {2,3,5};
+		int [] ugly = new int[n];
+		ugly[0] = 1;
+		
+		for(int i=1; i<n; i++){
+			for(int j=0; j<primes.length; j++){
+				
+			}
+			
+			for(int j=0; j<primes.length; j++){
+				
+			}
+		}
+		
+		return ugly[n-1];
+	}
 
 	public static void main(String[] args)
 	{
