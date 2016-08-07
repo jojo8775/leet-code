@@ -18,7 +18,6 @@ public class TriePrefixTree {
 
 		// Initialize your data structure here.
 		public TrieNode() {
-
 		}
 	}
 
