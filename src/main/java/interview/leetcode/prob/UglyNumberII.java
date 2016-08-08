@@ -47,17 +47,21 @@ public class UglyNumberII
 	}
 	
 	public int find_2(int n){
-		int [] primes = {2,3,5};
-		int [] ugly = new int[n];
+		int[] primes = {2,3,5};
+		int[] index = new int[primes.length];
+		int[] ugly = new int[n];
 		ugly[0] = 1;
 		
 		for(int i=1; i<n; i++){
+			ugly[i] = Integer.MAX_VALUE;
 			for(int j=0; j<primes.length; j++){
-				
+				ugly[i] = Math.min(ugly[i], ugly[index[j]] * primes[j]);
 			}
 			
 			for(int j=0; j<primes.length; j++){
-				
+				if(ugly[i] == primes[j]*ugly[index[j]]){
+					index[j] += 1;
+				}
 			}
 		}
 		
