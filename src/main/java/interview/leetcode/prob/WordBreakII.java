@@ -60,5 +60,4 @@ public class WordBreakII {
 		for(String s : result){
 			System.out.println(s);
 		}
-	}
 }
