@@ -29,7 +29,7 @@ import java.util.Arrays;
  */
 public class HIndex {
 	public int hIndex(int[] citations) {
-		int[] arr = new int[citations.length];
+		int[] arr = new int[citations.length + 1];
 		int len = arr.length - 1;
 
 		// index the array
@@ -45,7 +45,7 @@ public class HIndex {
 		int total = 0;
 		for (int i = len; i >= 0; i--) {
 			total += arr[i];
-			if (total == i) {
+			if (total >= i) {
 				return i;
 			}
 		}
