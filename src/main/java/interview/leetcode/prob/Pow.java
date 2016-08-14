@@ -18,7 +18,12 @@ public class Pow {
         }
         
         else{
-            return result * result * x;
+            if(n > 0){
+                return result * result * x;
+            }
+            else{
+                return (result*result)/x;
+            }
         }
     }
 }
