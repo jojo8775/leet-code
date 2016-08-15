@@ -2,62 +2,44 @@ package interview.leetcode.prob;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class WordBreakII {
+	private Map<String, List<String>> map = new HashMap<>();
+
 	public List<String> wordBreak(String s, Set<String> wordDict) {
-        int[] arr = new int[s.length() + 1];
-        for(int i=0; i<arr.length; i++){
-            arr[i] = -1;
-        }
-        
-        int idx = 0, prev = 0;
-        
-        List<String> result = new ArrayList<String>();
-        
-        while(idx < s.length()){
-            while(idx < s.length()){
-                if(wordDict.contains(s.substring(prev, ++idx))){
-                    arr[idx] = prev;
-                    prev = idx;
-                }
-            }
-            
-            if(prev != 0 && idx != prev){
-                idx = prev;
-                prev = arr[prev];
-                arr[idx] = -1;
-            }
-            else if(prev != 0){
-                List<Integer> index = new ArrayList<Integer>();
-                while(prev != 0){
-                    index.add(0, prev);
-                    prev = arr[prev];
-                }
-                
-                StringBuilder sb = new StringBuilder();
-                for(int k : index){
-                	sb.append(s.substring(prev, k)).append(" ");
-                	arr[k] = -1;
-                	prev = k;
-                }
-                
-                sb.deleteCharAt(sb.length() - 1);
-                result.add(sb.toString());
-                prev = 0;
-                idx = index.get(0);
-            }
-        }
-        
-        return result;
-    }
-	
-	public static void main(String[] args){
-		List<String> result = new WordBreakII().wordBreak("catsanddog", new HashSet<String>(Arrays.asList("cat", "cats", "and", "sand", "dog")));
+		if (map.containsKey(s)) {
+			return map.get(s);
+		}
+		List<String> list = new ArrayList<>();
+		if (wordDict.contains(s)) {
+			list.add(s);
+		}
+		for (int i = 1; i < s.length(); i++) {
+			String word = s.substring(i);
+			if (wordDict.contains(word)) {
+				List<String> prior = wordBreak(s.substring(0, i), wordDict);
+				for (String s1 : prior) {
+					list.add(s1 + " " + word);
+				}
+			}
+		}
+		map.put(s, list);
+		return list;
+	}
+
+	public static void main(String[] args) {
+//		List<String> result = new WordBreakII().wordBreak("catsanddog",
+//				new HashSet<String>(Arrays.asList("cat", "cats", "and", "sand", "dog")));
+
+		List<String> result = new WordBreakII().wordBreak("ssand",
+				new HashSet<String>(Arrays.asList("cat", "cats", "and", "sand", "dog")));
 		
-		for(String s : result){
+		for (String s : result) {
 			System.out.println(s);
 		}
 	}
