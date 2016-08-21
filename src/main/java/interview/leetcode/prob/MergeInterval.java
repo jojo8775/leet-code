@@ -7,12 +7,10 @@ import java.util.List;
 
 /**
  * Given a collection of intervals, merge all overlapping intervals.
-
-For example,
-Given [1,3],[2,6],[8,10],[15,18],
-return [1,6],[8,10],[15,18].
-
-
+ * 
+ * For example, Given [1,3],[2,6],[8,10],[15,18], return [1,6],[8,10],[15,18].
+ * 
+ * 
  * @author jojo
  *
  */
@@ -22,7 +20,14 @@ public class MergeInterval {
 			return intervals;
 		}
 
-		Collections.sort(intervals, new IntervalComparator());
+		intervals.sort((Interval i1, Interval i2) -> {
+			if (i1.start < i2.start) {
+				return -1;
+			} else if (i1.start > i2.start) {
+				return 1;
+			}
+			return 0;
+		});
 
 		List<Interval> result = new ArrayList<Interval>();
 		Interval prev = intervals.get(0);
@@ -38,24 +43,6 @@ public class MergeInterval {
 
 		result.add(prev);
 		return result;
-	}
-
-	private static class IntervalComparator implements Comparator<Interval> {
-		public int compare(Interval i1, Interval i2) {
-			if (i1 == i2) {
-				return 0;
-			} else if (i1 == null) {
-				return 1;
-			} else if (i2 == null) {
-				return -1;
-			} else if (i1.start < i2.start) {
-				return -1;
-			} else if (i1.start > i2.start) {
-				return 1;
-			}
-
-			return 0;
-		}
 	}
 
 	private static class Interval {

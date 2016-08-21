@@ -45,88 +45,89 @@ public class SubstringWithConcatenationOfAllWords {
 						break;
 					}
 				}
-				
-				if(visited.size() == words.length){
+
+				if (visited.size() == words.length) {
 					result.add(i);
 				}
 			}
-			
+
 			i++;
 			j++;
 		}
 
 		return result;
 	}
-	
-	public List<Integer> findSubstring(String s, String[] words) {
-		int N = s.length();
-		List<Integer> indexes = new ArrayList<Integer>(s.length());
-		if (words.length == 0) {
-			return indexes;
+
+	public List<Integer> findPossition(String s, String[] words) {
+		List<Integer> result = new ArrayList<Integer>();
+		int wordLength = words[0].length(), patternLength = wordLength * words.length;
+		if (patternLength > s.length()) {
+			return result;
 		}
-		int M = words[0].length();
-		if (N < M * words.length) {
-			return indexes;
-		}
-		int last = N - M + 1;
-		
-		//map each string in words array to some index and compute target counters
-		Map<String, Integer> mapping = new HashMap<String, Integer>(words.length);
-		int [][] table = new int[2][words.length];
-		int failures = 0, index = 0;
-		for (int i = 0; i < words.length; ++i) {
-			Integer mapped = mapping.get(words[i]);
-			if (mapped == null) {
-				++failures;
-				mapping.put(words[i], index);
-				mapped = index++;
-			}
-			++table[0][mapped];
-		}
-		
-		//find all occurrences at string S and map them to their current integer, -1 means no such string is in words array
-		int [] smapping = new int[last];
-		for (int i = 0; i < last; ++i) {
-			String section = s.substring(i, i + M);
-			Integer mapped = mapping.get(section);
-			if (mapped == null) {
-				smapping[i] = -1;
+
+		// array[0] stores the word count in the given pattern
+		// array[1] stores the word count in the actual string
+		int[][] wordCountArr = new int[2][words.length];
+
+		// This map is used to maintain the index of the above array
+		Map<String, Integer> wordCountIndexMap = new HashMap<String, Integer>();
+
+		// storing the word counts in the given patter. array[0] is populated
+		for (int i = 0, idx = 0; i < words.length; i++) {
+			if (wordCountIndexMap.containsKey(words[i])) {
+				wordCountArr[0][wordCountIndexMap.get(words[i])]++;
 			} else {
-				smapping[i] = mapped;
+				wordCountIndexMap.put(words[i], idx);
+				wordCountArr[0][idx++]++;
 			}
 		}
-		
-		//fix the number of linear scans
-		for (int i = 0; i < M; ++i) {
-			//reset scan variables
-			int currentFailures = failures; //number of current mismatches
-			int left = i, right = i;
-			Arrays.fill(table[1], 0);
-			//here, simple solve the minimum-window-substring problem
-			while (right < last) {
-				while (currentFailures > 0 && right < last) {
-					int target = smapping[right];
-					if (target != -1 && ++table[1][target] == table[0][target]) {
-						--currentFailures;
-					}
-					right += M;
-				}
-				while (currentFailures == 0 && left < right) {
-					int target = smapping[left];
-					if (target != -1 && --table[1][target] == table[0][target] - 1) {
-						int length = right - left;
-						//instead of checking every window, we know exactly the length we want
-						if ((length / M) ==  words.length) {
-							indexes.add(left);
+
+		// this is required to cover use case when the given string first letter
+		// doesnt corresponds to any matching word.
+		for (int linearScan = 0; linearScan < wordLength; linearScan++) {
+			int left = linearScan, right = linearScan, last = s.length() - wordLength, wordMatchCount = words.length;
+
+			// reset word counts for the given string
+			Arrays.fill(wordCountArr[1], 0);
+
+			// this logic same as minimum window problem
+			while (right <= last) {
+				while (wordMatchCount > 0 && right <= last) {
+					String subStr = s.substring(right, right + wordLength);
+					if (wordCountIndexMap.containsKey(subStr)) {
+						int idx = wordCountIndexMap.get(subStr);
+						wordCountArr[1][idx]++;
+						if (wordCountArr[0][idx] >= wordCountArr[1][idx]) {
+							wordMatchCount--;
 						}
-						++currentFailures;
 					}
-					left += M;
+
+					right += wordLength;
+				}
+
+				while (wordMatchCount == 0 && left < right) {
+					String subStr = s.substring(left, left + wordLength);
+					if (wordCountIndexMap.containsKey(subStr)) {
+						// this check is done to make sure the sub string has
+						// only the given words.
+						if ((right - left) == patternLength) {
+							result.add(left);
+						}
+
+						int idx = wordCountIndexMap.get(subStr);
+						// if this condition is satisfied, that means now we
+						// need to find the removed word in the remaining string
+						if (--wordCountArr[1][idx] < wordCountArr[0][idx]) {
+							wordMatchCount++;
+						}
+					}
+
+					left += wordLength;
 				}
 			}
-			
 		}
-		return indexes;
+
+		return result;
 	}
 
 	public static void main(String[] args) {
