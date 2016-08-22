@@ -135,7 +135,7 @@ public class SubstringWithConcatenationOfAllWords {
 		words[0] = "bb";
 		words[1] = "cc";
 		words[2] = "dd";
-		List<Integer> result = new SubstringWithConcatenationOfAllWords().findSubstring("aabbccddde", words);
+		List<Integer> result = new SubstringWithConcatenationOfAllWords().findPossition("aabbccddde", words);
 
 		System.out.println("executed");
 
