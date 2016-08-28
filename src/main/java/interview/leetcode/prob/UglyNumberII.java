@@ -67,9 +67,36 @@ public class UglyNumberII
 		
 		return ugly[n-1];
 	}
+	
+	public int nthUglyNumber(int n) {
+		int[] arr = new int[n];
+		arr[0] = 1;
+		
+		int[][] primes = new int[3][2];
+		primes[0][0] = 2;
+		primes[1][0] = 3;
+		primes[2][0] = 5;
+		
+		for(int i=1; i<n; i++){
+		    arr[i] = Integer.MAX_VALUE;
+		    // create the next ugly number so that they can be kept track
+		    for(int j=0; j<primes.length; j++){
+		        arr[i] = Math.min(arr[i], primes[j][0] * arr[primes[j][1]]);
+		    }
+		    
+		    //incrementing index of prime multiple for to calculate the next ugly number
+		    for(int j=0; j<primes.length; j++){
+		        if(arr[i] == primes[j][0] * arr[primes[j][1]]){
+		            primes[j][1] += 1;
+		        }
+		    }
+		}
+		
+		return arr[n - 1];
+    }
 
 	public static void main(String[] args)
 	{
-		new UglyNumberII().find(11);
+		new UglyNumberII().nthUglyNumber(11);
 	}
 }
