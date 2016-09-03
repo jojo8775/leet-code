@@ -8,7 +8,7 @@ public class CountOfRangeSum {
 
 		int[] sum = new int[nums.length + 1];
 		TreeMap<Integer, Integer> map = new TreeMap<Integer, Integer>();
-		map.put(sum[0], sum[0]);
+		map.put(0, 1);
 
 		// constructing map and creating all sub sets
 		for (int i = 0; i < nums.length; i++) {
@@ -34,7 +34,9 @@ public class CountOfRangeSum {
 	}
 	
 	public static void main(String[] args){
-		int[] arr = {-2,5,3,-4,-1};
-		System.out.println(new CountOfRangeSum().countRangeSum(arr, -2, 2));
+//		int[] arr = {-2,5,3,-4,-1};
+//		System.out.println(new CountOfRangeSum().countRangeSum(arr, -2, 2));
+		
+		System.out.println(new CountOfRangeSum().countRangeSum(new int[] {8}, 0, 8));
 	}
 }
