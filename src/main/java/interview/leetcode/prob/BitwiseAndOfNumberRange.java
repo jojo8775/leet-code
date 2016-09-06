@@ -11,11 +11,12 @@ package interview.leetcode.prob;
  *
  */
 public class BitwiseAndOfNumberRange {
-	// each number odd number has last bit equal to 1 and even as 0
-	// if m == 4 and n = 14 then there has to be a number between 4 and 14 which
-	// has last bit equal to 1
-	// this is the reason we can right shift both m and n at each iteration of
-	// while loop as long as m != n;
+	/**
+	 * 1. each number odd number has last bit equal to 1 and even as 0
+	 * 2. if m == 4 and n = 14 then there has to be a number between 4 and 14 which has
+	 * last bit equal to 1 
+	 * 3. this is the reason we can right shift both m and n at each iteration of while loop as long as m != n;
+	 */
 	public int rangeBitwiseAnd(int m, int n) {
 		int leftShift = 0;
 
