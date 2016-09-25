@@ -21,7 +21,7 @@ public class WordBreakII {
 			list.add(str);
 		}
 		
-		for(int i=1; i<str.length(); i++){
+		for(int i=str.length() - 1; i>=0; i--){
 			String subStr = str.substring(i);
 			if(dictionary.contains(subStr)){
 				List<String> l1 = findWords(str.substring(0, i), dictionary);
