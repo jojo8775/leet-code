@@ -1,6 +1,7 @@
 package interview.leetcode.prob.paid;
 
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Given a nested list of integers, return the sum of all integers in the list weighted by their depth.
@@ -37,6 +38,34 @@ public class NestedListWeightSum {
 
 		return sum;
 	}
+	
+	public int iterative_depthSum(List<NestedInteger> nestedList) {
+        Stack<Pair> stack = new Stack<Pair>();
+        stack.push(new Pair(nestedList, 1));
+        int sum = 0;
+        while (!stack.isEmpty()) {
+            Pair top = stack.pop();
+            for (NestedInteger nestedInteger : top.nestedList) {
+                if (nestedInteger.isInteger()) {
+                    sum += (top.depth * nestedInteger.getInteger());
+                } else {
+                    stack.push(new Pair(nestedInteger.getList(), top.depth + 1));
+                }
+            }
+        }
+
+        return sum;
+    }
+
+    private static class Pair {
+        List<NestedInteger> nestedList;
+        int depth;
+
+        public Pair(List<NestedInteger> nestedList, int depth) {
+            this.nestedList = nestedList;
+            this.depth = depth;
+        }
+    }
 
 	/**
 	 * This is the interface that allows for creating nested lists. You should
