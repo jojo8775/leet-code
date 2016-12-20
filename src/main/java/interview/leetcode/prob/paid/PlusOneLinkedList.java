@@ -54,7 +54,35 @@ public class PlusOneLinkedList {
 
 		return dummy.val == 0 ? dummy.next : dummy;
 	}
-
+	
+	public ListNode recursive(ListNode head){
+		if(head == null){
+			return head;
+		}
+		
+		int carry = solve(head);
+		
+		if(carry == 0){
+			return head;
+		}
+		
+		ListNode dummy = new ListNode(carry);
+		dummy.next = head;
+		return dummy;
+	}
+	
+	private int solve(ListNode node){
+		if(node == null){
+			return 1;
+		}
+		
+		int carry = solve(node.next);
+		node.val += carry;
+		carry = node.val/10;
+		node.val %= 10;
+		return carry;
+	}
+	
 	// Definition for singly-linked list.
 	public static class ListNode {
 		int val;
