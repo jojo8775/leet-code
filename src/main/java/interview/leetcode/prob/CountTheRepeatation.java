@@ -43,7 +43,7 @@ public class CountTheRepeatation {
             StringBuilder sb = new StringBuilder();
             totalOccurrence += getRemaining(str, s2, sb);
             remaining = sb.toString();
-            // if ((k=stringList.indexOf(remaining))!=-1){
+            
             if (cycleIndex.containsKey(remaining)) {
                 loopFound = true;
                 break;
