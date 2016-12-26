@@ -1,93 +1,62 @@
 package interview.leetcode.prob;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class SurroundedRegions {
-	public void solve(char[][] board) {
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[0].length; j++) {
-				if (board[i][j] == 'O') {
-					print(board);
-					if (surrounded(board, i, j)) {
-						mark(board, i, j, 'X');
-					} else {
-						mark(board, i, j, '#');
-					}
-				}
-			}
-		}
+    public void solve(char[][] board) {
+        if (board.length == 0 || board[0].length == 0) {
+            return;
+        }
+        int[][] moves = new int[][] { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
+        int len = board.length, width = board[0].length;
+        boolean[][] visited = new boolean[len][width];
+        for (int i = 0; i < len; i++) {
+            for (int j = 0; j < width; j++) {
+                if (board[i][j] == 'O' && !visited[i][j]) {
 
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[0].length; j++) {
-				if (board[i][j] == '#') {
-					board[i][j] = 'O';
-				}
-			}
-		}
-	}
+                    Queue<int[]> queue = new LinkedList<int[]>();
+                    queue.add(new int[] { i, j });
+                    visited[i][j] = true;
 
-	private boolean surrounded(char[][] grid, int i, int j) {
-		if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) {
-			return false;
-		}
+                    List<int[]> captureCandidates = new ArrayList<int[]>();
+                    boolean canBeCaptured = true;
 
-		if (grid[i][j] == 'X') {
-			return true;
-		}
+                    // doing DFS
+                    while (!queue.isEmpty()) {
+                        int[] top = queue.poll();
+                        captureCandidates.add(top);
 
-		boolean status = true;
+                        for (int[] move : moves) {
+                            int x = top[0] + move[0];
+                            int y = top[1] + move[1];
 
-		status = surrounded(grid, i - 1, j) // down
-					&& surrounded(grid, i + 1, j) // up
-					&& surrounded(grid, i, j - 1) // left
-					&& surrounded(grid, i, j + 1); // right
+                            // prev cell ended in 'O' which is at the edge, so
+                            // it cannot be captured
+                            if (x < 0 || y < 0 || x == len || y == width) {
+                                canBeCaptured = false;
+                                continue;
+                            }
 
-		print(grid);
-		
-		return status;
-	}
+                            if (board[x][y] != 'O' || visited[x][y]) {
+                                continue;
+                            }
 
-	private void mark(char[][] grid, int i, int j, char ch) {
-		if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) {
-			return;
-		}
+                            queue.add(new int[] { x, y });
+                            visited[x][y] = true;
+                        }
+                    }
 
-		if (grid[i][j] != 'O') {
-			return;
-		}
-
-		grid[i][j] = ch;
-
-		mark(grid, i - 1, j, ch); // down
-		mark(grid, i + 1, j, ch); // up
-		mark(grid, i, j - 1, ch); // left
-		mark(grid, i, j + 1, ch); // right
-		
-		print(grid);
-	}
-	
-	private static void print(char[][] board){
-		for(char[] cArr : board){
-			for(char c : cArr){
-				System.out.print(c + ", ");
-			}
-			
-			System.out.println();
-		}
-		
-		System.out.println("\n\n======\n\n");
-	}
-
-	public static void main(String[] args) {
-		char[][] board = new char[5][5];
-		board[0] = createArr("OXXOX");
-		board[1] = createArr("XOOXO");
-		board[2] = createArr("XOXOX");
-		board[3] = createArr("OXOOO");
-		board[4] = createArr("XXOXO");
-		
-		new SurroundedRegions().solve(board);
-	}
-	
-	private static char[] createArr(String s){
-		return s.toCharArray();
-	}
+                    // making 'X' to 'O'
+                    if (canBeCaptured) {
+                        for (int[] pos : captureCandidates) {
+                            board[pos[0]][pos[1]] = 'X';
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
