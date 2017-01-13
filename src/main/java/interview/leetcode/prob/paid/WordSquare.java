@@ -4,77 +4,141 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 
+/**
+ * Given a set of words (without duplicates), find all word squares you can build from them.
+
+A sequence of words forms a valid word square if the kth row and column read the exact same string, where 0 ≤ k < max(numRows, numColumns).
+
+For example, the word sequence ["ball","area","lead","lady"] forms a word square because each word reads the same both horizontally and vertically.
+
+b a l l
+a r e a
+l e a d
+l a d y
+Note:
+There are at least 1 and at most 1000 words.
+All words will have the exact same length.
+Word length is at least 1 and at most 5.
+Each word contains only lowercase English alphabet a-z.
+Example 1:
+
+Input:
+["area","lead","wall","lady","ball"]
+
+Output:
+[
+  [ "wall",
+    "area",
+    "lead",
+    "lady"
+  ],
+  [ "ball",
+    "area",
+    "lead",
+    "lady"
+  ]
+]
+
+Explanation:
+The output consists of two word squares. The order of output does not matter (just the order of words in each word square matters).
+Example 2:
+
+Input:
+["abat","baba","atan","atal"]
+
+Output:
+[
+  [ "baba",
+    "abat",
+    "baba",
+    "atan"
+  ],
+  [ "baba",
+    "abat",
+    "baba",
+    "atal"
+  ]
+]
+
+Explanation:
+The output consists of two word squares. The order of output does not matter (just the order of words in each word square matters).
+ * @author jojo
+ *
+ */
 public class WordSquare {
     public List<List<String>> wordSquares(String[] words) {
-        List<List<String>> result = new ArrayList<List<String>>();
         Node root = new Node();
+        int width = words[0].length();
         for (String w : words) {
-            addStr(w, root);
+            addString(root, w);
         }
 
-        int len = words.length, rightMostRow = words[0].length() - 1;
-        int[] idxArr = new int[len];
+        List<List<String>> result = new ArrayList<List<String>>();
+        List<String> placeHolder = new ArrayList<>();
         
-        boolean[] visited = new boolean[len];
-        
-        int curIdx = -1;
-        
-        Stack<Integer> stack = new Stack<Integer>();
-        
-        while(curIdx < len){
-            String key = String.valueOf(words[curIdx].charAt(rightMostRow));
-            
-            if(isPrefix(key, root)){
-                stack.push(curIdx);
-                visited[curIdx] = true;
-                
-                while(!stack.isEmpty()){
-                    int top = stack.peek();
-                    
-                }
-            }
-            
-            curIdx++;
+        for(String word : words){
+            placeHolder.add(word);
+            dfs(result, placeHolder, root, width);
+            placeHolder.remove(placeHolder.size() - 1);
         }
-        
         return result;
     }
-    
-    private void dfs(List<List<String>> result, boolean[] visited, String entry, int[] idxArr, String[] words){
-    }
 
-    private void addStr(String str, Node node) {
-        Node curNode = node;
-        for (char ch : str.toCharArray()) {
-            if (!curNode.children.containsKey(ch)) {
-                curNode.children.put(ch, new Node());
-            }
-
-            curNode = curNode.children.get(ch);
+    private void dfs(List<List<String>> result, List<String>placeHolder, Node root, int width) {
+        if (placeHolder.size() == width) {
+            result.add(new ArrayList<String>(placeHolder));
+            return;
         }
-
-        curNode.isWord = true;
+        
+        int idx = placeHolder.size();
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i=0; i<idx; i++){
+            sb.append(placeHolder.get(i).charAt(idx));
+        }
+        
+        List<String> commonPrefixWords = findCommonPrefixWords(root, sb.toString());
+        for(String word : commonPrefixWords){
+            placeHolder.add(word);
+            dfs(result, placeHolder, root, width);
+            placeHolder.remove(placeHolder.size() - 1);
+        }
     }
 
-    private boolean isPrefix(String str, Node node) {
-        Node curNode = node;
+    private List<String> findCommonPrefixWords(Node root, String str) {
+        Node curNode = root;
         for (char ch : str.toCharArray()) {
             Node childNode = curNode.children.get(ch);
             if (childNode == null) {
-                return false;
+                return new ArrayList<String>();
             }
 
             curNode = childNode;
         }
 
-        return true;
+        return new ArrayList<String>(curNode.commonPrefixWord);
+    }
+
+    private void addString(Node root, String str) {
+        Node curNode = root;
+
+        for (char ch : str.toCharArray()) {
+            Node childNode = curNode.children.get(ch);
+
+            if (childNode == null) {
+                childNode = new Node();
+                curNode.children.put(ch, childNode);
+            }
+            
+            childNode.commonPrefixWord.add(str);
+            curNode = childNode;
+        }
     }
 
     private static class Node {
-        Map<Character, Node> children = new HashMap<Character, Node>();
-        boolean isWord;
+        List<String> commonPrefixWord = new ArrayList<String>();
+        Map<Character, Node> children = new HashMap<>();
     }
     
     public static void main(String[] args){
@@ -85,7 +149,7 @@ public class WordSquare {
                 System.out.println(s);
             }
             
-            System.out.println("=========================");
+            System.out.println("=======================");
         }
     }
 }
