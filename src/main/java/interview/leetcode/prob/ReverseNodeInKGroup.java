@@ -20,70 +20,54 @@ For k = 3, you should return: 3->2->1->4->5
  */
 public class ReverseNodeInKGroup
 {
-	public ListNode reverseKGroup(ListNode head, int k)
-	{
-		if (head == null || head.next == null)
-		{
-			return head;
-		}
+    public ListNode reverseKGroup(ListNode head, int k){
+        if(k == 1){
+            return head;
+        }
+    
+        ListNode root = new ListNode(0), cur = head, prev = root;
+        root.next = head;
+        int count = k;
+    
+        while(cur != null){
+            while(count-- > 1 && cur != null){
+                cur = cur.next;
+            }
+    
+            if(cur == null){
+                break;
+            }
+    
+            ListNode next = cur.next;
+    
+            cur.next = null;
+            prev.next = reverse(prev.next);
+    
+            while(prev.next != null){
+                prev = prev.next;
+            }
+    
+            prev.next = next;
+            cur = next;
+            
+            count = k;
+        }
+    
+        return root.next;
+    }   
 
-		ListNode root = new ListNode(0), buf = root, prev = head, cur = prev;
-		int count = k;
-
-		while (cur != null)
-		{
-			while (count-- > 1 && cur != null)
-			{
-				cur = cur.next;
-			}
-
-			if (cur == null)
-			{
-				break;
-			}
-
-			ListNode temp = cur.next;
-			cur.next = null;
-			buf.next = reverse(prev, cur);
-
-			while (buf.next != null)
-			{
-				buf = buf.next;
-			}
-
-			buf.next = temp;
-			cur = temp;
-			prev = temp;
-
-			count = k;
-		}
-
-		if (root.next == null)
-		{
-			return head;
-		}
-
-		return root.next;
-
-	}
-
-	private ListNode reverse(ListNode s, ListNode e)
-	{
-		ListNode buf = null, prev = s, cur = prev;
-
-		while (cur != null)
-		{
-			cur = prev.next;
-			prev.next = buf;
-			buf = prev;
-			if (cur != null)
-			{
-				prev = cur;
-			}
-		}
-
-		return prev;
-	}
+    private ListNode reverse(ListNode node){
+        ListNode prev = null, next = null;
+    
+        while(node != null){
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+    
+        return prev;
+    }
 
 	private static class ListNode
 	{

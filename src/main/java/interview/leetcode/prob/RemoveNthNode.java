@@ -15,47 +15,22 @@ Given n will always be valid.
  */
 public class RemoveNthNode
 {
-	public ListNode removeNthFromEnd(ListNode head, int n)
-	{
-		if (n == 1)
-		{
-			if (head.next == null)
-			{
-				return head.next;
-			}
-
-			ListNode prev = null, cur = head;
-			while (cur.next != null)
-			{
-				prev = cur;
-				cur = cur.next;
-			}
-
-			prev.next = null;
-			return head;
-		}
-
-		ListNode cur = head, prev = head;
-		while (n-- > 0)
-		{
-			cur = cur.next;
-		}
-
-		if (cur == null)
-		{
-			return prev.next;
-		}
-
-		while (cur.next != null)
-		{
-			prev = prev.next;
-			cur = cur.next;
-		}
-
-		prev.next = prev.next.next;
-
-		return head;
-	}
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode prev = new ListNode(0), cur = prev, ref = prev;
+        prev.next = head;
+        
+        while(n-->0){
+            cur = cur.next;
+        }
+        
+        while(cur.next != null){
+            cur = cur.next;
+            prev = prev.next;
+        }
+        
+        prev.next = prev.next.next;
+        return ref.next;
+    }
 
 	private static class ListNode
 	{
