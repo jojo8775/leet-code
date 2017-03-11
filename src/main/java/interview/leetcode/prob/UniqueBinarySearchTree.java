@@ -37,4 +37,8 @@ public class UniqueBinarySearchTree {
         
         return nodes[n];
     }
+    
+    public static void main(String[] args){
+        System.out.println(new UniqueBinarySearchTree().numTrees(3));
+    }
 }
