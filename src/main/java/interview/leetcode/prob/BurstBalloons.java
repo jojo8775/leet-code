@@ -97,7 +97,7 @@ public class BurstBalloons {
 
 	public static void main(String[] args) {
 		int[] arr = { 3, 1, 5, 8 };
-		// System.out.println(new BurstBalloons().maxCoins(arr));
-		System.out.println(new BurstBalloons().maxBalloons(arr));
+		 System.out.println(new BurstBalloons().maxCoins(arr));
+//		System.out.println(new BurstBalloons().maxBalloons(arr));
 	}
 }
