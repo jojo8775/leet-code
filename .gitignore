@@ -1,3 +1,5 @@
 /target/
 .project
-.setting/
+.settings/
+build.properties
+META-INF/

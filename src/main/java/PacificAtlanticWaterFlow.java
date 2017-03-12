@@ -33,13 +33,13 @@ Return:
  */
 public class PacificAtlanticWaterFlow {
 	public List<int[]> pacificAtlantic(int[][] matrix) {
-		List<int[]> res = new ArrayList<>();
+		List<int[]> res = new ArrayList<int[]>();
 		int m = matrix.length;
 		if (m == 0)
 			return res;
 		int n = matrix[0].length;
 		int[][] state = new int[m][n];
-		Queue<int[]> q = new LinkedList<>();
+		Queue<int[]> q = new LinkedList<int[]>();
 		for (int i = 0; i < m; i++) {
 			state[i][0] = 1;
 			if (i == m - 1 || n == 1) {

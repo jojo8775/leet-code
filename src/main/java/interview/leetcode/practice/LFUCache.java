@@ -8,8 +8,8 @@ import java.util.Set;
 public class LFUCache {
     int capacity;
     LFUNode head = null;
-    Map<Integer, Integer> valMap = new HashMap<>();
-    Map<Integer, LFUNode> nodeMap = new HashMap<>();
+    Map<Integer, Integer> valMap = new HashMap<Integer, Integer>();
+    Map<Integer, LFUNode> nodeMap = new HashMap<Integer, LFUNode>();
 
     public LFUCache(int capacity) {
         this.capacity = capacity;
