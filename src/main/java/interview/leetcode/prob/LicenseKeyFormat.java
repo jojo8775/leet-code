@@ -74,7 +74,7 @@ public class LicenseKeyFormat {
             sb.deleteCharAt(sb.length() - 1);
         }
 
-        // reverseing the string
+        // reversing the string
         return sb.reverse().toString();
     }
 }
