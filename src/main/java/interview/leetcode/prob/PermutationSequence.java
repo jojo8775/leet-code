@@ -59,6 +59,6 @@ public class PermutationSequence {
     }
     
     public static void main(String[] args){
-    	System.out.println(new PermutationSequence().getPermutation(4, 23));
+    	System.out.println(new PermutationSequence().getPermutation(3, 3));
     }
 }
