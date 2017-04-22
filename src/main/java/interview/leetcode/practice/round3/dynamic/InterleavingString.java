@@ -31,6 +31,6 @@ public class InterleavingString {
     }
 
     public static void main(String[] args) {
-        System.out.println(new InterleavingString().isInterleaving("abc", "def", "adbefc"));
+        System.out.println(new InterleavingString().isInterleaving("abc", "def", "adefc"));
     }
 }
