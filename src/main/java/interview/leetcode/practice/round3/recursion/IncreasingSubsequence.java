@@ -43,12 +43,15 @@ public class IncreasingSubsequence {
     }
     
     public static void main(String[] args){
-        List<List<Integer>> result = new IncreasingSubsequence().findAllIncreasingSequence(new int[] {4,6,7,7});
-        for(List<Integer> entry : result){
-            for(Integer i : entry){
-                System.out.print(i + ", ");
-            }
-            System.out.println();
-        }
+//        List<List<Integer>> result = new IncreasingSubsequence().findAllIncreasingSequence(new int[] {4,6,7,7});
+//        for(List<Integer> entry : result){
+//            for(Integer i : entry){
+//                System.out.print(i + ", ");
+//            }
+//            System.out.println();
+//        }
+        
+        String str = "abc";
+        System.out.println(str.substring(3));
     }
 }
