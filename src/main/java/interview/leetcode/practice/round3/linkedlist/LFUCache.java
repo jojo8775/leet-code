@@ -2,6 +2,7 @@ package interview.leetcode.practice.round3.linkedlist;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -98,7 +99,7 @@ public class LFUCache {
 
     private static class Node {
         int count;
-        Set<Integer> keys = new HashSet<>();
+        Set<Integer> keys = new LinkedHashSet<>();
         Node prev = null, next = null;
 
         public Node(int count, int key) {

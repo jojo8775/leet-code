@@ -23,7 +23,7 @@ public class MeetingRoomII {
         // this heap is used to check if there is any conflict
         PriorityQueue<Interval> heap = new PriorityQueue<Interval>((a, b) -> a.end - b.end);
         heap.offer(intervals[0]);
-
+        
         for (int i = 1; i < intervals.length; i++) {
             Interval top = heap.poll();
 
