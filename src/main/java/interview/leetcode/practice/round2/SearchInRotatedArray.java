@@ -11,7 +11,10 @@ public class SearchInRotatedArray {
                 return mid;
             }
 
-            if (nums[mid] > nums[beg]) {
+            if(nums[beg] == nums[mid]){
+                beg++;
+            }
+            else if (nums[mid] > nums[beg]) {
                 if (target >= nums[beg] && target < nums[mid]) {
                     end = mid - 1;
                 } else {
