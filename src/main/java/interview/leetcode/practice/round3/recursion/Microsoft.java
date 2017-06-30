@@ -1,7 +1,9 @@
 package interview.leetcode.practice.round3.recursion;
 
 public class Microsoft {
-
+    /**
+     * find largest common subsequence of the two given string
+     */
     public int findLongestSubsequence(String s1, String s2){
        int[][] dp = new int[s1.length() + 1][s2.length() + 1];
        int max = 0;
