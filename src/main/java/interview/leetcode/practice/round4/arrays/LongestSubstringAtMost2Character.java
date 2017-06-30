@@ -22,5 +22,5 @@ public class LongestSubstringAtMost2Character {
         }
         
         return result;
-    }
+    }   
 }
