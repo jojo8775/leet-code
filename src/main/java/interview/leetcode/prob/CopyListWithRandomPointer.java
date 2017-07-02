@@ -11,7 +11,6 @@ public class CopyListWithRandomPointer
 {
 	public RandomListNode findSol(RandomListNode node)
 	{
-		
 		//copying the nodes 
 		RandomListNode head = node, currentNode = head;
 		
