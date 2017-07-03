@@ -1,4 +1,4 @@
-package interview.leetcode.prob;
+package interview.leetcode.practice.round4.arrays;
 
 import java.util.Arrays;
 
