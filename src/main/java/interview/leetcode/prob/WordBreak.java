@@ -1,7 +1,9 @@
 package interview.leetcode.prob;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -32,6 +34,29 @@ public class WordBreak {
 
 		return f[s.length()];
 	}
+	
+	public boolean wordBreak_1(String s, List<String> wordDict) {
+        Set<String> dict = new HashSet<>(wordDict);
+        
+        // maintains the last known position which had corresponding match.
+        List<Integer> list = new ArrayList<>();
+        list.add(0);
+        
+        for(int i=1; i<=s.length(); i++){
+            int len = list.size() - 1;
+            for(int j=len; j>=0; j--){
+                String substr = s.substring(list.get(j), i);
+                // if there is a match then break
+                if(dict.contains(substr)){
+                    list.add(i);
+                    break;
+                }
+            }
+        }
+        
+        // if the last entry is equal to str length then it means the entire string can be constructed
+        return list.get(list.size() - 1) == s.length();
+    }
 
 	public static void main(String[] args) {
 		System.out.println(new WordBreak().wordBreak("leetcode", new HashSet<String>(Arrays.asList("leet", "code"))));
