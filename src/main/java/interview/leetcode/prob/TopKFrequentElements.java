@@ -51,6 +51,16 @@ public class TopKFrequentElements {
 
 		return list;
 	}
+	
+//	public List<Integer> topKFrequent_1(int[] nums, int k) {
+//	    Map<Integer, Integer> map = new HashMap<>();
+//	    for(int num : nums){
+//	        map.put(num, map.getOrDefault(num, 0) + 1);
+//	    }
+//	    
+//	    List<Integer>[] buckets = new List[k];
+//	    
+//	}
 
 	public static void main(String[] args) {
 		int[] arr = { 3, 0, 1, 0 };
