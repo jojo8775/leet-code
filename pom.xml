@@ -24,6 +24,11 @@
 				<configuration>
 					<source>1.9</source>
 					<target>1.9</target>
+                    <rules>
+                        <requireJavaVersion>
+                            <version>1.9</version>
+                        </requireJavaVersion>
+                    </rules>
 				</configuration>
 			</plugin>
 		</plugins>
