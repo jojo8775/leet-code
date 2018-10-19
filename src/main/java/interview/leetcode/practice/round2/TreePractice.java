@@ -39,8 +39,13 @@ public class TreePractice {
 		List<Integer> result = new TreePractice().parseLeafNode(node);
 		System.out.println("Parse leaf : ");
 		result.stream().forEach(entry -> System.out.print(entry + ", "));
+		
 		System.out.println("\nParse in-order");
 		result = new TreePractice().inorderTraversal(node);
+		result.stream().forEach(entry -> System.out.print(entry + ", "));
+		
+		System.out.println("\nParse pre-order");
+		result = new TreePractice().preOrderTraversal(node);
 		result.stream().forEach(entry -> System.out.print(entry + ", "));
 	}
 	
@@ -56,6 +61,25 @@ public class TreePractice {
 			else {
 				node = stack.pop();
 				result.add(node.val);
+				node = node.right;
+			}
+		}
+		
+		return result;
+	}
+	
+	public List<Integer> preOrderTraversal(TreeNode node){
+		List<Integer> result = new ArrayList<>();
+		
+		Stack<TreeNode> stack = new Stack<>();
+		while(node != null || !stack.isEmpty()) {
+			if(node != null) {
+				result.add(node.val);
+				stack.push(node);
+				node = node.left;
+			}
+			else {
+				node = stack.pop();
 				node = node.right;
 			}
 		}
