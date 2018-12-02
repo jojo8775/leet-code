@@ -46,4 +46,24 @@ public class JumpGame {
         
         return false;
     }
+	
+	/**
+	 * This is an advanced approach
+	 */
+	public boolean canJum_adv(int[] nums) {
+		// input is too short and needs no jump 
+		if(nums.length < 2){
+            return true;
+        }
+        
+		// start from the end. If end can be reached from given position then end becomes the current position. 
+        int limit = nums.length - 1;
+        for(int i=limit; i>=0; i--){
+            if(i + nums[i] >= limit){
+                limit = i;
+            }
+        }
+        
+        return limit == 0;
+    }
 }
