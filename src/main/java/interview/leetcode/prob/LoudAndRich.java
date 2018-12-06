@@ -48,47 +48,45 @@ The observations in richer are all logically consistent.
  * Dec 5, 2018 11:57:13 PM
  */
 public class LoudAndRich {
-	class Solution {
-	    public int[] loudAndRich(int[][] richer, int[] quiet) {
-	        int len = quiet.length;
-	        
-	        Map<Integer, List<Integer>> poorToRichMap = new HashMap<>();
-	        for(int i=0; i<len; i++){
-	            poorToRichMap.put(i, new ArrayList<Integer>());
-	        }
-	        
-	        for(int[] peopleTuple : richer){
-	            poorToRichMap.get(peopleTuple[1]).add(peopleTuple[0]);
-	        }
-	        
-	        int[] result = new int[len];
-	        Arrays.fill(result, -1);
-	        
-	        for(int i=0; i<len; i++){
-	            dfs(i, quiet, result, poorToRichMap);
-	        }
-	        
-	        return result;
-	    }
-	    
-	    private int dfs(int i, int[] quiet, int[] result, Map<Integer, List<Integer>> poorToRichMap){
-	        if(result[i] > 0){
-	            return result[i];
-	        }
-	        
-	        // if the current person is quietest
-	        result[i] = i;
-	        
-	        // look for quieter person among the richer than the current person
-	        for(int j : poorToRichMap.get(i)){
-	            if(quiet[result[i]] > quiet[dfs(j, quiet, result, poorToRichMap)]){
-	                result[i] = result[j];
-	            }
-	        }
-	        
-	        return result[i];
-	    }
-	}
+    public int[] loudAndRich(int[][] richer, int[] quiet) {
+        int len = quiet.length;
+        
+        Map<Integer, List<Integer>> poorToRichMap = new HashMap<>();
+        for(int i=0; i<len; i++){
+            poorToRichMap.put(i, new ArrayList<Integer>());
+        }
+        
+        for(int[] peopleTuple : richer){
+            poorToRichMap.get(peopleTuple[1]).add(peopleTuple[0]);
+        }
+        
+        int[] result = new int[len];
+        Arrays.fill(result, -1);
+        
+        for(int i=0; i<len; i++){
+            dfs(i, quiet, result, poorToRichMap);
+        }
+        
+        return result;
+    }
+    
+    private int dfs(int i, int[] quiet, int[] result, Map<Integer, List<Integer>> poorToRichMap){
+        if(result[i] > 0){
+            return result[i];
+        }
+        
+        // if the current person is quietest
+        result[i] = i;
+        
+        // look for quieter person among the richer than the current person
+        for(int j : poorToRichMap.get(i)){
+            if(quiet[result[i]] > quiet[dfs(j, quiet, result, poorToRichMap)]){
+                result[i] = result[j];
+            }
+        }
+        
+        return result[i];
+    }
 	
 	public static void main(String[] args) {
 		int[] res = new LoudAndRich().loudAndRich(new int[][] {{1,0},{2,1},{3,1},{3,7},{4,3},{5,3},{6,3}}, new int[]{3,2,5,4,6,1,7,0});
