@@ -29,6 +29,7 @@ public class KthLargestElementInAStream {
 	    private int k;
 	    
 	    public KthLargest(int k, int[] nums) {
+	    	// this is max heap
 	        pq = new PriorityQueue<>((a,b) -> a - b);
 	        this.k = k;
 	        
