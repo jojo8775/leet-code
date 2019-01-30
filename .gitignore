@@ -1,5 +1,7 @@
 /target/
-.project
-.settings/
+/.project
+/.classpath
+/.settings/
+.metadat/
 build.properties
 META-INF/
