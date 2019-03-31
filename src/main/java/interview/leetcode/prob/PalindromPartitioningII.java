@@ -4,6 +4,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class PalindromPartitioningII {
+	public int minCut_2(String s) {
+    	int len = s.length();
+    	boolean[][] dp = new boolean[len][len]; // stores if a given substring is palindrom or not.
+    	int[] minSplit = new int[len]; // store the min split for each new char addition.
+    	
+    	for(int i=0; i<len; i++) {
+    		int min = i; // max split for a new char addition can be the position count;
+    		for(int j=0; j<=i; j++) {
+    			// if i and j same and if the in-between chars are also palindrome  
+    			if(s.charAt(j) == s.charAt(i) && (j+1 > i-1 || dp[j+1][i-1])) {
+    				dp[j][i] = true;
+    				min = j == 0 ? 0 : Math.min(min, minSplit[j-1] + 1);
+    			}
+    		}
+    	}
+    	
+    	return minSplit[len - 1];
+    }
+	
 	private Set<String> cache = new HashSet<String>();
 	public int minCut(String s) {
 		// using bottom up approach
