@@ -16,7 +16,53 @@ begin to intersect at node c1.
  *
  */
 public class IntersectionOfTwoList {
-	public ListNode find(ListNode headA, ListNode headB) {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if(headA == null || headB == null){
+            return null;
+        }
+        
+        int len1 = 0, len2 = 0;
+        ListNode c1 = headA, c2 = headB;
+        
+        while(c1 != null || c2 != null){
+            if(c1 != null){
+                len1++;
+                c1 = c1.next;
+            }
+            
+            if(c2 != null){
+                len2++;
+                c2 = c2.next;
+            }
+        }
+        
+        c1 = headA;
+        c2 = headB;
+        
+        while(len1 != len2){
+            if(len1 > len2){
+                len1--;
+                c1 = c1.next;
+            }
+            else if(len1 < len2){
+                len2--;
+                c2 = c2.next;
+            }
+        }
+        
+        while(c1 != null){
+            if(c1 == c2){
+                break;
+            }
+            
+            c1 = c1.next;
+            c2 = c2.next;
+        }
+        
+        return c1;
+    }
+    
+	public ListNode find_old(ListNode headA, ListNode headB) {
 		if (headA == null || headB == null) {
 			return null;
 		}
