@@ -47,7 +47,39 @@ public class MissingRange {
         return sb.toString();
     }
 
-    public List<String> findMissingRanges(int[] nums, int lower, int upper) {
+    public List<String> findMissingRange(int[] nums, int lower, int upper){
+    	List<String> result = new ArrayList<>();
+        
+        for(int i=0; i<nums.length; i++){
+            if(lower < nums[i]){
+                if(lower < nums[i] - 1){
+                    result.add(String.valueOf(lower) + "->" + String.valueOf(nums[i] - 1));
+                }
+                else{
+                    result.add(String.valueOf(lower));
+                }
+            }
+            
+            if(nums[i] == upper){
+                return result;
+            }
+            
+            lower = nums[i] + 1;
+        }
+        
+        if(lower <= upper){
+            if(lower == upper){
+                result.add(String.valueOf(lower));
+            }
+            else{
+                result.add(String.valueOf(lower) + "->" + String.valueOf(upper));
+            }
+        }
+        
+        return result;
+    }
+    
+    public List<String> findMissingRanges_bug(int[] nums, int lower, int upper) {
         List<String> result = new ArrayList<String>();
 
         int next = lower;
@@ -69,6 +101,11 @@ public class MissingRange {
             // create the range and update next
             result.add(createRange(next, Math.min(nums[i], upper + 1)));
             next = Math.min(nums[i], upper) + 1;
+            
+            if(nums[i] == Integer.MAX_VALUE) {
+            	return result;
+            }
+            
             if(next < 0){
                 next = Integer.MAX_VALUE;
             }
@@ -93,7 +130,7 @@ public class MissingRange {
     }
 
     public static void main(String[] args) {
-        List<String> result = new MissingRange().findMissingRanges(new int[] {Integer.MAX_VALUE}, 0, Integer.MAX_VALUE);
+        List<String> result = new MissingRange().findMissingRanges_bug(new int[] {Integer.MAX_VALUE}, 0, Integer.MAX_VALUE);
         
         for(String s : result){
             System.out.println(s);
