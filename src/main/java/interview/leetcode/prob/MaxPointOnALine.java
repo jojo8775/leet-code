@@ -3,7 +3,6 @@ package interview.leetcode.prob;
 import java.util.HashMap;
 import java.util.Map;
 
-import interview.leetcode.practice.MaxPointsOnALine.Point;
 
 /**
  * Given n points on a 2D plane, find the maximum number of points that lie on
