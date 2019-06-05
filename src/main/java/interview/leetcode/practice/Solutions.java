@@ -1,14 +1,82 @@
 package interview.leetcode.practice;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 
 public class Solutions {
+	
+	public int longestConsecutive(TreeNode root) {
+		if(root == null) {
+			return 0;
+		}
+		
+		Queue<Pair> queue = new LinkedList<>();
+		queue.offer(new Pair(root, 1));
+		
+		int max = 1;
+		while(!queue.isEmpty()) {
+			Pair top = queue.poll();
+			
+			if(top.node.left != null) {
+				int val = top.node.val + 1 == top.node.left.val ? top.val + 1 : 1;
+				queue.offer(new Pair(top.node.left, val));
+				max = Math.max(max, val);
+			}
+			
+			if(top.node.right != null) {
+				int val = top.node.val + 1 == top.node.right.val ? top.val + 1 : 1;
+				queue.offer(new Pair(top.node.right, val));
+				max = Math.max(max, val);
+			}
+		}
+		
+		return max;
+	}
+	
+	private static class Pair {
+		TreeNode node;
+		int val;
+		
+		public Pair(TreeNode node, int val) {
+			this.node = node;
+			this.val = val;
+		}
+	}
+	
+	public int minSubArrayLen(int s, int[] nums) {
+        Deque<Integer> dq = new LinkedList<>();
+        int min = nums.length, val = 0;
+        
+        for(int i=0; i<nums.length; i++) {
+        	val += nums[i];
+        	dq.offerFirst(i);
+        	while(val > s) {
+        		min = Math.min(min, dq.size());
+        		int temp = nums[dq.pollLast()];
+        		val -= temp;
+        	}
+        	
+        	if(min == 1) {
+        		break;
+        	}
+        	
+        	if(min < dq.size()) {
+        		val -= nums[dq.pollLast()];
+        	}
+        }
+        
+        return min;
+    }
+	
+	
 	public String alienOrder(String[] words) {
         Map<Character, Set<Character>> graph = new HashMap<>();
         boolean missMatchFound = false;
@@ -84,4 +152,9 @@ public class Solutions {
         
         return sb.toString();
     }
+	
+	private static class TreeNode{
+		int val;
+		TreeNode left, right;
+	}
 }

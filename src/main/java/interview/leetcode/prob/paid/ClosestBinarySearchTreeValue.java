@@ -13,16 +13,17 @@ package interview.leetcode.prob.paid;
 public class ClosestBinarySearchTreeValue {
 
 	public int closestValue_Iterative(TreeNode root, double target) {
-		int closestVal = root.val;
+		int result = root.val;
+		
 		while (root != null) {
 			// update closestVal if the current value is closer to target
-			closestVal = (Math.abs(target - root.val) < Math.abs(target - closestVal)) ? root.val : closestVal;
-			if (closestVal == target) { // already find the best result
-				return closestVal;
+			result = (Math.abs(target - root.val) < Math.abs(target - result)) ? root.val : result;
+			if (result == target) { // already find the best result
+				return result;
 			}
 			root = (root.val > target) ? root.left : root.right; // binary search
 		}
-		return closestVal;
+		return result;
 	}
 
 	public int closestValue(TreeNode root, double target) {
