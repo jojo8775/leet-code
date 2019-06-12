@@ -14,6 +14,22 @@ import java.util.Stack;
  *
  */
 public class InOrderSuccessorInBST {
+	public TreeNode inorderSuccessor_adv(TreeNode root, TreeNode p) {
+        TreeNode res = null, cur = root;
+        
+        while(cur != null){
+            if(cur.val > p.val){
+                res = cur;
+                cur = cur.left;
+            }
+            else{
+                cur = cur.right;
+            }
+        }
+        
+        return res;
+    }
+	
 	public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
 		// if p is not the right most node
 		if (p.right != null) {
