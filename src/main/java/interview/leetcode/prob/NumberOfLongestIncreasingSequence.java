@@ -36,7 +36,7 @@ public class NumberOfLongestIncreasingSequence {
                         // need to account the previous computation of j
                         sequenceCount[i] += sequenceCount[j];
                     }
-                    else if(sequenceLength[i] < sequenceLength[j]){
+                    else if(sequenceLength[i] < sequenceLength[j] + 1){
                     	// previous length + 1
                     	sequenceLength[i] = sequenceLength[j] + 1; 
                         
