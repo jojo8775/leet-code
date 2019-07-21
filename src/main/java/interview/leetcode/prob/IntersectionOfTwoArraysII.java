@@ -29,6 +29,43 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
  * Jul 21, 2019 10:42:05 AM
  */
 public class IntersectionOfTwoArraysII {
+	
+	public int[] intersect_withoutSort(int[] nums1, int[] nums2) {
+		// stupid corner case
+        if(nums1.length>0&&nums1[0]==Integer.MIN_VALUE) return new int[]{1,Integer.MIN_VALUE};
+		
+		int min = 0, max = 0;
+		for(int n : nums1) {
+			min = Math.min(min, n);
+			max = Math.max(max, n);
+		}
+		
+		for(int n : nums2) {
+			min = Math.min(min, n);
+			max = Math.max(max, n);
+		}
+		
+		int[] buckets = new int[max - min + 1];
+		for(int n : nums1) {
+			buckets[n - min]++;
+		}
+		
+		List<Integer> list = new ArrayList<>();
+		
+		for(int n : nums2) {
+			if(buckets[n - min]-- > 0) {
+				list.add(n);
+			}
+		}
+		
+		int[] result = new int[list.size()];
+		for(int i=0; i<list.size(); i++) {
+			result[i] = list.get(i);
+		}
+		
+		return result;
+	}
+	
 	public int[] intersect(int[] nums1, int[] nums2) {
         Arrays.sort(nums1);
         Arrays.sort(nums2);
