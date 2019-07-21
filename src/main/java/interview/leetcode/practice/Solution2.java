@@ -9,7 +9,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 import java.util.Set;
 
 public class Solution2 {
@@ -23,56 +22,73 @@ public class Solution2 {
 		});
 	}
 
-	public class NestedIterator implements Iterator<Integer> {
+	public List<Integer> topKFrequent(int[] nums, int k) {
+		Map<Integer, Integer> map = new HashMap<>();
+		for (int n : nums) {
+			map.put(n, map.getOrDefault(n, 0) + 1);
+		}
 
-	    private Deque<NestedInteger> queue = new LinkedList<>();
-	    private NestedInteger cur;
-	    
-	    public NestedIterator(List<NestedInteger> nestedList) {
-	        for(NestedInteger n : nestedList){
-	            queue.offerLast(n);
-	        }
-	        
-	        cur = getNext();
-	    }
-	    
-	    private NestedInteger getNext(){
-	        NestedInteger next = null;
-	        
-	        while(next == null){
-	            
-	            if(queue.isEmpty()){
-	                break;
-	            }
-	            
-	            NestedInteger top = queue.poll();
-	            if(top.isInteger()){
-	                next = top;
-	            }
-	            else{
-	                for(NestedInteger n : top.getList()){
-	                    queue.offerFirst(n);
-	                }
-	            }
-	        }
-	        
-	        return next;
-	    }
-
-	    @Override
-	    public Integer next() {
-	        NestedInteger temp = cur;
-	        cur = getNext();
-	        return temp.getInteger();
-	    }
-
-	    @Override
-	    public boolean hasNext() {
-	        return cur != null;
-	    }
+		List<Integer>[] buckets = new List[nums.length];
+		
+		for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			int freq = entry.getValue();
+			
+			if(buckets[freq] == null) {
+				buckets[freq] = new ArrayList<>();
+			}
+			
+			buckets[freq].add(entry.getKey());
+		}
 	}
 
-	
+	public class NestedIterator implements Iterator<Integer> {
+
+		private Deque<NestedInteger> queue = new LinkedList<>();
+		private NestedInteger cur;
+
+		public NestedIterator(List<NestedInteger> nestedList) {
+			for (NestedInteger n : nestedList) {
+				queue.offerLast(n);
+			}
+
+			cur = getNext();
+		}
+
+		private NestedInteger getNext() {
+			NestedInteger next = null;
+
+			while (next == null) {
+
+				if (queue.isEmpty()) {
+					break;
+				}
+
+				NestedInteger top = queue.poll();
+				if (top.isInteger()) {
+					next = top;
+				} else {
+					for (NestedInteger n : top.getList()) {
+						queue.offerFirst(n);
+					}
+				}
+			}
+
+			return next;
+		}
+
+		@Override
+		public Integer next() {
+			NestedInteger temp = cur;
+			cur = getNext();
+			return temp.getInteger();
+		}
+
+		@Override
+		public boolean hasNext() {
+			return cur != null;
+		}
+	}
+
 	public interface NestedInteger {
 		boolean isInteger();
 
