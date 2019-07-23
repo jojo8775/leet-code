@@ -22,6 +22,8 @@ public class Solution2 {
 		});
 	}
 
+	
+	
 	public List<Integer> topKFrequent(int[] nums, int k) {
 		Map<Integer, Integer> map = new HashMap<>();
 		for (int n : nums) {
@@ -39,6 +41,21 @@ public class Solution2 {
 			
 			buckets[freq].add(entry.getKey());
 		}
+		
+		List<Integer> result = new ArrayList<>();
+		
+		for(int i=buckets.length - 1; i>=0 && k > 0; i--) {
+			for(Integer n : buckets[i]) {
+				if(k--> 0) {
+					result.add(n);
+				}
+				else {
+					break;
+				}
+			}
+		}
+		
+		return result;
 	}
 
 	public class NestedIterator implements Iterator<Integer> {
