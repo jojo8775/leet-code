@@ -29,4 +29,38 @@ public class KthSmallestElementInSortedArray {
         
         return result;
     }
+    
+    public int kthSmallest_Adv(int[][] matrix, int k) {
+        int min = matrix[0][0], max = matrix[matrix.length - 1][matrix[0].length - 1];
+        
+        while(min <= max){
+            int mid = min + (max - min)/2;
+            int count = countGreaterThanVal(matrix, mid);
+            
+            if(count > k - 1){
+                max = mid - 1;
+            }
+            else{
+                min = mid + 1;
+            }
+        }
+        
+        return min;
+    }
+    
+    private int countGreaterThanVal(int[][] matrix, int val){
+        int m = matrix.length, n = matrix[0].length, count = 0;
+        
+        for(int i=m-1, j=0; i>=0 && j<n;){
+            if(matrix[i][j] <= val){
+                count += (i + 1);
+                j++;
+            }
+            else{
+                i--;
+            }
+        }
+        
+        return count;
+    }
 }
