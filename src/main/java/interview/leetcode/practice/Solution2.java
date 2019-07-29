@@ -13,15 +13,43 @@ import java.util.Set;
 
 public class Solution2 {
 	public static void main(String[] args) {
-		List<List<Integer>> result = new Solution2()
-				.palindromePairs(new String[] { "abcd", "dcba", "lls", "s", "sssll" });
-
-		result.forEach(x -> {
-			x.forEach(xx -> System.out.print(xx + ", "));
-			System.out.println();
-		});
+		String result = new Solution2().decodeString("3[a]2[bc]");
+		System.out.println(result);
 	}
 
+	
+	public String decodeString(String s) {
+        int count = 0;
+        StringBuilder sb = new StringBuilder(), result = new StringBuilder();
+        
+        for(char ch : s.toCharArray()){
+            
+            if(ch >= '0' && ch <= '9'){
+                count *= 10;
+                count = count + (int) (ch - '0');
+                
+//                System.out.println(count);
+            }
+            else if(ch == ']'){
+                while(count > 0){
+                	count--;
+                    result.append(sb);
+                }
+                
+                sb.setLength(0);
+            }
+            else{
+                if(ch == '['){
+                    continue;
+                }
+                
+                sb.append(ch);
+//                System.out.println(sb);
+            }
+        }
+        
+        return result.toString();
+    }
 	
 	
 	public List<Integer> topKFrequent(int[] nums, int k) {
