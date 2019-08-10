@@ -24,7 +24,7 @@ public class NumberOfConnectedComponentsInAnUndirectedGraph {
 	
 	private int getRoot(int[] root, int i){
 		while(root[i] != i){
-			root[i] = root[root[i]];
+			//root[i] = root[root[i]];
 			i = root[i];
 		}
 		

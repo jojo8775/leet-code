@@ -1,5 +1,6 @@
 package interview.leetcode.prob;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,6 +20,60 @@ Return the array [2, 1, 1, 0].
  *
  */
 public class CountOfSmallerNumberAfterSelf {
+	
+	class Pair {
+        int index;
+        int val;
+        public Pair(int index, int val) {
+            this.index = index;
+            this.val = val;
+        }
+    }
+    
+	public List<Integer> countSmaller_1(int[] nums) {
+        List<Integer> res = new ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return res;
+        }
+        Pair[] arr = new Pair[nums.length];
+        Integer[] smaller = new Integer[nums.length];
+        Arrays.fill(smaller, 0);
+        for (int i = 0; i < nums.length; i++) {
+            arr[i] = new Pair(i, nums[i]);
+        }
+        mergeSort(arr, smaller);
+        res.addAll(Arrays.asList(smaller));
+        return res;
+    }
+
+    private Pair[] mergeSort(Pair[] arr, Integer[] smaller) {
+        if (arr.length <= 1) {
+            return arr;
+        }
+        int mid = arr.length / 2;
+        Pair[] left = mergeSort(Arrays.copyOfRange(arr, 0, mid), smaller);
+        Pair[] right = mergeSort(Arrays.copyOfRange(arr, mid, arr.length), smaller);
+        
+    	int i=0, j = 0, k = 0, m = left.length, n = right.length;
+        
+        while(i < m){
+            if(j == n || left[i].val <= right[j].val){
+                arr[k++] = left[i];
+                smaller[left[i].index] += j; // number of left right move happened before left move
+                i++;
+            }
+            else{
+                arr[k++] = right[j++];
+            }
+        }
+        
+        while(j < n){
+            arr[k++] = right[j++];
+        }
+        
+        return arr;
+    }
+	
 	public List<Integer> countSmaller(int[] nums) {
         Integer[] result = new Integer[nums.length];
         
@@ -73,7 +128,7 @@ public class CountOfSmallerNumberAfterSelf {
     
     public static void main(String[] args){
     	int[] nums = {3,2,2,6,1};
-    	List<Integer> result = new CountOfSmallerNumberAfterSelf().countSmaller(nums);
+    	List<Integer> result = new CountOfSmallerNumberAfterSelf().countSmaller_1(nums);
     	
     	for(int i : result){
     		System.out.print(i + ", ");

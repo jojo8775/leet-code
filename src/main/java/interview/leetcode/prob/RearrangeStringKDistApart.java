@@ -33,6 +33,41 @@ import java.util.Queue;
  *
  */
 public class RearrangeStringKDistApart {
+	public String rearrangeString_adv(String s, int k) {
+        int[] validPositions = new int[26], itemCounts = new int[26];
+        
+        for(char ch : s.toCharArray()){
+            itemCounts[ch - 'a']++;
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<s.length(); i++){
+            int nextIndex = findNextIndex(itemCounts, validPositions, i);
+            
+            if(nextIndex == -1){
+                return "";
+            }
+            
+            sb.append((char)('a' + nextIndex));
+            validPositions[nextIndex] = i + k;
+            itemCounts[nextIndex]--;
+        }
+        
+        return sb.toString();
+    }
+    
+    private int findNextIndex(int[] itemCounts, int[] validPositions, int index){
+        int max = 0, res = -1;
+        for(int i=0; i<26; i++){
+            if(itemCounts[i] > max && validPositions[i] <= index){
+                res = i;
+                max = itemCounts[i];
+            }
+        }
+        
+        return res;
+    }
+	
     public String rearrangeString(String str, int k) {
         // if k == 0 then the input String is valid no re-arrangement is
         // required.
