@@ -13,12 +13,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.function.Function;
 
 public class Solution2 {
 	public static void main(String[] args) {
-		TreeNode result = new Solution2().str2tree("4(2(3)(1))(6(5))");
+		
 	}
 
+	
 	public TreeNode str2tree(String s) {
 		return helper(s, new int[] { 0 });
 	}
