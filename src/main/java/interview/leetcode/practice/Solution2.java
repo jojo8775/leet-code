@@ -17,9 +17,43 @@ import java.util.function.Function;
 
 public class Solution2 {
 	public static void main(String[] args) {
+		List<List<Integer>> result = new Solution2().combinationSum(new int[] {2,3,5}, 8);
 		
+		result.forEach(x -> {
+			x.forEach(y -> System.out.print(y + ","));
+			System.out.println();
+		});
 	}
 
+	public List<List<Integer>> combinationSum(int[] candidates, int target) {
+		List<List<Integer>> result = new ArrayList<>();
+		
+		backTrack(result, new ArrayList<Integer>(), 0, candidates, target);
+		
+		return result;
+	}
+	
+	private void backTrack(List<List<Integer>> result, List<Integer> list, int idx, int[] candidate, int target) {
+		if(idx == candidate.length) {
+			return;
+		}
+		
+		if(target == 0) {
+			result.add(new ArrayList<Integer>(list));
+			return;
+		}
+		
+		for(int i=idx; i<candidate.length; i++) {
+			if(target - candidate[i] >= 0) {
+				list.add(candidate[i]);
+				
+				backTrack(result, list, i, candidate, target - candidate[i]);
+				
+				list.remove(list.size() - 1);
+			}
+		}
+	}
+	
 	
 	public TreeNode str2tree(String s) {
 		return helper(s, new int[] { 0 });
