@@ -36,6 +36,39 @@ The cells are adjacent in only four directions: up, down, left and right
  *Mar 23, 201711:23:34 PM
  */
 public class Matrix01 {
+	public int[][] updateMatrix_alt(int[][] matrix) {
+		int m = matrix.length, n = matrix[0].length; 
+		
+		for(int i=0; i<m; i++) {
+			for(int j=0; j<n; j++) {
+				
+				matrix[i][j] = matrix[i][j] == 0 ? 0 : 1000; // cannot use MAX_VALUE as there will be overflow.
+ 				
+				if(i > 0) {
+					matrix[i][j] = Math.min(matrix[i][j], matrix[i - 1][j] + 1);
+				}
+				
+				if(j > 0) {
+					matrix[i][j] = Math.min(matrix[i][j], matrix[i][j - 1] + 1);
+				}
+			}
+		}
+		
+		for(int i=m-1; i>=0; i--) {
+			for(int j=n-1; j>=0; j--) {
+				if(i < m-1) {
+					matrix[i][j] = Math.min(matrix[i][j], matrix[i + 1][j] + 1);
+				}
+				
+				if(j < n-1) {
+					matrix[i][j] = Math.min(matrix[i][j], matrix[i][j + 1] + 1);
+				}
+			}
+		}
+		
+		return matrix;
+	}
+	
     public List<List<Integer>> updateMatrix(List<List<Integer>> matrix) {
         int len = matrix.size(), width = matrix.get(0).size();
         Queue<int[]> queue = new LinkedList<int[]>();

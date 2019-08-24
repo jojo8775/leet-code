@@ -2,6 +2,8 @@ package interview.leetcode.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,48 +12,86 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.function.Function;
 
 public class Solution2 {
 	public static void main(String[] args) {
-		String result = new Solution2().decodeString("3[a]2[bc]");
-		System.out.println(result);
+		
 	}
 
 	
+	public TreeNode str2tree(String s) {
+		return helper(s, new int[] { 0 });
+	}
+
+	private TreeNode helper(String s, int[] idx) {
+		if (idx[0] == s.length()) {
+			return null;
+		}
+
+		int val = 0;
+		TreeNode left = null, right = null, node = null;
+
+		while (idx[0] < s.length()) {
+			char ch = s.charAt(idx[0]);
+
+			idx[0]++;
+			if (ch == '(') {
+				left = helper(s, idx);
+			}
+
+			if (ch == '(') {
+				right = helper(s, idx);
+			}
+
+			if (ch == ')') {
+				node = new TreeNode(val);
+				node.left = left;
+				node.right = right;
+				break;
+			}
+
+			if (ch >= '0' && ch <= '9') {
+				val *= 10;
+				val += (int) (ch - '0');
+			}
+		}
+
+		return node;
+	}
+
 	public String decodeString(String s) {
-        int count = 0;
-        StringBuilder sb = new StringBuilder(), result = new StringBuilder();
-        
-        for(char ch : s.toCharArray()){
-            
-            if(ch >= '0' && ch <= '9'){
-                count *= 10;
-                count = count + (int) (ch - '0');
-                
+		int count = 0;
+		StringBuilder sb = new StringBuilder(), result = new StringBuilder();
+
+		for (char ch : s.toCharArray()) {
+
+			if (ch >= '0' && ch <= '9') {
+				count *= 10;
+				count = count + (int) (ch - '0');
+
 //                System.out.println(count);
-            }
-            else if(ch == ']'){
-                while(count > 0){
-                	count--;
-                    result.append(sb);
-                }
-                
-                sb.setLength(0);
-            }
-            else{
-                if(ch == '['){
-                    continue;
-                }
-                
-                sb.append(ch);
+			} else if (ch == ']') {
+				while (count > 0) {
+					count--;
+					result.append(sb);
+				}
+
+				sb.setLength(0);
+			} else {
+				if (ch == '[') {
+					continue;
+				}
+
+				sb.append(ch);
 //                System.out.println(sb);
-            }
-        }
-        
-        return result.toString();
-    }
-	
-	
+			}
+		}
+
+		return result.toString();
+	}
+
 	public List<Integer> topKFrequent(int[] nums, int k) {
 		Map<Integer, Integer> map = new HashMap<>();
 		for (int n : nums) {
@@ -59,30 +99,29 @@ public class Solution2 {
 		}
 
 		List<Integer>[] buckets = new List[nums.length];
-		
-		for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
+
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 			int freq = entry.getValue();
-			
-			if(buckets[freq] == null) {
+
+			if (buckets[freq] == null) {
 				buckets[freq] = new ArrayList<>();
 			}
-			
+
 			buckets[freq].add(entry.getKey());
 		}
-		
+
 		List<Integer> result = new ArrayList<>();
-		
-		for(int i=buckets.length - 1; i>=0 && k > 0; i--) {
-			for(Integer n : buckets[i]) {
-				if(k--> 0) {
+
+		for (int i = buckets.length - 1; i >= 0 && k > 0; i--) {
+			for (Integer n : buckets[i]) {
+				if (k-- > 0) {
 					result.add(n);
-				}
-				else {
+				} else {
 					break;
 				}
 			}
 		}
-		
+
 		return result;
 	}
 
@@ -325,5 +364,14 @@ public class Solution2 {
 		}
 
 		return false;
+	}
+
+	private static class TreeNode {
+		int val;
+		TreeNode left = null, right = null;
+
+		public TreeNode(int val) {
+			this.val = val;
+		}
 	}
 }
