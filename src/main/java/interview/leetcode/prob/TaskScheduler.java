@@ -1,7 +1,9 @@
 package interview.leetcode.prob;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 
 
@@ -24,6 +26,41 @@ The integer n is in the range [0, 100].
  *
  */
 public class TaskScheduler {
+	public int leastInterval_adv(char[] tasks, int n) {
+        Map<Character, Integer> map = new HashMap<>();
+        for(char ch : tasks){
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
+        
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> b-a);
+        for(int val : map.values()){
+            pq.offer(val);
+        }
+        
+        int cycle = n + 1, result = 0;
+        
+        while(!pq.isEmpty()){
+            int workItemCount = 0;
+            List<Integer> placeholder = new ArrayList<>();
+            for(int i=0; i<cycle; i++){
+                if(!pq.isEmpty()){
+                    int left = pq.poll() - 1;
+                    if(left > 0){
+                        placeholder.add(left);
+                    }
+                    workItemCount++;
+                }
+            }
+            
+            placeholder.forEach(x -> pq.offer(x));
+            
+            result += !pq.isEmpty() ? cycle : workItemCount;
+        }
+        
+        return result;
+    }
+	
+	
     public int leastInterval(char[] tasks, int n) {
         Node[] nodes = new Node[26];
         
