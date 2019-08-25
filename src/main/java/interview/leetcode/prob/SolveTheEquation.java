@@ -28,6 +28,46 @@ Output: "No solution"
  *Feb 14, 20183:47:22 PM
  */
 public class SolveTheEquation {
+    public String solveEquation_adv(String equation) {
+        String[] equations = equation.split("=");
+        
+        int[] left = calculate(equations[0]), right = calculate(equations[1]);
+        
+        left[0] -= right[0];
+        left[1] = right[1] - left[1];
+        
+        if(left[0] == 0 && left[1] == 0) {
+        	return "Infinite solutions";
+        }
+        else if(left[0] == 0) {
+        	return "No solution";
+        }
+        else {
+        	return "x=" + left[1]/left[0];
+        }
+    }
+	
+	private int[] calculate(String str) {
+		String[] tokens = str.split("(?=[-+])"); 
+		int[] result =  new int[2];
+		
+		for (String token : tokens) {
+			if (token.equals("+x") || token.equals("x")) {
+				result[0]++;
+			}
+			else if (token.equals("-x")) {
+				result[0]--;
+			}
+			else if (token.contains("x")) {
+				result[0] += Integer.parseInt(token.substring(0, token.indexOf("x")));
+			}
+			else {
+				result[1] += Integer.parseInt(token);
+			}
+		}
+		return result;
+	}
+	
     public String solveEquation(String equation) {
         // for ease of calculation
         equation += "+";
