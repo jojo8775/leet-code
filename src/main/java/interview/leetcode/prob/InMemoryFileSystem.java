@@ -136,7 +136,7 @@ public class InMemoryFileSystem {
 			return node.content;
 		}
 
-		private static class Node {
+		private  class Node {
 			String content = "";
 			String name = "";
 			Map<String, Node> children = new HashMap<>();
