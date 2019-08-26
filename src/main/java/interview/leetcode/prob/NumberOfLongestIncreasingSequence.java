@@ -57,4 +57,9 @@ public class NumberOfLongestIncreasingSequence {
         
         return result;
     }
+	
+	public static void main(String[] args) {
+		int result = new NumberOfLongestIncreasingSequence().findNumberOfLIS(new int[] {1,3,5,4,7});
+		System.out.println(result);
+	}
 }
