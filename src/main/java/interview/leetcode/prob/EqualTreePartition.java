@@ -1,5 +1,8 @@
 package interview.leetcode.prob;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Given a binary tree with n nodes, your task is to check if it's possible to partition the tree to two trees which have the equal sum of values after removing exactly one edge on the original tree.
 
@@ -41,6 +44,28 @@ The range of tree node value is in the range of [-100000, 100000].
  *Feb 13, 201812:42:51 AM
  */
 public class EqualTreePartition {
+	public boolean checkEqualTree_adv(TreeNode root) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int sum = findSum(root, map);
+        
+        if(sum == 0){
+            return map.get(0) > 1;
+        }
+        
+        return sum % 2 == 0 && map.containsKey(sum/2);
+    }
+    
+    private int findSum(TreeNode node, Map<Integer, Integer> map){
+        if(node == null){
+            return 0;
+        }
+        
+        int sum = node.val + findSum(node.left, map) + findSum(node.right, map);
+        map.put(sum, map.getOrDefault(sum, 0) + 1);
+        
+        return sum;
+    }
+	
     public boolean checkEqualTree(TreeNode root) {
         int total = findTotal(root);
         
