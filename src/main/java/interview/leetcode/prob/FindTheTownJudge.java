@@ -67,5 +67,5 @@ public class FindTheTownJudge {
         }
         
         return -1;
-    }O
+    }
 }
