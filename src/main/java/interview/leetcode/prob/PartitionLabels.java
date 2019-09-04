@@ -24,6 +24,33 @@ S will consist of lowercase letters ('a' to 'z') only.
  *Feb 10, 20185:24:39 PM
  */
 public class PartitionLabels {
+    public List<Integer> partitionLabels_adv(String S) {
+        int[] arr = new int[26];
+        
+        for(int i=0; i<S.length(); i++){
+            char ch = S.charAt(i);
+            arr[ch - 'a'] = i;
+        }
+        
+        int end = 0, len = S.length(), beg = 0;
+        
+        List<Integer> result = new ArrayList<>();
+        while(end < len){
+            int i = beg;
+            
+            while(i <= end){
+                char ch = S.charAt(i++);
+                end = Math.max(end, arr[ch - 'a']);
+            }
+            
+            result.add(end - beg + 1);
+            end ++;
+            beg = end;
+        }
+        
+        return result;
+    }
+	
     public List<Integer> partitionLabels(String S) {
         Map<Character, Integer> map = new HashMap<>();
         for(int i=0; i<S.length(); i++){
