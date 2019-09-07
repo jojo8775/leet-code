@@ -1,6 +1,8 @@
 package interview.leetcode.prob;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -43,6 +45,37 @@ The graph is undirected: if any element j is in graph[i], then i will be in grap
  * Jan 16, 2019 12:17:02 AM
  */
 public class IsGraphBipartite {
+	public boolean isBipartite_easier(int[][] graph) {
+        int[] edgeColor = new int[graph.length];
+        
+        // this for  loop is needed to connect disjoint graph. 
+        for(int i=0; i<edgeColor.length; i++){
+            if(edgeColor[i] == 0){
+                edgeColor[i] = 1; // 1 = red, -1 = blue
+                
+                Queue<Integer> queue = new LinkedList<>();
+                queue.offer(i);
+                
+                while(!queue.isEmpty()){
+                    int top = queue.poll();
+                    
+                    for(int nei : graph[top]){
+                        if(edgeColor[nei] == 0){
+                            edgeColor[nei] = -edgeColor[top];
+                            queue.offer(nei);
+                        }
+                        else if(edgeColor[nei] == edgeColor[top]){
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        
+        return true;
+    }
+	
+	
 	// the idea it to start with 1 and make all the neighbors a ^1 till the end. If there is a conflict then it cannot 
 	// separated into two sets of nodes.
 	public boolean isBipartite(int[][] graph) {
