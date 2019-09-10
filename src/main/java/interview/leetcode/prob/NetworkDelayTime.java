@@ -8,8 +8,8 @@ public class NetworkDelayTime {
 	public int networkDelayTime(int[][] times, int N, int K) {
 		Map<Integer, Map<Integer, Integer>> graph = new HashMap<>();
 		for(int i=0; i<times.length; i++) {
-			graph.computeIfAbsent(times[i][0], k -> new HashMap<Integer, Integer>()); 
-			graph.get(times[i][0]).put(times[i][1], times[i][2]);
+				graph.computeIfAbsent(times[i][0], k -> new HashMap<Integer, Integer>()); 
+				graph.get(times[i][0]).put(times[i][1], times[i][2]);
 		}
 		
         Map<Integer, Integer> distanceMap = new HashMap<>();
