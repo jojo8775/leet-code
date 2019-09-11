@@ -18,6 +18,34 @@ Return true because "leetcode" can be segmented as "leet code".
  *
  */
 public class WordBreak {
+	public boolean wordBreak_Liner(String s, List<String> wordDict) {
+        return find(s, 0, wordDict, new boolean[s.length()]);
+    }
+    
+    private boolean find(String s, int idx, List<String> words, boolean[] failedPath){
+        
+        if(idx == s.length()){
+            return true;
+        }
+        
+        if(failedPath[idx]){
+            return false;
+        }
+        
+        for(String word : words){
+            if(s.startsWith(word, idx)){
+                if(find(s, idx + word.length(), words, failedPath)){
+                    return true;
+                }
+
+                failedPath[idx] = true;
+            }
+        }
+        
+        return false;
+    }
+	
+	
 	public boolean wordBreak(String s, Set<String> wordDict) {
 		boolean[] f = new boolean[s.length() + 1];
 
