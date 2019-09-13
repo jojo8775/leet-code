@@ -25,6 +25,42 @@ The length of T will be in the range [1, 100].
  * Jun 29, 2019 9:14:50 PM
  */
 public class MinimumWindowSubsequence {
+	public String minWindow_easier(String S, String T) {
+        int minLength = Integer.MAX_VALUE, start = 0;
+        
+        for(int i=0, j=0; i<S.length(); i++){
+            if(S.charAt(i) == T.charAt(j)){
+                j++;
+            }
+            
+            if(j == T.length()){
+                j--;
+                int end = i + 1; // since substring is end exclusive
+                
+                // finding the first matching character 
+                while(j >=0 ){
+                    if(S.charAt(i) == T.charAt(j)){
+                        j--;
+                    }
+                    
+                    i--;
+                }
+                
+                // adding 1 back since moved bit too far backward.
+                i++;
+                j++;
+                
+                if(end - i < minLength){
+                    start = i;
+                    minLength = end - i;
+                }
+            }
+        }
+        
+        return minLength == Integer.MAX_VALUE ? "" : S.substring(start, start + minLength);
+    }
+	
+	
 	public String minWindow(String S, String T) {
 		int sIdx = 0, tIdx = 0, sLen = S.length(), tLen = T.length(), minSubStrLen = S.length(), start = -1;
 		
