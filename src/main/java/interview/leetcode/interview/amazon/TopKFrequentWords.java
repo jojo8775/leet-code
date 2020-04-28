@@ -7,6 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+/**
+ * This is a most popular question in Amazon these days. 
+ * @author jojo
+ * Apr 26, 2020  1:43:17 PM
+ */
 public class TopKFrequentWords {
 	public static void main(String[] args) {
 		List<String> words = Arrays.asList("abc", "abc", "abd", "abd", "aba", "aba", "cat", "dog", "god");
