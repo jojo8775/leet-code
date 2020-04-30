@@ -62,12 +62,6 @@ public class CriticalRouters {
 		return adjacent;
 	}
 	
-	public List<Integer> findServers(List<Pair> connectors){
-		return null;
-	}
-	
-	
-	
 	private static class Pair{
 		int x, y;
 		Pair(int x, int y){
