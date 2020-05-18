@@ -87,10 +87,38 @@ public class MaxOfMinAltitudes {
 	    }
 	}
 	
+	
+	public int findMinMax_rec(int[][] grid){
+	    int[] result = new int[]{Integer.MIN_VALUE};
+	    findMinMax(grid, 0, 0, Integer.MAX_VALUE, result);
+
+	    System.out.println(result[0]);
+
+	    return result[0];
+	}
+
+	private void findMinMax(int[][] grid, int i, int j, int minSoFar, int[] max){
+	    if(i == grid.length - 1 && j == grid[0].length - 1){
+	        max[0] = Math.max(max[0], minSoFar);
+	        return;
+	    }
+
+	    if(i + 1 < grid.length){
+	        findMinMax(grid, i+1, j, Math.min(minSoFar, grid[i+1][j]), max);
+	    }
+
+	    if(j + 1 < grid[0].length){
+	        findMinMax(grid, i, j + 1, Math.min(minSoFar, grid[i][j + 1]), max);   
+	    }
+	}
+
+	
 	public static void main(String[] args) {
 		//int[][] grid = {{1,2,3}, {4,5,1}};
 		int[][] grid = { { 5, 7, 6, 8 }, { 3, 4, 2, 1 }, { 9, 8, 4, 6 } };
 		int result = new MaxOfMinAltitudes().findMinMax(grid);
 		System.out.println(result);
+		
+		System.out.println(new MaxOfMinAltitudes().findMinMax_rec(grid));
 	}
 }
