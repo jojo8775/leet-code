@@ -304,6 +304,69 @@ public class PlayGround {
 			System.out.print(i + ", ");
 		}
 	}
+	
+	public String mostCommonWord(String paragraph, String[] banned) {
+	    Node root = new Node();
+
+	    for(String str : banned){
+	        Node cur = root;
+
+	        for(char ch : str.toCharArray()){
+	            if(cur.children[ch - 'a'] == null){
+	                cur.children[ch - 'a'] = new Node();
+	            }
+
+	            cur = cur.children[ch - 'a'];
+	        }
+
+	        cur.isBanned = true;
+	    }
+
+	    paragraph = paragraph.toLowerCase();
+	    int maxCount = 0;
+	    String result = null;
+
+	    for(int i=0, j=0; j<paragraph.length(); ){
+	        char ch;
+
+	        Node cur = root;
+	        while(j < paragraph.length() && (ch = paragraph.charAt(j)) >= 'a' && ch <= 'z'){
+	            if(cur.children[ch - 'a'] == null){
+	                cur.children[ch - 'a'] = new Node();
+	            }
+
+	            cur = cur.children[ch - 'a'];
+	            j++;
+	        }
+
+	        if(!cur.isBanned){
+	            cur.count += 1;
+	            if(maxCount < cur.count){
+	                maxCount = cur.count;
+	                result = paragraph.substring(i, j);
+	            }
+	        }
+
+	        while(j < paragraph.length() && ((ch = paragraph.charAt(j)) < 'a' || ch > 'z')){
+	            j++;
+	        }
+
+	        i = j;
+	    }
+
+	    return result;
+	}
+
+	private static class Node{
+	    boolean isBanned;
+	    Node[] children = new Node[26];
+	    int count;
+	}
+	
+	public void mostCommonWord_execute() {
+		String result = mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.", new String[] {"hit"});
+		System.out.println(result);
+	}
 
 	public static void main(String[] args) {
 		PlayGround demo = new PlayGround();
@@ -312,6 +375,7 @@ public class PlayGround {
 //		demo.findKDistinctCharacter_execute(demo);
 //		demo.findMaxAverage_execute();
 //		demo.validParenthesis_execute();
-		demo.rearrangeBarcode_execute();
+//		demo.rearrangeBarcode_execute();
+		demo.mostCommonWord_execute();
 	}
 }
