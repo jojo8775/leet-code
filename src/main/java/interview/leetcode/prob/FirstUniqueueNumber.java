@@ -87,6 +87,7 @@ public class FirstUniqueueNumber {
 	    
 	    public int showFirstUnique() {
 	        while(!queue.isEmpty()){
+				// if first element in queue is duplicate then poll
 	            if(map.get(queue.peek()) == 2){
 	                queue.poll();
 	            }
@@ -103,7 +104,9 @@ public class FirstUniqueueNumber {
 	        if(count < 2){
 	            count += 1;
 	            map.put(value, count);
-	            if(count < 2){
+	            
+	            // if uniqueue then add it to the queue.
+	            if(count == 1){
 	                queue.offer(value);
 	            }
 	        }
