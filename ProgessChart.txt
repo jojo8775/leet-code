@@ -16,25 +16,26 @@ Graph
     Dependency Graph:
 
 Arrays:
-    Sliding Window:
-        1
-    Binary Search:
-    Matrix Parsing:
+    Sliding Window : -------------- : 1
+    Binary Search :
+    Matrix Parsing :
     
 Map : 
     Sum: 
 
 String: 
-    Trie Node:
-    Palindrome:
+    Trie Node :
+    Palindrome :
     Pattern Search : 
     Combination Search : 
 
 LinkedList: 
-    Parsing: 
+    Parsing : 
     Merging 
 
 stack and queue : ----------------- : 2
     
-union and find : 
+union and find : ------------------ : 1
+
+bit wise operation : -------------- : 1 
 
