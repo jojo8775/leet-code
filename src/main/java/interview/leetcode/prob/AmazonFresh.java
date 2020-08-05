@@ -74,6 +74,7 @@ public class AmazonFresh {
 				}
 			}
 			else {
+				// within a group the order needs to be maintain, but additional words are allowed in-between groups. 
 				j = codeList[i][0].equals("anything") ? 1 : 0;
 			}
 		}
