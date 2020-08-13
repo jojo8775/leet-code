@@ -34,7 +34,7 @@ LinkedList:
     Parsing : 
     Merging 
 
-stack and queue : ----------------- : 2
+stack and queue : ----------------- : 3
     
 union and find : ------------------ : 1
 
