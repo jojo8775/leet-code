@@ -52,7 +52,7 @@ public class RandomizedCollection {
     
     /** Get a random element from the collection. */
     public int getRandom() {
-        int index = (int) (Math.random() * list.size());
+		int index = (int) (Math.random() * list.size());
         
         return list.get(index);
     }

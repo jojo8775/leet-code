@@ -80,4 +80,35 @@ public class CountNegativeNumbersInASortedMatrix {
 	        // left will be > len when there is no negative number in the row. 
 	        return left > len ? -1 : left;
 	    }
+	    
+	    // simpler approach 
+	    public int countNegatives_s(int[][] grid) {
+	        int count = 0;
+	        for(int i=0; i<grid.length; i++){
+	            int idx = binarySearch(grid[i]);
+	            
+	            if(idx != -1){
+	                count += (grid[i].length - idx);
+	            }
+	        }
+	        
+	        return count;
+	    }
+	    
+	    private int binarySearch(int[] arr){
+	        int beg = 0, end = arr.length;
+	        
+	        while(beg < end){
+	            int mid = beg + (end - beg)/2;
+	            
+	            if(arr[mid] >= 0){
+	                beg = mid + 1;
+	            }
+	            else{
+	                end = mid;
+	            }
+	        }
+	        
+	        return beg == arr.length ? -1 : beg;
+	    }
 }

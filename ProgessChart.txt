@@ -68,3 +68,39 @@ Subarrays with K Different Integers
 Fruit Into Baskets
 Shortest Subarray with Sum at Least K
 Minimum Size Subarray Sum
+
+intersting problems to be looked later 
+- https://leetcode.com/problems/regions-cut-by-slashes
+
+
+
+New Strategy 
+
+-- completed categories for AMZN 
+
+- BFS --- done
+- Binary Search --- next 
+
+
+
+sudo apt purge rtl8812au-dkms
+sudo apt install git
+git clone https://github.com/gnab/rtl8812au.git
+sudo cp -r rtl8812au  /usr/src/rtl8812au-4.2.2
+sudo dkms add -m rtl8812au -v 4.2.2
+sudo dkms build -m rtl8812au -v 4.2.2
+sudo dkms install -m rtl8812au -v 4.2.2
+
+
+
+---- terminal update 
+https://linuxconfig.org/how-to-upgrade-ubuntu-to-20-04-lts-focal-fossa
+
+$ sudo apt update 
+$ sudo apt upgrade
+$ sudo apt dist-upgrade
+$ sudo apt autoremove
+
+--- 
+$ sudo apt install update-manager-core
+$ sudo do-release-upgrade
