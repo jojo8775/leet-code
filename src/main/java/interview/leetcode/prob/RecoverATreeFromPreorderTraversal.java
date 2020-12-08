@@ -1,5 +1,7 @@
 package interview.leetcode.prob;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -43,6 +45,74 @@ Each node will have a value between 1 and 10^9.
  * Sep 1, 2019 3:33:46 AM
  */
 public class RecoverATreeFromPreorderTraversal {
+	public TreeNode recoverFromPreorder_adv(String S) {
+        if(S.isEmpty()){
+            return null;
+        }
+        
+        List<Stack<TreeNode>> nodes = new ArrayList<>();
+        
+        int i = 0, len = S.length();
+        while(i < len){
+            int[] tuple = parseStr(S, i);
+            
+            TreeNode cn = new TreeNode(tuple[1]);
+            
+            // if the current node is not root, then link current node with parent node.
+            if(tuple[0] != -1){
+                TreeNode pn = nodes.get(tuple[0]).peek();
+            
+                if(pn.left == null){
+                    pn.left = cn;
+                }
+                else{
+                    pn.right = cn;
+                }    
+            }
+            
+            if(tuple[0] + 1 == nodes.size()){
+                nodes.add(new Stack<TreeNode>());
+            }
+
+            nodes.get(tuple[0] + 1).push(cn);
+            
+            i = tuple[2];
+        }
+        
+        return nodes.get(0).peek();        
+    }
+    
+    private int[] parseStr(String s, int i){
+        int depth = -1, num = 0, idx = i;
+        
+        boolean numFound = false;
+        
+        while(idx < s.length()){
+            char ch = s.charAt(idx);
+            
+            if(ch == '-'){
+                if(numFound){
+                    break;
+                }
+                
+                depth++;
+            }
+            else{
+                int val = (int) (ch - '0');
+                num *= 10;
+                num += val;
+                numFound = true;
+            }
+            
+            idx++;
+        }
+        
+         // System.out.println("S: " + i + "  d: " + depth + "  N: " + num + "  E: " + idx);
+        
+        return new int[]{depth, num, idx};
+    }
+	
+	
     public TreeNode recoverFromPreorder(String S) {
         int idx = 0, len = S.length();
         

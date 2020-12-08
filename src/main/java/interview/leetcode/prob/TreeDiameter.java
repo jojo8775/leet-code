@@ -1,7 +1,13 @@
 package interview.leetcode.prob;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
 
 /**
  * Given an undirected tree, return its diameter: the number of edges in a longest path in that tree.
@@ -42,6 +48,58 @@ Submissions
  * Aug 22, 2020  9:00:15 PM
  */
 public class TreeDiameter {
+	public int treeDiameter_adv(int[][] edges) {
+        Map<Integer, Set<Integer>> map = new HashMap<>();
+        
+        for(int[] e : edges){
+            if(!map.containsKey(e[0])){
+                map.put(e[0], new HashSet<>());
+            }
+            
+            map.get(e[0]).add(e[1]);
+            
+            if(!map.containsKey(e[1])){
+                map.put(e[1], new HashSet<>());
+            }
+            
+            map.get(e[1]).add(e[0]);
+        }
+        
+        // from a random point 'A' find the max point 'B'
+        int[] resultA = findDistance(0, map);
+        
+        // from point 'B' find the max point 'C'. The distance between B and C is diameter. 
+        int[] resultB = findDistance(resultA[0], map);
+        
+        return resultB[1];
+    }
+    
+    private int[] findDistance(int startNode, Map<Integer, Set<Integer>> map){
+        Set<Integer> visited = new HashSet<>();
+        
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(startNode);
+        visited.add(startNode);
+        
+        int lastVisitedEdge = -1, distance = -1;
+        
+        while(!queue.isEmpty()){
+            for(int i=queue.size() - 1; i>=0; i--){
+                lastVisitedEdge = queue.poll();
+                
+                for(int nei : map.get(lastVisitedEdge)){
+                    if(visited.add(nei)){
+                        queue.offer(nei);
+                    }
+                }
+            }
+            
+            distance ++;
+        }
+        
+        return new int[]{lastVisitedEdge, distance};
+    }
+	
 	public int treeDiameter(int[][] edges) {
         List<List<Integer>> graph = new ArrayList<>();
         
