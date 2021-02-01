@@ -105,3 +105,92 @@ $ sudo apt autoremove
 $ sudo apt install update-manager-core
 $ sudo do-release-upgrade
 
+
+
+
+
+categories 
+
+Array 
+
+Dynamic Programming 
+
+String 
+
+Math 
+
+Tree 
+
+Depth First search 
+
+Hash table 
+
+Greedy 
+
+Binary Search 
+
+Breadth First Search 
+
+Sort 
+
+Two Pointers 
+
+Backtracking 
+
+Stack 
+
+Design 
+
+Bit Manipulation 
+
+Graph 
+
+Linked List 
+
+Heap 
+
+Union Find 
+
+Recurrsion 
+
+Sliding Window 
+
+Divide and Conquer 
+
+Trie 
+
+Segment Tree 
+
+Ordered Map 
+
+Queue 
+
+Geometry 
+
+MinMax 
+
+Binary indexed Tree 
+
+Brain teaser 
+
+Line sweep 
+
+Random
+
+Topological sort 
+
+Binary search tree 
+
+Dequeue 
+
+Rolling Hash 
+
+Suffix Array 
+
+Rejection stamping 
+
+Reservour Sampling 
+
+Memorization 
+
+OOP 
