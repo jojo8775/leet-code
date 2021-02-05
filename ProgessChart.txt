@@ -109,7 +109,7 @@ $ sudo do-release-upgrade
 
 
 
-categories 
+full list of categories from leetcode 
 
 Array 
 
@@ -117,15 +117,14 @@ Dynamic Programming
 
 String 
 
-Math 
-
 Tree 
 
 Depth First search 
 
 Hash table 
 
-Greedy 
+Greedy
+E - 3  M - 3  H - 0              
 
 Binary Search 
 
@@ -144,6 +143,7 @@ Design
 Bit Manipulation 
 
 Graph 
+E - 1 M - 3
 
 Linked List 
 
@@ -194,3 +194,5 @@ Reservour Sampling
 Memorization 
 
 OOP 
+
+Math 
