@@ -1,5 +1,7 @@
 package interview.leetcode.prob;
 
+import java.util.Stack;
+
 /**
  * Convert a Binary Search Tree to a sorted Circular Doubly-Linked List in place.
 
@@ -49,40 +51,72 @@ Submissions
  * Feb 4, 2021  11:01:28 PM
  */
 public class ConvertBinarySearchTreeToSortedDoublyLinkedList {
-	private Node ref = null, cur = null, head = null;
-
-	public Node treeToDoublyList(Node root) {
-		if (root == null) {
-			return root;
-		}
-
-		ref = new Node(0);
-		cur = ref;
-		head = cur;
-
-		inOrder(root);
-
-		head = ref.right;
-		cur.right = head;
-		head.left = cur;
-
-		return head;
-	}
-
-	private void inOrder(Node node) {
-		if (node == null) {
-			return;
-		}
-
-		inOrder(node.left);
-
-		cur.right = node;
-		node.left = cur;
-		cur = cur.right;
-		// System.out.print(cur.val + ", ");
-
-		inOrder(node.right);
-	}
+    public Node treeToDoublyList(Node root) {
+        if(root == null){
+            return root;
+        }
+        
+        Node ref = new Node(0), cur = ref, head = cur;
+        
+        Stack<Node> stack = new Stack<>();
+         
+        while(!stack.isEmpty() || root != null){
+            if(root != null){
+                stack.push(root);
+                root = root.left;
+            }
+            else{
+                root = stack.pop();
+                cur.right = root;
+                root.left = cur;
+                cur = cur.right;
+                
+                root = root.right;
+            }
+        }
+        
+        
+        head = ref.right;
+        cur.right = head;
+        head.left = cur;
+        
+        return head;
+    }
+    
+//	private Node ref = null, cur = null, head = null;
+//
+//	public Node treeToDoublyList_rec(Node root) {
+//		if (root == null) {
+//			return root;
+//		}
+//
+//		ref = new Node(0);
+//		cur = ref;
+//		head = cur;
+//
+//		inOrder(root);
+//
+//		head = ref.right;
+//		cur.right = head;
+//		head.left = cur;
+//
+//		return head;
+//	}
+//
+//	private void inOrder(Node node) {
+//		if (node == null) {
+//			return;
+//		}
+//
+//		inOrder(node.left);
+//
+//		cur.right = node;
+//		node.left = cur;
+//		cur = cur.right;
+//		// System.out.print(cur.val + ", ");
+//
+//		inOrder(node.right);
+//	}
 
 	private static class Node {
 		Node left, right;

@@ -123,7 +123,7 @@ Depth First search
 
 Hash table 
 
-Greedy
+Greedy                              2nd Feb
 E - 3  M - 3  H - 0              
 
 Binary Search 
@@ -142,10 +142,11 @@ Design
 
 Bit Manipulation 
 
-Graph 
-E - 1 M - 3
+Graph                               3rd Feb
+E - 1  M - 3  H - 0
 
-Linked List 
+Linked List                         4th Feb
+E- 1  M - 4  H - 0
 
 Heap 
 
