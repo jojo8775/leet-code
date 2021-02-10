@@ -150,7 +150,8 @@ E- 1  M - 4  H - 0
 
 Heap 
 
-Union Find 
+Union Find                          7th Feb 
+M - 2
 
 Recurrsion 
 
