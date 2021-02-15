@@ -48,14 +48,30 @@ recurrsion : ---------------------- : 1
 
 Company list 
 
-1. Amazon
-2. Salesforce 
-3. Tableu --- but this is owned by salesforce
-4. hootsuite 
-5. workday 
-6. fortinet
-7. capital one 
-8. slack 
+- Amazon
+- Salesforce 
+- Tableu --- but this is owned by salesforce
+- hootsuite 
+- workday 
+- fortinet
+- capital one 
+- slack 
+- Activision 
+- Amplitude 
+- SalesForce 
+- Tablue
+- Square
+- workday 
+- Sap 
+- infoblox 
+- Realtor 
+- Elastic 
+- MasterCard 
+- Chime [this is same as Square]
+- Apples [very limited openings]
+- slack
+- tile 
+- gramarly (remote only)
 
 
 
