@@ -49,8 +49,6 @@ recurrsion : ---------------------- : 1
 Company list 
 
 - Amazon
-- Salesforce 
-- Tableu --- but this is owned by salesforce
 - hootsuite 
 - workday 
 - fortinet
@@ -72,6 +70,8 @@ Company list
 - slack
 - tile 
 - gramarly (remote only)
+- Zscaler
+- visier
 
 
 

@@ -12,10 +12,22 @@ USA presense and renouned companies
 - MasterCard 
 - Chime [this is same as Square]
 - Apples [very limited openings]
+- slack
+- tile 
+- gramarly (remote only)
 
 Canadian Companies 
 
 - Shopify [remote]
 - fortinet 
-- 
+- hootsuite 
 
+
+
+Templates
+
+Hi Melissa, 
+
+I came across this position on LinkedIn and it caught my interest. I am currently located in Vancouver working for Microsoft. I have 8+ years of experience in restful online service development following Agile methodology. Most of the web services I have developed are fault-tolerant and cater to large-scale data with high availability and minimum latency. I have extensive experience working with a wide range of tech stack such as Java, C#, Redis cache, Azure Cloud services, No SQL Cosmos DB, and relational databases. I have handled end-to-end project delivery, starting from requirement gathering, system design, implementation, and deployment using a continuous integration environment such as Azure Pipelines. 
+
+Additionally, as a team lead, I have mentored developers and collaborated across teams, to deliver quality code and provide risk mitigation for on-time project delivery. Based on your job requirement I have the technical expertise and soft skills which I believe would be critical to succeed in this role. I am sharing my resume and I hope to get in touch with you soon. 
