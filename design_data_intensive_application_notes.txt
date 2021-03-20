@@ -1,2 +1,64 @@
 
-Transactions : 
+Transactions : [chapter 7]
+
+single data object store : this doesnt need any transactions as this represents only a key value storage 
+
+Multiple object data store : this will need some transaction for atomicity:
+    - Atomicity : ensures either all the related data are stored or none are stored 
+
+without transaction the data error handling becomes a problem :
+    - cannot retry
+
+Many database providers a best effort transactions 
+    - on abort many cannot guarantee a safe retry 
+        - transaction succeeded but the network failed. A retry effort will make the transaction happen twice 
+        - if the error is due to overload, retry only makes it worse. We should have exponential backoff and jitter mechanism 
+        - should try to retry only on transient errors such as temporary network failure or deadlocks. Retry after permanent failure such as constraint violation, it is pointless. 
+        - Two-Phase commit is a way to achieve all or nothing commit on abort. Atomicity in a transaction 
+
+Weak isolation : there wont be concurrency issue if two transaction is updating data which are not overlap. For overlapping data there could be still concurrency issue. 
+
+    - Read committed : 
+        - no dirty reads - dirty reads happen when another transaction could read data which are not committed yet. 
+        - no dirty writes - when update of one transaction overrides the uncommitted data of another transaction. 
+        - read commit cannot address the race condition, which means two transactions can override each other updates : "Prevent loss of update" address this issue. 
+
+        implementation : one way of implementing this is to use, read / write locks when reading data. This will block other transactions from reading and writing. But this is not an efficient approach as a long running transaction can create a bottle neck easily. 
+
+    - snapshot Isolation : makes the transaction read from a consistent snapshot version of the data base. 
+        implementation : using MVCC (multiple version concurrency control).
+
+        Algo works like this : 
+            1. Before transaction begins, database determines which transactions are in-progress and which have completed commit. Any writes which are in progress (not committed or aborted) are ignored. 
+            2. Any writes made by the aborted transactions are ignored. 
+            3. Any writes made by the transactions which started later than the current transaction is ignored. This is mainly done to support long running transactions which may lead to race condition. 
+            4. all writes which are completed are visible to the subsequent read queries. 
+
+    - Prevent Loss Updated : when there are more than one transactions writing on the same data, the cumulative update might be lost because of old referential read. This can be fixed in the following ways 
+        - Atomic write: this involves the read - write - cycle to be executed by only one thread, other other ways to make sure the read - write - cycle is done sequentially. 
+        
+        - Explicit locking: this method creates a read lock on all the data where it needs to update. This process safe guard the situation where atomic update fails to prevent loss of update. For example, in a game many player can move to the same position. We should bock all the other moves while the current moves is in process. 
+        
+        - Compare and Set: in this process, database read is performed before writing. If there is no change, then the update fails. This method prevents loss of update, and enforces a re-try on the transaction which has a conflict. 
+
+        - Conflict resolution and replication: for distributed systems where there are more than one leader, read-write-cycle doesnt apply. Linearizability is the process to implement. 
+        - Write skews : when this sequence is performed 
+            1. search query is performed 
+            2. data updated based on the search query 
+            3. the initial search result changes because of the recent update 
+            e.g. - Conflict meeting room book, airline over selling tickets, doctors opting out from on-call at the same time
+
+Serialization: these are the following ways by which true serialization can be accomplished 
+    - Stored procedure 
+    - Twp phase locking 
+        - traditional 
+        - predicate locks 
+        - index based locks 
+
+Serializable snapshot isolation :
+    - based on the snapshot isolation logic
+    - the concurrent update, write skews are based on the version of the last transaction. 
+
+
+
+

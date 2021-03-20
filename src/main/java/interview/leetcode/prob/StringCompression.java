@@ -81,4 +81,35 @@ public class StringCompression {
         
         return idx1;
     }
+    
+    public int compress_2(char[] chars) {
+        int count = 1, idx = 0;
+        
+        for(int i=1; i<chars.length; i++){
+            if(chars[i-1] == chars[i]){
+                count++;
+            }
+            else{
+                chars[idx++] = chars[i-1];
+                if(count > 1){
+                    String str = String.valueOf(count);
+                    for(char c : str.toCharArray()){
+                        chars[idx++] = c;
+                    }
+                }
+                
+                count = 1;
+            }
+        }
+        
+        chars[idx++] = chars[chars.length - 1];
+        if(count > 1){
+            String str = String.valueOf(count);
+            for(char c : str.toCharArray()){
+                chars[idx++] = c;
+            }
+        }
+        
+        return idx;
+    }
 }
