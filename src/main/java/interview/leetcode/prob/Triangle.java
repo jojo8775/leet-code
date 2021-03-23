@@ -54,29 +54,29 @@ public class Triangle {
     public int minimumTotal2 (List<List<Integer>> triangle) {
         int size = triangle.size();
         int[] dp = new int[size];
+        
         dp[0] = triangle.get(0).get(0);
         
         for(int i=1; i<size; i++){
-        	List<Integer> list = triangle.get(i);
-        	int previous = dp[0];
-        	dp[0] += list.get(0);
-        	
-        	//calculating minimum path sum for ith level
-        	for(int j=1; j<i; j++){
-        		int temp = dp[j];
-        		dp[j] = list.get(j) + Math.min(previous, dp[j]);
-        		previous = temp;
-        	}
-        	
-        	dp[i] = previous + list.get(i);
+            int prev2 = dp[0];
+            
+            List<Integer> entry = triangle.get(i);
+            dp[0] += entry.get(0);
+            for(int j=1; j<i; j++){
+                int prev1 = dp[j];
+                dp[j] = entry.get(j) + Math.min(prev2, prev1);
+                prev2 = prev1;
+            }
+            
+            dp[i] = prev2 + entry.get(i);
         }
         
-        int result = dp[0];
-        for(int i=1; i<size; i++){
-            result = Math.min(result, dp[i]);
+        int min = Integer.MAX_VALUE;
+        for(int n : dp){
+            min = Math.min(min, n);
         }
         
-        return result;
+        return min;
     }
 	
 	public static void main(String[] args){
