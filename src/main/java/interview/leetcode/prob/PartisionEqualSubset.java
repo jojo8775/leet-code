@@ -1,6 +1,8 @@
 package interview.leetcode.prob;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
@@ -61,5 +63,40 @@ public class PartisionEqualSubset {
         }
         
         return grid[sum/2][nums.length];
+    }
+    
+    public boolean canPartition_rec(int[] nums) {
+        int sum = 0;
+        for(int n : nums){
+            sum += n;
+        }
+        
+        if(sum%2 != 0){
+            return false;
+        }
+        
+        return canPartition(nums, 0, 0, sum/2, new HashSet<String>());
+    }
+    
+    private boolean canPartition(int[] nums, int idx, int sofar, int target, Set<String> failedSelection){
+        if(sofar == target){
+            return true;
+        }
+        
+        String key = sofar + "-" + "i";
+        if(failedSelection.contains(key)){
+            return false;
+        }
+        
+        for(int i=idx; i<nums.length; i++){
+            if(sofar + nums[i] <= target){
+                if(canPartition(nums, i + 1, sofar + nums[i], target, failedSelection)){
+                    return true;
+                }
+            }
+        }
+        
+        failedSelection.add(key);
+        return false;
     }
 }
