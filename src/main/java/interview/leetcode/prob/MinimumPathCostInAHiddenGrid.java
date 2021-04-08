@@ -89,11 +89,15 @@ public class MinimumPathCostInAHiddenGrid {
 	private int[][] moves = { { 1, 0 }, { 0, -1 }, { -1, 0 }, { 0, 1 } };
 
 	public int findShortestPath(GridMaster master) {
+		// in this problem we dont have the graph given unlike others, so we need to create the graph. 
 		dfs(master, 0, 0);
+		
+		// in-case there is no way to reach the target.  
 		if (target == null) {
 			return -1;
 		}
 
+		// this is to implement dijkstra's algorithm, in each node, taking the least expensive next node. 
 		PriorityQueue<int[]> pQueue = new PriorityQueue<>((a, b) -> a[2] - b[2]);
 		pQueue.offer(new int[] { 0, 0, 0 });
 
@@ -110,6 +114,7 @@ public class MinimumPathCostInAHiddenGrid {
 
 				Pair<Integer, Integer> key = new Pair(x1, y1);
 				if (graph.containsKey(key)) {
+					// removing, so that we dont reconsider visited edge.
 					int val = graph.remove(key);
 					pQueue.offer(new int[] { x1, y1, top[2] + val });
 				}
@@ -119,6 +124,7 @@ public class MinimumPathCostInAHiddenGrid {
 		return -1;
 	}
 
+	// this is done to create the graph. 
 	private void dfs(GridMaster master, int x, int y) {
 		if (master.isTarget()) {
 			target = new Pair(x, y);
@@ -137,6 +143,7 @@ public class MinimumPathCostInAHiddenGrid {
 		}
 	}
 
+	// this is part of the given problem
 	private interface GridMaster {
 		boolean canMove(char direction);
 
