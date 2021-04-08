@@ -55,6 +55,8 @@ public class RangePractice {
 		return beg;
 	}
 	
+	
+	
 	public static void main(String[] args) {
 		int[] result = new RangePractice().findRange(new int[]{1,2,2,2,3,3,4,5}, 0);
 		System.out.println(result[0] + "-" + result[1]);
