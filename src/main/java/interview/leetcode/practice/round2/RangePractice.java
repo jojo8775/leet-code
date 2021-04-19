@@ -52,13 +52,14 @@ public class RangePractice {
 //			return -1;
 //		}
 		
-		return beg;
+		return end;
 	}
 	
 	
 	
 	public static void main(String[] args) {
-		int[] result = new RangePractice().findRange(new int[]{1,2,2,2,3,3,4,5}, 0);
+		//int[] result = new RangePractice().findRange(new int[]{1,2,2,2,3,3,4,5,5}, 5);
+		int[] result = new RangePractice().findRange(new int[]{2,4,5,5,5,5,5,6,6}, 5);
 		System.out.println(result[0] + "-" + result[1]);
 	}
 }
