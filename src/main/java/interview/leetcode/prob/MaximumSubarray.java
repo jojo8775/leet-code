@@ -38,4 +38,35 @@ public class MaximumSubarray {
         
         return maxSum;
     }
+    
+    public int maxSubArray_DC(int[] nums) {
+        return divideAndConcur(nums, 0, nums.length - 1);
+    }
+    
+    private int divideAndConcur(int[] arr, int beg, int end){
+        if(beg > end){
+            return Integer.MIN_VALUE;
+        }
+        
+        int mid = beg + (end - beg)/2;
+        
+        int leftSumMax = 0, rightSumMax = 0, cur = 0;
+        for(int i=mid-1; i>=beg; i--){
+            cur += arr[i];
+            leftSumMax = Math.max(leftSumMax, cur);
+        }
+        
+        cur = 0;
+        for(int i=mid+1; i<=end; i++){
+            cur += arr[i];
+            rightSumMax = Math.max(rightSumMax, cur);
+        }
+        
+        int curMax = leftSumMax + rightSumMax + arr[mid];
+        
+        int leftMax = divideAndConcur(arr, beg, mid - 1);
+        int rightMax = divideAndConcur(arr, mid + 1, end);
+        
+        return Math.max(curMax, Math.max(leftMax, rightMax));
+    }
 }

@@ -10,26 +10,19 @@ Note: Do not use any built-in library function such as sqrt.
 public class ValidPerfectSquare
 {
 	public boolean isPerfectSquare(int num) {
-        if(num == 0){
-            return false;
-        }
-        if(num == 1){
-            return true;
-        }
-        
-        int beg=1,end=num,mid=0;
-        
-        while(beg <= end){
-        	//need to use beg for efficiency
-            mid = (end-beg)/2 + beg;
-            if(mid * mid > num || mid*mid <= 0){
-                end = mid - 1;
-            }
-            else if(mid * mid < num){
-                beg = mid + 1;
-            }
-            else{
+        long low = 1, high = num;
+        while (low <= high) {
+        	// this is basically making /2 
+            long mid = (low + high) >> 1;
+            
+            if (mid * mid == num) {
                 return true;
+            }
+            else if (mid * mid < num) {
+                low = mid + 1;
+            } 
+            else {
+                high =  mid - 1;
             }
         }
         

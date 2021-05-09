@@ -17,4 +17,9 @@ public class FactorialTrailingZero {
 
 		return (int) result;
 	}
+	
+	// recursive solution
+	public int trailingZeroes_r(int n) {
+        return n == 0 ? 0 : n/5 + trailingZeroes_r(n/5);
+    }
 }
