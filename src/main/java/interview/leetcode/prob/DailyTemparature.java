@@ -1,3 +1,4 @@
+
 package interview.leetcode.prob;
 
 import java.util.Stack;
@@ -12,6 +13,22 @@ Note: The length of temperatures will be in the range [1, 30000]. Each temperatu
  * Sep 8, 2019 2:34:14 AM
  */
 public class DailyTemparature {
+	public int[] dailyTemperatures_new(int[] temperatures) {
+        Stack<Integer> stack = new Stack<>();
+        
+        int[] result = new int[temperatures.length];
+        
+        for(int i=0; i<temperatures.length; i++){
+            while(!stack.isEmpty() && temperatures[stack.peek()] < temperatures[i]){
+                result[stack.peek()] = i - stack.pop();
+            }
+            
+            stack.push(i);
+        }
+        
+        return result;
+    }
+	
     public int[] dailyTemperatures(int[] T) {
         Stack<Integer> stack = new Stack<>();
         

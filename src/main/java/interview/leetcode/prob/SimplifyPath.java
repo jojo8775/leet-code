@@ -1,5 +1,7 @@
 package interview.leetcode.prob;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -69,6 +71,39 @@ public class SimplifyPath {
         }
         
         return sb.toString();
+    }
+	
+    public String simplifyPath_adv(String path) {
+        String[] arr = path.split("/");
+        
+        // for(String s : arr){
+        //     System.out.println(s);
+        // }
+        
+        Deque<String> dQueue = new LinkedList<>();
+        
+        for(String s : arr){
+            if(s.isEmpty() || s.equals(".")){
+                continue;
+            }
+            
+            if(s.equals("..")){
+                if(!dQueue.isEmpty()){
+                    dQueue.pollLast();
+                }
+            }
+            else{
+                dQueue.offerLast(s);
+            }
+        }
+        
+        
+        StringBuilder sb = new StringBuilder();
+        while(!dQueue.isEmpty()){
+            sb.append("/").append(dQueue.pollFirst());
+        }
+        
+        return sb.length() == 0 ? "/" : sb.toString();
     }
 	
 	public static void main(String[] args){
