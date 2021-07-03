@@ -48,6 +48,23 @@ Submissions
  * Jun 29, 2021  1:58:58 AM
  */
 public class RemoveOneElementToMakeTheArrayStrictlyIncreasing {
+	public boolean canBeIncreasing_adv(int[] nums) {
+        
+        int count = 0;
+        for(int i=1; i<nums.length && count < 2; i++){
+            if(nums[i-1] >= nums[i]){
+                count ++;
+                
+                if(i > 1 && nums[i-2] >= nums[i]){
+                    nums[i] = nums[i-1];
+                }
+            }
+        }
+        
+        return count < 2;
+    }
+	
+	
     public boolean canBeIncreasing(int[] nums) {
         if(nums.length == 0){
             return true;
