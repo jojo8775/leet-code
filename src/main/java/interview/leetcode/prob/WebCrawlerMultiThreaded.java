@@ -34,7 +34,7 @@ public class WebCrawlerMultiThreaded {
 		return hostName.equals(subUrl);
 	}
 	
-	public interface HtmlParser{
+	private interface HtmlParser{
 		List<String> getUrls(String url);
 	}
 }
