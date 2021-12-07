@@ -1,7 +1,10 @@
 package interview.leetcode.prob;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.TreeMap;
 
 /**
@@ -63,6 +66,45 @@ buildings[i].length == 3
  */
 public class AverageHeightOfBuildingInEachSegment {
 	public int[][] averageHeightOfBuildings(int[][] buildings) {
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+        
+        for(int[] b : buildings){
+            pq.offer(new int[]{b[0], b[2]});
+            pq.offer(new int[]{b[1], -b[2]});
+        }
+        
+        Deque<int[]> deque = new LinkedList<>();
+        
+        int hSum = 0, bCount = 0, start = 0;
+        while(!pq.isEmpty()) {
+        	int[] top = pq.poll();
+        	
+        	if(bCount > 0 && start != top[0]) {
+        		int height = hSum / bCount;
+        		
+        		if(!deque.isEmpty() && deque.peekLast()[1] == start && deque.peekLast()[2] == height) {
+        			deque.peekLast()[1] = top[0];
+        			deque.peekLast()[2] = height;
+        		}
+        		else {
+        			deque.offerLast(new int[] {start, top[0], height});
+        		}
+        	}
+        	
+        	start = top[0];
+        	hSum += top[1];
+        	bCount += (top[1] > 0 ? 1 : -1);
+        }
+        
+        int[][] result = new int[deque.size()][3];
+    	for(int i=0; i<result.length; i++) {
+    		result[i] = deque.pollFirst();
+    	}
+    	
+    	return result;
+    }
+	
+	public int[][] averageHeightOfBuildings_1(int[][] buildings) {
 	    // {height sum, count}
 	    TreeMap<Integer, int[]> sortedMap = new TreeMap<>();
 	    
