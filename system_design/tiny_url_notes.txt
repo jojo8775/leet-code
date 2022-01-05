@@ -1,0 +1,141 @@
+
+Tiny URL: 
+
+Functional Requirements 
+- given a regular url the system should return the shortened url 
+- the url should be small so that it can be shared 
+- once clicked on the small url it should redirect to the actual url 
+
+Non functional
+- the latency should be very low 
+- the url should expire after pre-defined time 
+- short url should not be guessable 
+
+
+Traffic estimates 
+- type of the system: this is  a read heavy system 
+- traffic per month 
+    - 500 mil new url and 100 : 1 is redirection request 
+    - 500 mil * 100 ~ 50 bil redirect requests 
+- QPS 
+    - new url 500 mil / (30 * 24 * 60 * 60) ~ (30 * 25 * 4000) ~ (30 * 100,000) ~ 3 mil == approx 160 rps
+    - redirection 100 : 1 ~ 16 k rps
+
+Storage estimate 
+- Assumption is to store the data for 5 years 
+    - new url needs storage for redirection 
+        - 500 mil * 5 * 12 ~ 500 * 5 * 10 ~ 25 bil 
+        - assuming each url needs 500 bytes: 500 * 25 bil ~ 500 * 30 bil ~ 15 000 (1 bil === i GB) ~ 15 TB 
+
+Bandwidth estimate: 
+- new url: 
+    - 160 rps and each url is 500 kb ~ 160 * 500 ~ 200 * 500 ~ 100,000 bytes ~ 100 kb/s
+- redirection url 
+    - 16 k rps ~ 500 bytes * 16K ~ 500 * 20 ~ 10,000 K bytes ~ 10,00 kb/s ~ 10 mb/s
+
+
+Memory estimate: (cache)
+- store 20% of th 80% traffic urls 
+- read is what we need to store in cache 
+    - 16k rps: 24 * 3600 * 16 ~ 25 * 4000 * 16 ~ 100,000 * 16k 
+
+API design 
+- Create URL 
+    - Parameters:
+        - Api_dev_key - this is needed to throttle a malecious user 
+        - original_url - the original url to be encoded for short url 
+        - alias_uls (optional) - if user wants to have their predefined alias url 
+        - retention_time (optional)
+    - returns 
+        - url_key
+- delete URL 
+    - Parameters:
+        - api_dev_key
+        - url_key 
+    - returns 
+        - url deleted success code 
+
+
+Data Storage 
+- Characteristics of the data 
+    - Billions of data which is small in size --- less than 1kb
+    - there is no relation in the data --- simple key value data storage 
+    - Service is read-heavy 
+
+- Schema 
+    - Table: URL 
+        - original_URL 
+        - creation_date_time
+        - expire_date_time 
+        - user_id
+
+    - Table: User 
+        - user_id
+        - email_id
+        - last_login
+        - creation_dt_tm
+
+- Choice of database: 
+    - since billions of data needs to be stored and there is no relation between the data, any NO-SQL db is a preferred choice 
+    such as DynamoDB, Cassandra, Raik 
+
+
+Algorithm 
+- [rejected]
+    - computing encoding at runt time 
+        - Encoding collision and multiple url may get same short key 
+        
+- [rejected]
+    - having a designated service to create Key generation and different application server will call it 
+        - single point of failure 
+
+- [Approved]
+    - have a different key generation server which will have the following characteristics 
+        - Create unique keys before hand and keep it in the cache
+        - mark all the cached key as read so that same key is not assigned twice 
+        - have replication of the un-used and used keys so that if the master fails, standby service can take over. 
+
+    - Application service can have some keys in their cache, and should call Key generation server before the cached keys are exhausted. 
+
+    - [pros]
+        - all the encoding is pre-computed and application server will be very light and should have low latency 
+        - system will be easy to scale as we dont need to monitor the used keys in different application service. 
+
+    - [drawback]
+        - if a application service or key generation server dies with unused cached keys, those keys will be lost forever. However, since the key repository is in trillions we can afford some wastage of keys. 
+
+
+Database sharding / Database lookup
+- [rejected]
+    - based on encoding index, this will create hot sports and un-even distribution 
+- [rejected]
+    - based on hash of the url encoding. This will also create hot spot. 
+- [approved]
+    - consistent hashing of the encoded key. 
+
+
+Cache 
+- since this is a read heavy workflow we should add a cache between application service and the database lookup.
+    - this could be a read through cache which can be updated if there is a cache miss 
+    - we should cache the 20% of the top 80% traffic. 
+
+Load balanceres
+- round robin between 
+    - client and application server 
+    - application server and cache server 
+    - application server and database 
+    - NOTE: application server and Key generation service doesn't need LB because the calls to key generation server will be very less. 
+
+Data purge 
+- having an api to purge all the expired data in real time will be too expensive as it will need a full table scan. 
+- options 
+    - Backed job: have a backend job which will clean the expired data in batch during off peak hours and release the keys for future usage. 
+    - lazy delete: when user ask for an expired entry, we can check for expiry date of the returned record and delete it. 
+
+Telemetry 
+- 
+
+Security 
+- 
+
+
