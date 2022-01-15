@@ -1,0 +1,123 @@
+Paste Bin
+
+Functional Requirement 
+
+- People should be able to paste text and get a unique link back 
+- people should be able to upload text 
+- people should be able to provide a custom link
+- people should be able to provide expiry time.
+
+Non functional Requirement 
+- Reliable: once a text is pasted it should not be lost before expiry 
+- Available: if a user wants to search for the pasted text, they should be able to get it back 
+- The links should not be guessable 
+
+Limitations 
+- max limit of content be 10 kb 
+- max limit of size of custom url 
+
+Traffic Estimates 
+- there will be 1 million new content request per day 
+- its a read heavy service expect 1 : 5 ratio 
+
+- QPS: 
+    - write path 
+        - 1 mill / (24 * 60 * 60) ~ 1 mill / (25 * 4000) ~ 10 rps 
+    - read path 
+        - 5 * 10 = 50 rps 
+
+Storage Estimates 
+- QPS write: 10 rps 
+    : per day = 10 * 24 * 60 * 60 ~ 10 * 25 * 4000 ~ 1 mil 
+    : 10 years = 10 * 365 * 1 mil ~ 10 * 400 * 1 mil ~ 4 billin 
+    : each write is 10 kb 
+        - Note: 1 bill == 1 GB 
+        - 4 bill * 10 kb == 40 TB 
+    Note: we need capacity where 70% == 40 TB 
+
+    : unique url -- 6 char 
+        - 4 bill * 6 bytes ~ 24 GB ---- insignificant with respect to write 
+
+
+Bandwidth Estimate 
+- ingress: QPS: 10  size: 10kb ~ 100 kb/s 
+- egress: 1:5 ~ 100 * 5 = 500 kb/s
+
+
+Memory estimates (Cache)
+- 20% of the hot request which makes 80% of the traffic 
+    - 5 mill reads per day 
+    - 80 % of 5 mill ~ 4 mill 
+    - 20 % of 4 mill ~ 800,000
+    - 10kb each - 800K * 10kb ~  8 * 100k * 10kb ~ 8 * 1gb ~ 8gb 
+
+API
+- Write 
+    - addPost(user_id, custom_url, content, expiry_time, tenant_key)
+        - returns a 8 char unique_url 
+        - tenant_key: to ensure a tenant is within their quota 
+- Read 
+    - readPost(unique_url)
+
+- delete 
+    - deletePost(unique_url, tenant_key)
+
+Data store type 
+- no relation of the data 
+- high read 
+- the data will be of medium size 
+- for all the above reasons we can use a SQL data base for the meta-data and object store for the actual content 
+- reason on separating the data 
+    - meta-data is small 
+    - content data can increase and having separate storage helps in scaling individually. 
+
+Database schema 
+- user_table 
+    - user_name 
+    - user_id
+
+- document_table 
+    - unique_url 
+    - content_id
+    - user_id
+    - expiry_time
+    - created_at 
+
+- content db 
+    - content_id 
+    - content_blob
+
+Architecture 
+- Client send request to the application server via Load Balance 
+- Application Server will be doing the following 
+    - for read 
+        - reach to the meta data cache 
+            - if not found will reach to the meta data storage 
+        - reach to the block storage 
+            - if not found will reach to the object store 
+    - for write 
+        - get a cached key from the local cache 
+            - if the cache is coming to empty, call key generation service for a new set of keys 
+        - store the meta-data in the meta-date storage 
+        - store the content in the object store 
+
+Purge Strategy 
+- job scheduler to delete the data during off peak hours 
+- lazy delete 
+    - if a user search for an entry which has been expired, we can delete it at that time. 
+
+Load balancers 
+- client and application server 
+- application server and cache look up for meta-data 
+- application server and object data look up 
+- application server and the actual data storage (both the metadata one and object store)
+- Note: there is no LB needed between application server and Key generating server because it will be called less frequently 
+
+Data partitioning and replication 
+- the data of object store should be sharded using consistent hashing technique based on content id. 
+- Key generating service is a single point of failure: 
+    - need to replicate this one so that when the leader dies a secondary one can take its place. 
+
+Security and permission. 
+
+

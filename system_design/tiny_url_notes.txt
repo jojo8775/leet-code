@@ -31,7 +31,7 @@ Bandwidth estimate:
 - new url: 
     - 160 rps and each url is 500 kb ~ 160 * 500 ~ 200 * 500 ~ 100,000 bytes ~ 100 kb/s
 - redirection url 
-    - 16 k rps ~ 500 bytes * 16K ~ 500 * 20 ~ 10,000 K bytes ~ 10,00 kb/s ~ 10 mb/s
+    - 16 k rps ~ 500 bytes * 16K ~ 500 * 20 ~ 10,000 K bytes ~ 10,000 kb/s ~ 10 mb/s
 
 
 Memory estimate: (cache)
@@ -92,8 +92,10 @@ Algorithm
 - [Approved]
     - have a different key generation server which will have the following characteristics 
         - Create unique keys before hand and keep it in the cache
-        - mark all the cached key as read so that same key is not assigned twice 
+        - mark all the cached key as used so that same key is not assigned twice 
         - have replication of the un-used and used keys so that if the master fails, standby service can take over. 
+        - how will you create unique keys at bulk?
+            - any hash also such as md5 and so on? 
 
     - Application service can have some keys in their cache, and should call Key generation server before the cached keys are exhausted. 
 
@@ -111,8 +113,8 @@ Database sharding / Database lookup
 - [rejected]
     - based on hash of the url encoding. This will also create hot spot. 
 - [approved]
-    - consistent hashing of the encoded key. 
-
+    - consistent hashing of the encoded key.
+        - Read a little about the consistent hashing  
 
 Cache 
 - since this is a read heavy workflow we should add a cache between application service and the database lookup.
