@@ -11,6 +11,7 @@ Non functional Requirement
 - Reliable: once a text is pasted it should not be lost before expiry 
 - Available: if a user wants to search for the pasted text, they should be able to get it back 
 - The links should not be guessable 
+- the latency should be low. 
 
 Limitations 
 - max limit of content be 10 kb 
