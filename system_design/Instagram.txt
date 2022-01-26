@@ -1,5 +1,99 @@
 Instagram
 
 functional requirement 
+- user should be able to upload / download / view photos 
+- user can perform search based phone / video titles 
+- user can follow other user 
+- system should generate and display user's news feed consisting of top photos from all the people the user follows 
 
-non functional requirement 
+non functional requirement
+- should be highly available 
+- news generation feed delay is acceptable till 200ms 
+- consistency can take a hit, if a user dont see a photo for a while should be fine (this is to accommodate high availability)
+- should be reliable - once a photo is uploaded, it should never be lost 
+
+
+design consideration 
+- user can upload as many photos as they want so the storage must be managed efficiently 
+- latency should be low 
+- 100% data reliability 
+
+traffic estimate / capacity estimates 
+- 500M users total 
+- daily active users are 1 mill 
+- 2 mil photos uploaded every day 
+- avg photo size is >= 200kb
+- total space needed for a day 
+    - 200 kb * 2 mil ~ 4 mil * 100 kb (1 mil ~ 1 mb) ~ 4 mb * 100 kb ~ 400 gb 
+- total space needed  for 10 years 
+    - 500 gb * 356 * 10 ~ 500 * 400 * 10 ~ 500 gb * 4000 ~ 500 Tb * 4 ~ 2 pb 
+
+
+Database schema 
+- because the data is so huge we cannot use SQL database. 
+- We need to use no-sql however there are relation ship to maintain 
+- schema: 
+    User_table 
+        - user_id (indexed)
+        - user_name
+        - user_email_id
+
+    photo_table
+        - photo id (indexed)
+        - photo_longitude 
+        - photo_latitude 
+        - user_longitude 
+        - user_latitude 
+        - creation_dt_tm (indexed)
+
+
+    relationship table 
+    user_photo
+        - user_id
+        - photo_id 
+
+    user_follow
+        - user_id (indexed)
+        - user_follow_ids 
+
+data size estimate 
+- user_table 
+    - each row : 100 bytes 
+    - 500 mill users ~ 500 mill * 100 ~ 50 bill ~ 50 GB 
+- photo_table 
+    - each row : 500 bytes 
+    - 2 mill photos per day 
+    - 10 years : 2 mil * 365 * 10 * 500 bytes ~ 2 mill * 400 * 10 * 500 bytes ~ 4 bill * 500 bytes ~ 2 TB 
+- user_follow
+    - each row : 10 bytes 
+    - 500 Mil user following 500 users on avg : 500 mil * 500 * 10 bytes ~ 500 mill * 5000 ~ 500 bil * 5 ~ 2.5 TB
+
+    total 50 gb + 2 tb + 2.5 tb ~ 4.5 tb 
+
+Component Design
+- Since this is a read heavy service 
+    - separate pipeline for read and write 
+    - write will go to disk 
+    - read will be performed from the cache 
+
+Reliability and Redundancy 
+- more than one storage 
+    - talk about the quorum --- go in details on this area 
+- more than one application server 
+    - this will address the high availability concern 
+
+
+Data sharding 
+- the database for Photo needs to be shared based on the photo id. 
+    - consistent key hash to be used for equal load balancing 
+    - using photo id as key helps in reducing the hot spot 
+        -- need more clarification on this part --- this is very high level 
+    - how to generate photo ids?
+        - using similar technique such as Tiny Url system 
+
+
+Ranking and news feed: 
+- since getting individual followee of a user and then retrieving top 100 photos at runtime will be costly we need to pre-compute this data. 
+
+
+
