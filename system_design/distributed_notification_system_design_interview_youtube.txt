@@ -1,0 +1,105 @@
+
+Distributed Notification system 
+
+video link: https://www.youtube.com/watch?v=bBTPZ9NdSk8&ab_channel=SystemDesignInterview
+
+Functional Requirement 
+- Create a topic 
+- Publish Message to a topic
+- Subscribe to a topic 
+
+Non functions 
+- Scalability: should be able to support large number of publisher and subscriber
+- Availability: Should be able to handle network partition. No single point of failure 
+- Latency: should be fast 
+- Durable: should be delivered atleast once and never lost 
+
+
+Design:
+
+Client -> load balance 
+Lb -> front end service 
+FE service -> meta data service 
+Meta data service -> Database 
+
+FE service -> temp storage 
+sender -> retrieves data from temp storage 
+sender -> retrieves data from meta data storage  
+    -> sends the data to all the subscribers 
+
+
+
+
+Details of each components 
+
+-> Front end host 
+    - reverse proxy 
+        - this is used to ssl validation 
+        - rate limiter 
+        - request encryption 
+        - request compression when the message is large 
+
+    - front end web service 
+        - calls the meta data service to get the topic information 
+
+    - local in-memory cache 
+        - to reduce calls to Meta data storage service 
+
+    - local data 
+        - used to get service log debug
+        - metrics --- latency and availability 
+        - Audit logs 
+
+    - reaches the configuration service to get the host id. The topic data is sharded using consistent hashing. 
+
+-> metadata service 
+     -  contains the information about the topic and the subscribers. 
+
+-> temporary storage 
+    - database : nosql since there is no acid transaction needed and there is no relation in the data 
+        - should be highly available and should handle data partision. 
+        - since the message will be very small we dont need a document db 
+        - since there is no relationship between the data model so graph is not needed 
+        - Key value or column data base are option.... we can select Key Value database for this usecase. 
+
+    - inmemory storage 
+        - redis 
+
+    - distributed message queues: 
+        - refer to the previous design ... 
+
+    - stream processing platform 
+        - need to watch the other video 
+
+-> sender component 
+    - thread manager: 
+        - manage the number of threads to read the temporary storage    
+            - using semaphore 
+    - meta data service client 
+        - gets the list of subscribers. Each message can have a large list of subscribers. 
+
+    - Task creator 
+        - This creates new thread to send the message to the subscribers 
+        - Semaphore can be used here as well for thread management. 
+        - If there is no more thread avaialble, the message can be put back to the queue 
+            - so the another sender service can pick the message 
+        - once all the subscribers get message, message can be deleted from the distributed queue 
+
+
+-> Additional topics 
+    - how to prevent spammers 
+        - subscriber for each topic needs to be registered... 
+    - duplicate message
+        - retry or issue with the client can cause duplicate message delivery 
+    - message order 
+        - in this system the message order can be any 
+    - security 
+        - the message in the queue should be encrypted and https should be used for over the network data transmission 
+    - monitoring 
+        - health check and dashboard should be created to monitor any outage 
+
+    
+
+
+
+

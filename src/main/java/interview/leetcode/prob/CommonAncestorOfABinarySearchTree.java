@@ -19,6 +19,22 @@ For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another exa
  *
  */
 public class CommonAncestorOfABinarySearchTree {
+    public TreeNode lowestCommonAncestor_adv(TreeNode root, TreeNode p, TreeNode q) {
+        while(root != null){
+            if(root.val > p.val && root.val > q.val){
+                root = root.left;
+            }
+            else if(root.val < p.val && root.val < q.val){
+                root = root.right;
+            }
+            else{
+                break;
+            }
+        }
+        
+        return root;
+    }
+	
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(p.val > q.val){
             return find(root, q, p);

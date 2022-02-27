@@ -12,36 +12,39 @@ package interview.leetcode.prob;
  *
  */
 public class RecoverBinarSearchTree {
-	private TreeNode t1 = null, t2 = null, prev = new TreeNode(Integer.MIN_VALUE);
+    TreeNode t1 = null, t2 = null, prev = null;
+    
+    public void recoverTree(TreeNode root) {
+        findRoot(root);
+        
+        int temp = t1.val;
+        t1.val = t2.val;
+        t2.val = temp;
+    }
+    
+    private void findRoot(TreeNode node){
+        if(node == null){
+            return;
+        }
+        
+        findRoot(node.left);
+        
+        if(prev != null){
+            if(t1 == null && prev.val >= node.val){
+                t1 = prev;
+                // System.out.println("t1:"  + t1.val);
+            }
 
-	public void recoverTree(TreeNode root) {
-		find(root);
-
-		// time to swap
-		int temp = t1.val;
-		t1.val = t2.val;
-		t2.val = temp;
-	}
-
-	private void find(TreeNode root) {
-		if (root == null) {
-			return;
-		}
-
-		find(root.left);
-
-		if (t1 == null && prev.val >= root.val) {
-			t1 = prev;
-		}
-
-		if (t1 != null && prev.val >= root.val) {
-			t2 = root;
-		}
-
-		prev = root;
-
-		find(root.right);
-	}
+            if(t1 != null && prev.val >= node.val){
+                t2 = node;
+                // System.out.println("t2:"  + t2.val);
+            }
+        }
+        
+        prev = node;
+        
+        findRoot(node.right);
+    }
 
 	private static class TreeNode {
 		int val;

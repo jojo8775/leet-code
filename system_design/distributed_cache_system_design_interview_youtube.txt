@@ -1,0 +1,45 @@
+
+Distributed cached system 
+
+video link: https://www.youtube.com/watch?v=iuqZvajTOyA&t=2s
+
+Functional Requirement 
+- put an entry in the cache (key, value)
+- get the value of a key if exist. 
+
+Non Functional Requirement 
+- Should be performant (think about an efficient storage)
+- Should be scalable = with more data it should be able to scale up if needed 
+- should be available -- ?? 
+
+Strategy 
+    -> have a dedicated cache service host which FE service will interact using a client of that cache 
+    -> each cache will be sharded using consistent hashing 
+    -> cache client can be responsible to connect to the configuration service to identify the correct cache host based on the consistent hashing
+    -> if cache needs to be a light weight then we can delegate this with to a proxy 
+        - learn the key difference between the proxy and reverse proxy
+
+Additional topics 
+ - Consistency 
+    - since we have data replication for each cache host we can replicate asynchronously or synchronously. In synchronous way it will add latency and since 
+    cache needs to be highly performant we should make this replication process as asynchronous. 
+
+ - Data expiration 
+    - since the data may be old and stale after sometime we should add an expiry time stamp on each of the entry. We can remove them in a lazy fashion or as a 
+    background job with will select message randomly for expiry as checking each message iteratively will very resources intensive when a service had billions of entries. 
+
+ - Local and remote cache 
+    - client can have a thin local memory layer which will further reduce the round trip 
+
+ - Security 
+    - cache api should be protected against a firewall and it should be kept secured. 
+
+ - monitoring 
+    - we should have a monitors in place to detect latency and availability spike for the internal process of cache. 
+
+ - cache client 
+    - client cache can be kept light weight by removing the logic of reaching to a configuration service to identify the host of the cache service. This can be performed by a proxy service.  
+
+ - consistent hashing 
+    - consistent hashing - drawback is hot spot and domino effect. If a host dies due to hot spot issue then the next host get the existing + the previous host service load which leads to overload of the current host. This effect is called domino effect. 
+

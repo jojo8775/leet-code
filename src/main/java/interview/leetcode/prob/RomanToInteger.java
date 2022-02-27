@@ -8,7 +8,7 @@ package interview.leetcode.prob;
  * @author jojo
  *
  */
-public class RpmanToInteger {
+public class RomanToInteger {
 	public int romanToInt(String s) {
 		int result = 0, prev = 0, cur = 0, count = s.length() - 1;
 		while (count >= 0) {

@@ -3,8 +3,10 @@ package interview.leetcode.prob;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
@@ -35,6 +37,33 @@ Visually, the graph looks like the following:
  *
  */
 public class CloneGraph {
+	public Node cloneGraph(Node node) {
+		Map<Node, Node> map = new HashMap<>();
+		map.put(node, new Node(node.val));
+		
+		Queue<Node> queue = new LinkedList<>();
+		queue.offer(node);
+		
+		while(!queue.isEmpty()) {
+			Node top = queue.poll();
+			Node cNode = map.get(top);
+			
+			for(Node nei : top.neighbours) {
+				if(map.get(nei) == null) {
+					Node cNei = new Node(nei.val);
+					map.put(nei, cNei);
+					cNode.neighbours.add(cNei);
+					queue.offer(nei);
+				}
+				else {
+					cNode.neighbours.add(map.get(nei));	
+				}
+			}
+		}
+		
+		return map.get(node);
+	}
+	
 	public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
 		if (node == null) {
 			return null;
@@ -85,6 +114,15 @@ public class CloneGraph {
 		UndirectedGraphNode(int x) {
 			label = x;
 			neighbors = new ArrayList<UndirectedGraphNode>();
+		}
+	}
+	
+	private static class Node{
+		int val;
+		List<Node> neighbours = new ArrayList<>();
+		
+		public Node(int val) {
+			this.val = val;
 		}
 	}
 }

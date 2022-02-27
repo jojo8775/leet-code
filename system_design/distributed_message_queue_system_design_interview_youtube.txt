@@ -1,0 +1,109 @@
+
+Distributed Message Queue 
+
+Video link: https://www.youtube.com/watch?v=iJLL-KPqBpM&t=13s&ab_channel=SystemDesignInterview
+
+- Producer creates a message and consumer useses the message 
+- Queue Vs Topic 
+    - Queue : there is 1:1 producers and consumers 
+    - Topic : publisher and N subscribers 
+
+Functional Requirement 
+- Post Message 
+- Retrieve Message
+Optional
+- Order Guaranties 
+- Security 
+- single delivery vs at most single delivery 
+
+Non Functional requirement 
+- Scalable - should be able to handle large number of messages 
+- Available - there should not be a single point of failure 
+- Durable - There should not be any loss in data 
+- Highly Performant - The latency should be in single digit MS 
+
+
+Architecture : 
+
+- Client 
+    - Producers 
+    - Consumers
+
+
+Data Flow: 
+Client (Producer) 
+    -> sends to the VIP 
+    -> which points to LB 
+    -> LB reachout to Front end server
+    -> FE server calls Metadata cache 
+    -> meta data cache server calls the DB 
+    -> FE server calls the Local temp storage and puts the payload 
+
+
+
+Details of the components 
+-> LB and VIP 
+    - Clients calls lands to LB using VIB 
+    - LB has connections to different FE server 
+
+-> FE Server (light weight and stateless machine)
+    - Request validation 
+    - SSL and TLS termination 
+    - Authentication 
+    - server side encryption 
+    - Request De-duplication 
+    - Request dispatching - sending message to the backend server  
+    - caching (in-memory and distributed cache)
+    - Rate limiting 
+    - Monitoring - telemetry 
+    - there are multiple instances of meta data service and the data is sharded based on the queue identifier. Configuration service is used to get the address of the meta data service host. The sharding is done using consistent key
+
+
+-> Metadata service 
+    - caching layer between the database and the data persistent storage 
+    - read heavy as the data is read when ever there is a message in the queue and written when there is a new queue created 
+    - strong consistency is needed. --- check the also expert video to see the details of the implementation. 
+
+-> Meta data storage 
+    - a persistent storage (KV database) maintaining data such as queue creating date time, last modified time, owner and so on. 
+    - it should be a distributed data storage --- but the throughput should be very low 
+        - ram and file storage of the host is an option 
+        - for durability the data should be written on replica instances aswell 
+
+-> backend storage 
+    - there should be multiple host in each cluster 
+    - FE server can know the host information from the meta data storage 
+    - there can be a cluster manager --- which is same as the zookeper which will monitor the mapping of each queue id and the host / cluster 
+        - two setup 
+            - leader / follower : in this setup a mapping is maintained between queue id and the cluster and the  leader of the cluster
+            - in-cluster management where the mapping points to any random host of a cluster and then the host replicate the data to all the remaining hosts of that cluster.
+
+-> additional topics 
+    - Queue Creating and deletion  
+        - the creation if asynchronous replication will have less data durability - synchronous replication will have higher durability but at the cost of latency 
+        - deletion will be a data loss and should have CMD line invoke for advanced admin users 
+
+    - Message deletion
+        - when a message is retrieved by a client it should be marked as visited and should be hidden from the other thread to avoid duplicate delivery 
+        - Message should be explicitly deleted by the consuming client otherwise it will be delivered again 
+        - Message delivery 
+            - in this system it will be deliver atleast once model. At most once model is hard to achieve... more digging is needed to explain why it is hard to achieve 
+     Push VS Pull 
+        - in this system we have designed a pull message delivery.. 
+        - pull is easy it implement from the service side and push is harder to implement as semaphore concept and retry logic needs to be implemented. 
+        - long poll is a good option. 
+     Fifo 
+        - different mechanism can be applied message delivery to maintain the order of the message 
+     Security 
+        - the data needs to be encrypted in the queue but this will add latency 
+        - the backend host should be behind a firewall so that they can only be accessed by the FE servers. 
+
+     telemetry 
+        - there should be dashboard and telemetry data to monitor system bottle neck and health. 
+
+
+
+
+
+
+
