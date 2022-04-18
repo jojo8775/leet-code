@@ -55,4 +55,67 @@ public class BestTimeToBuyAndSellStockIV {
 		
 		return profitDP[k][prices.length - 1];
 	}
+	
+    private int topDown(int k, int[] prices) {
+        int[][][] memo = new int[prices.length][k + 1][2];
+        
+        return dp(0, k, 0, prices, memo);
+    }
+    
+    private int dp(int idx, int remainingTransactions, int holding, int[] prices, int[][][] memo){
+        if(idx == prices.length || remainingTransactions == 0){
+            return 0;
+        }
+        
+        // memo
+        if(memo[idx][remainingTransactions][holding] != 0){
+            return memo[idx][remainingTransactions][holding];
+        }
+        
+        int doNothing = dp(idx + 1, remainingTransactions, holding, prices, memo);
+        int doSomething;
+        
+        if(holding == 1){
+            // selling
+            doSomething = prices[idx] + dp(idx + 1, remainingTransactions - 1, 0, prices, memo);
+        }
+        else{
+            // buying
+            doSomething = - prices[idx] + dp(idx + 1, remainingTransactions, 1, prices, memo);
+        }
+        
+        // relation
+        memo[idx][remainingTransactions][holding] = Math.max(doNothing, doSomething);
+        
+        return memo[idx][remainingTransactions][holding];
+    }
+    
+    private int bottomUp(int k, int[] prices) {
+        // states
+        int[][][] dp = new int[prices.length + 1][k + 1][2];
+        
+        for(int idx=prices.length - 1; idx>=0; idx--){
+            for(int remainingTransactions = 1; remainingTransactions <= k; remainingTransactions++){
+                for(int holding = 0; holding < 2; holding++){
+                    int doNothing = dp[idx + 1][remainingTransactions][holding];
+                    
+                    int doSomething;
+                    
+                    if(holding == 1){
+                        // sell
+                        doSomething = prices[idx] + dp[idx + 1][remainingTransactions - 1][0];
+                    }
+                    else{
+                        // buy
+                        doSomething = - prices[idx] + dp[idx + 1][remainingTransactions][1];
+                    }
+                    
+                    // relation
+                    dp[idx][remainingTransactions][holding] = Math.max(doSomething, doNothing);
+                }
+            }
+        }
+        
+        return dp[0][k][0];
+    }
 }

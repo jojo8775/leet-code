@@ -1,0 +1,57 @@
+
+https://www.youtube.com/watch?v=4-Zw8jge0lE
+
+DP notes 
+
+- When to use DP solution 
+    - a problem can be broken into smaller parts 
+    - each smaller parts has optimal state --- basically the each sub parts should record the max / optimal value. 
+    - when the current decision effects the future state outcome. 
+        - House Robber - where two consecutive houses cannot be robbed. If we do greedy approach the answer will be wrong 
+        - Increasing sub-sequence - where we need to find the longest increasing sub-sequence. Greedy approach wont work here.
+
+    - Usually when looking for the 3rd option, consider Greedy wont work, then try to justify it. It is easier that way to identify if Greedy or DP will work. 
+
+    - Common question patterns 
+        - find the maximum / minimum profit / cost .... 
+        - find the number of ways ... 
+        - find the longest possible ... 
+        - Can a certain point be reached ... 
+
+- Framework of the solution
+    - this contains 3 sections. Example taken here is the number of ways climbing the steps problem.
+        - state: related variables which can be used to define a scenario of the given problem 
+            - in this case it is the "Steps". For example how many ways to climb to the step: 8, 9 and so on. 
+            - related variables which can effect a given scenario. Color of socks in this problem is irrelevant to the decide the number of ways a step can be reached. However, if in the problem there was a limit to the number of steps can be taken then, number of steps so far would have qualified as a related variable. This is because reaching step 8 using 4 steps vs using 5 steps are different, and it will effect future decision.
+
+        - relation: ways how each sub-problems are related. This is the hardest part of DP. In the given example we can compute number of ways for step 30 by using the number of ways for (step 29 + step 28)
+
+        - base case: this is the easiest part of the DP. we need to think in terms of where our recursion / breaking of the actual problem to sub problems should terminate. Usually the base case result is something we can get without DP. For example the base case for Climbing Stairs: is Step 1 and Step 2. From the problem statement it was provided that Step 1 = 1 and Step 2 = 2 
+
+    - there are two approaches for the above template.
+        - Top down --- this uses recursion with memorization. Usually a HashMap is used for storing the previously computed results. (memorization)
+            - this is visually easy to reach to.
+            - starts the problem at the top and then keep breaking the problem into smaller sub parts. 
+            - after solving the sub parts, puts the result in the memorization, so that they can used to solve the parent problem
+
+        - Bottom Up --- this uses iteration and in general they are better performant than Top-Down approach. 
+            - This starts at the base case, and then iterate towards the end result 
+
+
+    - Conversion of Top-Down to Bottom-up 
+        - Have a functional top-down solution 
+        - Define the state of the problem in an Array. If the problem has multi-dimension state, we need to use  multi-dimension array. 
+            - for example a number array "nums" is given and "k" jumps constrain is provided, then the state variable will be 2D array with int[][] arr = new int[nums.length][k];
+            - assign the default value to opposite of what is being asked. 
+                - we we are finding the max value then assign the default value as MIN_VALUE and vice versa.
+
+        - for multi-dimension there will be nested for loops 
+            - each iteration in the innermost loop should represent a state 
+            - each loop should start from the base case to the limit 
+            - the logic in the inner loop should be same as the function logic in Top-Down approach 
+
+        - at the end of iteration, the state variable will have all the result in it, and the final result will be at the end of the array.
+        
+
+
+

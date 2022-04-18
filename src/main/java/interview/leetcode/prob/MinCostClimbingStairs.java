@@ -1,5 +1,7 @@
 package interview.leetcode.prob;
 
+import java.util.Map;
+
 /**
  * On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
 
@@ -39,4 +41,56 @@ public class MinCostClimbingStairs {
         
         return Math.min(prev2, prev1);
     }
+    
+    public int minCostClimbingStairs_all_dp_concept(int[] cost) {
+        // return topDown(cost, cost.length, new HashMap<Integer, Integer>());
+        // return bottomUp(cost);
+        return bottomUp_adv(cost);
+    }
+     
+     private int bottomUp_adv(int[] cost){
+         int prev = cost[0]; // state : cost from step i | Base case
+         int cur = cost[1];  // state : cost from step i | Base case
+         int len = cost.length;
+         
+         for(int i=2; i<len; i++){
+             int next = cost[i] + Math.min(prev, cur); // relation
+             prev = cur;
+             cur = next;
+         }
+         
+         return Math.min(prev, cur); // relation
+     }
+     
+     private int bottomUp(int[] cost){
+         int len = cost.length;
+         int[] dp = new int[len + 1]; // state
+         
+         for(int i=2; i<=len; i++){
+             int oneStepBack = cost[i - 1] + dp[i - 1]; 
+             int twoStepBack = cost[i - 2] + dp[i - 2];
+             
+             dp[i] = Math.min(oneStepBack, twoStepBack); // relation
+         }
+         
+         return dp[len];
+     }
+     
+     private int topDown(int[] cost, int idx, Map<Integer, Integer> memo){
+         if(idx <= 1){ // base case
+             return 0;
+         }
+         
+         if(memo.containsKey(idx)){ // memonization
+             return memo.get(idx);
+         }
+         
+         int oneStepBack = cost[idx - 1] + topDown(cost, idx - 1, memo); 
+         int twoStepBack = cost[idx - 2] + topDown(cost, idx - 2, memo);
+         
+         int val = Math.min(oneStepBack, twoStepBack); // relation
+         memo.put(idx, val);
+         
+         return val;
+     }
 }
