@@ -11,6 +11,7 @@ public class Pract5 {
 			return -1;
 		}
 
+		// pre-calculating the hardest job for a given day if only one day was left 
 		int[] hardestJobRemaining = new int[n];
 		int hardestJob = 0;
 		for (int i = n - 1; i >= 0; i--) {
@@ -44,6 +45,7 @@ public class Pract5 {
 		int n = jobDifficulty.length;
 		for (int i = jobIdx; i < n - (days - dayIdx); i++) {
 			hardest = Math.max(hardest, jobDifficulty[i]);
+			
 			// Recurrence relation
 			best = Math.min(best, hardest + dp(i + 1, dayIdx + 1, jobDifficulty, days, memo, hardestJobRemaining));
 		}
