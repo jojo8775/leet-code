@@ -49,7 +49,28 @@ public class EncodeNAryTreeToBinaryTree {
 	class Codec {
 	    // Encodes an n-ary tree to a binary tree.
 	    public TreeNode encode(Node root) {
-	        return createTreeNode(root);
+	        return encode_adv(root);
+	        // return createTreeNode(root);
+	    }
+	    
+	    private TreeNode encode_adv(Node root){
+	        if(root == null){
+	            return null;
+	        }
+	        
+	        TreeNode tNode = new TreeNode(root.val);
+	        if(root.children != null && root.children.size() > 0){
+	            tNode.left = encode_adv(root.children.get(0));
+	        }
+	        
+	        TreeNode child = tNode.left;
+	        
+	        for(int i=1; i<root.children.size(); i++){
+	            child.right = encode_adv(root.children.get(i));
+	            child = child.right;
+	        }
+	        
+	        return tNode;
 	    }
 	    
 	    private TreeNode createTreeNode(Node root){
@@ -78,7 +99,27 @@ public class EncodeNAryTreeToBinaryTree {
 		
 	    // Decodes your binary tree to an n-ary tree.
 	    public Node decode(TreeNode root) {
-	        return createNode(root);
+	        return decode_adv(root);
+	        // return createNode(root);
+	    }
+	    
+	    private Node decode_adv(TreeNode root){
+	        if(root == null){
+	            return null;
+	        }
+	        
+	        List<Node> children = new ArrayList<>();
+	        if(root.left != null){
+	            TreeNode child = root.left;
+	            while(child != null){
+	                children.add(decode_adv(child));
+	                child = child.right;
+	            }
+	        }
+	        
+	        Node node = new Node(root.val);
+	        node.children = children;
+	        return node;
 	    }
 	    
 	    private Node createNode(TreeNode root){
