@@ -42,4 +42,27 @@ public class RandomPickIndex {
         
         return index;
     }
+    
+//   intuituve solution and same runtime 
+    
+//    private Map<Integer, List<Integer>> map = new HashMap<>();
+//    
+//    public Solution(int[] nums) {
+//        for(int i=0; i<nums.length; i++){
+//            map.computeIfAbsent(nums[i], v -> new ArrayList<Integer>());
+//            map.get(nums[i]).add(i);
+//        }
+//    }
+//    
+//    public int pick(int target) {
+//        List<Integer> val = map.get(target);
+//        
+//        int idx = pickRandom(0, val.size() - 1);
+//        return val.get(idx);
+//    }
+//    
+//    
+//    private int pickRandom(int beg, int end){
+//        return beg + (int)(Math.random() * (end - beg + 1));
+//    }
 }

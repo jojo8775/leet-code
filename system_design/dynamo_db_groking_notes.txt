@@ -1,1 +1,10 @@
-Groking notes
+
+# merkel Trees 
+
+- used to efficiently sync different version of data.
+- This is used when a node has fallen behind significantly 
+
+
+
+# gossip protocol 
+- Dynamo is completely decentralized and doesnt maintains any central co-ordication service, so each node knows about other nodes using gossip protocol 
