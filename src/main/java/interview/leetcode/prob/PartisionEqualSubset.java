@@ -65,6 +65,43 @@ public class PartisionEqualSubset {
         return grid[sum/2][nums.length];
     }
     
+    public boolean canPartition_topdown(int[] nums) {
+        int sum = 0;
+
+        for(int n : nums){
+            sum += n;
+        }
+
+        if(sum % 2 != 0){
+            return false;
+        }
+
+        int subsetSum = sum/2;
+
+        Boolean[][] memo = new Boolean[nums.length + 1][subsetSum + 1];
+
+        return dp(nums, nums.length - 1, subsetSum, memo);
+    }
+
+    private boolean dp(int[] nums, int n, int subsetSum, Boolean[][] memo){
+        if(n < 0 || subsetSum < 0){
+            return false;
+        }
+
+        if(subsetSum == 0){
+            return true;
+        }
+
+        if(memo[n][subsetSum] != null){
+            return memo[n][subsetSum];
+        }
+
+        boolean val = dp(nums, n-1, subsetSum, memo) || dp(nums, n-1, subsetSum - nums[n], memo);
+
+        memo[n][subsetSum] = val;
+        return val;
+    }
+    
     public boolean canPartition_rec(int[] nums) {
         int sum = 0;
         for(int n : nums){
