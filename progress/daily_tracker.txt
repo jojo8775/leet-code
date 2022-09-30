@@ -18,6 +18,50 @@
     === if time permits then read the wide column one.
 
 
+interesting problems
+- https://leetcode.com/problems/length-of-the-longest-alphabetical-continuous-substring/
+- https://leetcode.com/problems/find-three-consecutive-integers-that-sum-to-a-given-number/
+- https://leetcode.com/problems/maximum-consecutive-floors-without-special-floors/
+
+
+
+daily tracker: 
+8:00 - 9:00 --- clean room + shower 
+9:00 - 11:15 --- workout 
+
+11:15 - 12:00 --- study 
+    - solve problem
+        3
+12:00 - 12:45 --- lunch
+12:45 - 2:00  --- costco trip
+2:10 - 5:30 --- office work 
+5:30 - 8:00   ---- cooking dinner 
+08:00 - 10:00 --- lights of the green house 
+10:00 - 10:30 --- black hole 
+10:40 - 11:30 --- last study
+
+
+
+5:10 - 6:00 time pass 
+6:00 - 7:20 cook 
+7:35 - 8:10 dinner 
+8:15 - 8:50 study 
+    - completed 1 problem 
+9:10 - 10:00
+
+
+---------------------
+9/19
+    - 9:00 - 10:20 : planning 
+    - 10:30 - 11:30 - clean + bath 
+    - 11:30 - 12:30 - lunch 
+    - 12:30 - 1:00 
+        - gayab
+    
+09/20
+
+09/21
+    - 
 
 
 
