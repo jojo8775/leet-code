@@ -219,4 +219,19 @@ Math
 
 no conclusion:
 https://leetcode.com/problems/target-sum/submissions/
+https://leetcode.com/problems/burst-balloons/
+https://leetcode.com/problems/detect-squares/
+
+
+
+
+-----------------------------------------------------
+
+// Oct 01 - 15 
+- Problems 200
+    - 
+
+- System design 2 chapter 
+    - 
+
 
