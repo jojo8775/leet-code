@@ -3,23 +3,33 @@ package interview.leetcode.prob;
 import java.util.Stack;
 
 public class SumOfTotalStrengthOfWizard {
-	public int totalStrength(int[] A) {
-        int res = 0, ac = 0, mod = (int)1e9 + 7, n = A.length;
+	public int totalStrength(int[] strength) {
+		int mod = (int)1e9 + 7;
+		int result = 0, ac = 0, n = strength.length;
+        
         Stack<Integer> stack = new Stack<>();
-        int[] acc = new int[n + 2];
+        
+        int[] arr = new int[n + 2];
         for (int r = 0; r <= n; ++r) {
-            int a = r < n ? A[r] : 0;
+            int a = r < n ? strength[r] : 0;
             ac = (ac + a) % mod;
-            acc[r + 1] = (ac + acc[r]) % mod;
-            while (!stack.isEmpty() && A[stack.peek()] > a) {
-                int i = stack.pop();
-                int l = stack.isEmpty() ? -1 : stack.peek();
-                long lacc = l < 0 ? acc[i] : acc[i] - acc[l], racc = acc[r] - acc[i];
-                int ln = i - l, rn = r - i;
-                res = (int)(res + (racc * ln - lacc * rn) % mod * A[i] % mod) % mod;
+            arr[r + 1] = (ac + arr[r]) % mod;
+            
+            while (!stack.isEmpty() && strength[stack.peek()] > a) {
+                int top = stack.pop();
+                
+                int left = stack.isEmpty() ? -1 : stack.peek();
+                
+                long lacc = left < 0 ? arr[top] : arr[top] - arr[left], racc = arr[r] - arr[top];
+                
+                
+                int ln = top - left, rn = r - top;
+                result = (int)(result + (racc * ln - lacc * rn) % mod * strength[top] % mod) % mod;
             }
+            
             stack.push(r);
         }
-        return (res + mod) % mod;
+        
+        return (result + mod) % mod;
     }
 }
