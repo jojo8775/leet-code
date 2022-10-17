@@ -2,7 +2,9 @@ package interview.leetcode.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Prac7 {
 	public List<List<Integer>> combine(int n, int k) {
@@ -94,6 +96,34 @@ public class Prac7 {
 	    return true;
 	}
 	
+	public List<List<String>> groupAnagrams(String[] strs) {
+	    Map<String, List<String>> map = new HashMap<>();
+
+	    for(String s : strs){
+	        String key = createKey(s);
+
+	        map.computeIfAbsent(key, v -> new ArrayList<>()).add(s);
+	    }
+
+	    List<List<String>> result = new ArrayList<>(map.values());
+	    return result;
+	}
+
+	private String createKey(String s){
+	    int[] arr = new int[26];
+
+	    for(int i=0; i < s.length(); i++){
+	        arr[s.charAt(i) - 'a']++;
+	    }
+
+	    StringBuilder sb = new StringBuilder();
+	    for(int n : arr){
+	        sb.append(n).append(",");
+	    }
+
+	    return sb.toString();
+	}
+	
 	public static void main(String[] args) {
 		var sol = new Prac7();
 		
@@ -105,8 +135,12 @@ public class Prac7 {
 //			System.out.println();
 //		}
 		
-		var result = sol.solveNQueens(11);
+//		var result = sol.solveNQueens(11);
+		var result = sol.groupAnagrams(new String[]{"eat","tea","tan","ate","nat","bat"});
 		
-		result.forEach(x -> x.forEach(y -> System.out.println(y)));
+		result.forEach(x -> {
+			x.forEach(y -> System.out.print(y + ","));
+			System.out.println();
+		});
 	}
 }

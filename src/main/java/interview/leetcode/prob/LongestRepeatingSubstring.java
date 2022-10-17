@@ -1,5 +1,8 @@
 package interview.leetcode.prob;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Given a string S, find out the length of the longest repeating substring(s). Return 0 if no repeating substring exists.
 
@@ -36,7 +39,42 @@ The string S consists of only lowercase English letters from 'a' - 'z'.
  * Jun 29, 2019 5:24:02 PM
  */
 public class LongestRepeatingSubstring {
-	public int longestRepeatingSubstring(String S) {
+	 public int longestRepeatingSubstring(String S) {
+	        int len = S.length(), left = 0, right = len - 1;
+	        
+	        while(left <= right){
+	            int mid = left + (right - left)/2;
+	            
+	            if(search(mid, S, len) != -1){
+	                left = mid + 1;
+	            }
+	            else{
+	                right = mid - 1;
+	            }
+	        }
+	        
+	        return left;
+	    }
+	    
+	    private int search(int mid, String s, int len){
+	        String maxString = "";
+	        Set<String> set = new HashSet<>();
+	        
+	        for(int start = 0; start < len - mid; start++){
+	            String str = s.substring(start, start + mid + 1);
+	            
+	            if(!set.add(str)){
+	                if(str.length() > maxString.length()){
+	                    maxString = str;
+	                }
+	            }
+	        }
+	        
+	        return maxString.isEmpty() ? -1 : maxString.length();
+	    }
+	
+	
+	public int longestRepeatingSubstring_1(String S) {
         int len = S.length(), result = 0;
         if(len == 0){
             return result;

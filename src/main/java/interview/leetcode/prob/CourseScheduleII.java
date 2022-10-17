@@ -30,6 +30,54 @@ The input prerequisites is a graph represented by a list of edges, not adjacency
  *
  */
 public class CourseScheduleII {
+	public int[] findOrder_adv(int numCourses, int[][] prerequisites) {
+	    Map<Integer, List<Integer>> graph = new HashMap<>();
+
+	    int[] courses = new int[numCourses];
+
+	    for(int[] p : prerequisites){
+	        List<Integer> val = graph.get(p[1]);
+
+	        if(val == null){
+	            val = new ArrayList<>();
+	            graph.put(p[1], val);
+	        }
+
+	        val.add(p[0]);
+
+	        courses[p[0]]++;
+	    }
+
+	    Queue<Integer> queue = new LinkedList<>();
+
+	    for(int i=0; i<numCourses; i++){
+	        if(courses[i] == 0){
+	            queue.offer(i);
+	        }
+	    }
+
+	    int[] result = new int[numCourses];
+	    int idx = 0;
+
+	    while(numCourses > 0 && !queue.isEmpty()){
+	        int top = queue.poll();
+	        numCourses--;
+	        result[idx++] = top;
+
+	        for(int nei : graph.getOrDefault(top, new ArrayList<>())){
+	            courses[nei]--;
+
+	            if(courses[nei] == 0){
+	                queue.offer(nei);
+	            }
+	        }
+
+	        graph.remove(top);
+	    }
+
+	    return numCourses == 0 ? result : new int[]{};
+	}
+	
 	public int[] findOrder(int numCourses, int[][] prerequisites) {
 		Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
 		for (int i = 0; i < numCourses; i++) {
@@ -70,7 +118,7 @@ public class CourseScheduleII {
 
 		return result;
 	}
-
+	
 	public static void main(String[] args) {
 		int[][] pre = new int[2][2];
 		// pre[0] = new int[] {1,0};
