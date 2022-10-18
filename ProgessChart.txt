@@ -1,3 +1,98 @@
+Substring With Largest Variance 37.0%   Hard    
+Sum of Total Strength of Wizards    27.8%   Hard    
+Analyze User Website Visit Pattern
+Reorder Data in Log Files   56.4%   Medium  
+Count Unique Characters of All Substrings of a Given String 51.5%   Hard    
+Concatenated Words  45.4%   Hard    
+Minimum Health to Beat Game
+Sum of Subarray Ranges  60.2%   Medium  
+LRU Cache   40.5%   Medium  
+Number of Islands   56.1%   Medium  
+Minimum Number of Moves to Make Palindrome  50.6%   Hard    
+Maximum Number of Books You Can Take
+Total Appeal of A String    58.1%   Hard    
+Plates Between Candles  44.7%   Medium  
+Integer to English Words    29.9%   Hard    
+Number of Ways to Select Buildings  50.7%   Medium  
+K Closest Points to Origin  65.9%   Medium  
+Word Ladder 36.6%   Hard    
+Find K-th Smallest Pair Distance    36.3%   Hard    
+Search Suggestions System   66.7%   Medium  
+Find Triangular Sum of an Array 79.1%   Medium  
+Sequentially Ordinal Rank Tracker   66.2%   Hard    
+Minimum Number of Keypresses
+Meeting Rooms II
+Trapping Rain Water 58.7%   Hard    
+Design In-Memory File System
+Minimum Number of Swaps to Make the Binary String Alternating   41.9%   Medium  
+Merge k Sorted Lists    48.3%   Hard    
+Find the K-Sum of an Array  35.8%   Hard    
+Maximum Length of Subarray With Positive Product    43.7%   Medium  
+Maximum Units on a Truck    74.0%   Easy    
+Rotting Oranges 52.4%   Medium  
+Build Binary Expression Tree From Infix Expression
+Boundary of Binary Tree
+All Nodes Distance K in Binary Tree 62.1%   Medium  
+Design an Expression Tree With Evaluate Function
+Course Schedule 45.3%   Medium  
+Reorganize String   52.7%   Medium  
+Design Parking System   88.0%   Easy    
+Sliding Window Maximum  46.6%   Hard    
+Make Array Zero by Subtracting Equal Amounts    72.5%   Easy    
+Copy List with Random Pointer   50.3%   Medium  
+Minimum Adjacent Swaps to Make a Valid Array
+Find Median from Data Stream    51.1%   Hard    
+Word Break II   44.2%   Hard    
+Course Schedule II  47.9%   Medium  
+Longest Duplicate Substring 30.7%   Hard    
+Group Anagrams  65.8%   Medium  
+Letter Combinations of a Phone Number   55.5%   Medium  
+Integer to Roman    60.4%   Medium  
+Making A Large Island   44.7%   Hard    
+Serialize and Deserialize Binary Tree   54.9%   Hard    
+Two Sum 49.1%   Easy    
+Evaluate Division   59.4%   Medium  
+Word Search II  37.0%   Hard    
+Find Good Days to Rob the Bank  49.1%   Medium  
+Maximum Number of Robots Within Budget  31.5%   Hard    
+Design Tic-Tac-Toe
+Race Car    43.6%   Hard    
+Asteroid Collision  44.4%   Medium  
+Maximum Twin Sum of a Linked List   81.6%   Medium  
+Snakes and Ladders  40.8%   Medium  
+Smallest Range Covering Elements from K Lists   60.3%   Hard    
+Basic Calculator II 42.1%   Medium  
+Candy   40.6%   Hard    
+Sequential Digits
+
+
+unsolved 
+https://leetcode.com/problems/longest-duplicate-substring/
+concept link: https://www.youtube.com/watch?v=BfUejqd07yo&ab_channel=StableSort
+
+good finds 
+- https://leetcode.com/problems/maximum-number-of-robots-within-budget/discuss/2524838/JavaC%2B%2BPython-Sliding-Window-O(n)-Solution
+    - contains all the problems related to stack 
+
+
+
+28726
+62782
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 BFS: -------------------------- : 2 
 DFS: -------------------------- : 1
