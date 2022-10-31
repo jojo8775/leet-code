@@ -54,6 +54,7 @@ public class MaximumTotalBeautyOfTheGarden {
 			
 			// filling the gardens 
 			remainingFlowers -= Math.max(0, target - flowers[idx]);
+			
 			--idx;
 		}
 
