@@ -2,6 +2,11 @@ package interview.leetcode.prob;
 
 import java.util.Stack;
 
+/**
+ * 
+ * @author jojo
+ * Nov 1, 2022 9:09:01 PM
+ */
 public class MaximumSubarrayMinProduct {
 	private int mod = (int) (1e9+7);
 	
