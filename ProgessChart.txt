@@ -64,11 +64,86 @@ Smallest Range Covering Elements from K Lists   60.3%   Hard
 Basic Calculator II 42.1%   Medium  
 Candy   40.6%   Hard    
 Sequential Digits
+Word Ladder II  27.6%   Hard    
+Shortest Path to Get Food
+Minimum Difference in Sums After Removal of Elements    46.5%   Hard    
+Partition Array Such That Maximum Difference Is K   72.4%   Medium  
+Lowest Common Ancestor of a Binary Tree 57.8%   Medium  
+Sum of Subarray Minimums    34.3%   Medium  
+Number of Provinces 63.2%   Medium  
+Single Element in a Sorted Array    58.5%   Medium  
+Maximum Number of Eaten Apples  37.8%   Medium  
+Word Break  45.4%   Medium  
+Minimum Cost to Connect Sticks
+Minimum Number of Refueling Stops
+Best Time to Buy and Sell Stock 54.5%   Easy    
+Distribute Coins in Binary Tree 72.0%   Medium  
+Maximum Total Beauty of the Gardens 28.1%   Hard    
+Binary Tree Zigzag Level Order Traversal    55.0%   Medium  
+Median of Two Sorted Arrays 35.1%   Hard    
+Find All Possible Recipes from Given Supplies   48.2%   Medium  
+Koko Eating Bananas 52.5%   Medium  
+Recover Binary Search Tree  50.2%   Medium  
+Merge Intervals 45.8%   Medium  
+Maximum Subarray    50.0%   Medium  
+Longest Substring Without Repeating Characters  33.7%   Medium  
+Top K Frequent Elements 64.8%   Medium  
+Next Greater Element III    34.1%   Medium  
+Furthest Building You Can Reach
+Roman to Integer    58.2%   Easy    
+Word Search 39.8%   Medium  
+Maximum Subarray Min-Product    37.8%   Medium  
+Basic Calculator    41.1%   Hard    
+Single-Threaded CPU 41.9%   Medium  
+Strong Password Checker 14.3%   Hard    
+Find the Derangement of An Array
+Valid Parentheses   40.7%   Easy    
+Time Based Key-Value Store  53.7%   Medium  
+Number of Smooth Descent Periods of a Stock 57.3%   Medium  
+Coin Change 41.4%   Medium  
+Jump Game   38.4%   Medium  
+Longest Palindromic Substring   32.4%   Medium  
+House Robber    48.6%   Medium  
+Largest Rectangle in Histogram
+Shortest Path in Binary Matrix
+Append K Integers With Minimal Sum
+Insert Delete GetRandom O(1)
+Longest Valid Parentheses   32.7%   Hard    
+Minimum Window Substring    40.7%   Hard    
+Serialize and Deserialize BST   56.8%   Medium  
+Next Greater Element III    34.1%   Medium  
+Find K Closest Elements 46.8%   Medium  
+Valid Parentheses   40.7%   Easy    
+Remove All Adjacent Duplicates in String II 56.0%   Medium  
+Shortest Unsorted Continuous Subarray   36.2%   Medium  
+First Missing Positive  36.5%   Hard    
+Top K Frequent Elements 64.8%   Medium  
+Subarray Sum Equals K   44.0%   Medium  
+Robot Room Cleaner
+Decode the Slanted Ciphertext   50.2%   Medium  
+House Robber    48.7%   Medium  
+Group Shifted Strings
+
+
+
+
+
 
 
 unsolved 
 https://leetcode.com/problems/longest-duplicate-substring/
 concept link: https://www.youtube.com/watch?v=BfUejqd07yo&ab_channel=StableSort
+
+
+things I dont understand 
+https://leetcode.com/problems/sum-of-subarray-minimums/
+https://leetcode.com/problems/sum-of-total-strength-of-wizards/submissions/
+
+https://leetcode.com/problems/strong-password-checker/
+    -- this is an old problem and i never understood it. 
+https://leetcode.com/problems/valid-permutations-for-di-sequence
+    --- no idea after looking at the solutions... 
+
 
 good finds 
 - https://leetcode.com/problems/maximum-number-of-robots-within-budget/discuss/2524838/JavaC%2B%2BPython-Sliding-Window-O(n)-Solution
