@@ -123,6 +123,26 @@ Robot Room Cleaner
 Decode the Slanted Ciphertext   50.2%   Medium  
 House Robber    48.7%   Medium  
 Group Shifted Strings
+Knight Probability in Chessboard    52.1%   Medium  
+First Unique Number
+Count Special Integers  36.1%   Hard    
+Game of Life    66.7%   Medium  
+Most Beautiful Item for Each Query  49.6%   Medium  
+Rearrange Characters to Make Target String  57.8%   Easy    
+Valid Sudoku    56.8%   Medium  
+Number of Distinct Islands
+Minimum Cost For Tickets    64.4%   Medium  
+Furthest Building You Can Reach 48.3%   Medium  
+Angle Between Hands of a Clock  63.4%   Medium  
+Add Two Numbers 39.7%   Medium  
+Find K Pairs with Smallest Sums 38.4%   Medium  
+Jump Game   38.4%   Medium  
+Maximum Number of Eaten Apples  38.0%   Medium  
+Kth Largest Element in an Array 65.7%   Medium  
+Evaluate Reverse Polish Notation    44.1%   Medium  
+Reverse Pairs   30.9%   Hard    
+Valid Permutations for DI Sequence  57.7%   Hard    
+Optimal Account Balancing
 
 
 
@@ -157,7 +177,7 @@ good finds
 
 
 
-
+BFCMDRYSOCKS
 
 
 
