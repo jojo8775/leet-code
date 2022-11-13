@@ -146,8 +146,112 @@ Optimal Account Balancing
 
 
 
+categories:: 
+
+cordinates / directions 
+https://leetcode.com/problems/k-closest-points-to-origin/submissions/
+
+unclassified 
+https://leetcode.com/problems/next-greater-element-iii/submissions/
+https://leetcode.com/problems/sequential-digits/submissions/
 
 
+Stack / queue / linkedlist / queue / deque:
+https://leetcode.com/problems/lru-cache/submissions/
+https://leetcode.com/problems/sum-of-subarray-ranges/submissions/
+https://leetcode.com/problems/trapping-rain-water/
+https://leetcode.com/problems/course-schedule/submissions/
+https://leetcode.com/problems/sliding-window-maximum/
+https://leetcode.com/problems/sum-of-subarray-minimums/submissions/
+https://leetcode.com/problems/letter-combinations-of-a-phone-number/submissions/
+https://leetcode.com/problems/course-schedule-ii/submissions/
+https://leetcode.com/problems/asteroid-collision/submissions/
+https://leetcode.com/problems/basic-calculator-ii/submissions/
+https://leetcode.com/problems/largest-rectangle-in-histogram/
+
+
+binary search:
+https://leetcode.com/problems/find-k-th-smallest-pair-distance/
+https://leetcode.com/problems/median-of-two-sorted-arrays/submissions/
+
+
+Tree
+https://leetcode.com/problems/build-binary-expression-tree-from-infix-expression
+https://leetcode.com/problems/design-an-expression-tree-with-evaluate-function
+https://leetcode.com/problems/boundary-of-binary-tree/
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+
+
+Graph: 
+https://leetcode.com/problems/copy-list-with-random-pointer/
+
+
+Array / string: 
+https://leetcode.com/problems/substring-with-largest-variance/submissions/
+https://leetcode.com/problems/minimum-number-of-moves-to-make-palindrome/submissions/
+https://leetcode.com/problems/number-of-ways-to-select-buildings/
+https://leetcode.com/problems/integer-to-english-words/submissions/
+https://leetcode.com/problems/find-triangular-sum-of-an-array
+https://leetcode.com/problems/minimum-number-of-keypresses/submissions/
+https://leetcode.com/problems/minimum-adjacent-swaps-to-make-a-valid-array/submissions/
+https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-binary-string-alternating
+https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/submissions/
+https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/submissions/
+https://leetcode.com/problems/integer-to-roman/submissions/
+https://leetcode.com/problems/sequential-digits/submissions/
+https://leetcode.com/problems/find-good-days-to-rob-the-bank/submissions/
+https://leetcode.com/problems/number-of-smooth-descent-periods-of-a-stock/
+
+
+Map / Set:
+https://leetcode.com/problems/analyze-user-website-visit-pattern/submissions/
+https://leetcode.com/problems/group-anagrams/
+
+
+Heap / tree map: 
+https://leetcode.com/problems/sequentially-ordinal-rank-tracker/
+https://leetcode.com/problems/plates-between-candles/submissions/
+https://leetcode.com/problems/sequentially-ordinal-rank-tracker
+https://leetcode.com/problems/maximum-number-of-robots-within-budget/
+https://leetcode.com/problems/meeting-rooms-ii/
+https://leetcode.com/problems/merge-k-sorted-lists/submissions/
+https://leetcode.com/problems/reorganize-string/submissions/
+https://leetcode.com/problems/minimum-difference-in-sums-after-removal-of-elements/submissions/
+https://leetcode.com/problems/find-median-from-data-stream/
+https://leetcode.com/problems/maximum-units-on-a-truck/submissions/
+https://leetcode.com/problems/minimum-cost-to-connect-sticks/submissions/
+https://leetcode.com/problems/minimum-number-of-refueling-stops/submissions/
+
+Dp:
+https://leetcode.com/problems/concatenated-words/submissions/
+https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/
+https://leetcode.com/problems/candy/submissions/
+https://leetcode.com/problems/word-break/
+
+
+DFS / BFS:
+https://leetcode.com/problems/word-ladder/
+https://leetcode.com/problems/word-break-ii/
+https://leetcode.com/problems/rotting-oranges/submissions/
+https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
+https://leetcode.com/problems/evaluate-division/submissions/
+https://leetcode.com/problems/race-car/submissions/
+https://leetcode.com/problems/evaluate-division/
+https://leetcode.com/problems/basic-calculator/submissions/
+https://leetcode.com/problems/minimum-knight-moves/submissions/
+https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs
+
+
+2d array 
+https://leetcode.com/problems/number-of-islands/
+https://leetcode.com/problems/word-search/submissions/
+
+
+design:
+https://leetcode.com/problems/design-in-memory-file-system/
+https://leetcode.com/problems/design-tic-tac-toe/submissions/
+https://leetcode.com/problems/snakes-and-ladders/submissions/
+https://leetcode.com/problems/design-parking-system/submissions/
 
 
 unsolved 
@@ -163,11 +267,18 @@ https://leetcode.com/problems/strong-password-checker/
     -- this is an old problem and i never understood it. 
 https://leetcode.com/problems/valid-permutations-for-di-sequence
     --- no idea after looking at the solutions... 
-
+https://leetcode.com/problems/count-special-integers
+    --- similar: https://leetcode.com/problems/numbers-with-repeated-digits/
 
 good finds 
 - https://leetcode.com/problems/maximum-number-of-robots-within-budget/discuss/2524838/JavaC%2B%2BPython-Sliding-Window-O(n)-Solution
     - contains all the problems related to stack 
+
+things to think back 
+- https://leetcode.com/problems/word-ladder-ii/submissions/
+- https://leetcode.com/problems/strong-password-checker/
+- https://leetcode.com/problems/count-special-integers/
+
 
 
 

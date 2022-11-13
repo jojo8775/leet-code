@@ -26,7 +26,93 @@ Note: Do not use the eval built-in library function.
  * Sep 5, 2019 1:07:26 AM
  */
 public class BasicCalculatorIII {
+	
     public int calculate(String s) {
+		int[] idx = { 0 };
+		return calculate("(" + s + ")", idx);
+	}
+
+	private int calculate(String s1, int[] idx) {
+		int num = 0, len = s1.length();
+		char sign = '+';
+		Stack<Integer> stack = new Stack<>();
+
+		int i = idx[0];
+		while (i < len) {
+			char ch = s1.charAt(i++);
+
+            // checking if the char represents a digit 
+			if (ch >= '0' && ch <= '9') {
+				num *= 10;
+				num += (int) (ch - '0');
+			} 
+            // skip if the cur char is " "
+            else if (ch == ' ') {
+				continue;
+			} 
+            // if there is a '(' time to compute the content first by calling it recursively.
+            else if (ch == '(') {
+				idx[0] = i;
+				num = calculate(s1, idx);
+				i = idx[0];
+			} 
+            // if end of ')' then compute the stack and return 
+            else if (ch == ')') {
+				if(!stack.isEmpty()) {
+                    // e.g if string is (5 + 5 * 2) then we need to compute 5 * 2 before pushing 'num' to stack
+					compute(sign, stack, num);
+				}
+				else {
+                    // e.g if string is (5) then there is nothing to compute  before pushing 'num' to stack
+					stack.push(num);
+				}
+				
+				idx[0] = i;
+				return addAll(stack);
+			} else {
+				compute(sign, stack, num);
+				num = 0;
+				sign = ch;
+			}
+		}
+
+		stack.push(num);
+		idx[0] = len;
+		return addAll(stack);
+	}
+
+	private void compute(char prevSign, Stack<Integer> stack, int num) {
+		switch (prevSign) {
+		case '+':
+			stack.push(num);
+			break;
+		case '-':
+			num *= -1;
+			stack.push(num);
+			break;
+		case '*':
+			num *= stack.pop();
+			stack.push(num);
+			break;
+		case '/':
+			num = stack.pop() / num;
+			stack.push(num);
+			break;
+		}
+	}
+
+	private int addAll(Stack<Integer> stack) {
+		int val = 0;
+		while (!stack.isEmpty()) {
+			val += stack.pop();
+		}
+
+		return val;
+	}
+	
+	// old code---------------------
+	
+    public int calculate_old(String s) {
         Stack<Integer> numStack = new Stack<>();  // stores the numbers
         Stack<Character> operandStack = new Stack<>(); // stores the operations 
         
