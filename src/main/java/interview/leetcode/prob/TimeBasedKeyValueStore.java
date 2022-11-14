@@ -66,7 +66,7 @@ public class TimeBasedKeyValueStore {
 	    
 	    public String get(String key, int timestamp) {
 	        if(!map.containsKey(key)){
-	            return null;
+	            return "";
 	        }
 	        
 	        Integer floorKey = map.get(key).floorKey(timestamp);

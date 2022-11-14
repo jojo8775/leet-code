@@ -38,23 +38,34 @@ Submissions
  * Mar 7, 2022 1:00:37 AM
  */
 public class AppendKIntegersWithMinimalSum {
-   public long minimalKSum(int[] nums, int k) {
-        Arrays.sort(nums);
-        int prev = -1;
-        long sum = 0;
-        for (int num : nums) {
-            // Taking care of the duplicate numbers.
-            if (prev == num) continue;
-            // If num > k, we already have found the needed k numbers upto num. 
-            if (num > k) break;
-            k++;
-            sum += num;
-            prev = num;
-        }
+	   public long minimalKSum(int[] nums, int k) {
+	        Arrays.sort(nums);
+	        int prev = -1;
+	        long sum = 0;
+	        for (int num : nums) {
+	            // Taking care of the duplicate numbers.
+	            if (prev == num){
+	              continue;  
+	            } 
+	            
+	            // If num > k, we already have found the needed k numbers upto num. 
+	            if (num > k) {
+	                break;
+	            }
+	            
+	            // this mean the current num == k so we need increase the num
+	            k++;
+	            
+	            // sum of the existing numbers withing the sequence 
+	            sum += num;
+	            
+	            // traking the prev num to skip duplicates
+	            prev = num;
+	        }
 
-           // this is the formula for increasing seq -: (n * (n+1)) / 2
-        return (long)(k + 1) * k / 2 - sum;
-    }
+	           // this is the formula for increasing seq -: (n * (n+1)) / 2
+	        return (long)(k + 1) * k / 2 - sum;
+	    }
 	   
     public long minimalKSum_old(int[] nums, int k) {
         Arrays.sort(nums);
