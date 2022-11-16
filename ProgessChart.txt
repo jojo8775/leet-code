@@ -150,6 +150,7 @@ categories::
 
 cordinates / directions 
 https://leetcode.com/problems/k-closest-points-to-origin/submissions/
+https://leetcode.com/problems/robot-bounded-in-circle/
 
 unclassified 
 https://leetcode.com/problems/next-greater-element-iii/submissions/
@@ -189,6 +190,13 @@ https://leetcode.com/problems/distribute-coins-in-binary-tree/submissions/
 https://leetcode.com/problems/recover-binary-search-tree/submissions/
 https://leetcode.com/problems/convert-bst-to-greater-tree/
 https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/submissions/
+https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/
+https://leetcode.com/problems/find-leaves-of-binary-tree/submissions/
+https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/submissions/
+https://leetcode.com/problems/count-complete-tree-nodes/submissions/
+https://leetcode.com/problems/flatten-binary-tree-to-linked-list/submissions/
+https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level/submissions/
+https://leetcode.com/problems/house-robber-iii/submissions/
 
 
 Graph: 
@@ -215,6 +223,7 @@ https://leetcode.com/problems/roman-to-integer/submissions/
 https://leetcode.com/problems/longest-palindromic-substring/submissions/
 https://leetcode.com/problems/compare-version-numbers/submissions/
 https://leetcode.com/problems/longest-valid-parentheses/
+https://leetcode.com/problems/longest-happy-string/submissions/
 
 
 Map / Set:
@@ -240,6 +249,7 @@ https://leetcode.com/problems/minimum-number-of-refueling-stops/submissions/
 https://leetcode.com/problems/furthest-building-you-can-reach/submissions/
 https://leetcode.com/problems/binary-trees-with-factors/submissions/
 https://leetcode.com/problems/maximum-performance-of-a-team/submissions/
+https://leetcode.com/problems/find-k-pairs-with-smallest-sums/submissions/
 
 Dp:
 https://leetcode.com/problems/concatenated-words/submissions/
@@ -277,6 +287,8 @@ https://leetcode.com/problems/generate-parentheses/submissions/
 2d array 
 https://leetcode.com/problems/number-of-islands/
 https://leetcode.com/problems/word-search/submissions/
+https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/
+https://leetcode.com/problems/maximal-rectangle/submissions/
 
 
 design:
