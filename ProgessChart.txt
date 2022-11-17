@@ -172,6 +172,8 @@ https://leetcode.com/problems/largest-rectangle-in-histogram/
 https://leetcode.com/problems/first-unique-number/
 https://leetcode.com/problems/minimum-cost-for-tickets/submissions/
 https://leetcode.com/problems/largest-rectangle-in-histogram/submissions/
+https://leetcode.com/problems/add-two-numbers/
+https://leetcode.com/problems/next-greater-element-ii/submissions/
 
 
 binary search:
@@ -201,6 +203,7 @@ https://leetcode.com/problems/house-robber-iii/submissions/
 
 Graph: 
 https://leetcode.com/problems/copy-list-with-random-pointer/
+https://leetcode.com/problems/find-the-celebrity/submissions/
 
 
 Array / string: 
@@ -289,6 +292,7 @@ https://leetcode.com/problems/number-of-islands/
 https://leetcode.com/problems/word-search/submissions/
 https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/
 https://leetcode.com/problems/maximal-rectangle/submissions/
+https://leetcode.com/problems/number-of-distinct-islands/
 
 
 design:
