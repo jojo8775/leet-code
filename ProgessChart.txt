@@ -1,148 +1,161 @@
-Substring With Largest Variance 37.0%   Hard    
-Sum of Total Strength of Wizards    27.8%   Hard    
+Substring With Largest Variance 37.5%   Hard    
+Sum of Total Strength of Wizards    28.0%   Hard    
 Analyze User Website Visit Pattern
-Reorder Data in Log Files   56.4%   Medium  
-Count Unique Characters of All Substrings of a Given String 51.5%   Hard    
-Concatenated Words  45.4%   Hard    
+Concatenated Words  45.7%   Hard    
 Minimum Health to Beat Game
-Sum of Subarray Ranges  60.2%   Medium  
-LRU Cache   40.5%   Medium  
-Number of Islands   56.1%   Medium  
-Minimum Number of Moves to Make Palindrome  50.6%   Hard    
+Reorder Data in Log Files   56.4%   Medium  
 Maximum Number of Books You Can Take
-Total Appeal of A String    58.1%   Hard    
-Plates Between Candles  44.7%   Medium  
-Integer to English Words    29.9%   Hard    
-Number of Ways to Select Buildings  50.7%   Medium  
-K Closest Points to Origin  65.9%   Medium  
-Word Ladder 36.6%   Hard    
-Find K-th Smallest Pair Distance    36.3%   Hard    
-Search Suggestions System   66.7%   Medium  
-Find Triangular Sum of an Array 79.1%   Medium  
-Sequentially Ordinal Rank Tracker   66.2%   Hard    
-Minimum Number of Keypresses
-Meeting Rooms II
-Trapping Rain Water 58.7%   Hard    
-Design In-Memory File System
-Minimum Number of Swaps to Make the Binary String Alternating   41.9%   Medium  
-Merge k Sorted Lists    48.3%   Hard    
-Find the K-Sum of an Array  35.8%   Hard    
-Maximum Length of Subarray With Positive Product    43.7%   Medium  
-Maximum Units on a Truck    74.0%   Easy    
-Rotting Oranges 52.4%   Medium  
-Build Binary Expression Tree From Infix Expression
-Boundary of Binary Tree
-All Nodes Distance K in Binary Tree 62.1%   Medium  
-Design an Expression Tree With Evaluate Function
-Course Schedule 45.3%   Medium  
-Reorganize String   52.7%   Medium  
-Design Parking System   88.0%   Easy    
-Sliding Window Maximum  46.6%   Hard    
-Make Array Zero by Subtracting Equal Amounts    72.5%   Easy    
-Copy List with Random Pointer   50.3%   Medium  
+Minimum Number of Moves to Make Palindrome  51.2%   Hard    
+Count Unique Characters of All Substrings of a Given String 51.7%   Hard    
+LRU Cache   40.5%   Medium  
+Plates Between Candles  44.5%   Medium  
+Number of Islands   56.3%   Medium  
+Find K-th Smallest Pair Distance    36.4%   Hard    
 Minimum Adjacent Swaps to Make a Valid Array
-Find Median from Data Stream    51.1%   Hard    
-Word Break II   44.2%   Hard    
-Course Schedule II  47.9%   Medium  
-Longest Duplicate Substring 30.7%   Hard    
-Group Anagrams  65.8%   Medium  
-Letter Combinations of a Phone Number   55.5%   Medium  
-Integer to Roman    60.4%   Medium  
-Making A Large Island   44.7%   Hard    
-Serialize and Deserialize Binary Tree   54.9%   Hard    
+Number of Ways to Select Buildings  51.3%   Medium  
+Minimum Number of Keypresses
+Total Appeal of A String    58.3%   Hard    
+Sum of Subarray Ranges  60.2%   Medium  
+Find Triangular Sum of an Array 79.1%   Medium  
+Find the K-Sum of an Array  37.1%   Hard    
+K Closest Points to Origin  65.8%   Medium  
+Integer to English Words    29.9%   Hard    
+Maximum Number of Robots Within Budget  32.1%   Hard    
+Word Ladder 36.7%   Hard    
+Search Suggestions System   66.6%   Medium  
+Meeting Rooms II
+Design an Expression Tree With Evaluate Function
+Make Array Zero by Subtracting Equal Amounts    72.6%   Easy    
+Design In-Memory File System
+Boundary of Binary Tree
+Trapping Rain Water 58.8%   Hard    
+Merge k Sorted Lists    48.4%   Hard    
+Build Binary Expression Tree From Infix Expression
+Word Break II   44.5%   Hard    
+Minimum Number of Swaps to Make the Binary String Alternating   42.5%   Medium  
+All Nodes Distance K in Binary Tree 62.1%   Medium  
+Copy List with Random Pointer   50.6%   Medium  
+Partition Array Such That Maximum Difference Is K   72.6%   Medium  
+Course Schedule 45.4%   Medium  
+Sliding Window Maximum  46.6%   Hard    
+Longest Duplicate Substring 30.6%   Hard    
+Reorganize String   52.8%   Medium  
+Group Anagrams  66.5%   Medium  
+Rotting Oranges 52.5%   Medium  
+Sequentially Ordinal Rank Tracker   66.3%   Hard    
 Two Sum 49.1%   Easy    
-Evaluate Division   59.4%   Medium  
-Word Search II  37.0%   Hard    
-Find Good Days to Rob the Bank  49.1%   Medium  
-Maximum Number of Robots Within Budget  31.5%   Hard    
+Candy   40.7%   Hard    
 Design Tic-Tac-Toe
+Maximum Units on a Truck    73.9%   Easy    
+Integer to Roman    61.5%   Medium  
 Race Car    43.6%   Hard    
-Asteroid Collision  44.4%   Medium  
-Maximum Twin Sum of a Linked List   81.6%   Medium  
-Snakes and Ladders  40.8%   Medium  
-Smallest Range Covering Elements from K Lists   60.3%   Hard    
-Basic Calculator II 42.1%   Medium  
-Candy   40.6%   Hard    
-Sequential Digits
-Word Ladder II  27.6%   Hard    
-Shortest Path to Get Food
-Minimum Difference in Sums After Removal of Elements    46.5%   Hard    
-Partition Array Such That Maximum Difference Is K   72.4%   Medium  
-Lowest Common Ancestor of a Binary Tree 57.8%   Medium  
-Sum of Subarray Minimums    34.3%   Medium  
-Number of Provinces 63.2%   Medium  
-Single Element in a Sorted Array    58.5%   Medium  
-Maximum Number of Eaten Apples  37.8%   Medium  
-Word Break  45.4%   Medium  
 Minimum Cost to Connect Sticks
-Minimum Number of Refueling Stops
-Best Time to Buy and Sell Stock 54.5%   Easy    
-Distribute Coins in Binary Tree 72.0%   Medium  
-Maximum Total Beauty of the Gardens 28.1%   Hard    
-Binary Tree Zigzag Level Order Traversal    55.0%   Medium  
-Median of Two Sorted Arrays 35.1%   Hard    
-Find All Possible Recipes from Given Supplies   48.2%   Medium  
-Koko Eating Bananas 52.5%   Medium  
-Recover Binary Search Tree  50.2%   Medium  
-Merge Intervals 45.8%   Medium  
-Maximum Subarray    50.0%   Medium  
-Longest Substring Without Repeating Characters  33.7%   Medium  
-Top K Frequent Elements 64.8%   Medium  
-Next Greater Element III    34.1%   Medium  
-Furthest Building You Can Reach
-Roman to Integer    58.2%   Easy    
-Word Search 39.8%   Medium  
-Maximum Subarray Min-Product    37.8%   Medium  
-Basic Calculator    41.1%   Hard    
-Single-Threaded CPU 41.9%   Medium  
-Strong Password Checker 14.3%   Hard    
-Find the Derangement of An Array
-Valid Parentheses   40.7%   Easy    
-Time Based Key-Value Store  53.7%   Medium  
-Number of Smooth Descent Periods of a Stock 57.3%   Medium  
-Coin Change 41.4%   Medium  
-Jump Game   38.4%   Medium  
-Longest Palindromic Substring   32.4%   Medium  
-House Robber    48.6%   Medium  
-Largest Rectangle in Histogram
-Shortest Path in Binary Matrix
-Append K Integers With Minimal Sum
-Insert Delete GetRandom O(1)
-Longest Valid Parentheses   32.7%   Hard    
-Minimum Window Substring    40.7%   Hard    
-Serialize and Deserialize BST   56.8%   Medium  
-Next Greater Element III    34.1%   Medium  
-Find K Closest Elements 46.8%   Medium  
-Valid Parentheses   40.7%   Easy    
-Remove All Adjacent Duplicates in String II 56.0%   Medium  
-Shortest Unsorted Continuous Subarray   36.2%   Medium  
-First Missing Positive  36.5%   Hard    
-Top K Frequent Elements 64.8%   Medium  
-Subarray Sum Equals K   44.0%   Medium  
-Robot Room Cleaner
-Decode the Slanted Ciphertext   50.2%   Medium  
-House Robber    48.7%   Medium  
-Group Shifted Strings
-Knight Probability in Chessboard    52.1%   Medium  
-First Unique Number
-Count Special Integers  36.1%   Hard    
-Game of Life    66.7%   Medium  
-Most Beautiful Item for Each Query  49.6%   Medium  
-Rearrange Characters to Make Target String  57.8%   Easy    
-Valid Sudoku    56.8%   Medium  
-Number of Distinct Islands
-Minimum Cost For Tickets    64.4%   Medium  
-Furthest Building You Can Reach 48.3%   Medium  
+Letter Combinations of a Phone Number   55.6%   Medium  
+Course Schedule II  48.0%   Medium  
+Word Ladder II  27.6%   Hard    
+Evaluate Division   59.5%   Medium  
+Serialize and Deserialize Binary Tree   55.0%   Hard    
+Maximum Length of Subarray With Positive Product    43.7%   Medium  
 Angle Between Hands of a Clock  63.4%   Medium  
-Add Two Numbers 39.7%   Medium  
-Find K Pairs with Smallest Sums 38.4%   Medium  
-Jump Game   38.4%   Medium  
+Asteroid Collision  44.4%   Medium  
+Minimum Difference in Sums After Removal of Elements    46.6%   Hard    
+Word Search 39.8%   Medium  
+Binary Tree Zigzag Level Order Traversal    55.2%   Medium  
+Lowest Common Ancestor of a Binary Tree 58.0%   Medium  
+Find Good Days to Rob the Bank  49.3%   Medium  
+Snakes and Ladders  40.9%   Medium  
+Smallest Range Covering Elements from K Lists   60.5%   Hard    
+First and Last Call On the Same Day
+Basic Calculator II 42.2%   Medium  
+Strong Password Checker 14.3%   Hard    
+Sequential Digits   61.3%   Medium  
+LFU Cache   40.4%   Hard    
+Sum of Subarray Minimums    34.3%   Medium  
+Merge Intervals 46.0%   Medium  
+Single Element in a Sorted Array    58.5%   Medium  
+Minimum Difficulty of a Job Schedule    58.7%   Hard    
+Number of Provinces 63.3%   Medium  
+Basic Calculator    41.2%   Hard    
+Robot Room Cleaner
+Minimum Number of Refueling Stops   39.9%   Hard    
+Stone Game V    40.6%   Hard    
+Word Search II  36.9%   Hard    
+Append K Integers With Minimal Sum  24.9%   Medium  
+Maximum Subarray    50.1%   Medium  
+Next Greater Element III    34.1%   Medium  
+Binary Trees With Factors   50.0%   Medium  
+Koko Eating Bananas 52.2%   Medium  
+Best Time to Buy and Sell Stock 54.5%   Easy    
+Minimum Average Difference  35.9%   Medium  
+Recover Binary Search Tree  50.3%   Medium  
+Basic Calculator III
+Design Parking System   88.0%   Easy    
+Making A Large Island   44.7%   Hard    
+Count Special Integers  36.3%   Hard    
+Minimum Knight Moves
+First Unique Number
+Median of Two Sorted Arrays 35.3%   Hard    
+Longest Substring Without Repeating Characters  33.8%   Medium  
+Roman to Integer    58.2%   Easy    
+Convert BST to Greater Tree 67.4%   Medium  
+Minimum Rounds to Complete All Tasks    57.4%   Medium  
+Top K Frequent Elements 64.8%   Medium  
+Insert Delete GetRandom O(1)    52.0%   Medium  
+Apply Discount to Prices    27.3%   Medium  
+Word Break  45.4%   Medium  
+Compare Version Numbers 35.4%   Medium  
+Knight Probability in Chessboard    52.1%   Medium  
+Longest Palindromic Substring   32.4%   Medium  
+Lonely Pixel I
+Sort Items by Groups Respecting Dependencies    50.6%   Hard    
 Maximum Number of Eaten Apples  38.0%   Medium  
+House Robber    48.7%   Medium  
+Minimum Window Substring    40.7%   Hard    
+Valid Parentheses   40.7%   Easy    
+Time Based Key-Value Store  53.4%   Medium  
+Reverse Nodes in k-Group    53.6%   Hard    
+Distribute Coins in Binary Tree 72.0%   Medium  
+Furthest Building You Can Reach
+Minimum Cost For Tickets    64.4%   Medium  
+Group Shifted Strings
+Single-Threaded CPU 42.0%   Medium  
+Valid Sudoku    56.9%   Medium  
+Find All Possible Recipes from Given Supplies   48.4%   Medium  
+Jump Game   38.4%   Medium  
+Students Report By Geography
+Valid Permutations for DI Sequence  57.7%   Hard    
+Maximum Total Beauty of the Gardens 28.2%   Hard    
+Largest Rectangle in Histogram  42.2%   Hard    
+Coin Change 41.5%   Medium  
+Generate Parentheses    71.9%   Medium  
+Concatenation of Consecutive Binary Numbers 57.0%   Medium  
+Vertical Order Traversal of a Binary Tree   44.7%   Hard    
+Find K Closest Elements 46.8%   Medium  
+Robot Bounded In Circle 55.2%   Medium  
+Max Sum of Rectangle No Larger Than K   44.1%   Hard    
+Find K Pairs with Smallest Sums 38.3%   Medium  
+Longest Happy String    57.4%   Medium  
+Flatten Binary Tree to Linked List  61.2%   Medium  
+Binary Search Tree to Greater Sum Tree  85.4%   Medium  
+Find Leaves of Binary Tree
+Amount of Time for Binary Tree to Be Infected   56.2%   Medium  
+Subarray Sum Equals K   44.0%   Medium  
+Longest Valid Parentheses   32.7%   Hard    
+Maximum Performance of a Team   48.9%   Hard    
+House Robber III
+Number of Distinct Islands
+Add Two Numbers 39.8%   Medium  
+Next Greater Element II 63.1%   Medium  
+Decode the Slanted Ciphertext   50.1%   Medium  
+Find the Celebrity
 Kth Largest Element in an Array 65.7%   Medium  
 Evaluate Reverse Polish Notation    44.1%   Medium  
-Reverse Pairs   30.9%   Hard    
-Valid Permutations for DI Sequence  57.7%   Hard    
-Optimal Account Balancing
+Number of Smooth Descent Periods of a Stock 57.5%   Medium  
+Walls and Gates
+K-Concatenation Maximum Sum 23.9%   Medium  
+Find Minimum Time to Finish All Jobs    42.7%   Hard    
+Shortest Path in Binary Matrix  44.5%   Medium  
+Reverse Pairs
 
 
 
@@ -174,6 +187,7 @@ https://leetcode.com/problems/minimum-cost-for-tickets/submissions/
 https://leetcode.com/problems/largest-rectangle-in-histogram/submissions/
 https://leetcode.com/problems/add-two-numbers/
 https://leetcode.com/problems/next-greater-element-ii/submissions/
+https://leetcode.com/problems/evaluate-reverse-polish-notation/submissions/
 
 
 binary search:
@@ -181,6 +195,8 @@ https://leetcode.com/problems/find-k-th-smallest-pair-distance/
 https://leetcode.com/problems/median-of-two-sorted-arrays/submissions/
 https://leetcode.com/problems/koko-eating-bananas/submissions/
 https://leetcode.com/problems/find-k-closest-elements/submissions/
+https://leetcode.com/problems/kth-largest-element-in-an-array/
+https://leetcode.com/problems/reverse-pairs/submissions/
 
 
 Tree
@@ -227,6 +243,8 @@ https://leetcode.com/problems/longest-palindromic-substring/submissions/
 https://leetcode.com/problems/compare-version-numbers/submissions/
 https://leetcode.com/problems/longest-valid-parentheses/
 https://leetcode.com/problems/longest-happy-string/submissions/
+https://leetcode.com/problems/kth-largest-element-in-an-array/submissions/
+https://leetcode.com/problems/number-of-smooth-descent-periods-of-a-stock/submissions/
 
 
 Map / Set:
@@ -285,6 +303,9 @@ https://leetcode.com/problems/matchsticks-to-square/
 https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
 
 https://leetcode.com/problems/generate-parentheses/submissions/
+https://leetcode.com/problems/walls-and-gates/submissions/ 
+https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
+https://leetcode.com/problems/shortest-path-in-binary-matrix/submissions/
 
 
 2d array 
