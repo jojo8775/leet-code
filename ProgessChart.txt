@@ -156,6 +156,20 @@ K-Concatenation Maximum Sum 23.9%   Medium
 Find Minimum Time to Finish All Jobs    42.7%   Hard    
 Shortest Path in Binary Matrix  44.5%   Medium  
 Reverse Pairs
+Maximum Frequency Stack 66.8%   Hard    
+Cheapest Flights Within K Stops 35.9%   Medium  
+Next Permutation    37.1%   Medium  
+Rearrange Characters to Make Target String  57.8%   Easy    
+Shortest Path to Get Food
+Unique Paths II 39.1%   Medium  
+Binary Tree Cameras 46.8%   Hard    
+Trapping Rain Water II  47.5%   Hard    
+Number of People Aware of a Secret  44.5%   Medium  
+Max Area of Island  71.7%   Medium  
+Search a 2D Matrix  46.9%   Medium  
+First Missing Positive
+
+
 
 
 
@@ -168,6 +182,7 @@ https://leetcode.com/problems/robot-bounded-in-circle/
 unclassified 
 https://leetcode.com/problems/next-greater-element-iii/submissions/
 https://leetcode.com/problems/sequential-digits/submissions/
+https://leetcode.com/problems/next-permutation/submissions/
 
 
 Stack / queue / linkedlist / queue / deque:
@@ -188,6 +203,9 @@ https://leetcode.com/problems/largest-rectangle-in-histogram/submissions/
 https://leetcode.com/problems/add-two-numbers/
 https://leetcode.com/problems/next-greater-element-ii/submissions/
 https://leetcode.com/problems/evaluate-reverse-polish-notation/submissions/
+https://leetcode.com/problems/maximum-frequency-stack/submissions/
+https://leetcode.com/problems/min-stack/submissions/
+https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/submissions/
 
 
 binary search:
@@ -197,6 +215,10 @@ https://leetcode.com/problems/koko-eating-bananas/submissions/
 https://leetcode.com/problems/find-k-closest-elements/submissions/
 https://leetcode.com/problems/kth-largest-element-in-an-array/
 https://leetcode.com/problems/reverse-pairs/submissions/
+https://leetcode.com/problems/search-a-2d-matrix/
+
+https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/submissions/
+-- all related BS prob https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/discuss/256729/JavaC%2B%2BPython-Binary-Search
 
 
 Tree
@@ -215,6 +237,8 @@ https://leetcode.com/problems/count-complete-tree-nodes/submissions/
 https://leetcode.com/problems/flatten-binary-tree-to-linked-list/submissions/
 https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level/submissions/
 https://leetcode.com/problems/house-robber-iii/submissions/
+https://leetcode.com/problems/n-ary-tree-level-order-traversal/submissions/
+https://leetcode.com/problems/delete-nodes-and-return-forest/submissions/
 
 
 Graph: 
@@ -245,6 +269,8 @@ https://leetcode.com/problems/longest-valid-parentheses/
 https://leetcode.com/problems/longest-happy-string/submissions/
 https://leetcode.com/problems/kth-largest-element-in-an-array/submissions/
 https://leetcode.com/problems/number-of-smooth-descent-periods-of-a-stock/submissions/
+https://leetcode.com/problems/first-missing-positive/
+https://leetcode.com/problems/4sum/submissions/
 
 
 Map / Set:
@@ -252,6 +278,7 @@ https://leetcode.com/problems/analyze-user-website-visit-pattern/submissions/
 https://leetcode.com/problems/group-anagrams/
 https://leetcode.com/problems/top-k-frequent-elements/submissions/
 https://leetcode.com/problems/subarray-sum-equals-k/submissions/
+https://leetcode.com/problems/longest-consecutive-sequence/submissions/
 
 
 Heap / tree map: 
@@ -271,6 +298,7 @@ https://leetcode.com/problems/furthest-building-you-can-reach/submissions/
 https://leetcode.com/problems/binary-trees-with-factors/submissions/
 https://leetcode.com/problems/maximum-performance-of-a-team/submissions/
 https://leetcode.com/problems/find-k-pairs-with-smallest-sums/submissions/
+https://leetcode.com/problems/trapping-rain-water-ii/submissions/
 
 Dp:
 https://leetcode.com/problems/concatenated-words/submissions/
@@ -281,9 +309,14 @@ https://leetcode.com/problems/house-robber/submissions/
 https://leetcode.com/problems/jump-game/submissions/
 https://leetcode.com/problems/maximum-total-beauty-of-the-gardens/submissions/
 https://leetcode.com/problems/coin-change/submissions/
+https://leetcode.com/problems/unique-paths-ii/submissions/
+https://leetcode.com/problems/binary-tree-cameras/
+https://leetcode.com/problems/number-of-people-aware-of-a-secret
+
 
 3d DP 
 https://leetcode.com/problems/knight-probability-in-chessboard/
+https://leetcode.com/problems/cheapest-flights-within-k-stops/
 
 
 DFS / BFS:
@@ -296,6 +329,7 @@ https://leetcode.com/problems/race-car/submissions/
 https://leetcode.com/problems/evaluate-division/
 https://leetcode.com/problems/basic-calculator/submissions/
 https://leetcode.com/problems/minimum-knight-moves/submissions/
+https://leetcode.com/problems/shortest-path-to-get-food/submissions/
 
 (next three are very similar)
 https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs
@@ -314,6 +348,9 @@ https://leetcode.com/problems/word-search/submissions/
 https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/
 https://leetcode.com/problems/maximal-rectangle/submissions/
 https://leetcode.com/problems/number-of-distinct-islands/
+https://leetcode.com/problems/shortest-path-to-get-food/
+https://leetcode.com/problems/max-area-of-island/submissions/
+https://leetcode.com/problems/pacific-atlantic-water-flow/submissions/
 
 
 design:
@@ -325,6 +362,7 @@ https://leetcode.com/problems/robot-room-cleaner/
 https://leetcode.com/problems/insert-delete-getrandom-o1/submissions/
 https://leetcode.com/problems/time-based-key-value-store/
 https://leetcode.com/problems/lfu-cache/
+https://leetcode.com/problems/game-of-life/submissions/
 
 
 bitmap:
