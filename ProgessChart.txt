@@ -168,7 +168,18 @@ Number of People Aware of a Secret  44.5%   Medium
 Max Area of Island  71.7%   Medium  
 Search a 2D Matrix  46.9%   Medium  
 First Missing Positive
-
+Longest Consecutive Sequence    48.9%   Medium  
+Shortest Impossible Sequence of Rolls   68.3%   Hard    
+Capacity To Ship Packages Within D Days 64.5%   Medium  
+Remove All Adjacent Duplicates in String II 56.0%   Medium  
+Largest Time for Given Digits   35.2%   Medium  
+Min Stack   51.9%   Medium  
+Pacific Atlantic Water Flow 54.0%   Medium  
+N-ary Tree Level Order Traversal    70.6%   Medium  
+Game of Life    66.7%   Medium  
+4Sum    36.4%   Medium  
+Unique Number of Occurrences    70.9%   Easy    
+Delete Nodes And Return Forest
 
 
 
@@ -239,6 +250,7 @@ https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree
 https://leetcode.com/problems/house-robber-iii/submissions/
 https://leetcode.com/problems/n-ary-tree-level-order-traversal/submissions/
 https://leetcode.com/problems/delete-nodes-and-return-forest/submissions/
+https://leetcode.com/problems/validate-binary-search-tree/submissions/
 
 
 Graph: 
@@ -271,6 +283,11 @@ https://leetcode.com/problems/kth-largest-element-in-an-array/submissions/
 https://leetcode.com/problems/number-of-smooth-descent-periods-of-a-stock/submissions/
 https://leetcode.com/problems/first-missing-positive/
 https://leetcode.com/problems/4sum/submissions/
+https://leetcode.com/problems/3sum/submissions/
+https://leetcode.com/problems/valid-anagram/submissions/
+
+https://leetcode.com/problems/push-dominoes/
+    -- similar: https://leetcode.com/problems/shortest-distance-to-a-character
 
 
 Map / Set:
@@ -279,6 +296,7 @@ https://leetcode.com/problems/group-anagrams/
 https://leetcode.com/problems/top-k-frequent-elements/submissions/
 https://leetcode.com/problems/subarray-sum-equals-k/submissions/
 https://leetcode.com/problems/longest-consecutive-sequence/submissions/
+https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
 
 
 Heap / tree map: 
