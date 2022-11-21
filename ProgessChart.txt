@@ -333,6 +333,8 @@ https://leetcode.com/problems/coin-change/submissions/
 https://leetcode.com/problems/unique-paths-ii/submissions/
 https://leetcode.com/problems/binary-tree-cameras/
 https://leetcode.com/problems/number-of-people-aware-of-a-secret
+https://leetcode.com/problems/decode-ways/submissions/
+https://leetcode.com/problems/unique-paths/
 
 
 3d DP 
@@ -385,6 +387,7 @@ https://leetcode.com/problems/insert-delete-getrandom-o1/submissions/
 https://leetcode.com/problems/time-based-key-value-store/
 https://leetcode.com/problems/lfu-cache/
 https://leetcode.com/problems/game-of-life/submissions/
+https://leetcode.com/problems/design-search-autocomplete-system/submissions/
 
 
 bitmap:
@@ -413,6 +416,8 @@ https://leetcode.com/problems/count-special-integers
 https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies
 https://leetcode.com/problems/stone-game-v/
 https://leetcode.com/problems/count-special-integers/
+https://leetcode.com/problems/the-kth-factor-of-n/solution/
+    --- this has to do with some math explanation.
 
 good finds 
 - https://leetcode.com/problems/maximum-number-of-robots-within-budget/discuss/2524838/JavaC%2B%2BPython-Sliding-Window-O(n)-Solution
@@ -683,4 +688,17 @@ Xiaomi 11 Lite NE 5G
 - System design 2 chapter 
     - 
 
+
+
+
+
+
+
+------------
+https://leetcode.com/contest/weekly-contest-319/problems/maximum-number-of-non-overlapping-palindrome-substrings/
+    https://leetcode.com/problems/erect-the-fence/solution/
+https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level
+https://leetcode.com/problems/valid-permutations-for-di-sequence
+https://leetcode.com/problems/shortest-impossible-sequence-of-rolls/
+    https://leetcode.com/problems/shortest-impossible-sequence-of-rolls/discuss?currentPage=1&orderBy=most_votes&query=
 
