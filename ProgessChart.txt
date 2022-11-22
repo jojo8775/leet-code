@@ -180,8 +180,23 @@ Game of Life    66.7%   Medium
 4Sum    36.4%   Medium  
 Unique Number of Occurrences    70.9%   Easy    
 Delete Nodes And Return Forest
-
-
+Product of Array Except Self
+Design Search Autocomplete System
+Diameter of Binary Tree 56.1%   Easy    
+Find Winner on a Tic Tac Toe Game   54.3%   Easy    
+Shortest Path in a Grid with Obstacles Elimination  45.6%   Hard    
+Find Distance in a Binary Tree
+Container With Most Water   54.3%   Medium  
+Coin Change II  59.9%   Medium  
+Valid Anagram   62.8%   Easy    
+Sliding Window Median   41.4%   Hard    
+Two Sum IV - Input is a BST 61.0%   Easy    
+Rotate Image    70.1%   Medium  
+Remove All Adjacent Duplicates In String    70.4%   Easy    
+Top K Frequent Words    56.9%   Medium  
+Gas Station 45.1%   Medium  
+Longest Increasing Path in a Matrix 52.2%   Hard    
+Longest Common Prefix
 
 
 categories:: 
@@ -194,6 +209,7 @@ unclassified
 https://leetcode.com/problems/next-greater-element-iii/submissions/
 https://leetcode.com/problems/sequential-digits/submissions/
 https://leetcode.com/problems/next-permutation/submissions/
+https://leetcode.com/problems/rabbits-in-forest
 
 
 Stack / queue / linkedlist / queue / deque:
@@ -219,6 +235,7 @@ https://leetcode.com/problems/min-stack/submissions/
 https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/submissions/
 
 
+
 binary search:
 https://leetcode.com/problems/find-k-th-smallest-pair-distance/
 https://leetcode.com/problems/median-of-two-sorted-arrays/submissions/
@@ -231,6 +248,8 @@ https://leetcode.com/problems/search-in-rotated-sorted-array/submissions/
 
 https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/submissions/
 -- all related BS prob https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/discuss/256729/JavaC%2B%2BPython-Binary-Search
+
+https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
 
 
 Tree
@@ -253,6 +272,7 @@ https://leetcode.com/problems/n-ary-tree-level-order-traversal/submissions/
 https://leetcode.com/problems/delete-nodes-and-return-forest/submissions/
 https://leetcode.com/problems/validate-binary-search-tree/submissions/
 https://leetcode.com/problems/binary-tree-right-side-view/submissions/
+https://leetcode.com/problems/two-sum-iv-input-is-a-bst/submissions/
 
 
 Graph: 
@@ -289,11 +309,13 @@ https://leetcode.com/problems/4sum/submissions/
 https://leetcode.com/problems/3sum/submissions/
 https://leetcode.com/problems/valid-anagram/submissions/
 https://leetcode.com/problems/longest-binary-subsequence-less-than-or-equal-to-k/
+https://leetcode.com/problems/gas-station/
 
 https://leetcode.com/problems/push-dominoes/
     -- similar: https://leetcode.com/problems/shortest-distance-to-a-character
 
 https://leetcode.com/problems/product-of-array-except-self/submissions/
+https://leetcode.com/problems/find-all-anagrams-in-a-string/submissions/
 
 
 Map / Set:
@@ -303,6 +325,7 @@ https://leetcode.com/problems/top-k-frequent-elements/submissions/
 https://leetcode.com/problems/subarray-sum-equals-k/submissions/
 https://leetcode.com/problems/longest-consecutive-sequence/submissions/
 https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
+https://leetcode.com/problems/shortest-word-distance/submissions/
 
 
 Heap / tree map: 
@@ -323,6 +346,7 @@ https://leetcode.com/problems/binary-trees-with-factors/submissions/
 https://leetcode.com/problems/maximum-performance-of-a-team/submissions/
 https://leetcode.com/problems/find-k-pairs-with-smallest-sums/submissions/
 https://leetcode.com/problems/trapping-rain-water-ii/submissions/
+https://leetcode.com/problems/top-k-frequent-words/submissions/
 
 Dp:
 https://leetcode.com/problems/concatenated-words/submissions/
@@ -338,6 +362,7 @@ https://leetcode.com/problems/binary-tree-cameras/
 https://leetcode.com/problems/number-of-people-aware-of-a-secret
 https://leetcode.com/problems/decode-ways/submissions/
 https://leetcode.com/problems/unique-paths/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 
 
 3d DP 
@@ -367,6 +392,8 @@ https://leetcode.com/problems/walls-and-gates/submissions/
 https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 https://leetcode.com/problems/shortest-path-in-binary-matrix/submissions/
 https://leetcode.com/problems/shortest-bridge/
+https://leetcode.com/problems/longest-increasing-path-in-a-matrix/submissions/
+https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/submissions/
 
 
 2d array 
@@ -378,6 +405,7 @@ https://leetcode.com/problems/number-of-distinct-islands/
 https://leetcode.com/problems/shortest-path-to-get-food/
 https://leetcode.com/problems/max-area-of-island/submissions/
 https://leetcode.com/problems/pacific-atlantic-water-flow/submissions/
+https://leetcode.com/problems/rotate-image/submissions/
 
 
 design:
@@ -391,6 +419,7 @@ https://leetcode.com/problems/time-based-key-value-store/
 https://leetcode.com/problems/lfu-cache/
 https://leetcode.com/problems/game-of-life/submissions/
 https://leetcode.com/problems/design-search-autocomplete-system/submissions/
+https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/submissions/
 
 
 bitmap:
@@ -400,10 +429,14 @@ https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/submis
 union and find
 https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/submissions/
 
+2 pointer 
+https://leetcode.com/problems/container-with-most-water/submissions/
+
 
 unsolved 
 https://leetcode.com/problems/longest-duplicate-substring/
 concept link: https://www.youtube.com/watch?v=BfUejqd07yo&ab_channel=StableSort
+
 
 
 things I dont understand 
@@ -421,6 +454,7 @@ https://leetcode.com/problems/stone-game-v/
 https://leetcode.com/problems/count-special-integers/
 https://leetcode.com/problems/the-kth-factor-of-n/solution/
     --- this has to do with some math explanation.
+https://leetcode.com/problems/shortest-path-visiting-all-nodes/
 
 good finds 
 - https://leetcode.com/problems/maximum-number-of-robots-within-budget/discuss/2524838/JavaC%2B%2BPython-Sliding-Window-O(n)-Solution
@@ -430,6 +464,9 @@ things to think back
 - https://leetcode.com/problems/word-ladder-ii/submissions/
 - https://leetcode.com/problems/strong-password-checker/
 - https://leetcode.com/problems/count-special-integers/
+
+problens to refer again 
+https://leetcode.com/problems/gas-station/
 
 
 
