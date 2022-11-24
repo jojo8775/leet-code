@@ -28,7 +28,13 @@ DP notes
 
         - base case: this is the easiest part of the DP. we need to think in terms of where our recursion / breaking of the actual problem to sub problems should terminate. Usually the base case result is something we can get without DP. For example the base case for Climbing Stairs: is Step 1 and Step 2. From the problem statement it was provided that Step 1 = 1 and Step 2 = 2 
 
-    - there are two approaches for the above template.
+    - there are two approaches for the abo a HashMap is used for storing the previously computed results. (memorization)
+            - this is visually easy to reach to.
+            - starts the problem at the top and then keep breaking the a HashMap is used for storing the previously computed results. (memorization)
+            - this is visually easy to reach to.
+            - starts the problem at the top and then keep breaking the a HashMap is used for storing the previously computed results. (memorization)
+            - this is visually easy to reach to.
+            - starts the problem at the top and then keep breaking theve template.
         - Top down --- this uses recursion with memorization. Usually a HashMap is used for storing the previously computed results. (memorization)
             - this is visually easy to reach to.
             - starts the problem at the top and then keep breaking the problem into smaller sub parts. 

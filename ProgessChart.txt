@@ -216,6 +216,28 @@ Partition to K Equal Sum Subsets    40.8%   Medium
 Bus Routes  45.7%   Hard    
 Best Time to Buy and Sell Stock IV  38.1%   Hard    
 Find All Anagrams in a String
+Jump Game II    38.6%   Medium  
+Minimum Cost to Cut a Stick 57.0%   Hard    
+Permutations    74.9%   Medium  
+Number of Visible People in a Queue 69.7%   Hard    
+Spiral Matrix II    66.7%   Medium  
+Number of Good Ways to Split a String   69.4%   Medium  
+Pascal's Triangle   69.3%   Easy    
+Daily Temperatures  66.6%   Medium  
+Minesweeper 65.5%   Medium  
+Jump Game IV    44.0%   Hard    
+Longest Repeating Character Replacement 51.5%   Medium  
+Count Subarrays With Score Less Than K  52.1%   Hard    
+Find Original Array From Doubled Array  40.9%   Medium  
+First Unique Character in a String  59.0%   Easy    
+Design Browser History  76.1%   Medium  
+Students Report By Geography
+Stream of Characters    51.6%   Hard    
+Delete and Earn 57.3%   Medium  
+Satisfiability of Equality Equations    50.7%   Medium  
+Lowest Common Ancestor of a Binary Tree III
+
+
 
 categories:: 
 
@@ -287,6 +309,7 @@ https://leetcode.com/problems/flatten-binary-tree-to-linked-list/submissions/
 https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level/submissions/
 https://leetcode.com/problems/house-robber-iii/submissions/
 https://leetcode.com/problems/n-ary-tree-level-order-traversal/submissions/
+    -- https://leetcode.com/problems/pascals-triangle/submissions/
 https://leetcode.com/problems/delete-nodes-and-return-forest/submissions/
 https://leetcode.com/problems/validate-binary-search-tree/submissions/
 https://leetcode.com/problems/binary-tree-right-side-view/submissions/
@@ -334,7 +357,14 @@ https://leetcode.com/problems/push-dominoes/
     -- similar: https://leetcode.com/problems/shortest-distance-to-a-character
 
 https://leetcode.com/problems/product-of-array-except-self/submissions/
-https://leetcode.com/problems/find-all-anagrams-in-a-string/submissions/
+https://leetcode.com/problems/find-all-anagrams-in-a-string/submissions
+
+https://leetcode.com/problems/number-of-ways-to-split-array/
+    same as https://leetcode.com/problems/number-of-good-ways-to-split-a-string/submissions/
+            https://leetcode.com/problems/daily-temperatures/submissions/
+
+// sliding window 
+https://leetcode.com/problems/longest-repeating-character-replacement/s
 
 
 Map / Set:
@@ -391,7 +421,7 @@ https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
     https://leetcode.com/problems/ways-to-split-array-into-three-subarrays/
     https://leetcode.com/problems/burst-balloons/
     https://leetcode.com/problems/minimum-cost-to-merge-stones/
-    
+
 
 
 3d DP 
@@ -426,6 +456,25 @@ https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination
 https://leetcode.com/problems/sliding-puzzle/submissions/
 https://leetcode.com/problems/permutations/submissions/
 
+https://leetcode.com/problems/design-parking-system/submissions/
+https://leetcode.com/problems/robot-room-cleaner/
+https://leetcode.com/problems/insert-delete-getrandom-o1/submissions/
+https://leetcode.com/problems/time-based-key-value-store/
+https://leetcode.com/problems/lfu-cache/
+https://leetcode.com/problems/game-of-life/submissions/
+https://leetcode.com/problems/design-search-autocomplete-system/submissions/
+https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/submissions/
+https://leetcode.com/problems/minesweeper/submissions/
+https://leetcode.com/problems/jump-game-iv/
+
+
+bitmap:
+https://leetcode.com/problems/valid-sudoku/submissions/
+https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/submissions/
+
+union and find
+https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/submissions/
+
 
 2d array 
 https://leetcode.com/problems/number-of-islands/
@@ -437,29 +486,13 @@ https://leetcode.com/problems/shortest-path-to-get-food/
 https://leetcode.com/problems/max-area-of-island/submissions/
 https://leetcode.com/problems/pacific-atlantic-water-flow/submissions/
 https://leetcode.com/problems/rotate-image/submissions/
+-- same as https://leetcode.com/problems/spiral-matrix-ii/submissions/
 
 
 design:
 https://leetcode.com/problems/design-in-memory-file-system/
 https://leetcode.com/problems/design-tic-tac-toe/submissions/
 https://leetcode.com/problems/snakes-and-ladders/submissions/
-https://leetcode.com/problems/design-parking-system/submissions/
-https://leetcode.com/problems/robot-room-cleaner/
-https://leetcode.com/problems/insert-delete-getrandom-o1/submissions/
-https://leetcode.com/problems/time-based-key-value-store/
-https://leetcode.com/problems/lfu-cache/
-https://leetcode.com/problems/game-of-life/submissions/
-https://leetcode.com/problems/design-search-autocomplete-system/submissions/
-https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/submissions/
-
-
-bitmap:
-https://leetcode.com/problems/valid-sudoku/submissions/
-https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/submissions/
-
-union and find
-https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/submissions/
-
 2 pointer 
 https://leetcode.com/problems/container-with-most-water/submissions/
 
