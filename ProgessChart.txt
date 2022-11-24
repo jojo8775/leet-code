@@ -375,6 +375,8 @@ https://leetcode.com/problems/subarray-sum-equals-k/submissions/
 https://leetcode.com/problems/longest-consecutive-sequence/submissions/
 https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
 https://leetcode.com/problems/shortest-word-distance/submissions/
+https://leetcode.com/problems/find-original-array-from-doubled-array/
+https://leetcode.com/problems/first-unique-character-in-a-string/submissions/
 
 
 Heap / tree map: 
@@ -493,8 +495,11 @@ design:
 https://leetcode.com/problems/design-in-memory-file-system/
 https://leetcode.com/problems/design-tic-tac-toe/submissions/
 https://leetcode.com/problems/snakes-and-ladders/submissions/
+https://leetcode.com/problems/design-browser-history/submissions/
+
 2 pointer 
 https://leetcode.com/problems/container-with-most-water/submissions/
+
 
 
 unsolved 
