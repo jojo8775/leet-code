@@ -251,7 +251,7 @@ https://leetcode.com/problems/evaluate-reverse-polish-notation/submissions/
 https://leetcode.com/problems/maximum-frequency-stack/submissions/
 https://leetcode.com/problems/min-stack/submissions/
 https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/submissions/
-
+https://leetcode.com/problems/number-of-visible-people-in-a-queue/
 
 
 binary search:
@@ -385,6 +385,14 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/submissions/
 https://leetcode.com/problems/jump-game-ii/submissions/
 
+https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
+-- similar 
+    https://leetcode.com/problems/number-of-ways-to-divide-a-long-corridor/
+    https://leetcode.com/problems/ways-to-split-array-into-three-subarrays/
+    https://leetcode.com/problems/burst-balloons/
+    https://leetcode.com/problems/minimum-cost-to-merge-stones/
+    
+
 
 3d DP 
 https://leetcode.com/problems/knight-probability-in-chessboard/
@@ -416,7 +424,7 @@ https://leetcode.com/problems/shortest-bridge/
 https://leetcode.com/problems/longest-increasing-path-in-a-matrix/submissions/
 https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/submissions/
 https://leetcode.com/problems/sliding-puzzle/submissions/
-
+https://leetcode.com/problems/permutations/submissions/
 
 
 2d array 
