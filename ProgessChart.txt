@@ -197,7 +197,25 @@ Top K Frequent Words    56.9%   Medium
 Gas Station 45.1%   Medium  
 Longest Increasing Path in a Matrix 52.2%   Hard    
 Longest Common Prefix
-
+Binary Tree Right Side View 61.2%   Medium  
+Shortest Word Distance
+Find First and Last Position of Element in Sorted Array 41.6%   Medium  
+Binary String With Substrings Representing 1 To N   57.6%   Medium  
+Construct Target Array With Multiple Sums   36.3%   Hard    
+K-Concatenation Maximum Sum 23.9%   Medium  
+N-ary Tree Level Order Traversal    70.6%   Medium  
+Flood Fill  60.7%   Easy    
+Validate Binary Search Tree 31.8%   Medium  
+Shortest Bridge 54.0%   Medium  
+Pacific Atlantic Water Flow 54.1%   Medium  
+Trapping Rain Water II  47.5%   Hard    
+Serialize and Deserialize BST   56.8%   Medium  
+Sliding Puzzle  63.9%   Hard    
+Remove Stones to Minimize the Total 59.2%   Medium  
+Partition to K Equal Sum Subsets    40.8%   Medium  
+Bus Routes  45.7%   Hard    
+Best Time to Buy and Sell Stock IV  38.1%   Hard    
+Find All Anagrams in a String
 
 categories:: 
 
@@ -279,6 +297,7 @@ Graph:
 https://leetcode.com/problems/copy-list-with-random-pointer/
 https://leetcode.com/problems/find-the-celebrity/submissions/
 https://leetcode.com/problems/cheapest-flights-within-k-stops/submissions/
+https://leetcode.com/problems/bus-routes/submissions/
 
 
 Array / string: 
@@ -348,7 +367,7 @@ https://leetcode.com/problems/find-k-pairs-with-smallest-sums/submissions/
 https://leetcode.com/problems/trapping-rain-water-ii/submissions/
 https://leetcode.com/problems/top-k-frequent-words/submissions/
 
-Dp:
+Dp / Greedy:
 https://leetcode.com/problems/concatenated-words/submissions/
 https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/
 https://leetcode.com/problems/candy/submissions/
@@ -364,6 +383,7 @@ https://leetcode.com/problems/decode-ways/submissions/
 https://leetcode.com/problems/unique-paths/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/submissions/
+https://leetcode.com/problems/jump-game-ii/submissions/
 
 
 3d DP 
@@ -395,6 +415,8 @@ https://leetcode.com/problems/shortest-path-in-binary-matrix/submissions/
 https://leetcode.com/problems/shortest-bridge/
 https://leetcode.com/problems/longest-increasing-path-in-a-matrix/submissions/
 https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/submissions/
+https://leetcode.com/problems/sliding-puzzle/submissions/
+
 
 
 2d array 
@@ -456,6 +478,8 @@ https://leetcode.com/problems/count-special-integers/
 https://leetcode.com/problems/the-kth-factor-of-n/solution/
     --- this has to do with some math explanation.
 https://leetcode.com/problems/shortest-path-visiting-all-nodes/
+https://leetcode.com/problems/construct-target-array-with-multiple-sums
+https://leetcode.com/problems/reaching-points/
 
 good finds 
 - https://leetcode.com/problems/maximum-number-of-robots-within-budget/discuss/2524838/JavaC%2B%2BPython-Sliding-Window-O(n)-Solution
