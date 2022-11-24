@@ -496,6 +496,7 @@ https://leetcode.com/problems/design-in-memory-file-system/
 https://leetcode.com/problems/design-tic-tac-toe/submissions/
 https://leetcode.com/problems/snakes-and-ladders/submissions/
 https://leetcode.com/problems/design-browser-history/submissions/
+https://leetcode.com/problems/stream-of-characters/
 
 2 pointer 
 https://leetcode.com/problems/container-with-most-water/submissions/
