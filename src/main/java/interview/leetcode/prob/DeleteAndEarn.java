@@ -1,5 +1,8 @@
 package interview.leetcode.prob;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * You are given an integer array nums. You want to maximize the number of points you get by performing the following operation any number of times:
 
@@ -60,4 +63,24 @@ public class DeleteAndEarn {
         
         return dp[10000];
     }
+    
+    public int deleteAndEarn_usingMap(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int max = 0;
+        for(int n : nums){
+            map.put(n, map.getOrDefault(n, 0) + n);
+            max = Math.max(max, n);
+        }
+        
+        int[] dp = new int[max + 1];
+        dp[0] = map.getOrDefault(0, 0);
+        dp[1] = map.getOrDefault(1, 0); // since 1 is higher it should take 1 
+        
+        for(int i=2; i<= max; i++){
+            dp[i] = Math.max(dp[i-1], dp[i-2] + map.getOrDefault(i, 0));
+        }
+        
+        return dp[max];
+    }
+    
 }

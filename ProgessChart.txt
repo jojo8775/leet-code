@@ -416,6 +416,7 @@ https://leetcode.com/problems/unique-paths/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/submissions/
 https://leetcode.com/problems/jump-game-ii/submissions/
+https://leetcode.com/problems/delete-and-earn
 
 https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
 -- similar 
@@ -476,7 +477,7 @@ https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/submis
 
 union and find
 https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/submissions/
-
+https://leetcode.com/problems/satisfiability-of-equality-equations/
 
 2d array 
 https://leetcode.com/problems/number-of-islands/
