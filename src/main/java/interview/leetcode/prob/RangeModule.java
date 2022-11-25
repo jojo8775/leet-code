@@ -65,6 +65,8 @@ public class RangeModule {
 	        
 	        intervals.put(left, right);
 	       
+	        // right is inclusive so that we dont have duplicate right. 
+	        // left is exlusive becase it got overriden 
 	        intervals.subMap(left, false, right, true).clear();
 	    }
 	    
@@ -82,6 +84,8 @@ public class RangeModule {
 	        Integer start = intervals.floorKey(left);
 	        Integer end = intervals.floorKey(right);
 
+	        // ordering matters because end and start could be same. 
+	        // in this case if we do the left first, then we will override the original end value
 	        if(end != null && intervals.get(end) > right){
 	            intervals.put(right, intervals.get(end));
 	        }
@@ -90,6 +94,8 @@ public class RangeModule {
 	            intervals.put(start, left);
 	        }
 	        
+	        // left inclusive because we didnt override that key 
+	        // right exclusive becase we want the remaining interval persisted.
 	        intervals.subMap(left, true, right, false).clear();
 	    }
 	}
