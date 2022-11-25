@@ -1,4 +1,16 @@
 
+Ledger;
+11/25/22
+- 7:30 : woke up 
+- 8:30 : warming up 
+- 9:10 : Completed online research for laptop deals, found none :(
+- 9:10 : started focusing sutudies till 11 -- 
+- 
+
+
+
+
+
 - start work early and understand how to add the response header using middleware
 - reachout to someone with UI exp and ask how to add the HTML 
     - if nothing then reach out to marco 

@@ -236,6 +236,21 @@ Stream of Characters    51.6%   Hard
 Delete and Earn 57.3%   Medium  
 Satisfiability of Equality Equations    50.7%   Medium  
 Lowest Common Ancestor of a Binary Tree III
+Exclusive Time of Functions 61.1%   Medium  
+Max Stack
+Range Module    44.7%   Hard    
+Minimum Cost to Hire K Workers  52.0%   Hard    
+Find the Most Competitive Subsequence   49.4%   Medium  
+Adding Spaces to a String   56.3%   Medium  
+Reverse Linked List II  45.4%   Medium  
+Edit Distance   52.7%   Hard    
+Minimum Moves to Equal Array Elements II    60.2%   Medium  
+Most Profit Assigning Work  44.5%   Medium  
+Design File System
+01 Matrix   44.2%   Medium  
+N-Queens    63.1%   Hard    
+Ransom Note 57.6%   Easy    
+Construct Binary Tree from Preorder and Inorder Traversal
 
 
 
@@ -274,6 +289,7 @@ https://leetcode.com/problems/maximum-frequency-stack/submissions/
 https://leetcode.com/problems/min-stack/submissions/
 https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/submissions/
 https://leetcode.com/problems/number-of-visible-people-in-a-queue/
+https://leetcode.com/problems/exclusive-time-of-functions/
 
 
 binary search:
@@ -314,6 +330,7 @@ https://leetcode.com/problems/delete-nodes-and-return-forest/submissions/
 https://leetcode.com/problems/validate-binary-search-tree/submissions/
 https://leetcode.com/problems/binary-tree-right-side-view/submissions/
 https://leetcode.com/problems/two-sum-iv-input-is-a-bst/submissions/
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/submissions/
 
 
 Graph: 
