@@ -289,7 +289,8 @@ https://leetcode.com/problems/maximum-frequency-stack/submissions/
 https://leetcode.com/problems/min-stack/submissions/
 https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/submissions/
 https://leetcode.com/problems/number-of-visible-people-in-a-queue/
-
+https://leetcode.com/problems/reverse-linked-list-ii/submissions/
+https://leetcode.com/problems/find-the-most-competitive-subsequence/
 
 
 binary search:
@@ -369,6 +370,8 @@ https://leetcode.com/problems/3sum/submissions/
 https://leetcode.com/problems/valid-anagram/submissions/
 https://leetcode.com/problems/longest-binary-subsequence-less-than-or-equal-to-k/
 https://leetcode.com/problems/gas-station/
+https://leetcode.com/problems/adding-spaces-to-a-string/submissions/
+
 
 https://leetcode.com/problems/push-dominoes/
     -- similar: https://leetcode.com/problems/shortest-distance-to-a-character
@@ -435,6 +438,7 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/submissions/
 https://leetcode.com/problems/jump-game-ii/submissions/
 https://leetcode.com/problems/delete-and-earn
+https://leetcode.com/problems/edit-distance/submissions/
 
 https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
 -- similar 
@@ -448,6 +452,7 @@ https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
 3d DP 
 https://leetcode.com/problems/knight-probability-in-chessboard/
 https://leetcode.com/problems/cheapest-flights-within-k-stops/
+https://leetcode.com/problems/01-matrix/
 
 
 DFS / BFS:
@@ -487,6 +492,7 @@ https://leetcode.com/problems/design-search-autocomplete-system/submissions/
 https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/submissions/
 https://leetcode.com/problems/minesweeper/submissions/
 https://leetcode.com/problems/jump-game-iv/
+https://leetcode.com/problems/most-profit-assigning-work/submissions/
 
 
 bitmap:
@@ -517,9 +523,11 @@ https://leetcode.com/problems/snakes-and-ladders/submissions/
 https://leetcode.com/problems/design-browser-history/submissions/
 https://leetcode.com/problems/stream-of-characters/
 https://leetcode.com/problems/range-module/
+https://leetcode.com/problems/n-queens/submissions/
 
 2 pointer 
 https://leetcode.com/problems/container-with-most-water/submissions/
+https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/
 
 
 
