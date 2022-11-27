@@ -332,6 +332,7 @@ https://leetcode.com/problems/validate-binary-search-tree/submissions/
 https://leetcode.com/problems/binary-tree-right-side-view/submissions/
 https://leetcode.com/problems/two-sum-iv-input-is-a-bst/submissions/
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/submissions/
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/submissions/
 
 
 Graph: 
@@ -439,6 +440,7 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/submissions/
 https://leetcode.com/problems/jump-game-ii/submissions/
 https://leetcode.com/problems/delete-and-earn
 https://leetcode.com/problems/edit-distance/submissions/
+https://leetcode.com/problems/maximum-profit-in-job-scheduling/submissions/
 
 https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
 -- similar 
@@ -524,6 +526,7 @@ https://leetcode.com/problems/design-browser-history/submissions/
 https://leetcode.com/problems/stream-of-characters/
 https://leetcode.com/problems/range-module/
 https://leetcode.com/problems/n-queens/submissions/
+https://leetcode.com/problems/design-file-system
 
 2 pointer 
 https://leetcode.com/problems/container-with-most-water/submissions/
@@ -555,6 +558,7 @@ https://leetcode.com/problems/the-kth-factor-of-n/solution/
 https://leetcode.com/problems/shortest-path-visiting-all-nodes/
 https://leetcode.com/problems/construct-target-array-with-multiple-sums
 https://leetcode.com/problems/reaching-points/
+https://leetcode.com/problems/construct-target-array-with-multiple-sums/submissions/
 
 good finds 
 - https://leetcode.com/problems/maximum-number-of-robots-within-budget/discuss/2524838/JavaC%2B%2BPython-Sliding-Window-O(n)-Solution
