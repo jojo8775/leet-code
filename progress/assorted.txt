@@ -1,0 +1,71 @@
+categories:: 
+
+=================================================================================================================================
+cordinates / directions 
+---------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/k-closest-points-to-origin/submissions/
+https://leetcode.com/problems/robot-bounded-in-circle/
+
+=================================================================================================================================
+unclassified 
+---------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/next-greater-element-iii/submissions/
+https://leetcode.com/problems/sequential-digits/submissions/
+https://leetcode.com/problems/next-permutation/submissions/
+https://leetcode.com/problems/rabbits-in-forest
+
+
+
+=================================================================================================================================
+design:
+---------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/design-in-memory-file-system/
+https://leetcode.com/problems/design-tic-tac-toe/submissions/
+https://leetcode.com/problems/snakes-and-ladders/submissions/
+https://leetcode.com/problems/design-browser-history/submissions/
+https://leetcode.com/problems/stream-of-characters/
+https://leetcode.com/problems/range-module/
+https://leetcode.com/problems/n-queens/submissions/
+https://leetcode.com/problems/design-file-system
+
+
+
+=================================================================================================================================
+unsolved 
+---------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/longest-duplicate-substring/
+concept link: https://www.youtube.com/watch?v=BfUejqd07yo&ab_channel=StableSort
+
+
+
+things I dont understand 
+https://leetcode.com/problems/sum-of-subarray-minimums/
+https://leetcode.com/problems/sum-of-total-strength-of-wizards/submissions/
+
+https://leetcode.com/problems/strong-password-checker/
+    -- this is an old problem and i never understood it. 
+https://leetcode.com/problems/valid-permutations-for-di-sequence
+    --- no idea after looking at the solutions... 
+https://leetcode.com/problems/count-special-integers
+    --- similar: https://leetcode.com/problems/numbers-with-repeated-digits/
+https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies
+https://leetcode.com/problems/stone-game-v/
+https://leetcode.com/problems/count-special-integers/
+https://leetcode.com/problems/the-kth-factor-of-n/solution/
+    --- this has to do with some math explanation.
+https://leetcode.com/problems/shortest-path-visiting-all-nodes/
+https://leetcode.com/problems/construct-target-array-with-multiple-sums
+https://leetcode.com/problems/reaching-points/
+https://leetcode.com/problems/construct-target-array-with-multiple-sums/submissions/
+
+good finds 
+- https://leetcode.com/problems/maximum-number-of-robots-within-budget/discuss/2524838/JavaC%2B%2BPython-Sliding-Window-O(n)-Solution
+    - contains all the problems related to stack 
+
+things to think back 
+- https://leetcode.com/problems/word-ladder-ii/submissions/
+- https://leetcode.com/problems/strong-password-checker/
+- https://leetcode.com/problems/count-special-integers/
+
+problens to refer again 
+https://leetcode.com/problems/gas-station/

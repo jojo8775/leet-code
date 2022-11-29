@@ -1,0 +1,98 @@
+arrays-strings
+
+=================================================================================================================================
+Array / string: 
+---------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/substring-with-largest-variance/submissions/
+https://leetcode.com/problems/minimum-number-of-moves-to-make-palindrome/submissions/
+https://leetcode.com/problems/number-of-ways-to-select-buildings/
+https://leetcode.com/problems/integer-to-english-words/submissions/
+https://leetcode.com/problems/find-triangular-sum-of-an-array
+https://leetcode.com/problems/minimum-number-of-keypresses/submissions/
+https://leetcode.com/problems/minimum-adjacent-swaps-to-make-a-valid-array/submissions/
+https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-binary-string-alternating
+https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/submissions/
+https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/submissions/
+https://leetcode.com/problems/integer-to-roman/submissions/
+https://leetcode.com/problems/sequential-digits/submissions/
+https://leetcode.com/problems/find-good-days-to-rob-the-bank/submissions/
+https://leetcode.com/problems/number-of-smooth-descent-periods-of-a-stock/
+https://leetcode.com/problems/minimum-average-difference/submissions/
+https://leetcode.com/problems/roman-to-integer/submissions/
+https://leetcode.com/problems/longest-palindromic-substring/submissions/
+https://leetcode.com/problems/compare-version-numbers/submissions/
+https://leetcode.com/problems/longest-valid-parentheses/
+https://leetcode.com/problems/longest-happy-string/submissions/
+https://leetcode.com/problems/kth-largest-element-in-an-array/submissions/
+https://leetcode.com/problems/number-of-smooth-descent-periods-of-a-stock/submissions/
+https://leetcode.com/problems/first-missing-positive/
+https://leetcode.com/problems/4sum/submissions/
+https://leetcode.com/problems/3sum/submissions
+https://leetcode.com/problems/valid-anagram/submissions/
+https://leetcode.com/problems/longest-binary-subsequence-less-than-or-equal-to-k/
+https://leetcode.com/problems/gas-station/
+https://leetcode.com/problems/adding-spaces-to-a-string/submissions/
+https://leetcode.com/problems/minimum-health-to-beat-game/
+https://leetcode.com/problems/minimum-number-of-keypresses/submissions/
+https://leetcode.com/problems/maximum-number-of-robots-within-budget/submissions/
+https://leetcode.com/problems/total-appeal-of-a-string/
+
+
+https://leetcode.com/problems/push-dominoes/
+    -- similar: https://leetcode.com/problems/shortest-distance-to-a-character
+
+https://leetcode.com/problems/product-of-array-except-self/submissions/
+https://leetcode.com/problems/find-all-anagrams-in-a-string/submissions
+
+https://leetcode.com/problems/number-of-ways-to-split-array/
+    same as https://leetcode.com/problems/number-of-good-ways-to-split-a-string/submissions/
+            https://leetcode.com/problems/daily-temperatures/submissions/
+
+// sliding window 
+https://leetcode.com/problems/longest-repeating-character-replacement/s
+
+
+
+=================================================================================================================================
+2d array 
+---------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/number-of-islands/
+https://leetcode.com/problems/word-search/submissions/
+https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/
+https://leetcode.com/problems/maximal-rectangle/submissions/
+https://leetcode.com/problems/number-of-distinct-islands/
+https://leetcode.com/problems/shortest-path-to-get-food/
+https://leetcode.com/problems/max-area-of-island/submissions/
+https://leetcode.com/problems/pacific-atlantic-water-flow/submissions/
+https://leetcode.com/problems/rotate-image/submissions/
+-- same as https://leetcode.com/problems/spiral-matrix-ii/submissions/
+
+
+
+=================================================================================================================================
+2 pointer 
+---------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/container-with-most-water/submissions/
+https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/
+
+
+=================================================================================================================================
+bitmap:
+---------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/valid-sudoku/submissions/
+https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/submissions/
+
+
+=================================================================================================================================
+union and find
+---------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/submissions/
+https://leetcode.com/problems/satisfiability-of-equality-equations/
+
+
+=================================================================================================================================
+interval
+---------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/meeting-rooms-ii/
+
+
