@@ -26,6 +26,7 @@ https://leetcode.com/problems/sequentially-ordinal-rank-tracker
 https://leetcode.com/problems/maximum-number-of-robots-within-budget/
 https://leetcode.com/problems/meeting-rooms-ii/
 https://leetcode.com/problems/merge-k-sorted-lists/submissions/
+https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/
 https://leetcode.com/problems/reorganize-string/submissions/
 https://leetcode.com/problems/minimum-difference-in-sums-after-removal-of-elements/submissions/
 https://leetcode.com/problems/find-median-from-data-stream/
@@ -40,3 +41,4 @@ https://leetcode.com/problems/trapping-rain-water-ii/submissions/
 https://leetcode.com/problems/top-k-frequent-words/submissions/
 https://leetcode.com/problems/minimum-cost-to-hire-k-workers/
 https://leetcode.com/problems/k-closest-points-to-origin/submissions/
+https://leetcode.com/problems/maximum-number-of-eaten-apples/submissions/

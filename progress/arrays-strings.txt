@@ -36,7 +36,9 @@ https://leetcode.com/problems/minimum-health-to-beat-game/
 https://leetcode.com/problems/minimum-number-of-keypresses/submissions/
 https://leetcode.com/problems/maximum-number-of-robots-within-budget/submissions/
 https://leetcode.com/problems/total-appeal-of-a-string/
-
+https://leetcode.com/problems/letter-combinations-of-a-phone-number/submissions/
+https://leetcode.com/problems/maximum-units-on-a-truck/
+https://leetcode.com/problems/determine-if-string-halves-are-alike/submissions/
 
 https://leetcode.com/problems/push-dominoes/
     -- similar: https://leetcode.com/problems/shortest-distance-to-a-character

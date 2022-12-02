@@ -13,7 +13,8 @@ https://leetcode.com/problems/next-greater-element-iii/submissions/
 https://leetcode.com/problems/sequential-digits/submissions/
 https://leetcode.com/problems/next-permutation/submissions/
 https://leetcode.com/problems/rabbits-in-forest
-
+https://leetcode.com/problems/count-special-integers/
+https://leetcode.com/problems/numbers-with-repeated-digits/
 
 
 =================================================================================================================================
@@ -27,7 +28,7 @@ https://leetcode.com/problems/stream-of-characters/
 https://leetcode.com/problems/range-module/
 https://leetcode.com/problems/n-queens/submissions/
 https://leetcode.com/problems/design-file-system
-
+https://leetcode.com/problems/design-parking-system/submissions/
 
 
 =================================================================================================================================
