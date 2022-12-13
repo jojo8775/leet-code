@@ -14,3 +14,4 @@ https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/submission
 -- all related BS prob https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/discuss/256729/JavaC%2B%2BPython-Binary-Search
 
 https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+https://leetcode.com/problems/single-element-in-a-sorted-array/submissions/

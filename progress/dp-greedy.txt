@@ -15,8 +15,7 @@ https://leetcode.com/problems/binary-tree-cameras/
 https://leetcode.com/problems/number-of-people-aware-of-a-secret
 https://leetcode.com/problems/decode-ways/submissions/
 https://leetcode.com/problems/unique-paths/
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/submissions/
+
 https://leetcode.com/problems/jump-game-ii/submissions/
 https://leetcode.com/problems/delete-and-earn
 https://leetcode.com/problems/edit-distance/submissions/
@@ -34,6 +33,13 @@ https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
 
 https://leetcode.com/problems/find-the-k-sum-of-an-array/submissions/
 https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/
+https://leetcode.com/problems/minimum-falling-path-sum/
+
+
+// stock buy and sell 
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/submissions/
 
 
 =================================================================================================================================
