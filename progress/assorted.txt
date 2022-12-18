@@ -35,6 +35,8 @@ https://leetcode.com/problems/first-unique-number/submissions/
 https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
 https://leetcode.com/problems/robot-room-cleaner/submissions/
 https://leetcode.com/problems/insert-delete-getrandom-o1/submissions/
+https://leetcode.com/problems/maximum-frequency-stack/submissions/
+https://leetcode.com/problems/implement-queue-using-stacks/submissions/
 
 
 =================================================================================================================================

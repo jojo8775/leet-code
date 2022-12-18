@@ -29,6 +29,8 @@ https://leetcode.com/problems/maximum-width-ramp/
 https://leetcode.com/problems/maximum-number-of-books-you-can-take/
 https://leetcode.com/problems/copy-list-with-random-pointer/submissions/
 https://leetcode.com/problems/middle-of-the-linked-list/submissions/
+https://leetcode.com/problems/odd-even-linked-list/submissions/
+https://leetcode.com/problems/reverse-nodes-in-k-group/submissions/
 
 
 =================================================================================================================================

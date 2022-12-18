@@ -34,6 +34,7 @@ https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
 https://leetcode.com/problems/find-the-k-sum-of-an-array/submissions/
 https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/
 https://leetcode.com/problems/minimum-falling-path-sum/
+https://leetcode.com/problems/longest-common-subsequence/submissions/
 
 
 // stock buy and sell 

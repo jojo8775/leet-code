@@ -70,7 +70,9 @@ Submissions
  */
 public class RobotBoundedInCircle {
     public boolean isRobotBounded(String instructions) {
-        // is order matters, it is per anticlock (3 = left and 1 = right)
+        // this order matters, it is per anticlock (3 = left is same as 1 = right)
+        // this order represents clock wise directions. starting from moveing straight up. 
+        // {0,1} represents moving up because only y is changing in positive direction.
         int[][] dirs = {{0,1},{1,0},{0,-1},{-1,0}};
         int x = 0, y = 0, startDir = 0, endDir = 0;
         
