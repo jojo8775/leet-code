@@ -17,6 +17,7 @@ https://leetcode.com/problems/shortest-word-distance-ii/submissions/
 https://leetcode.com/problems/two-sum/
 https://leetcode.com/problems/word-abbreviation/submissions/
 https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/submissions/
+https://leetcode.com/problems/group-shifted-strings/submissions/
 
 
 =================================================================================================================================
@@ -45,3 +46,4 @@ https://leetcode.com/problems/minimum-cost-to-hire-k-workers/
 https://leetcode.com/problems/k-closest-points-to-origin/submissions/
 https://leetcode.com/problems/maximum-number-of-eaten-apples/submissions/
 https://leetcode.com/problems/single-threaded-cpu/submissions/
+
