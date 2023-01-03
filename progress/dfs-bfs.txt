@@ -39,7 +39,7 @@ https://leetcode.com/problems/game-of-life/submissions/
 https://leetcode.com/problems/design-search-autocomplete-system/submissions/
 https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/submissions/
 https://leetcode.com/problems/minesweeper/submissions/
-https://leetcode.com/problems/jump-game-iv/
+https://leetcode.com/problems/jump-game-iv/submissions/
 https://leetcode.com/problems/most-profit-assigning-work/submissions/
 https://leetcode.com/problems/task-scheduler/
 https://leetcode.com/problems/word-abbreviation/
@@ -47,6 +47,7 @@ https://leetcode.com/problems/word-search/
 https://leetcode.com/problems/number-of-provinces/submissions/
 https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies/submissions/
 https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/submissions/
+https://leetcode.com/problems/shortest-path-visiting-all-nodes/submissions/
 
 
 =================================================================================================================================
