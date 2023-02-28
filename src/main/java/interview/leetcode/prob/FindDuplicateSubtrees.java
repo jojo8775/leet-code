@@ -42,9 +42,9 @@ public class FindDuplicateSubtrees {
         }
         
         StringBuilder sb = new StringBuilder();
-        sb.append(postOrder(pathIndex, result, node.left));
-        sb.append(postOrder(pathIndex, result, node.right));
-        sb.append(node.val).append(",");
+        sb.append(postOrder(pathIndex, result, node.left)).append(",");
+        sb.append(postOrder(pathIndex, result, node.right)).append(",");
+        sb.append(node.val);
         
         String path = sb.toString();
         

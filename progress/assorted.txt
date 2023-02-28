@@ -44,12 +44,13 @@ unsolved
 ---------------------------------------------------------------------------------------------------------------------------------
 https://leetcode.com/problems/longest-duplicate-substring/
 concept link: https://www.youtube.com/watch?v=BfUejqd07yo&ab_channel=StableSort
-
+https://leetcode.com/problems/shortest-impossible-sequence-of-rolls/
 
 
 things I dont understand 
 https://leetcode.com/problems/sum-of-subarray-minimums/
 https://leetcode.com/problems/sum-of-total-strength-of-wizards/submissions/
+https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/
 
 https://leetcode.com/problems/strong-password-checker/
     -- this is an old problem and i never understood it. 
