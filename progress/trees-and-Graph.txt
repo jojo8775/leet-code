@@ -32,6 +32,9 @@ https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/
 https://leetcode.com/problems/leaf-similar-trees/submissions/
 https://leetcode.com/problems/binary-tree-maximum-path-sum/
 
+construct:
+https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/submissions/
+
 =================================================================================================================================
 Graph: 
 ---------------------------------------------------------------------------------------------------------------------------------

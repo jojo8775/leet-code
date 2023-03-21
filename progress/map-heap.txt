@@ -23,8 +23,14 @@ https://leetcode.com/problems/group-shifted-strings/submissions/
 =================================================================================================================================
 Heap / tree map: 
 ---------------------------------------------------------------------------------------------------------------------------------
+
+T-map
+https://leetcode.com/problems/plates-between-candles/submissions/
+
+Heap
+// Meeting rooms
+https://leetcode.com/problems/meeting-rooms-ii/submissions/
 https://leetcode.com/problems/sequentially-ordinal-rank-tracker/
-https://leetcode.com/problems/plates-between-candles/submissions/ 
 https://leetcode.com/problems/sequentially-ordinal-rank-tracker
 https://leetcode.com/problems/maximum-number-of-robots-within-budget/
 https://leetcode.com/problems/meeting-rooms-ii/

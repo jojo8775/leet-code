@@ -37,6 +37,9 @@ https://leetcode.com/problems/minimum-falling-path-sum/
 https://leetcode.com/problems/longest-common-subsequence/submissions/
 
 
+//greedy
+https://leetcode.com/problems/minimum-health-to-beat-game/submissions/
+
 // stock buy and sell 
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/

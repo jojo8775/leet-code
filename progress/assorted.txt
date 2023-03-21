@@ -37,6 +37,7 @@ https://leetcode.com/problems/robot-room-cleaner/submissions/
 https://leetcode.com/problems/insert-delete-getrandom-o1/submissions/
 https://leetcode.com/problems/maximum-frequency-stack/submissions/
 https://leetcode.com/problems/implement-queue-using-stacks/submissions/
+https://leetcode.com/problems/design-add-and-search-words-data-structure/submissions/
 
 
 =================================================================================================================================

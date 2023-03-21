@@ -3,12 +3,12 @@ arrays-strings
 =================================================================================================================================
 Array / string: 
 ---------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/can-place-flowers/submissions/
 https://leetcode.com/problems/substring-with-largest-variance/submissions/
 https://leetcode.com/problems/minimum-number-of-moves-to-make-palindrome/submissions/
 https://leetcode.com/problems/number-of-ways-to-select-buildings/
 https://leetcode.com/problems/integer-to-english-words/submissions/
 https://leetcode.com/problems/find-triangular-sum-of-an-array
-https://leetcode.com/problems/minimum-number-of-keypresses/submissions/
 https://leetcode.com/problems/minimum-adjacent-swaps-to-make-a-valid-array/submissions/
 https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-binary-string-alternating
 https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/submissions/
@@ -57,6 +57,12 @@ https://leetcode.com/problems/number-of-ways-to-split-array/
     same as https://leetcode.com/problems/number-of-good-ways-to-split-a-string/submissions/
             https://leetcode.com/problems/daily-temperatures/submissions/
 
+// array sum
+https://leetcode.com/problems/find-triangular-sum-of-an-array/submissions/
+
+
+// string manipulation 
+https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-binary-string-alternating/submissions/
 
 =================================================================================================================================
 sliding window 
@@ -69,6 +75,7 @@ https://leetcode.com/problems/minimum-window-substring/submissions/
 2d array 
 ---------------------------------------------------------------------------------------------------------------------------------
 https://leetcode.com/problems/number-of-islands/
+https://leetcode.com/problems/lonely-pixel-i/submissions/
 https://leetcode.com/problems/word-search/submissions/
 https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/
 https://leetcode.com/problems/maximal-rectangle/submissions/
