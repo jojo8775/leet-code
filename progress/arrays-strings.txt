@@ -4,6 +4,7 @@ arrays-strings
 Array / string: 
 ---------------------------------------------------------------------------------------------------------------------------------
 https://leetcode.com/problems/can-place-flowers/submissions/
+https://leetcode.com/problems/number-of-zero-filled-subarrays/submissions/
 https://leetcode.com/problems/substring-with-largest-variance/submissions/
 https://leetcode.com/problems/minimum-number-of-moves-to-make-palindrome/submissions/
 https://leetcode.com/problems/number-of-ways-to-select-buildings/
@@ -63,6 +64,7 @@ https://leetcode.com/problems/find-triangular-sum-of-an-array/submissions/
 
 // string manipulation 
 https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-binary-string-alternating/submissions/
+https://leetcode.com/problems/swap-adjacent-in-lr-string/submissions/
 
 =================================================================================================================================
 sliding window 
@@ -70,6 +72,7 @@ sliding window
 https://leetcode.com/problems/longest-repeating-character-replacement/
 https://leetcode.com/problems/longest-substring-without-repeating-characters/submissions/
 https://leetcode.com/problems/minimum-window-substring/submissions/
+https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/submissions/
 
 =================================================================================================================================
 2d array 
