@@ -5,6 +5,7 @@ DFS / BFS:
 ---------------------------------------------------------------------------------------------------------------------------------
 https://leetcode.com/problems/check-completeness-of-a-binary-tree/submissions/
 https://leetcode.com/problems/number-of-islands/submissions/
+https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/submissions/
 
 https://leetcode.com/problems/word-ladder/
 https://leetcode.com/problems/word-break-ii/
