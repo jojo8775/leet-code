@@ -272,6 +272,9 @@ https://docs.google.com/spreadsheets/d/1_KE3Bu3C3gOyEm0mRVcJH9nEA2u2GOhfpUZOckOW
 ----------------
 March 13th --- new planning begining. 
 
+March 16th: progress so far, problem completed 20 
+            System design : Maps one read.
+
 Basic:
     - 3 problems + one from the daily goal. 
     - 
