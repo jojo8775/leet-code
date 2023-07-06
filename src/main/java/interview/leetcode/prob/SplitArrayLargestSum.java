@@ -23,7 +23,7 @@ where the largest sum among the two subarrays is only 18.
  *
  */
 public class SplitArrayLargestSum {
-    public int splitArray(int[] nums, int m) {
+	public int splitArray(int[] nums, int m) {
         int maxEntry = 0;
         long totalSum = 0;
         
@@ -38,17 +38,17 @@ public class SplitArrayLargestSum {
         // max entry becomes the reference of predicated lowest sum.
         long low = maxEntry, high = totalSum;
         
-        while(low<=high){
+        while(low<high){
             // mid represents the predicted optimal sum for each sub array
-            long mid = (low + high)/2;
+            long mid = low + (high - low)/2;
             
-            if(isValid(nums, mid, m)){
+            if(!isValid(nums, mid, m)){
                 // if mid can be split among more than m sub array then we need to aim for higher predicted sum
-                high = mid - 1;
+                low = mid + 1;
             }
             else{
                 // if mid cannot be split among m sub array then we need to aim for lower predicted sum
-                low = mid + 1;
+                high = mid;
             }
         }
         

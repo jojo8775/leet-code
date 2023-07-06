@@ -49,6 +49,45 @@ Submissions
  * Jun 15, 2021  11:53:12 PM
  */
 public class MaximumNumberOfRemovableCharacters {
+	public int maximumRemovals_adv(String s, String p, int[] removable) {
+        int left = 0, right = removable.length;
+        char[] cArr = s.toCharArray();
+
+        while(left < right){
+            int mid = left + (right - left)/2;
+
+            for(int i=left; i<= mid; i++){
+                cArr[removable[i]] = '/';
+            }
+
+            boolean isSubSeq = checkIfSubSeq(cArr, p);
+            if(isSubSeq){
+                left = mid + 1;
+            }
+            else{
+                for(int i=left; i<= mid; i++){
+                    cArr[removable[i]] = s.charAt(removable[i]);
+                }
+
+                right = mid;
+            }
+        }
+
+        return right;
+    }
+
+    private boolean checkIfSubSeq(char[] cArr, String p){
+        int idx = 0;
+        for(int j=0; j<cArr.length && idx < p.length(); j++){
+            if(p.charAt(idx) == cArr[j]){
+                idx++;
+            }
+        }
+
+        return idx == p.length();
+    }
+	
+	
     public int maximumRemovals(String s, String p, int[] removable) {
         // the solution is bruteforce. Runtime : O (n*k) where n is the length of s and k is number of items removed from removable arr 
         // only optimization we can do is to have binary search in removable array to make it O (n log k);
