@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -32,7 +33,61 @@ Return:
  *
  */
 public class PacificAtlanticWaterFlow {
-	public List<int[]> pacificAtlantic(int[][] matrix) {
+	public List<List<Integer>> pacificAtlantic_dfs(int[][] matrix) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        if(matrix.length == 0 || matrix[0].length == 0){
+            return result;
+        }
+
+        int m = matrix.length, n = matrix[0].length;
+
+        boolean[][] pacific = new boolean[m][n], atlantic = new boolean[m][n];
+
+        // simulating the flood coming from each ocean to the land from left and right
+        for(int i=0; i<m; i++){
+            dfs(matrix, pacific, i, 0, matrix[i][0]);
+            dfs(matrix, atlantic, i, n-1, matrix[i][n-1]);
+        }
+
+       // simulating the flood coming from each ocean to the land from top and bottom
+        for(int i=0; i<n; i++){
+            dfs(matrix, pacific, 0, i, matrix[0][i]);
+            dfs(matrix, atlantic, m-1, i, matrix[m-1][i]);
+        }
+
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                if(pacific[i][j] && atlantic[i][j]){
+                    result.add(Arrays.asList(i,j));
+                }
+            }
+        }
+
+        return result;
+    }
+
+    private void dfs(int[][] matrix, boolean[][] visited, int i, int j, int curMin){
+        int[][] moves = {{0,1},{0,-1},{1,0},{-1,0}};
+        int m = matrix.length, n = matrix[0].length;
+
+        visited[i][j] = true;
+
+        for(int[] move : moves){
+            int x = i + move[0], y = j + move[1];
+
+            if(x < 0 || x >= m || y < 0 || y >= n || visited[x][y] || matrix[x][y] < curMin){
+                continue;
+            }
+
+            visited[x][y] = true;
+            dfs(matrix, visited, x, y, matrix[x][y]);
+        }
+    }
+	
+	
+	
+	public List<int[]> pacificAtlantic_bfs(int[][] matrix) {
 		List<int[]> res = new ArrayList<int[]>();
 		int m = matrix.length;
 		if (m == 0)
