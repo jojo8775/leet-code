@@ -67,7 +67,7 @@ Submissions
  * Feb 11, 2023 6:30:08 PM
  */
 public class MinimumFuelCostToReportToTheCapital {
-    public long minimumFuelCost(int[][] roads, int seats) {
+	public long minimumFuelCost(int[][] roads, int seats) {
         List<List<Integer>> graph = new ArrayList<>();
         
         for(int i=0; i<=roads.length; i++){
@@ -86,7 +86,7 @@ public class MinimumFuelCostToReportToTheCapital {
         return result[0];
     }
     
-    private long dfs(List<List<Integer>> graph, int cur, int prev, int seats, long[] totalCars){
+    private long dfs(List<List<Integer>> graph, int cur, int prev, int seats, long[] totalPetrol){
         long people =  1;
         
         for(int nei : graph.get(cur)){
@@ -94,13 +94,15 @@ public class MinimumFuelCostToReportToTheCapital {
                 continue;
             }
             
-            people += dfs(graph, nei, cur, seats, totalCars);
+            people += dfs(graph, nei, cur, seats, totalPetrol);
         }
         
         if(cur != 0){
-            long curHopCars = (people + seats - 1) / seats;
-            totalCars[0] += curHopCars;
+            long curHopPetrol = (people + seats - 1) / seats; // petrol needed to transport X peopel between cur and prev node.
+            totalPetrol[0] += curHopPetrol;
         }
+        
+        //System.out.println("Cur node:" + cur + "  prev:" + prev + " total cars:" + totalCars[0] + " people: " + people);
         
         return people;
     }
