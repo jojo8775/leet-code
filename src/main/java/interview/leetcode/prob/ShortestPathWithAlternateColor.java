@@ -2,9 +2,11 @@ package interview.leetcode.prob;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
@@ -54,7 +56,68 @@ Submissions
  * Aug 30, 2019 1:12:32 AM
  */
 public class ShortestPathWithAlternateColor {
+	
 	public int[] shortestAlternatingPaths(int n, int[][] red_edges, int[][] blue_edges) {
+        Map<Integer, Set<Integer>> bg = new HashMap<>(), rg = new HashMap<>();
+
+        for(int[] e : red_edges){
+            rg.computeIfAbsent(e[0], v -> new HashSet<>()).add(e[1]);
+        }
+
+        for(int[] e : blue_edges){
+            bg.computeIfAbsent(e[0], v -> new HashSet<>()).add(e[1]);
+        }
+
+        // bfs for finding min dist 
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{0,0,-1}); // -1 red 
+        queue.offer(new int[]{0,0,1}); // 1 blue 
+
+        Set<String> visited = new HashSet<>();
+        visited.add("0,0,-1");
+        visited.add("0,0,1");
+
+        int[] result = new int[n];
+        Arrays.fill(result, -1);
+
+        int idx = 0;
+
+        while(!queue.isEmpty()){
+            int size = queue.size();
+
+            while(size-- > 0){
+                int[] top = queue.poll();
+                
+                if(result[top[1]] == -1){
+                    result[top[1]] = idx;
+                }
+
+                // if red
+                if(top[2] == -1){
+                    for(int nei : bg.getOrDefault(top[1], new HashSet<>())){
+                        String key = top[1] + "," + nei + "," + 1;
+                        if(visited.add(key)){
+                            queue.offer(new int[]{top[1], nei, 1});
+                        }
+                    }
+                }
+                else{
+                    for(int nei : rg.getOrDefault(top[1], new HashSet<>())){
+                        String key = top[1] + "," + nei + "," + "-1";
+                        if(visited.add(key)){
+                            queue.offer(new int[]{top[1], nei, -1});
+                        }
+                    }
+                }
+            }
+
+            idx++;
+        }
+
+        return result;
+    }
+	
+	public int[] shortestAlternatingPaths_old(int n, int[][] red_edges, int[][] blue_edges) {
         List<Integer>[] reds = new ArrayList[n], blues = new ArrayList[n];
         
         // creating the graph or adjacent matrix for red edges
