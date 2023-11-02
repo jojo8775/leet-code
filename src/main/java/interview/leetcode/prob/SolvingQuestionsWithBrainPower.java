@@ -46,23 +46,52 @@ Submissions
  * Jan 16, 2022 12:56:26 AM
  */
 public class SolvingQuestionsWithBrainPower {
-    public long mostPoints(int[][] questions) {
-        int len = questions.length;
-        
-        long[] dp = new long[len];
-        
-        for(int i=len-1; i>=0; i--){
-            if(i == len - 1){
-                dp[i] = questions[i][0];
-            }
-            else{
-                long skip = dp[i+1];
-                long taking = questions[i][0] + ((i + questions[i][1] + 1 < len) ? dp[i + questions[i][1] + 1] : 0);
-                
-                dp[i] = Math.max(skip, taking);
-            }
-        }
-        
-        return dp[0];
-    }
+	public long mostPoints(int[][] questions) {
+	     //return topdown(questions);
+	     return bottomup(questions);
+	 }
+	 
+	 private long bottomup(int[][] questions){
+	     // states
+	     long[] dp = new long[questions.length];
+	     
+	     for(int i=questions.length-1; i>=0; i--){
+	         // base case
+	         if(i == questions.length-1){
+	             dp[i] = questions[i][0];
+	         }
+	         else{
+	             // relation:
+	             long taking = questions[i][0] + ((i + questions[i][1] + 1 < dp.length) ? dp[i + questions[i][1] + 1] : 0L);
+	             long skipping = dp[i+1];
+	             
+	             dp[i] = Math.max(taking, skipping);
+	         }
+	     }
+	     
+	     return dp[0];
+	 }
+	 
+	 private long topdown(int[][] questions){
+	     return dp(questions, 0, new Long[questions.length]);
+	 }
+	
+	 private long dp(int[][] questions, int idx, Long[] memo){
+	     // base case
+	     if(idx >= questions.length){
+	         return 0L;
+	     }
+	
+	     if(memo[idx] != null){
+	         return memo[idx];
+	     }
+	
+	     // relation:
+	     long taking = questions[idx][0] + dp(questions, idx + questions[idx][1] + 1, memo);
+	     long skipping = dp(questions, idx + 1, memo);
+	
+	     memo[idx] = Math.max(taking, skipping);
+	
+	     return memo[idx];
+	 }
 }
