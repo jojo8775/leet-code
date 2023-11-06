@@ -29,7 +29,12 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
  * Feb 24, 2019 11:50:49 AM
  */
 public class BestTimeToBuyAndSellStockIII {
-	public int maxProfit(int[] prices) {
+	 public int maxProfit(int[] prices) {
+        //return maxProfit_2d(prices);
+        return maxProfit_1d(prices);
+    }
+	
+	private int maxProfit_2d(int[] prices) {
         if(prices.length < 2){
             return 0;
         }
@@ -55,6 +60,26 @@ public class BestTimeToBuyAndSellStockIII {
 		}
 		
 		return profitDP[2][prices.length - 1];
+    }
+	
+	private int maxProfit_1d(int[] prices){
+        int t1Cost = Integer.MAX_VALUE, t2Cost = Integer.MAX_VALUE;
+        int t1Profit = 0, t2Profit = 0;
+
+        // above 4 variables can be replaced by array to support k transactions 
+        for (int price : prices) {
+            // the maximum profit if only one transaction is allowed
+            t1Cost = Math.min(t1Cost, price);
+            
+            t1Profit = Math.max(t1Profit, price - t1Cost);
+            
+            // reinvest the gained profit in the second transaction
+            t2Cost = Math.min(t2Cost, price - t1Profit);
+            
+            t2Profit = Math.max(t2Profit, price - t2Cost);
+        }
+
+        return t2Profit;
     }
 	
 	public static void main(String[] args) {

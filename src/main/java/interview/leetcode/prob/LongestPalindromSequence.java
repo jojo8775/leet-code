@@ -14,36 +14,69 @@ package interview.leetcode.prob;
  * @author jojo Mar 20, 201711:48:47 PM
  */
 public class LongestPalindromSequence {
-	public int longestPalindromeSubseq_recursion(String s) {
-        Integer[][] memo = new Integer[s.length()][s.length()];
-        return recurse(s, 0, s.length() - 1, memo);
+	public int longestPalindromeSubseq_adv(String s) {
+        return topDown(s);
+        //return bottomUp(s);
     }
     
-    private int recurse(String str, int i, int j, Integer[][] memo){
-        if(i > j){
+    private int bottomUp(String s){
+        int len = s.length();
+    
+        // states
+        int[][] dp = new int[len][len];
+
+        for(int i=len-1; i>=0; i--){
+            // base case. Every single character is a palindrom
+            dp[i][i] = 1;
+
+            for(int j=i+1; j<len; j++){
+                // relation: 
+                if(s.charAt(i) == s.charAt(j)){
+                    dp[i][j] = 2 + dp[i+1][j-1];
+                }
+                // relation:
+                else{
+                    dp[i][j] += Math.max(dp[i+1][j], dp[i][j-1]);
+                }
+            }
+        }
+
+        return dp[0][len-1];
+    }
+    
+    private int topDown(String s){
+        // state
+        Integer[][] memo = new Integer[s.length()][s.length()];
+        return dp(s, 0, s, s.length() - 1, memo);
+    }
+
+    private int dp(String s1, int idx1, String s2, int idx2, Integer[][] memo){
+        // base case:
+        if(idx1 > idx2){
             return 0;
         }
-        
-        if(i == j){
+    
+        // base case: every single character is a palindrome
+        if(idx1 == idx2){
             return 1;
         }
-        
-        if(memo[i][j] != null){
-            return memo[i][j];
+
+        if(memo[idx1][idx2] != null){
+            return memo[idx1][idx2];
         }
+
+        int val = 0;
         
-        if(str.charAt(i) == str.charAt(j)){
-            
-            memo[i][j] = 2 + recurse(str, i+1, j-1, memo);
+        // relation:
+        if(s1.charAt(idx1) == s2.charAt(idx2)){
+            val = 2 + dp(s1, idx1 + 1, s2, idx2 - 1, memo);
         }
+        // relation:
         else{
-            int val1 = recurse(str, i+1, j, memo);
-            int val2 = recurse(str, i, j-1, memo);
-            
-            memo[i][j] = Math.max(val1, val2);
+            val = Math.max(dp(s1, idx1, s2, idx2 - 1, memo), dp(s1, idx1 + 1, s2, idx2, memo));
         }
-        
-        return memo[i][j];
+
+        return memo[idx1][idx2] = val;	
     }
 	
         
