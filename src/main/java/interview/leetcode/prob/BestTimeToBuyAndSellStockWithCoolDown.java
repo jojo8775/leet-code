@@ -69,7 +69,7 @@ public class BestTimeToBuyAndSellStockWithCoolDown {
             int profitWithoutSelling = maxProfitArr[i+1];
             
             maxProfitArr[i] = Math.max(profitWithoutSelling, maxProfitAfterSelling);
-        }
+        }	
         
         return maxProfitArr[0];
     }

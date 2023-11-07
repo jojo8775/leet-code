@@ -26,7 +26,45 @@ Subscribe to see which companies asked this question.
  *
  */
 public class TargetSum {
-    public int findTargetSumWays(int[] nums, int S) {
+	public int findTargetSumWays(int[] nums, int target) {
+        return topDown(nums, target);
+    }
+    
+    private int topDown(int[] nums, int target){
+        int sum = 0;
+        
+        for(int n : nums){
+            sum += n;
+        }
+        
+        // for each index the possibilities are from -9 to +9 if the total is 9
+        Integer[][] memo = new Integer[nums.length][(2 * sum) + 1];
+        
+        return dp(nums, 0, 0, target, memo, sum);
+    }
+    
+    private int dp(int[] nums, int idx, int sum, int target, Integer[][] memo, int total){
+        if(idx == nums.length){
+            if(sum == target){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        }
+        
+        if(memo[idx][total + sum] != null){
+            return memo[idx][total + sum];
+        }
+        
+        int addition = dp(nums, idx + 1, sum + nums[idx], target, memo, total);
+        int substract = dp(nums, idx + 1, sum - nums[idx], target, memo, total);
+        
+        return memo[idx][total + sum] = addition + substract;
+    }
+	
+	
+    public int findTargetSumWays_old(int[] nums, int S) {
         // sum[P] - sum[N] = Target
         // sum[P] - sum[N] + sum[P] + sum[N] = Target + sum[P] + sum[N]
         // 2sum[P] = target + sum[Total]
