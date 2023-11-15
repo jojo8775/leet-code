@@ -1,0 +1,42 @@
+
+Notes for system design: 
+
+Chapter1 
+
+- Non-relational DB
+	- NeoJS, Cassandra, CouchDB, HBase, Amazon Dynamo DB 
+		- Key Value 
+		- Graph 
+		- Object / document / file Store 
+		- column store 
+
+	Adv 
+		- low latency 
+		- unstructured data 
+		- serialize / deserialized data --- XML, JSON, 
+		- massive amount of data 
+		
+
+Capter 4 : 
+
+- Ratelimiter 
+	Alog: 
+		Token Bucket:
+			Tokens are filled at a regular interval 
+				- Not good for traffic spike as it will make the service unavailable 
+				- Since all the tokens are available at the initial state, it will allow a burst of requests to the server 
+
+		Leaky Bucket: 
+			: Creates a small queue and put the requests in the queue. The other side of the queue a worker process the queue at a regular speed 
+				- Not good for spike traffic because we may have a stale request in the queue. 
+
+		Sliding Window: 
+			: Similar logic to token bucker but base of time series. A specific number of tokens are assigned at every internal 
+				- It may allow more than the threshold request (at most 2x)
+
+		Sliding Window counter:
+			: usses a log mechanism and invalidates the previous timestamp which are before the begining of the current rolling window 
+				- it registers even for the rejected calls 
+				- memory intensive 
+
+		
