@@ -44,19 +44,64 @@ Submissions
  */
 public class UncrossedLines {
 	public int maxUncrossedLines(int[] A, int[] B) {
+     // return topDown(A, B);
+     return bottomUp(A, B);
+ }
+	
+	private int bottomUp(int[] A, int[] B){
+        // represents states. Since each element in A has B times possibilities 
         int[][] dp = new int[A.length + 1][B.length + 1];
         
-        for(int i=1; i<=A.length; i++){
-            for(int j=1; j<= B.length; j++){
+        for(int i=1; i<dp.length; i++){
+            for(int j=1; j<dp[i].length; j++){
                 if(A[i-1] == B[j-1]){
+                    // Relation: if the first entry of A and B are same we connect them 
+                    // since there is no chance of overlap
                     dp[i][j] = 1 + dp[i-1][j-1];
                 }
                 else{
-                    dp[i][j] = Math.max(dp[i][j-1], dp[i-1][j]);
+                    // Relation: if the first entry of A and B are different then we Skip first entry of A or B and take max
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
                 }
             }
         }
         
         return dp[A.length][B.length];
+    }
+    
+    private int topDown(int[] A, int[] B){
+        // represents states. Since each element in A has B times possibilities 
+        Integer[][] memo = new Integer[A.length][B.length];
+
+        return dp(A, A.length - 1, B, B.length - 1, memo);
+    }
+
+    private int dp(int[] A, int ae, int[] B, int be, Integer[][] memo){
+        // base case.
+        if(ae < 0 || be < 0){
+            return 0;
+        }
+
+        // memo lookup for repeatative problems 
+        if(memo[ae][be] != null){
+            return memo[ae][be];
+        }
+
+        int result = 0;
+
+        // Relation: if the first entry of A and B are same we connect them 
+        // since there is no chance of overlap
+        if(A[ae] == B[be]){
+            result = 1 + dp(A, ae - 1, B, be - 1, memo);
+        }
+        else{
+            // Relation: if the first entry of A and B are different then we Skip first entry of A or B and take max
+            int skippingA = dp(A, ae - 1, B, be, memo);
+            int skippingB = dp(A, ae, B, be - 1, memo);
+            result = Math.max(skippingA, skippingB);
+        }
+
+        memo[ae][be] = result;
+        return result;
     }
 }

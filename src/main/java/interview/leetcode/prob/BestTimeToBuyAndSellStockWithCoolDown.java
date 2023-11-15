@@ -48,6 +48,32 @@ public class BestTimeToBuyAndSellStockWithCoolDown {
 		return max;
 	}
 
+	public int maxProfit_genericCooldown(int[] prices){
+        int len = prices.length;
+        
+        int[] maxProfitArr = new int[len + 2]; // if the cool down days is n add n + 1 to the lenght 
+        
+        for(int i=len-1; i>=0; i--){
+            int prevPrice = prices[i];
+            
+            int maxProfitAfterSelling = 0;
+            
+            for(int j=i+1; j<len; j++){
+                // maxProfit[j + 2] because 1 cool down day and next portential sell can only be done after 1 day
+                // if there was no cooldown then it would have been maxProfit[j + 1]
+                int profitAfterSelling = prices[j] - prevPrice + maxProfitArr[j + 2]; 
+                
+                maxProfitAfterSelling = Math.max(maxProfitAfterSelling, profitAfterSelling);
+            }
+            
+            int profitWithoutSelling = maxProfitArr[i+1];
+            
+            maxProfitArr[i] = Math.max(profitWithoutSelling, maxProfitAfterSelling);
+        }	
+        
+        return maxProfitArr[0];
+    }
+	
 	public static void main(String[] args) {
 		System.out.println(new BestTimeToBuyAndSellStockWithCoolDown().maxProfit(new int[] { 1, 2, 3, 0, 2 }));
 	}

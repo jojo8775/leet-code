@@ -1,5 +1,7 @@
 package interview.leetcode.prob;
 
+import java.util.Arrays;
+
 /**
  * Say you have an array for which the ith element is the price of a given stock on day i.
 
@@ -117,5 +119,23 @@ public class BestTimeToBuyAndSellStockIV {
         }
         
         return dp[0][k][0];
+    }
+    
+    private int bottomUp_1d(int k, int[] prices){
+        if (k == 0) return 0;
+        
+        int[] profit = new int[k+1];
+        int[] cost = new int[k+1];
+
+        profit[0] = 0;
+        Arrays.fill(cost, Integer.MAX_VALUE);
+        
+        for (int price: prices) {
+            for (int i = 1; i <= k; i++) {
+                cost[i] = Math.min(cost[i], price - profit[i-1]);
+                profit[i] = Math.max(profit[i], price - cost[i]);
+            }
+        }
+        return profit[k];
     }
 }

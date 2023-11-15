@@ -25,7 +25,75 @@ Explanation: You could form "10", but then you'd have nothing left. Better form 
  *
  */
 public class OnesAndZeroes {
-    public int findMaxForm(String[] strs, int m, int n) {
+	public int findMaxForm(String[] strs, int m, int n) {
+        return bottomUp(strs, m, n);
+        //return topDown(strs, m, n);
+    }
+    
+    private int bottomUp(String[] strs, int m, int n){
+        int[][] dp = new int[m + 1][n + 1];
+        
+        for(String s : strs){
+            // count 0's and 1's in the current str
+            int zeroC = 0, oneC = 0;
+            
+            for(int i=0; i<s.length(); i++){
+                if(s.charAt(i) == '0'){
+                    zeroC++;
+                }
+                else{
+                    oneC++;
+                }
+            }
+            
+            for(int i = m; i >= zeroC; i--){
+                for(int j=n; j>= oneC; j--){
+                    dp[i][j] = Math.max(1 + dp[i-zeroC][j-oneC], dp[i][j]);
+                }
+            }
+        }
+        
+        return dp[m][n];
+    }
+    
+    private int topDown(String[] strs, int m, int n){
+        Integer[][][] memo = new Integer[strs.length][m + 1][n + 1];
+        
+        return dp(strs, m, n, 0, memo);
+    }
+    
+    private int dp(String[] strs, int m, int n, int idx, Integer[][][] memo){
+        if(idx == strs.length){
+            return 0;
+        }
+        
+        if(memo[idx][m][n] != null){
+            return memo[idx][m][n];
+        }
+        
+        String s = strs[idx];
+        
+        int oneC = 0, zeroC = 0;
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i) == '0'){
+                zeroC++;
+            }
+            else{
+                oneC++;
+            }
+        }
+        
+        int val = dp(strs, m, n, idx + 1, memo);
+        
+        if(m >= zeroC && n >= oneC){
+            val = Math.max(val, 1 + dp(strs, m - zeroC, n - oneC, idx + 1, memo));
+        }
+        
+        return memo[idx][m][n] = val;
+    }
+	
+	
+    public int findMaxForm_ite(String[] strs, int m, int n) {
         // adding one more as m and n are one based.
         // represents a grid of 0's in col and 1's in rows
         int[][] grid = new int[m+1][n+1];
