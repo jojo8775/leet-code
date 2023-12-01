@@ -39,43 +39,40 @@ Submissions
  * Mar 7, 2021  11:48:47 PM
  */
 public class MaximumLengthofaConcatenatedStringwithUniqueCharacters {
-    private int maxLen = 0;
-    
     public int maxLength(List<String> arr) {
-        dfs(new int[26], arr, 0, 0);
-        
-        return maxLen;
+        return backTrack(new int[26], arr, 0);
     }
-    
-    private void dfs(int[] charArr, List<String> input, int idx, int len){
-        if(idx >= input.size()){
-            return;
-        }
-        
-        for(int i=idx; i<input.size(); i++){
-            String e = input.get(i);
-            
-            int j=0;
-            while(j < e.length()){
-                if(++charArr[e.charAt(j) - 'a'] != 1){
+
+    private int backTrack(int[] arr, List<String> words, int idx){
+        int max = 0;
+
+        for(int i=idx; i<words.size(); i++){
+            String word = words.get(i);
+
+            int j = 0, len = word.length();
+
+            while(j < len){
+                char ch = word.charAt(j);
+                arr[ch - 'a']++;
+
+                if(arr[ch - 'a'] > 1){
                     break;
                 }
+                
                 j++;
             }
-            
-            if(j == e.length()){
-                
-                maxLen = Math.max(maxLen, len + e.length());
-                
-                dfs(charArr, input, i + 1, len + e.length());
-                
+
+            if(j == len){
+                max = Math.max(max, len + backTrack(arr, words, i + 1));
                 j--;
             }
-            
-            while(j>=0){
-                charArr[e.charAt(j) - 'a']--;
-                j--;
+
+            while(j >= 0){
+                char ch = word.charAt(j--);
+                arr[ch - 'a']--;
             }
         }
+        
+        return max;
     }
 }

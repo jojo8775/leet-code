@@ -24,7 +24,54 @@ The length of the given matchstick array will not exceed 15.
  *
  */
 public class MatchsticksToSquare {
-    public boolean makesquare(int[] nums) {
+    //this is same as https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
+    public boolean makesquare(int[] matchsticks) {
+        int total = 0;
+
+        for(int n : matchsticks){
+            total += n;
+        }
+
+        if(total % 4 != 0){
+            return false;
+        }
+
+        // sorting in asc and iterating from right -> left so that we can take the biggest 
+        // elements first. This is a greedy approach and it makes it faster.
+        Arrays.sort(matchsticks);
+        
+        return backTrack(new int[4], total / 4, matchsticks, matchsticks.length - 1);
+    }
+
+    private boolean backTrack(int[] sides, int target, int[] matchsticks, int idx){
+        if(idx == -1){
+            return true;
+        }
+
+        for(int i=0; i<4; i++){
+            
+            // if the current side and previous side are same then we can skip the current 
+            // side because after backtracking the result will be same.
+            if(i > 0 && sides[i-1] == sides[i]){
+                continue;
+            }
+            
+            if(sides[i] + matchsticks[idx] <= target){
+                sides[i] += matchsticks[idx];
+
+                if(backTrack(sides, target, matchsticks, idx - 1)){
+                    return true;
+                }
+
+                sides[i] -= matchsticks[idx];
+            }
+        }
+
+        return false;
+    }
+	
+	
+    public boolean makesquare_old(int[] nums) {
         if (nums.length < 4) {
             return false;
         }
