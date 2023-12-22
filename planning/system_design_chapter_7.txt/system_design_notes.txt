@@ -1,0 +1,78 @@
+
+Ch 7: Design a unique id generator in distributed system
+
+1. Requirements 
+	- IDs should be numeric and within 64 bit 
+	- Ids should be unique 
+	- Ids should be ordered by date 
+	- The traffic is high... should be able to generate 10K ids per sec	
+
+2. High level idea 
+	- option 1: [multi master replication] 
+		- Each server has a counter to generate ids at an interval of k
+		- Here k is directly proportional to the number of server. 
+		- [Pros]
+			- Easy to setup and good for low traffic  
+		- [Cons]
+			- Not scalable 
+				- The bottle neck is the database, even if we add more server, all of them will be calling the same database 
+				- If we add more than one database then we need to think about sync of the data 
+
+	 	- [requirement violation]
+	 		- cannot achieve the 10K per seconds requirement 
+	 		- the generated IDs should be based on time stamp cannot be achieved 
+	 		
+
+	- option 2: [Universal unique identifier] UUID
+		- this is same as generating GUIDs. The chances of having a collision is extremely low based on the research done by others 
+
+		- [Pros]
+			- there is no cost to setup. Every server can create this GUID 
+			- highly scalable
+
+		- [Requirement violation]
+			- the ids cannot be 64 bit. Guids are 128 bit 
+			- the ids wont be numberic only, this is because GUIDs are alphanumeric 
+			- the ids will be random not increasing and it wont have timestamp to it. 
+
+
+	- option 3: [ticket server]
+		- this is a model where the ID generation is central to one DB server. There will multiple web server which will interact with 
+		the DB server to get the ids. 
+
+		- [Pros]
+			- Easy to setup, and works well only for the smaller application 
+
+		- [cons]
+			- Cannot be scaled, this is because the DB is the bottle neck and if DB server fails all the web nodes will get effected. 
+			This can be overcomed by adding DB server, but that will introduce the complexity of data sync across the DB server. 
+
+		- [Requirement violation]
+			- cannot achieve the required scale of generating Ids at a rate of 10k per sec 
+
+	- option 4: [twitter snowflake approach]	
+		- This is the model where IDs are generated at each server locally while maintaining the requirements 
+
+		- [highlights]
+			- the 64 bit is separated in the following categories 
+				- 1 bit is reserverd for representing the signed bit. 
+				- 41 bits are used to represent the epoc time in terms of ms 
+				- 5 bits are used to represent a datacenter. 2^5 bits will allow representation of 32 datacenter, which is much larger than needed 
+				- 5 bits are used to represent the machine id. 2^5 bits will allow to represent 32 machine uniquely within a datacenter
+				- 12 bits are used to represent sequence. This will keep a track on the number of IDs generated per machine within a MS. after
+				each MS this counter will be reset. 2 ^ 12 means theoritically each machine can generated 4k ids each ms. 
+
+			- [Pros]
+
+			- [Cons]
+				- since 41 bits are used for representing the timestamp, only 64 years worth of epoctime can be selected. After that time, a new
+				epoc base time needs to set. 
+
+				- Since timestamp will be used in each server for generating the ids, there is a chance that all the servers are within 1 ms clock synchronization 
+				in this case, there could be a chance where timestamp associated to a message is not the true representation of the timeline. However, the mordern
+				network syncronization protocal reduces this clock synchronization within a ms range. 
+
+		- [Requirement Violation]
+			- None
+
+
