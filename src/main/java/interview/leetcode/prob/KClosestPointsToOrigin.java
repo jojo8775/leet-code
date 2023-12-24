@@ -37,7 +37,82 @@ Note:
  * Sep 2, 2019 3:16:54 AM
  */
 public class KClosestPointsToOrigin {
-    public int[][] kClosest(int[][] points, int K) {
+	// using quick select - o(n) to o(n^2)
+	public int[][] kClosest(int[][] points, int K) {
+        int left = 0, right = points.length-1;
+
+        while(left <= right){
+            int pivotIdx = quickSelect(points, left, right);
+
+            if(pivotIdx == K - 1){
+                left = pivotIdx;
+                break;
+            }
+
+            if(pivotIdx > K - 1){
+                right = pivotIdx - 1;
+            }
+            else{
+                left = pivotIdx + 1;
+            }
+        }
+
+
+        int[][] result = new int[left + 1][2];
+
+        for(int i=0; i<=left; i++){
+            result[i][0] = points[i][0];
+            result[i][1] = points[i][1];
+        }
+
+        return result;
+    }
+
+    private int quickSelect(int[][] points, int left, int right){
+        int pivotIdx = getRandom(left, right);
+        swap(pivotIdx, right, points);
+
+        pivotIdx = right;
+        right--;
+
+        int pivotDist = findDist(points[pivotIdx]);
+
+        while(left <= right){
+            if(findDist(points[left]) <= pivotDist){
+                left++;
+            }
+            else{
+                swap(left, right, points);
+                right--;
+            }
+        }
+
+        swap(left, pivotIdx, points);
+
+        return left;
+    }
+
+    private int getRandom(int left, int right){
+        return left + (int)(Math.random() * (right - left + 1));
+    }
+
+    private void swap(int i, int j, int[][] points){
+        int x1 = points[i][0], y1 = points[i][1];
+        int x2 = points[j][0], y2 = points[j][1];
+
+        points[i][0] = x2;
+        points[j][0] = x1;
+
+        points[i][1] = y2;
+        points[j][1] = y1;
+    }
+
+    private int findDist(int[] point){
+        return (point[0] * point[0]) + (point[1] * point[1]);
+    }
+	
+	// o(nlogn)
+    public int[][] kClosest_1(int[][] points, int K) {
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> b[0]*b[0] + b[1]*b[1] - a[0]*a[0] - a[1]*a[1]);
         
         for(int[] point : points){

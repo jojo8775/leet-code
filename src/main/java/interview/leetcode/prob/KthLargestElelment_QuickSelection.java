@@ -16,7 +16,42 @@ Special thanks to @mithmatt for adding this problem and creating all test cases.
  *Feb 4, 201812:39:15 AM
  */
 public class KthLargestElelment_QuickSelection {
+	// using quick select we can gaurantee the runtime is O(m + n)
     public int findKthLargest(int[] nums, int k) {
+        int min = nums[0], max = min;
+        
+        for(int n : nums){
+            min = Math.min(min, n);
+            max = Math.max(max, n);
+        }
+        
+        int[] buckets = new int[max - min + 1];
+        
+        for(int n : nums){
+            buckets[n - min]++;
+        }
+        
+        int idx = buckets.length - 1;
+        
+        while(idx >= 0 && k > 0){
+            int count = buckets[idx--];
+            if(count == 0){
+                continue;
+            }
+            
+            k -= count;
+            
+            if(k <= 0){
+                idx++;
+                break;
+            }
+        }
+        
+        
+        return idx + min;
+    }
+	
+    public int findKthLargest_QS(int[] nums, int k) {
         return quickSort(0, nums.length - 1, nums, nums.length - k);
     }
     
