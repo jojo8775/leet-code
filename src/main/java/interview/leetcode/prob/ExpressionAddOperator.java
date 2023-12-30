@@ -50,6 +50,12 @@ public class ExpressionAddOperator {
                 dfs(result, curStr, input, target, curNum, curNum, i + 1);
             }
             else{
+                // this order is important. For multiple the sum for next iteration will  curSum - prevNum + curNum*prevNum becase
+                // prev num needs to be substracted. E,g 
+                // input: 123 
+                // after ist iteration prev num: 1, curSum: 1
+                // after end iteration prev num: prev Num * cur Num, curSum: curSum - prevNum + (prevNum * curNum)
+                //                                    1 * 2                1 - 1 + (1 * 2)
                 //multiply
                 dfs(result, disp + '*' + curStr, input, target, curNum * prevNum, curSum - prevNum + curNum*prevNum, i+1);
                 //add
