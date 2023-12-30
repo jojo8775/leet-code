@@ -1,6 +1,7 @@
 package interview.leetcode.prob.paid;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,6 +17,24 @@ import java.util.List;
  *
  */
 public class MissingRange {
+	public List<List<Integer>> findMissingRanges(int[] nums, int lower, int upper) {
+        List<List<Integer>> result = new ArrayList<>();
+        
+        for(int i=0; i<nums.length; i++){
+            if(lower < nums[i]){
+                result.add(Arrays.asList(lower, nums[i] - 1));
+            }
+            
+            lower = nums[i] + 1;
+        }
+        
+        if(lower <= upper){
+            result.add(Arrays.asList(lower, upper));
+        }
+        
+        return result;
+    }
+	
     public List<String> findMissingRanges_old(int[] nums, int lower, int upper) {
         // minus 1 as we always pre increment count
         int count = lower - 1;

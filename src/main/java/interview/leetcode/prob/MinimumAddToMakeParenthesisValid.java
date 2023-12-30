@@ -45,21 +45,49 @@ Submissions
  * May 9, 2021  12:16:01 AM
  */
 public class MinimumAddToMakeParenthesisValid {
-    public int minAddToMakeValid(String S) {
-        
-        int count = 0, openBracketCount = 0;
-        for(char ch : S.toCharArray()){
+	public int minAddToMakeValid(String S) {
+        int cbcNeeded = 0, adjNeeded = 0, len = S.length();
+
+        for(int i=0; i<len; i++){
+            char ch = S.charAt(i);
+
             if(ch == '('){
-                openBracketCount++;
-            }
-            else if(openBracketCount > 0){
-                openBracketCount--;
+                cbcNeeded++;
             }
             else{
-                count++;
+                cbcNeeded--;
+
+                if(cbcNeeded < 0){
+                    cbcNeeded = 0;
+                    adjNeeded +=1;
+                }
             }
         }
-        
-        return count + openBracketCount;
+
+        return cbcNeeded + adjNeeded;
     }
+	
+	 public int minAddToMakeValid_2pass(String S) {
+	        int obc = 0, cbc = 0;
+
+	        for(int i=0; i<S.length(); i++){
+	            if(S.charAt(i) == '('){
+	                obc++;
+	            }
+	            else if(obc > 0){
+	                obc--;
+	            }
+	        }
+
+	        for(int i=S.length() - 1; i>=0; i--){
+	            if(S.charAt(i) == ')'){
+	                cbc++;
+	            }
+	            else if(cbc > 0){
+	                cbc--;
+	            }
+	        }
+
+	        return obc + cbc;
+	    }su
 }
