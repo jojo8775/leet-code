@@ -51,7 +51,7 @@ public class RandomPickWithWeights {
     int[] wSum;
     int sum, len;
     
-    public Solution(int[] w) {
+    public void Solution(int[] w) {
         len = w.length;
         
         for(int i=1; i<len; i++){
