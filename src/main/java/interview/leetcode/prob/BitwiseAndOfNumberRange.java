@@ -17,7 +17,7 @@ public class BitwiseAndOfNumberRange {
 	 * last bit equal to 1 
 	 * 3. this is the reason we can right shift both m and n at each iteration of while loop as long as m != n;
 	 */
-	public int rangeBitwiseAnd(int m, int n) {
+	public int rangeBitwiseAnd_1(int m, int n) {
 		int leftShift = 0;
 
 		while (m != 0 && m != n) {
@@ -32,6 +32,19 @@ public class BitwiseAndOfNumberRange {
 
 		return m << leftShift;
 	}
+	
+	public int rangeBitwiseAnd(int left, int right) {
+        int beg = left, end = right;
+        
+        // beg <= end will go to an infinite  loop for inputs like 0, 0,
+        while(beg < end){
+            // since end & end - 1 will always be less than end we dont need end--
+            // further more it will make the hops efficient
+            end = (end & (end - 1));            
+        }
+        
+        return beg & end;
+    }
 
 	public static void main(String[] args) {
 		System.out.println(new BitwiseAndOfNumberRange().rangeBitwiseAnd(600000000, 2147483645));
