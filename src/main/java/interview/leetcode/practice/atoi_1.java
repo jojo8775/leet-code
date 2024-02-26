@@ -1,6 +1,6 @@
 package interview.leetcode.practice;
 
-public class atoi {
+public class atoi_1 {
     public int myAtoi(String str) {
         str = str.trim();
         if(str.length() == 0){
@@ -41,7 +41,7 @@ public class atoi {
     }
     
     public static void main(String[] args){
-        System.out.println(new atoi().myAtoi("123"));
-        System.out.println(new atoi().myAtoi("    010"));
+        System.out.println(new atoi_1().myAtoi("123"));
+        System.out.println(new atoi_1().myAtoi("    010"));
     }
 }

@@ -36,7 +36,7 @@ Submissions
  * @author jojo
  * Nov 14, 2022 8:29:02 PM
  */
-public class NumberOfSubarrayWithLCmEqualToK {
+public class NumberOfSubarrayWithLCmEqualToK_1 {
 	public int subarrayLCM(int[] nums, int k) {
         int result = 0, len = nums.length, beg = 0, prev = -1;
         

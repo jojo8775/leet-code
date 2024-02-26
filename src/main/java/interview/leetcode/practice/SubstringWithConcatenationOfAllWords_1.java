@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SubstringWithConcatenationOfAllWords {
+public class SubstringWithConcatenationOfAllWords_1 {
 	public List<Integer> findSubstring(String s, String[] words) {
 		List<Integer> result = new ArrayList<>();
 		if(s.length() == 0 || words.length == 0) {
@@ -74,7 +74,7 @@ public class SubstringWithConcatenationOfAllWords {
 	}
 	
 	public static void main(String[] args) {
-		List<Integer> result = new SubStringWithConcatenationOfAllWords().findPossition("barfoothefoobarman", new String[] {"foo","bar"});
+		List<Integer> result = new SubstringWithConcatenationOfAllWords_1().findSubstring("barfoothefoobarman", new String[] {"foo","bar"});
 		result.forEach(e -> System.out.print(e + ","));
 	}
 }
