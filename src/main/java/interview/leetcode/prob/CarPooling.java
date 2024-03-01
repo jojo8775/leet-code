@@ -1,5 +1,7 @@
 package interview.leetcode.prob;
 
+import java.util.Arrays;
+import java.util.PriorityQueue;
 import java.util.TreeMap;
 
 /**
@@ -66,5 +68,30 @@ public class CarPooling {
         
         // if the remaining capacity is >= 0, the trip is possible. 
         return capacity >= 0;
+    }
+	
+	// merge interval logic. 
+    public boolean carPooling_1(int[][] trips, int capacity) {
+        Arrays.sort(trips, (a,b) -> a[1] - b[1]);
+        
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> a[2] - b[2]);
+        
+        int bal = capacity;
+        
+        for(int i=0; i<trips.length; i++){
+            while(!pq.isEmpty() && pq.peek()[2] <= trips[i][1]){
+                bal += pq.poll()[0];
+            }
+            
+            bal -= trips[i][0];
+            
+            if(bal < 0){
+                return false;
+            }
+            
+            pq.offer(trips[i]);
+        }
+        
+        return true;
     }
 }
