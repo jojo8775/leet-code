@@ -69,48 +69,56 @@ public class MinimumNumberOfFlipsToMakeBinaryStringAlternating {
     //     return min;
     // }
     
-    public int minFlips(String s) {
-        int n = s.length();
+	public int minFlips(String s) {
+        int len = s.length();
         
-        int[] left0 = new int[n];
-        int[] left1 = new int[n];
-        int[] right0 = new int[n];
-        int[] right1 = new int[n];
+        int[] left_0 = new int[len], left_1 = new int[len], right_0 = new int[len], right_1 = new int[len];
         
-        int sumLeft0 = 0, sumLeft1 = 0;
-        for (int i = 0; i < n; i++) {
-            if (i % 2 == 0 && s.charAt(i) == '1' || i % 2 == 1 && s.charAt(i) == '0')
-                sumLeft0++;
-            if (i % 2 == 0 && s.charAt(i) == '0' || i % 2 == 1 && s.charAt(i) == '1')
-                sumLeft1++;
-            left0[i] = sumLeft0;
-            left1[i] = sumLeft1;
+        int left_0_sum = 0, left_1_sum = 0;
+        for (int i = 0; i < len; i++) {
+            if ((i % 2 == 0 && s.charAt(i) == '1') || (i % 2 == 1 && s.charAt(i) == '0')) {
+                left_0_sum++;
+            }
+            
+            if ((i % 2 == 0 && s.charAt(i) == '0') || (i % 2 == 1 && s.charAt(i) == '1')) {
+                left_1_sum++;
+            }
+            
+            left_0[i] = left_0_sum;
+            left_1[i] = left_1_sum;
         }
         
-        int sumRight0 = 0, sumRight1 = 0;
-        for (int i = n - 1; i >= 0; i--) {
-            int j = n - 1 - i;
-            if (j % 2 == 0 && s.charAt(i) == '1' || j % 2 == 1 && s.charAt(i) == '0')
-                sumRight0++;
-            if (j % 2 == 0 && s.charAt(i) == '0' || j % 2 == 1 && s.charAt(i) == '1')
-                sumRight1++;
-            right0[i] = sumRight0;
-            right1[i] = sumRight1;
+        int right_0_sum = 0, right_1_sum = 0;
+        for (int i = len - 1; i >= 0; i--) {
+        	
+        	// this is very important because the current index has to be odd or even based on its position from the left
+            int j = len - 1 - i;
+            
+            if ((j % 2 == 0 && s.charAt(i) == '1') || (j % 2 == 1 && s.charAt(i) == '0')) {
+                right_0_sum++;
+            }
+            
+            if ((j % 2 == 0 && s.charAt(i) == '0') || (j % 2 == 1 && s.charAt(i) == '1')) {
+                right_1_sum++;
+            }
+            
+            right_0[i] = right_0_sum;
+            right_1[i] = right_1_sum;
         }
         
-        // this is to track type-2 moves. 
-        int ret = n;
-        ret = Math.min(ret, sumLeft0);
-        ret = Math.min(ret, sumLeft1);
-        ret = Math.min(ret, sumRight0);
-        ret = Math.min(ret, sumRight1);
+        // tracking min of type2 operation
+        int minType2Ops = len;
+        minType2Ops = Math.min(minType2Ops, left_0_sum);
+        minType2Ops = Math.min(minType2Ops, left_1_sum);
+        minType2Ops = Math.min(minType2Ops, right_0_sum);
+        minType2Ops = Math.min(minType2Ops, right_1_sum);
         
-        // this is to track Type-1 moves 
-        for (int i = 0; i < n - 1; i++) {
-            ret = Math.min(ret, left0[i] + right1[i + 1]);
-            ret = Math.min(ret, left1[i] + right0[i + 1]);
+        // tracking min of type2 operation after applying type 1 operation
+        for (int i = 0; i < len - 1; i++) {
+            minType2Ops = Math.min(minType2Ops, left_0[i] + right_1[i + 1]);
+            minType2Ops = Math.min(minType2Ops, left_1[i] + right_0[i + 1]);
         }
         
-        return ret;
-    }
+        return minType2Ops;
+    }    
 }

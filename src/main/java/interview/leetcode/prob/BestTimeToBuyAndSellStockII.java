@@ -29,7 +29,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
  * Feb 24, 2019 1:33:39 AM
  */
 public class BestTimeToBuyAndSellStockII {
-	public int maxProfit(int[] prices) {
+	public int maxProfit_old(int[] prices) {
         int profit = 0;
         for(int i=1; i<prices.length; i++){
             if(prices[i] > prices[i-1]){
@@ -38,5 +38,22 @@ public class BestTimeToBuyAndSellStockII {
         }
         
         return profit;
+    }
+	
+	public int maxProfit(int[] prices) {
+        // initially there is no cash and holding is -ve because we are in loss
+        int cash = 0, holding = -prices[0], len = prices.length;
+        
+        for(int i=1; i<len; i++){
+            // cash: do nothing 
+            // holding + prices[i]: selling the stock 
+            cash = Math.max(cash, holding + prices[i]);
+            
+            // holdin: no nothing 
+            // cash - prices[i]: buying 
+            holding = Math.max(holding, cash - prices[i]);
+        }
+        
+        return cash;
     }
 }
