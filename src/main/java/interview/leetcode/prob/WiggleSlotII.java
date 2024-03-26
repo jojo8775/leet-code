@@ -1,5 +1,7 @@
 package interview.leetcode.prob;
 
+import java.util.Arrays;
+
 /**
  * Given an unsorted array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3]....
 
@@ -16,6 +18,29 @@ Can you do it in O(n) time and/or in-place with O(1) extra space?
  *
  */
 public class WiggleSlotII {
+	public void wiggleSort_easy(int[] nums) {
+        int len = nums.length;
+        int[] arr = new int[len];
+        
+        for(int i=0; i<len; i++){
+            arr[i] = nums[i];
+        }
+        
+        Arrays.sort(arr);
+        
+        int idx = len - 1;
+        
+        // assigning odd positions 
+        for(int i=1; i<len; i+=2){
+            nums[i] = arr[idx--];
+        }
+        
+        // assigning even positions 
+        for(int i=0; i<len; i+=2){
+            nums[i] = arr[idx--];
+        }
+    }
+	
 	private int length;
 
 	public void wiggleSort(int[] nums) {
