@@ -69,6 +69,28 @@ public class JumpGameVII {
         return dp[s.length() - 1];
     }
 	
+	public boolean canReach_easy(String s, int minJump, int maxJump) {
+        boolean[] dp = new boolean[s.length()];
+        dp[0] = true;
+
+        for(int i=0; i<s.length(); i++){
+            if(i < minJump){
+                continue;
+            }
+
+            if(s.charAt(i) == '0'){
+                for(int j=Math.max(0, i - maxJump); j <= i - minJump; j++){
+                    if(dp[j]){
+                        dp[i] = true;
+                        break;
+                    }
+                }	
+            }		
+        }
+
+        return dp[s.length() - 1];
+    }
+	
 	// this is more intuitive 
 	public boolean canReach_slow(String s, int minJump, int maxJump) {
         Queue<Integer> queue = new LinkedList<>();
