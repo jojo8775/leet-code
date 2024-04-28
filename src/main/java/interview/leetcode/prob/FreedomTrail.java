@@ -32,7 +32,7 @@ It's guaranteed that string key could always be spelled by rotating the string r
  *
  */
 public class FreedomTrail {
-    public int findRotateSteps(String ring, String key) {
+    public int findRotateSteps_1(String ring, String key) {
         int ringLen = ring.length(), keyLen = key.length();
         int[][] dp = new int[keyLen + 1][ringLen];
 
@@ -56,5 +56,49 @@ public class FreedomTrail {
         }
 
         return dp[0][0] + keyLen;
+    }
+    
+    public int findRotateSteps(String ring, String key) {
+        // saving the states
+        // the ring idx and key idx --- will demonstrate the max value of a position
+        Integer[][] memo = new Integer[ring.length()][key.length()];
+        
+        // topdown
+        return dp(ring, 0, key, 0, memo);
+    }
+
+    private int dp(String ring, int ringIdx, String key, int keyIdx, Integer[][] memo){
+        // base case 
+        if(keyIdx == key.length()){
+            return 0;
+        }
+        
+        // states
+        if(memo[ringIdx][keyIdx] != null){
+            return memo[ringIdx][keyIdx];
+        }
+        
+        int minSteps = Integer.MAX_VALUE;
+
+        for(int i = 0; i<ring.length(); i++){
+            if(ring.charAt(i) == key.charAt(keyIdx)){
+                int totalSteps = countSteps(ringIdx, i, ring.length()) + 1 + dp(ring, i, key, keyIdx + 1, memo);
+
+                minSteps = Math.min(minSteps, totalSteps); 
+            }
+        }
+        
+        memo[ringIdx][keyIdx] = minSteps;
+
+        return minSteps;
+    }
+
+    private int countSteps(int ringIdx, int i, int len){
+        // distance between the two index from left to right 
+        int diff = Math.abs(ringIdx - i);
+    
+        // distance with a circle back
+        int diffAround = len - diff;
+        return Math.min(diff, diffAround);
     }
 }
