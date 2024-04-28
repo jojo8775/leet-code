@@ -96,15 +96,23 @@ public class SumOfDistancesInTree {
 			adj.add(new HashSet<Integer>());
 		}
 		
+        // creating an adjacentcy graph
 		for(int[] e : edges) {
 			adj.get(e[0]).add(e[1]);
 			adj.get(e[1]).add(e[0]);
 		}
 		
+        // contains the child tree node count + root node for a given node. 
 		int[] nodeCount = new int[N];
+        
+        // contains the child node distance from the given node. 
+        // Note: refer to the question to understand the distance concept because for each level of node the count increases.
 		int[] nodeDist = new int[N];
 		
+        // populates the nodeCount + nodeDistance fromt root pov
 		postOrder(adj, nodeCount, nodeDist, 0, -1);
+        
+        // populates nodeDistance from each child pov 
 		preOrder(adj, nodeCount, nodeDist, 0, -1);
 		
 		return nodeDist;
@@ -122,6 +130,7 @@ public class SumOfDistancesInTree {
 			nodeDist[curNode] += nodeCount[childNode] + nodeDist[childNode];
 		}
 		
+        // this is the base case for each node count because nodeCount[i] = child node counts + 1 for root node;
 		nodeCount[curNode]++;
 	}
 	
@@ -131,7 +140,18 @@ public class SumOfDistancesInTree {
 				continue;
 			}
 			
-			nodeDist[childNode] = nodeDist[curNode] - nodeCount[childNode] + nodeCount.length - nodeCount[childNode];
+            // dist from the root of the current scope 
+            int curNodeDist = nodeDist[curNode];
+            
+            // number of nodes outside the child subtree 
+            int outsideNodes = nodeCount.length - nodeCount[childNode];
+            
+            // updated child node dist to all the nodes 
+            int updatedchildNodeDist = curNodeDist - nodeCount[childNode] + outsideNodes;
+            
+			// nodeDist[childNode] = nodeDist[curNode] - nodeCount[childNode] + nodeCount.length - nodeCount[childNode];
+            nodeDist[childNode] = updatedchildNodeDist;
+            
 			preOrder(adj, nodeCount, nodeDist, childNode, curNode);
 		}
 	}
