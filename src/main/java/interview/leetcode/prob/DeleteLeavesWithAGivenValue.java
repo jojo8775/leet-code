@@ -70,6 +70,21 @@ public class DeleteLeavesWithAGivenValue {
         }
     }
 	
+	public TreeNode removeLeafNodes_adv(TreeNode root, int target) {
+        if(root == null){
+            return null;
+        }
+        
+        root.left = removeLeafNodes_adv(root.left, target);
+        root.right = removeLeafNodes_adv(root.right, target);
+        
+        if(root.val == target && root.left == null && root.right == null){
+            return null;
+        }
+        
+        return root;
+    }
+	
 	private static class TreeNode{
 		TreeNode left, right;
 		int val;
