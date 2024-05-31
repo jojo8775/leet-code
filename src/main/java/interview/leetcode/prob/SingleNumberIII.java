@@ -16,7 +16,36 @@ package interview.leetcode.prob;
  * @author jojo Jan 29, 201712:03:51 PM
  */
 public class SingleNumberIII {
-    public int[] singleNumber(int[] nums) {
+	public int[] singleNumber(int[] nums) {
+        int xor = 0;
+        
+        for(int n : nums){
+            xor ^= n;
+        }
+        
+        // at this point xor represents x^y because rest of all the elements appears twice and they will cancel them
+        int x = 0, y = 0;
+        
+        // the only way to retrieve x and y out of x^y is by marking the rightmost different bit 
+        int rightmostBit = (xor & (xor - 1)) ^ xor;
+        
+        for(int n : nums){
+            // if the given number has the rightmostBit marked it could be x or some other number
+            // if it is some other number, it will get to zero when we see that number second time. 
+            // the residual will be x
+            if((n & rightmostBit) > 0){
+                x ^= n;
+            }
+            // same concept for y
+            else{
+                y ^= n;
+            }
+        }
+        
+        return new int[]{x,y};
+    }
+	
+    public int[] singleNumber_1(int[] nums) {
         int aXORb = 0;
 
         for (int i : nums) {
