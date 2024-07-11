@@ -45,21 +45,44 @@ Submissions
  * Dec 6, 2021 11:50:21 PM
  */
 public class AverageWaitTime {
-    public double averageWaitingTime(int[][] customers) {
-        int chefStartTime = 0;
-        int chefDeliveryTime = 0;
-        double waitTime = 0.0;
-        
-        for(int[] c : customers){
-            chefStartTime = Math.max(chefStartTime, c[0]); // cur or customer arrival;
-            
-            chefDeliveryTime = chefStartTime + c[1];
-            
-            waitTime += (chefDeliveryTime - 1.0 * c[0]);
-            
-            chefStartTime = chefDeliveryTime;
+	public double averageWaitingTime_1(int[][] customers) {
+        int nextIdleTime = 0;
+        long netWaitTime = 0;
+
+        for (int i = 0; i < customers.length; i++) {
+            // The next idle time for the chef is given by the time of delivery
+            // of current customer's order.
+            nextIdleTime = Math.max(customers[i][0], nextIdleTime) +
+            customers[i][1];
+
+            // The wait time for the current customer is the difference between
+            // his delivery time and arrival time.
+            netWaitTime += nextIdleTime - customers[i][0];
         }
-        
-        return waitTime / customers.length;
+
+        // Divide by total customers to get average.
+        double averageWaitTime = (double) netWaitTime / customers.length;
+        return averageWaitTime;
+    }
+    
+    public double averageWaitingTime(int[][] customers) {
+        double sum = 0.0;
+
+        // current time
+        int curTime = 0;
+        for(int i=0; i<customers.length; i++){
+            if(curTime < customers[i][0]){
+                // if the current time is less than the customer arrival, this means 
+                // chef was idle, so this time doesnt add to the wait time
+                curTime = customers[i][0];
+            }
+
+            // curTime - customers[i][0] --> represents the customer wait time while chef was doing backlog
+            // customers[i][1] --> represnts the time needed to complete the current customer
+            sum += (curTime - customers[i][0] + customers[i][1]); 
+            curTime += customers[i][1];
+        }
+
+        return sum / customers.length;
     }
 }
