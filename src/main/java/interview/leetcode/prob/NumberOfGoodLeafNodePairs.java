@@ -131,7 +131,7 @@ public class NumberOfGoodLeafNodePairs {
         int result = 0;
 
         for(TreeNode leaf : leafNodes){
-            result += getGoalLeaf(leaf, map, distance);
+            result += getGoaldLeaf(leaf, map, distance);
         }
 
         return result / 2;
@@ -140,5 +140,9 @@ public class NumberOfGoodLeafNodePairs {
 	private static class TreeNode{
 		int val;
 		TreeNode left, right;
+	}
+	
+	private int getGoaldLeaf(TreeNode n, Map<TreeNode, TreeNode> map, int dist) {
+		return 0;
 	}
 }
