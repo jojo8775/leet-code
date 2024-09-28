@@ -54,18 +54,19 @@ Submissions
 public class MostStonesRemovedFromSameRowsOrColumns {
 	
 	public int removeStones_adv(int[][] stones) {
-        int[] arr = new int[20001];
+        int[] arr = new int[20002];
 		
-		for(int i=0; i<20001; i++) {
+		for(int i=0; i<20002; i++) {
 			arr[i] = i;
 		}
 		
 		for(int[] s : stones) {
 			int p1 = find(arr, s[0]);
-			int p2 = find(arr, 10000 + s[1]);
+			int p2 = find(arr, 10001 + s[1]);
 			
 			if(p1 != p2) {
-				arr[p1] = p2;
+				//arr[p1] = p2;
+                arr[p2] = p1;
 			}
 		}
 		
