@@ -30,7 +30,43 @@ Submissions
  * Sep 13, 2019 2:35:24 AM
  */
 public class InsertIntoACyclicSortedList {
-    public Node insert(Node head, int insertVal) {
+	public Node insert(Node head, int insertVal) {
+        // case 1: when the list is empty
+        if(head == null){
+            head = new Node(insertVal);
+            head.next = head;
+            
+            return head;
+        }
+        
+        Node cur = head.next, prev = head;
+        
+        while(head != cur){
+            // case 2: when the entry is bigger than prev but smaller than cur;
+            if(insertVal > prev.val && insertVal < cur.val){
+                break;
+            }
+            
+            // case 3: when cur is min and prev is max and insert val is bigger than max
+            if(prev.val > cur.val && prev.val < insertVal){
+                break;
+            }
+            
+            // case 4: when cur is min and prev is max and insert val is smaller than min
+            if(prev.val > cur.val && cur.val > insertVal){
+                break;
+            }
+            
+            prev = cur;
+            cur = cur.next;
+        }
+        
+        prev.next = new Node(insertVal, prev.next);
+        return head;
+    }
+	
+	
+    public Node insert_1(Node head, int insertVal) {
         if(head == null){
             head = new Node(insertVal, null);
             head.next = head;
@@ -63,6 +99,10 @@ public class InsertIntoACyclicSortedList {
     	public Node(int val, Node next) {
     		this.val = val;
     		this.next = next;
+    	}
+    	
+    	public Node(int val) {
+    		this(val, null);
     	}
     }
 }
