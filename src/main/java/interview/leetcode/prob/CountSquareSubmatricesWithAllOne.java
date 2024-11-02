@@ -48,7 +48,7 @@ Submissions
  * Jun 16, 2021  10:57:37 PM
  */
 public class CountSquareSubmatricesWithAllOne {
-	public int countSquares(int[][] matrix) {
+	public int countSquares_1(int[][] matrix) {
         int m = matrix.length, n = matrix[0].length;
         
         int[][] dp = new int[m][n];
@@ -69,5 +69,86 @@ public class CountSquareSubmatricesWithAllOne {
         }
         
         return count;
+    }
+	
+
+    public int countSquares(int[][] matrix) {
+        return bottomup(matrix);
+        //return topdown(matrix);
+    }
+    
+    private int bottomup(int[][] matrix){
+        int m = matrix.length, n = matrix[0].length;
+        
+        int[][] dp = new int[m][n];
+        
+        int ans = 0;
+        
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                if(matrix[i][j] == 0){
+                    continue;
+                }
+                
+                if(i == 0 || j == 0){
+                    // base case
+                    dp[i][j] = matrix[i][j]; 
+                    ans += matrix[i][j];
+                }
+                else{
+                    int left = dp[i][j-1];
+                    int up = dp[i-1][j];
+                    int dia = dp[i-1][j-1];
+                    
+                    int min = Math.min(left, up);
+                    min = Math.min(min, dia);
+                    
+                    dp[i][j] = 1 + min;
+                    
+                    ans += dp[i][j];
+                }
+            }
+        }
+        
+        return ans;
+    }
+    
+    private int topdown(int[][] matrix){
+        int ans = 0;
+        
+        Integer[][] memo = new Integer[matrix.length][matrix[0].length];
+        
+        for(int i=0; i<matrix.length; i++){
+            for(int j=0; j<matrix[0].length; j++){
+                if(matrix[i][j] == 1){
+                    ans += dp(i, j, matrix, memo);
+                }
+            }
+        }
+        
+        return ans;
+    }
+    
+    private int dp(int i, int j, int[][] matrix, Integer[][] memo){
+        if(i == matrix.length || j == matrix[0].length){
+            return 0;
+        }
+        
+        if(matrix[i][j] == 0){
+            return 0;
+        }
+        
+        if(memo[i][j] != null){
+            return memo[i][j];
+        }
+        
+        int right = dp(i, j+1, matrix, memo);
+        int bottom = dp(i+1, j, matrix, memo);
+        int dia = dp(i+1, j+1, matrix, memo);
+        
+        int min = Math.min(right, bottom);
+        min = Math.min(min, dia);
+        
+        return memo[i][j] = 1 + min;
     }
 }
