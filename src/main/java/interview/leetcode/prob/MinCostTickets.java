@@ -50,7 +50,7 @@ costs.length == 3
  * Sep 2, 2019 1:20:30 AM
  */
 public class MinCostTickets {
-	public int mincostTickets(int[] days, int[] costs) {
+	public int mincostTickets_ite(int[] days, int[] costs) {
 		// using queue so that the oldest ticket is at the top. 
         Queue<int[]> last7days = new LinkedList<>(), last30days = new LinkedList<>();
         
@@ -75,5 +75,66 @@ public class MinCostTickets {
         }
         
         return totalCost;
+    }
+	
+	public int mincostTickets(int[] days, int[] costs) {
+        //return topdown(days, costs);
+        return bottomup(days, costs);
+    }
+    
+    private int bottomup(int[] days, int[] costs){
+        int lastDay = days[days.length - 1];
+        int[] dp = new int[lastDay + 1];
+        
+        int dayIdx = 0;
+        for(int i=1; i<=lastDay; i++){
+            if(days[dayIdx] > i){
+                dp[i] = dp[i-1];
+            }
+            else{
+                int oneDay = dp[i-1] + costs[0];
+                int sevenDay = costs[1] + ((i - 7 >= 0) ? dp[i-7] : 0);
+                int thirtyDay = costs[2] + ((i - 30 >= 0) ? dp[i-30] : 0);
+                
+                dp[i] = Math.min(oneDay, sevenDay);
+                dp[i] = Math.min(dp[i], thirtyDay);
+                
+                dayIdx++;
+            }
+        }
+        
+        
+        return dp[lastDay];
+    }
+    
+    private int topdown(int[] days, int[] costs){
+        return dp(days, 0, days[0], costs, new Integer[days.length]);
+    }
+
+    private int dp(int[] days, int idx, int dueDate, int[] costs, Integer[] memo){
+        if(idx == days.length){
+            return 0;
+        }
+        
+        if(dueDate > days[idx]){
+            return dp(days, idx + 1, dueDate, costs, memo);
+        }
+        
+        if(memo[idx] != null){
+            return memo[idx];
+        }
+        
+        int oneDay = costs[0] + dp(days, idx + 1, days[idx] + 1, costs, memo);
+        int sevenDay = costs[1] + dp(days, idx + 1, days[idx] + 7, costs, memo);
+        int thirtyDay = costs[2] + dp(days, idx + 1, days[idx] + 30, costs, memo);
+        
+        int min = Math.min(oneDay, sevenDay);
+        min = Math.min(min, thirtyDay);
+        
+        //System.out.println("idx: " + idx + "   cost: " + min);
+        
+        memo[idx] = min;
+        
+        return min;
     }
 }
