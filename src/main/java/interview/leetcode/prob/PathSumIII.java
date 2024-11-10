@@ -33,6 +33,31 @@ Return 3. The paths that sum to 8 are:
  *
  */
 public class PathSumIII {
+	public int pathSum(TreeNode root, int sum) {
+        Map<Long, Integer> map = new HashMap<>();
+        map.put(0L,1);
+        
+        return getCount(root, (long)sum, 0L, map);
+    }
+    
+    private int getCount(TreeNode node, long target, long sumSofar, Map<Long, Integer> map){
+        if(node == null){
+            return 0;
+        }
+        
+        sumSofar += (long)node.val;
+        
+        int count = map.getOrDefault(sumSofar - target, 0);
+        
+        map.put(sumSofar, map.getOrDefault(sumSofar, 0) + 1);
+        count += getCount(node.left, target, sumSofar, map);
+        count += getCount(node.right, target, sumSofar, map);
+        map.put(sumSofar, map.getOrDefault(sumSofar, 0) - 1);
+        
+        return count;
+    }
+	
+	/*
     public int pathSum(TreeNode root, int sum) {
         Map<Integer, Integer> sumMap = new HashMap<Integer, Integer>();
         sumMap.put(0, 1);
@@ -66,7 +91,8 @@ public class PathSumIII {
 
         return count;
     }
-
+	*/
+    
     private static class TreeNode {
         int val;
         TreeNode left;
