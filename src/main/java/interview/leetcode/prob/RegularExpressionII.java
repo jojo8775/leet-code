@@ -57,6 +57,9 @@ public class RegularExpressionII
                 //considering making contribution
                 for(int j=1; j<grid[0].length; j++){
                     if(p.charAt(i-2) == '.' || p.charAt(i-2) == s.charAt(j-1)){
+                    	 // grid[i][j-1] -- checks if more than one occurance of prev make it true 
+                        // grid[i-2][j-1] -- checks if one occurance of prev make it true 
+                        // grid[i-2][j] -- checks if no occurance of prev will make it true                     	
                         grid[i][j] = grid[i][j] || grid[i-2][j-1] || grid[i][j-1];
                     }
                 }
