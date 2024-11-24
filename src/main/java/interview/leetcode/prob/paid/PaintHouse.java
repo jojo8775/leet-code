@@ -17,7 +17,7 @@ package interview.leetcode.prob.paid;
 public class PaintHouse {
 	// idea is to make a greedy approach for each new house and then add
 	// memorization for first and second min value
-	public int minCost(int[][] costs) {
+	public int minCost_1(int[][] costs) {
 		int minCost1 = 0, minCost2 = 0, prevColor = -1;
 
 		for (int i = 0; i < costs.length; i++) {
@@ -44,4 +44,114 @@ public class PaintHouse {
 
 		return minCost1;
 	}
+	
+	public int minCost(int[][] costs) {
+        // return topDown(costs);
+        // return bottomUp(costs);
+        return bottomUp1D(costs);
+    }
+    
+    private int bottomUp1D(int[][] costs){
+        int[] dp = new int[3];
+        
+        dp[0] = costs[0][0];
+        dp[1] = costs[0][1];
+        dp[2] = costs[0][2];
+        
+        for(int i=1; i<costs.length; i++){
+            int[] dp2 = new int[3];
+            
+            for(int j=0; j<3; j++){
+                int min = Integer.MAX_VALUE;
+                
+                for(int k=0; k<3; k++){
+                    if(k == j){
+                        continue;
+                    }
+                    
+                    min = Math.min(min, costs[i][j] + dp[k]);    
+                }
+                
+                dp2[j] = min;
+            }
+            
+            dp = dp2;
+        }
+        
+        int result = dp[0];
+        
+        for(int i=1; i<3; i++){
+            result = Math.min(result, dp[i]);
+        }
+        
+        return result;
+    }
+    
+    private int bottomUp(int[][] costs){
+        int[][] dp = new int[costs.length][3];
+        
+        dp[0][0] = costs[0][0];
+        dp[0][1] = costs[0][1];
+        dp[0][2] = costs[0][2];
+        
+        for(int i=1; i<costs.length; i++){
+            for(int j=0; j<3; j++){
+                int min = Integer.MAX_VALUE;
+                
+                for(int k=0; k<3; k++){
+                    if(k == j){
+                        continue;
+                    }
+                    
+                    min = Math.min(min, costs[i][j] + dp[i-1][k]);    
+                }
+                
+                dp[i][j] = min;
+            }
+        }
+        
+        int result = dp[costs.length - 1][0];
+        
+        for(int i=1; i<3; i++){
+            result = Math.min(result, dp[costs.length - 1][i]);
+        }
+        
+        return result;
+    }
+    
+    private int topDown(int[][] costs){
+        int min = Integer.MAX_VALUE;
+        
+        Integer[][] memo = new Integer[costs.length][3];
+        int len = costs.length - 1;
+        
+        min = Math.min(min, dp(0, len, costs, memo));
+        min = Math.min(min, dp(1, len, costs, memo));
+        min = Math.min(min, dp(2, len, costs, memo));
+        
+        return min;
+    }
+    
+    private int dp(int choice, int idx, int[][] costs, Integer[][] memo){
+        if(idx < 0){
+            return 0;
+        }
+        
+        if(memo[idx][choice] != null){
+            return memo[idx][choice];
+        }
+        
+        int min = Integer.MAX_VALUE;
+        
+        for(int i=0; i<3; i++){
+            if(i == choice){
+                continue;
+            }
+    
+            int next = costs[idx][choice] + dp(i, idx - 1, costs, memo);
+            min = Math.min(min, next);
+        }
+        
+        return memo[idx][choice] = min;
+    }
 }

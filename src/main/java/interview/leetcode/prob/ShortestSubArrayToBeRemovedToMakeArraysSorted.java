@@ -42,7 +42,7 @@ Submissions
  * @author jojo
  * Sep 13, 2020  9:02:35 PM
  */
-public class ShortestSubArrayToBeRemoved {
+public class ShortestSubArrayToBeRemovedToMakeArraysSorted{
 	public int findLengthOfShortestSubarray(int[] arr) {
 		int len = arr.length;
 		int left = 0, right = len - 1;

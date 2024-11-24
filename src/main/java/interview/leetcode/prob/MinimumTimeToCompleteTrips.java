@@ -100,4 +100,52 @@ public class MinimumTimeToCompleteTrips {
         
         return i;
     }
+    
+    // more efficient version of the code is below. It is still using binary search.
+    /*
+    public long minimumTime(int[] time, int totalTrips) {
+        // beg and end is tracking time to conmplete the total trips.
+        long beg = 1, end = 0;
+        
+        for(int t : time){
+            end = Math.max(end, (long)t);
+        }
+        
+        // this is the absolute max time it will take to complete total trips by the fastest bus
+        end = end * (long)totalTrips;
+        
+        long minTime = end;
+        
+        while(beg <= end){
+            long mid = beg + (end - beg)/2;
+            
+            long tripCount = findTripCount(time, mid, (long)totalTrips);
+            
+            if(tripCount < totalTrips){
+                beg = mid + 1;
+            }
+            else{
+                minTime = mid;
+                end = mid - 1;
+            }
+        }
+        
+        return minTime;
+    }
+    
+    private long findTripCount(int[] times, long limit, long targetTrips){
+        long curTrip = 0;
+        
+        for(int i=0; i<times.length; i++){
+            long count = limit / (long)times[i];
+            curTrip += count;
+            
+            if(curTrip > targetTrips){
+                break;
+            }
+        }
+        
+        return curTrip;
+    }
+    */
 }
