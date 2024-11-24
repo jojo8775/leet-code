@@ -42,6 +42,39 @@ Submissions
  * Jun 22, 2020  11:35:00 PM
  */
 public class MeetingScheduler {
+	public List<Integer> minAvailableDuration_1(int[][] slots1, int[][] slots2, int duration) {
+        Arrays.sort(slots1, (a,b) -> a[0] - b[0]);
+        Arrays.sort(slots2, (a,b) -> a[0] - b[0]);
+        
+        for(int i=0,j=0; i<slots1.length && j<slots2.length; i++){
+            if(slots1[i][1] - slots1[i][0] < duration){
+                continue;
+            }
+            
+            while(j < slots2.length){
+                if(slots2[j][1] - slots2[j][0] < duration || slots2[j][1] <= slots1[i][0]){
+                    j++;
+                    continue;
+                }
+                
+                if(slots2[j][0] >= slots1[i][1]){
+                    break;
+                }
+                
+                int maxStart = Math.max(slots1[i][0], slots2[j][0]);
+                int minEnd = Math.min(slots1[i][1], slots2[j][1]);
+                
+                if(minEnd - maxStart >= duration){
+                    return Arrays.asList(maxStart, maxStart + duration);
+                }
+                
+                j++;
+            }
+        }
+        
+        return new ArrayList<>();
+    }
+	
     public List<Integer> minAvailableDuration_adv(int[][] slots1, int[][] slots2, int duration) {
         PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> a[0] - b[0]);
         
