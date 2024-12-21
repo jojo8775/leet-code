@@ -49,7 +49,8 @@ Submissions
  * Jojo 
  */
 public class MinimumNumberOfChangesToMakeBinaryStringBeautiful {
-	public int minChanges(String s) {
+	
+	 public int minChanges_adv(String s) {
         int count = 0;
         for(int i=1; i<s.length(); i=i+2){
             if(s.charAt(i) != s.charAt(i-1)){
@@ -58,5 +59,30 @@ public class MinimumNumberOfChangesToMakeBinaryStringBeautiful {
         }
         
         return count;
+    }
+    
+    public int minChanges(String s) {
+        int consecutiveCount = 1;
+        int prevChar = s.charAt(0);
+        
+        int flipCount = 0;
+        
+        for(int i=1; i<s.length(); i++){
+            if(s.charAt(i) == prevChar){
+                consecutiveCount++;
+                continue;
+            }
+            
+            if(consecutiveCount % 2 == 0){
+                prevChar = s.charAt(i);
+                consecutiveCount = 1;
+            }
+            else{
+                consecutiveCount = 0;
+                flipCount++;
+            }
+        }
+        
+        return flipCount;
     }
 }

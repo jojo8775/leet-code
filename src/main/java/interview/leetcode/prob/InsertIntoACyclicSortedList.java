@@ -43,17 +43,17 @@ public class InsertIntoACyclicSortedList {
         
         while(head != cur){
             // case 2: when the entry is bigger than prev but smaller than cur;
-            if(insertVal > prev.val && insertVal < cur.val){
+            if(insertVal >= prev.val && insertVal <= cur.val){
                 break;
             }
             
             // case 3: when cur is min and prev is max and insert val is bigger than max
-            if(prev.val > cur.val && prev.val < insertVal){
+            if(prev.val > cur.val && prev.val <= insertVal){
                 break;
             }
             
             // case 4: when cur is min and prev is max and insert val is smaller than min
-            if(prev.val > cur.val && cur.val > insertVal){
+            if(prev.val > cur.val && cur.val >= insertVal){
                 break;
             }
             

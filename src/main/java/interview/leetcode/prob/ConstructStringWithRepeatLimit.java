@@ -153,4 +153,59 @@ public class ConstructStringWithRepeatLimit {
         
         return sb.toString();
     }
+    
+    public String repeatLimitedString2(String s, int repeatLimit) {
+        int[] arr = new int[26];
+
+        for (int i = 0; i < s.length(); i++) {
+            arr[s.charAt(i) - 'a']++;
+        }
+
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> b[0] - a[0]);
+
+        for (int i = 0; i < 26; i++) {
+            if (arr[i] > 0) {
+                pq.offer(new int[] { i, arr[i] });
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        while (!pq.isEmpty()) {
+            int[] top = pq.poll();
+
+            int count = Math.min(repeatLimit, top[1]);
+            top[1] -= count;
+
+            char ch = (char) ('a' + top[0]);
+
+            while (count > 0) {
+                sb.append(ch);
+                count--;
+            }
+
+            if (top[1] == 0) {
+                continue;
+            } else {
+                if (pq.isEmpty()) {
+                    break;
+                } else {
+                    int[] next = pq.poll();
+
+                    sb.append((char) ('a' + next[0]));
+
+                    next[1]--;
+                    if (next[1] > 0) {
+                        pq.offer(next);
+                    }
+
+                    pq.offer(top);
+                }
+            }
+        }
+
+        return sb.toString();
+    }
+    
 }
+

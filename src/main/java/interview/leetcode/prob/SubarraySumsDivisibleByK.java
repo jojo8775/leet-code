@@ -1,5 +1,8 @@
 package interview.leetcode.prob;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Given an integer array nums and an integer k, return the number of non-empty subarrays that have a sum divisible by k.
 
@@ -32,7 +35,7 @@ Submissions
  * Jan 18, 2023 8:17:41 PM
  */
 public class SubarraySumsDivisibleByK {
-	public int subarraysDivByK(int[] nums, int k) {
+	public int subarraysDivByK_adv(int[] nums, int k) {
         int n = nums.length;
         int prefixMod = 0, result = 0;
 
@@ -50,5 +53,25 @@ public class SubarraySumsDivisibleByK {
         }
 
         return result;   
+    }
+	
+	public int subarraysDivByK(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        
+        int sum = 0;
+        int result = 0;
+        
+        for(int n : nums){
+            sum += ((n % k) + k); // + k to makes sure the negative remainder is transformed into positive
+                                  // this is because -4 and 4 both are divisible by 2.
+            sum %= k;
+            
+            result += map.getOrDefault(sum, 0);
+            
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
+        }
+        
+        return result;
     }
 }

@@ -16,7 +16,57 @@ Output: "bb"
  * May 10, 2020  11:34:36 PM
  */
 public class LongestPalindromicSubstring {
-    public String longestPalindrome(String s) {
+	public String longestPalindrome(String s){
+        int len = s.length();
+        
+        int[][] dp = new int[len][len];
+        
+        int max = 0;
+        String result = "";
+        
+        for(int i=0; i<len; i++){
+            dp[i][i] = 1;
+            
+            if(max < 1){
+                max = 1;
+                result = String.valueOf(s.charAt(i));
+            }
+        }
+        
+        for(int k=2; k<=len; k++){
+            int i=k-2, j = k-1;
+            
+            if(s.charAt(i) == s.charAt(j)){
+                dp[i][j] = 2;
+                
+                if(max < 2){
+                    max = 2;
+                    result = s.substring(i,j+1);
+                }
+            }
+        }
+        
+        
+        for(int k=3; k<=len; k++){
+            for(int i=0, j=k-1; j<len; j++, i++){
+                if(s.charAt(i) == s.charAt(j)){
+                    if(dp[i+1][j-1] > 0){
+                        dp[i][j] = 2 + dp[i+1][j-1];
+                        
+                        if(max < j - i + 1){
+                            max = j - i + 1;
+                            result = s.substring(i, j+1);
+                        }
+                    }
+                }
+            }
+        }
+        
+        return result;
+    }
+	
+	
+    public String longestPalindrome_rec(String s) {
         String result = "";
         int end = s.length(), resultLen = 0;
         
