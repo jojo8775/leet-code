@@ -34,7 +34,7 @@ Note:
  * Sep 2, 2019 2:57:27 AM
  */
 public class LongestTurbulentSubarray {
-	public int maxTurbulenceSize(int[] A) {
+	public int maxTurbulenceSize_adv(int[] A) {
         int inc = 1, dec = 1, max = 1;
         
         for(int i=1; i<A.length; i++){
@@ -83,4 +83,31 @@ public class LongestTurbulentSubarray {
         // since result is zero based. 
         return result + 1;
     }
+    
+    // this is using sliding window.
+    public int maxTurbulenceSize(int[] A) {
+        int result = 1, start = 0;
+        
+        for(int i=1; i<A.length; i++){
+            int diff = Integer.compare(A[i-1], A[i]); // possible values are 0, -1, 1
+            
+            // they are equal. 
+            if(diff == 0){
+                start = i;
+            }
+            else{
+                // if the element is last then compute the len
+                // if the product alternating elements are not -1 then compute the len
+                if(i == A.length - 1|| (diff * Integer.compare(A[i], A[i+1]) != -1)){
+                    int windowLen = i - start + 1;
+                    result = Math.max(result, windowLen);
+                    
+                    start = i;
+                }
+            }
+        }
+        
+        return result;
+    }
 }
+

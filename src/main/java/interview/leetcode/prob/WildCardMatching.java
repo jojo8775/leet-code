@@ -17,7 +17,44 @@ package interview.leetcode.prob;
  */
 public class WildCardMatching
 {
-    public boolean isMatch(String s, String p) {
+	public boolean isMatch(String s, String p) {
+        if(s.equals(p)){
+            return true;
+        }
+
+        boolean[][] dp = new boolean[p.length() + 1][s.length() + 1];
+        dp[0][0] = true;
+
+        for(int i=1; i<dp.length; i++){
+            // no need to handle '?' because it needs a character from s
+            if(p.charAt(i-1) == '*'){
+                // not contributing
+                dp[i][0] = dp[i-1][0];
+            }
+        }
+
+        for(int i=1; i<dp.length; i++){
+            for(int j=1; j<dp[0].length; j++){
+                if(p.charAt(i-1) == s.charAt(j-1) || p.charAt(i - 1) == '?'){
+                    dp[i][j] = dp[i-1][j-1];
+                }
+                else if(p.charAt(i-1) == '*'){
+                    // not contributing 
+                    dp[i][j] = dp[i-1][j];
+
+                    // contributing once 
+                    dp[i][j] |= dp[i-1][j-1];
+
+                    // contributing multiple times
+                    dp[i][j] |= dp[i][j-1];
+                }
+            }
+        }
+
+        return dp[p.length()][s.length()];
+    }
+	
+    public boolean isMatch_1(String s, String p) {
         if(s.equals(p)){
             return true;
         }

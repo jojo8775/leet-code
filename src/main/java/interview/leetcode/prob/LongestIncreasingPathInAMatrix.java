@@ -1,5 +1,5 @@
 package interview.leetcode.prob;
-
+//same as https://leetcode.com/problems/number-of-increasing-paths-in-a-grid/?envType=company&envId=adobe&favoriteSlug=adobe-six-months
 public class LongestIncreasingPathInAMatrix {
 	int[] dx = { -1, 1, 0, 0 };
 	int[] dy = { 0, 0, -1, 1 };
@@ -48,3 +48,4 @@ public class LongestIncreasingPathInAMatrix {
 		return a;
 	}
 }
+
