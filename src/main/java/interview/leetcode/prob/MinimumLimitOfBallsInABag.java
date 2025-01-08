@@ -50,47 +50,44 @@ Submissions
  */
 public class MinimumLimitOfBallsInABag {
 	public int minimumSize(int[] nums, int maxOperations) {
-        Arrays.sort(nums);
-        
-        int beg = 1, end = 0;
-        
+        int beg = 1, end = nums[0];
+
         for(int n : nums){
             end = Math.max(end, n);
         }
-        
-        int minPenalty = 0;
-        
-        while(beg <= end){
-            // mid is assumed max 
-            int mid = beg + (end - beg) / 2;
-            
-            int opsCount = findMaxOpsCount(nums, mid, maxOperations);
-            
-            if(opsCount > maxOperations){
+
+        while(beg < end){
+            int mid = beg + (end - beg)/2;
+
+            int count = findCount(nums, mid, maxOperations);
+
+            //System.out.println("b: " + beg + "   e: " + end + "   m: " + mid + "   c: " + count);
+
+            if(count > maxOperations){
                 beg = mid + 1;
             }
             else{
-                minPenalty = mid;
-                end = mid - 1;
+                end = mid;
             }
         }
-        
-        return minPenalty;
+
+        return beg;
     }
-    
-    private int findMaxOpsCount(int[] nums, int limit, int maxOps){
-        int opsCount = 0;
+
+    private int findCount(int[] nums, int limit, int target){
+        int count = 0;
         
         for(int i=0; i<nums.length; i++){
-            int cur = nums[i];
-            
-            opsCount += (cur - 1)/limit;
-            
-            if(opsCount > maxOps){
-                break;
+
+            // (-1) because need to find the split count. e.g then target is 4, then 8 the split count will be 1
+            // for 4 the split count should be 0 since there is nothing greater than 4
+            count += ((nums[i] - 1)/limit);
+
+            if(count > target){
+                return count;
             }
         }
-        
-        return opsCount;
+
+        return count;
     }
 }
