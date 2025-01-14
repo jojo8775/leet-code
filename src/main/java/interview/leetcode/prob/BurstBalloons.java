@@ -25,7 +25,51 @@ package interview.leetcode.prob;
  *
  */
 public class BurstBalloons {
-	public int maxCoins(int[] nums) {
+	
+	// this is same as 
+	// https://leetcode.com/problems/minimum-cost-to-cut-a-stick/description/
+    public int maxCoins(int[] nums) {
+        return topdown(nums);
+    }   
+        
+    private int topdown(int[] nums){
+        int len = nums.length;
+        
+        int[] arr = new int[len + 2];
+        
+        for(int i=0; i<len; i++){
+            arr[i+1] = nums[i];
+        }
+        
+        arr[0] = arr[arr.length - 1] = 1;
+        
+        return dp(arr, 1, arr.length - 2, new Integer[len + 2][len + 2]);
+    }
+    
+    private int dp(int[] arr, int left, int right, Integer[][] memo){
+        if(left > right){
+            return 0;
+        }
+        
+        if(memo[left][right] != null){
+            return memo[left][right];
+        }
+        
+        int max = 0;
+        
+        for(int i=left; i<=right; i++){
+            // assuing i was the last baloon in the range of left <-> right
+            int byBursting = arr[left - 1] * arr[i] * arr[right + 1];
+            
+            int remaining = dp(arr, left, i-1, memo) + dp(arr, i+1, right, memo);
+            
+            max = Math.max(max, byBursting + remaining);
+        }
+        
+        return memo[left][right] = max;
+    }
+	
+	public int maxCoins_1(int[] nums) {
 		int[] iNums = new int[nums.length + 2];
 		int length = 1;
 
@@ -59,7 +103,7 @@ public class BurstBalloons {
 		return dp[0][length - 1];
 	}
 
-	public int maxBalloons(int[] nums) {
+	public int maxBalloons_1(int[] nums) {
 		int[][] dp = new int[nums.length][nums.length];
 
 		// Considering only one element in the sub array
@@ -101,3 +145,4 @@ public class BurstBalloons {
 //		System.out.println(new BurstBalloons().maxBalloons(arr));
 	}
 }
+
