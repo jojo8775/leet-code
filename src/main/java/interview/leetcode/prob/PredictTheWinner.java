@@ -26,7 +26,7 @@ package interview.leetcode.prob;
  * @author jojo Mar 12, 20171:58:08 AM
  */
 public class PredictTheWinner {
-    public boolean PredictTheWinner(int[] nums) {
+    public boolean PredictTheWinner_1int[] nums) {
         int len = nums.length;
         // adding a cache for memorization
         // >= 0 since the result will be 0 when there is a draw
@@ -43,5 +43,24 @@ public class PredictTheWinner {
         }
 
         return cache[beg][end];
+    }
+    
+    public boolean predictTheWinner(int[] nums) {
+        return dp(nums, 0, nums.length - 1, new Integer[nums.length][nums.length]) >= 0;
+    }
+
+    private int dp(int[] nums, int leftIdx, int rightIdx, Integer[][] memo){
+        if(leftIdx == rightIdx){
+            return nums[leftIdx];
+        }
+
+        if(memo[leftIdx][rightIdx] != null){
+            return memo[leftIdx][rightIdx];
+        }
+
+        int bytakingLeft = nums[leftIdx] - dp(nums, leftIdx + 1, rightIdx, memo);
+        int byTakingRight = nums[rightIdx] - dp(nums, leftIdx, rightIdx - 1, memo);
+
+        return memo[leftIdx][rightIdx] = Math.max(bytakingLeft, byTakingRight);
     }
 }

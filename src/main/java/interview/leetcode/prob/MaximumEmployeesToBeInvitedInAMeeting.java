@@ -60,7 +60,7 @@ Submissions
  */
 public class MaximumEmployeesToBeInvitedInAMeeting {
 	class Solution {
-	    public int maximumInvitations(int[] favorite) {
+		public int maximumInvitations(int[] favorite) {
 	        int len = favorite.length;
 	        int[] inDegree = new int[len];
 	        
@@ -78,7 +78,8 @@ public class MaximumEmployeesToBeInvitedInAMeeting {
 	        }
 
 	        int[] dp = new int[len];
-	        
+
+	        // checking the non-cycles 
 	        while(!queue.isEmpty()){
 	            int i = queue.poll();
 	            int j = favorite[i];
@@ -93,6 +94,7 @@ public class MaximumEmployeesToBeInvitedInAMeeting {
 	        
 	        int loopGreaterThan2 = 0, loopEqualTo2 = 0;
 	        
+	        // checking the cycles. 
 	        for(int i=0; i<len; i++){
 	            if(visited[i] == false){
 	                int loopLength = 0;
@@ -103,6 +105,10 @@ public class MaximumEmployeesToBeInvitedInAMeeting {
 	                    j = favorite[j];
 	                }
 	                
+	                // two use case: 
+	                // 1. when length is 2 - two cycles are part of bigger non-cycle path
+	                // 2. when length > 2
+	                // refer to the editorial diagram for visual. 
 	                if(loopLength == 2){
 	                    loopEqualTo2 += 2 + dp[i] + dp[favorite[i]];
 	                }
