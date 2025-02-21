@@ -47,7 +47,52 @@ Submissions
  * Nov 23, 2022 4:07:27 PM
  */
 public class MinimumCostToCutAStick {
-	public int minCost(int n, int[] cuts) {
+	
+	// this is same as ballon burst 
+    // 
+    public int minCost(int n, int[] cuts) {
+        Arrays.sort(cuts);
+        int len = cuts.length;
+
+        // since the cut marks are 0 based, adding a padding at the beg and end for 
+        // ease of calculation.
+        int[] arr = new int[len + 2];
+
+        for(int i=1; i<arr.length - 1; i++){
+            arr[i] = cuts[i-1];
+        }
+
+        arr[arr.length - 1] = n;
+
+        return dp(arr, 0, arr.length - 1, new Integer[len + 2][len + 2]);
+    }
+
+    private int dp(int[] cuts, int beg, int end, Integer[][] memo){
+        // where there is only one piece left there is nothing tocut.
+        if(beg + 1 >= end){
+            return 0;
+        }
+
+        if(memo[beg][end] != null){
+            return memo[beg][end];
+        }
+
+        int min = Integer.MAX_VALUE;
+        for(int i=beg + 1; i<end; i++){
+            int left = dp(cuts, beg, i, memo);
+            int right = dp(cuts, i, end, memo);
+
+            // before cutting a stick the cost is current lenght
+            int curr = cuts[end]-cuts[beg];
+
+            min = Math.min(min, left + right + curr);
+        }
+
+        return memo[beg][end] = min;
+    }
+	
+	
+	public int minCost_1(int n, int[] cuts) {
 		// getting the smallest cut first 
         Arrays.sort(cuts);
         
