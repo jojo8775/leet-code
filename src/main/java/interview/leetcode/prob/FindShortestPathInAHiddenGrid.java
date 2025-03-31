@@ -1,7 +1,11 @@
 package interview.leetcode.prob;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 
 /**
  * This is an interactive problem.
@@ -78,6 +82,7 @@ Submissions
  * Dec 28, 2021 11:34:50 AM
  */
 public class FindShortestPathInAHiddenGrid {
+	/*
 	private static final int UN_EXPLORED = 0;
 	private static final int BLOCKED = -1;
 	private static final int PATH = 2;
@@ -173,10 +178,119 @@ public class FindShortestPathInAHiddenGrid {
 			this.y = y;
 		}
 	}
+	*/
+	
+	char[] dirs = {'U', 'D', 'L', 'R'};
+    Map<Integer, Map<Integer, Integer>> grid = new HashMap<>();
+    private int left = 0, right = 0, up = 0, down = 0;
+    private int[] target = null;
+
+    public int findShortestPath(GridMaster master) {
+        // 1. build graph
+        grid.put(0, new HashMap<>());
+        grid.get(0).put(0, -1);
+        build(master, 0, 0);
+        // System.out.println("l=" + leftbound + ",r=" + rightbound + ",u=" + upperbound + ",d=" + lowerbound);
+
+        // 2. bfs find Shortest Distance
+        Set<String> visited = new HashSet<>();
+        Queue<int[]> queue = new LinkedList<>();
+        
+        queue.add(new int[]{0,0});
+        visited.add(0 + "-" + 0);
+
+        int dist = 0;
+        int[][] idirs = {{1,0}, {0,1}, {-1,0}, {0,-1}};
+
+        if(target == null){
+            return -1;
+        }
+
+        while (!queue.isEmpty()) {
+            int size =queue.size();
+
+            for (int i = 0; i < size; ++i) {
+                int[] top = queue.poll();
+                if (top[0] == target[0] && top[1] == target[1]) {
+                    return dist;
+                }
+
+                for (int[] d : idirs) {
+                    int x = top[0] + d[0], y = top[1] + d[1];
+
+                    if(x < left || x > right || y < down || y > up || grid.get(x).get(y) == 0){
+                        continue;
+                    }
+                    
+                    int[] next = new int[]{x, y};
+
+                    String nextKey = x + "-" + y;
+
+                    if (!visited.contains(nextKey)) {
+                        visited.add(nextKey);
+                        queue.add(next);
+                    }                    
+                }                
+            }
+
+            ++dist;
+        }
+        
+        return -1;
+    }
+
+    private void build(GridMaster master, int i, int j) {
+        left = Math.min(left, i);
+        right = Math.max(right, i);
+        up = Math.max(up, j);
+        down = Math.min(down, j);
+
+        if (master.isTarget()) {
+            grid.get(i).put(j, 2);
+            target = new int[]{i, j};
+        }
+
+        for (char d : dirs) {
+            int x = i, y = j;
+            char back ;
+            if (d == 'U') {
+                --y;
+                back = 'D';
+            }
+            else if (d == 'D') {
+                ++y;
+                back = 'U';
+            }
+            else if (d == 'L') {
+                --x;
+                back = 'R';
+            }
+            else {
+                ++x;
+                back = 'L';
+            }
+            
+            grid.putIfAbsent(x, new HashMap<>());
+            if (grid.get(x).containsKey(y)) {
+                continue;
+            }
+            if (master.canMove(d)) {
+                grid.get(x).put(y, 1);
+                master.move(d);
+                build(master, x, y);
+                master.move(back);
+            }
+            else {
+                grid.get(x).put(y, 0);
+            }
+        }
+    }
 	
 	private interface GridMaster{
 		boolean canMove(char ch);
 		boolean isTarget();
 		void move(char ch);
 	}
+	
+	
 }

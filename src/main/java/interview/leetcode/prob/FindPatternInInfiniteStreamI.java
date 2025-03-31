@@ -117,4 +117,10 @@ public class FindPatternInInfiniteStreamI {
         
         return true;
     }
+    
+    private static class InfiniteStream{
+    	public int next() {
+    		return -1;
+    	}
+    }
 }
