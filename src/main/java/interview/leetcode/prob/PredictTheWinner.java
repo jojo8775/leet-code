@@ -26,7 +26,7 @@ package interview.leetcode.prob;
  * @author jojo Mar 12, 20171:58:08 AM
  */
 public class PredictTheWinner {
-    public boolean PredictTheWinner_1int[] nums) {
+    public boolean PredictTheWinner_1(int[] nums) {
         int len = nums.length;
         // adding a cache for memorization
         // >= 0 since the result will be 0 when there is a draw
