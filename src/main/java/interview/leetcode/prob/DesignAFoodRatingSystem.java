@@ -70,7 +70,7 @@ Acceptance Rate
  * Sep 16, 2025  2025  11:01:55 PM
  */
 public class DesignAFoodRatingSystem {
-	class FoodRatings {
+	static class FoodRatings {
 	    Map<String, Integer> foodRatingMap = new HashMap<>();
 	    Map<String, String> foodCuisineMap = new HashMap<>();
 	    Map<String, PriorityQueue<FoodItem>> cuisineRatingMap = new HashMap<>();
