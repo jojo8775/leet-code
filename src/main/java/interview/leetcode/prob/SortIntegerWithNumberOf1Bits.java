@@ -39,7 +39,7 @@ Submissions
  * Oct 29, 2023 5:47:12 PM
  */
 public class SortIntegerWithNumberOf1Bits {
-	public int[] sortByBits(int[] arr) {
+	public int[] sortByBits_1(int[] arr) {
         List<Integer> list = new ArrayList<>();
         
         for(int n : arr){
@@ -64,5 +64,46 @@ public class SortIntegerWithNumberOf1Bits {
         }
         
         return result;
+    }
+	
+	// inplace. 
+	public int[] sortByBits(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+        return arr;
+    }
+
+    private void quickSort(int[] arr, int beg, int end){
+        if(beg >= end){
+            return;
+        }
+
+        int pivotIdx = beg + (end - beg)/2;
+        swap(arr, end, pivotIdx);
+        int pivotBitCount = Integer.bitCount(arr[end]);
+        
+        int i = beg, j = end - 1;
+
+        while(i <= j){
+            int bitCount1 = Integer.bitCount(arr[i]);
+
+            if(bitCount1 < pivotBitCount || (bitCount1 == pivotBitCount && arr[i] < arr[end])){
+                i++;
+            }
+            else{
+                swap(arr, i, j);
+                j--;
+            }
+        }
+
+        swap(arr, i, end);
+
+        quickSort(arr, beg, i - 1);
+        quickSort(arr, i+1, end);
+    }
+
+    private void swap(int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
