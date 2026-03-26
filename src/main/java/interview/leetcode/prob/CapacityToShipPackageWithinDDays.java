@@ -53,6 +53,53 @@ Submissions
  */
 public class CapacityToShipPackageWithinDDays {
 	public int shipWithinDays(int[] weights, int days) {
+        long beg = 0, end = 0;
+
+        for(int w : weights){
+            beg = Math.max(w, beg);
+            end += w;
+        }
+
+        while(beg < end){
+            // mid ==> assumed capcity
+            long mid = beg + (end - beg)/2;
+
+            int curDays = findDays(weights, mid, days);
+
+            if(curDays > days){
+                beg = mid + 1; // increase the assumed capacity 
+            }
+            else{
+                end = mid;
+            }
+        }
+
+        return (int)beg;
+    }
+
+    private int findDays(int[] arr, long capacity, int target){
+        int days = 1;
+        long sum = 0;
+
+        for(int n : arr){
+            if(sum + n > capacity){
+                days++;
+                sum = n;
+            }
+            else{
+                sum += n;
+            }
+
+            // short circuting it 
+            if(days > target){
+                return days;
+            }
+        }
+
+        return days;
+    }
+    
+	public int shipWithinDays_1(int[] weights, int days) {
 		int left = 0, right = 0;
         
 		// assinging the max package size to the left and total sum to the right 
