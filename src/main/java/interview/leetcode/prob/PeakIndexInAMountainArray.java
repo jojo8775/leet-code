@@ -45,6 +45,31 @@ Submissions
  */
 public class PeakIndexInAMountainArray {
 	public int peakIndexInMountainArray(int[] arr) {
+        int left = 0, right = arr.length - 1;
+
+        while(left <= right){
+            int mid = left + (right - left) / 2;
+
+            // assume the edges as - inf
+            boolean isLeftSmaller = mid == 0 || arr[mid - 1] < arr[mid];
+            boolean isRightSmaller = mid == arr.length - 1 || arr[mid + 1] < arr[mid];
+
+            if(isLeftSmaller && isRightSmaller){
+                return mid;
+            }
+
+            if(isLeftSmaller){
+                left = mid + 1;
+            }
+            else{
+                right = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+	
+	public int peakIndexInMountainArray_old(int[] arr) {
         int l = 0, r = arr.length - 1, mid;
         while (l < r) {
             mid = (l + r) / 2;
