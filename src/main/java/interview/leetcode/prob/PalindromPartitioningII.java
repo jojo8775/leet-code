@@ -3,6 +3,36 @@ package interview.leetcode.prob;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Given a string s, partition s such that every substring of the partition is a palindrome.
+
+Return the minimum cuts needed for a palindrome partitioning of s.
+
+ 
+
+Example 1:
+
+Input: s = "aab"
+Output: 1
+Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
+Example 2:
+
+Input: s = "a"
+Output: 0
+Example 3:
+
+Input: s = "ab"
+Output: 1
+ 
+
+Constraints:
+
+1 <= s.length <= 2000
+s consists of lowercase English letters only.
+ * 
+ * chiranjeebnandy
+ * Apr 13, 2026  2026  11:33:55 PM
+ */
 public class PalindromPartitioningII {
 	public int minCut_2(String s) {
     	int len = s.length();
@@ -24,7 +54,7 @@ public class PalindromPartitioningII {
     }
 	
 	private Set<String> cache = new HashSet<String>();
-	public int minCut(String s) {
+	public int minCut_1(String s) {
 		// using bottom up approach
 		int[][] grid = new int[s.length()][s.length()];
 		
@@ -60,6 +90,30 @@ public class PalindromPartitioningII {
 		cache.add(str.substring(beg, end + 1));
 		return true;
 	}
+	
+	//----
+	// final 
+	//----
+	public int minCut(String s) {
+    	int len = s.length();
+    	int[] minSplit = new int[len];
+    	boolean[][] dp = new boolean[len][len];
+    	
+		for(int i=0; i<len; i++) {
+			int val = i;
+			for(int j=0; j<=i; j++) {
+				if(s.charAt(i) == s.charAt(j) && (j+1 > i-1 ||  dp[j+1][i-1])) {
+					dp[j][i] = true;
+					val = j == 0 ? 0 : Math.min(val, minSplit[j-1] + 1);
+				}
+			}
+			
+			minSplit[i] = val;
+		}
+		
+		return minSplit[len - 1];
+    }
+	
 
 	public static void main(String[] args) {
 		// System.out.println(new PalindromPartitioningII().minCut("aabczza"));
