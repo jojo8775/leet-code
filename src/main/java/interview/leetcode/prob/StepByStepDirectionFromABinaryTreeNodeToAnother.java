@@ -48,6 +48,78 @@ Submissions
  */
 public class StepByStepDirectionFromABinaryTreeNodeToAnother {
 	public String getDirections(TreeNode root, int startValue, int destValue) {
+        TreeNode lcaNode = findLcaNode(root, startValue, destValue);
+
+        StringBuilder pathToStrart = findPath(lcaNode, startValue);
+        StringBuilder pathToDest = findPath(lcaNode, destValue);
+
+        for(int i=0; i<pathToStrart.length(); i++){
+            pathToStrart.setCharAt(i, 'U');
+        }
+
+        pathToStrart.append(pathToDest);
+
+        return pathToStrart.toString();
+    }
+
+    private TreeNode findLcaNode(TreeNode node, int val1, int val2){
+        if(node == null || node.val == val1 || node.val == val2){
+            return node;
+        }
+
+        TreeNode left = findLcaNode(node.left, val1, val2);
+        if(left != null && left.val != val1 && left.val != val2){
+            return left;
+        }
+
+        TreeNode right = findLcaNode(node.right, val1, val2);
+        
+        if(left != null && right != null){
+            return node;
+        }
+
+        return left == null ? right : left;
+    }
+
+    private StringBuilder findPath(TreeNode node, int val){
+        StringBuilder sb = new StringBuilder();
+        findPath(node, val, sb);
+
+        return sb;
+    }
+
+    private boolean findPath(TreeNode node, int val, StringBuilder sb){
+        if(node == null){
+            return false;
+        }
+
+        if(node.val == val){
+            return true;
+        }
+
+        if(node.left != null){
+            sb.append("L");
+            if(findPath(node.left, val, sb)){
+                return true;
+            }
+
+            sb.deleteCharAt(sb.length() - 1);
+        }
+
+        if(node.right != null){
+            sb.append("R");
+            if(findPath(node.right, val, sb)){
+                return true;
+            }
+
+            sb.deleteCharAt(sb.length() - 1);
+        }
+
+        return false;
+    }
+	
+	
+	public String getDirections_1(TreeNode root, int startValue, int destValue) {
         Map<TreeNode, TreeNode> parentMap = new HashMap<>();
         
         Queue<TreeNode> queue = new LinkedList<>();
