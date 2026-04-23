@@ -58,6 +58,5 @@ public class BlockingQueue<T> {
 		} finally {
 			lock.unlock();
 		}
-
 	}
 }

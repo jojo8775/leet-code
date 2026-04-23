@@ -62,7 +62,7 @@ public class HouseRobberII {
     }
 	
 	
-	public int rob(int[] nums) {
+	public int rob_3(int[] nums) {
 		if (nums.length == 0) {
 			return 0;
 		}
@@ -91,4 +91,38 @@ public class HouseRobberII {
 
 		return Math.max(maxInc, firstExc);
 	}
+	
+	// using dynamic prog topdown 
+	public int rob(int[] nums) {
+        int len = nums.length;
+
+        if(len == 1){
+            return nums[0];
+        }
+
+        int takingFirst = topdown(nums, 0, len - 1, new Integer[len]);
+        int skippingFirst = topdown(nums, 1, len, new Integer[len]);
+
+        return Math.max(takingFirst, skippingFirst);
+    }
+
+    private int topdown(int[] nums, int idx, int end, Integer[] memo){
+        if(idx >= end){
+            return 0;
+        }
+
+        if(memo[idx] != null){
+            return memo[idx];
+        }
+
+        int max = 0;
+
+        int taking = nums[idx] + topdown(nums, idx + 2, end, memo);
+        int notTaking = topdown(nums, idx + 1, end, memo);
+
+        max = Math.max(taking, notTaking);
+        
+        return memo[idx] = max;
+    }
+	
 }
